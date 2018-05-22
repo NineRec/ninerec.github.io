@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>null 与 &#39;0&#39; 相比较的问题 - CodePanic</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="NineRec" />
+  <meta name="description" content="抛出问题 php 的 == | === | isempty() 等对变量的判断一直是比较烦人的。今天是遇到了一个关于 == 的简单问题： var_dump(&#39;0&#39; == false); // true var_dump(null == false); // true var_dump(null == &#39;0&#39;); // false 问题来了，为什么 null == &#39;0&#39;" />
+
+  <meta name="keywords" content="NineRec, codepanic, blog" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.40.3" />
+
+
+<link rel="canonical" href="https://blog.codepanic.cn/post/null-equal-0/" />
+
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+
+
+
+
+<link href="/dist/even.min.css?v=3.1.1" rel="stylesheet">
+<link href="/lib/fancybox/jquery.fancybox-3.1.20.min.css" rel="stylesheet">
+
+
+
+
+<meta property="og:title" content="null 与 &#39;0&#39; 相比较的问题" />
+<meta property="og:description" content="抛出问题 php 的 == | === | isempty() 等对变量的判断一直是比较烦人的。今天是遇到了一个关于 == 的简单问题： var_dump(&#39;0&#39; == false); // true var_dump(null == false); // true var_dump(null == &#39;0&#39;); // false 问题来了，为什么 null == &#39;0&#39;" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://blog.codepanic.cn/post/null-equal-0/" />
+
+
+
+<meta property="article:published_time" content="2017-08-01T00:00:00&#43;00:00"/>
+
+<meta property="article:modified_time" content="2017-08-01T00:00:00&#43;00:00"/>
+
+
+
+
+
+
+
+
+
+
+
+<meta itemprop="name" content="null 与 &#39;0&#39; 相比较的问题">
+<meta itemprop="description" content="抛出问题 php 的 == | === | isempty() 等对变量的判断一直是比较烦人的。今天是遇到了一个关于 == 的简单问题： var_dump(&#39;0&#39; == false); // true var_dump(null == false); // true var_dump(null == &#39;0&#39;); // false 问题来了，为什么 null == &#39;0&#39;">
+
+
+<meta itemprop="datePublished" content="2017-08-01T00:00:00&#43;00:00" />
+<meta itemprop="dateModified" content="2017-08-01T00:00:00&#43;00:00" />
+<meta itemprop="wordCount" content="457">
+
+
+
+<meta itemprop="keywords" content="" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="null 与 &#39;0&#39; 相比较的问题"/>
+<meta name="twitter:description" content="抛出问题 php 的 == | === | isempty() 等对变量的判断一直是比较烦人的。今天是遇到了一个关于 == 的简单问题： var_dump(&#39;0&#39; == false); // true var_dump(null == false); // true var_dump(null == &#39;0&#39;); // false 问题来了，为什么 null == &#39;0&#39;"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">CodePanic</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">Archives</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">Tags</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">Categories</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">CodePanic</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">Archives</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">Tags</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">Categories</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">null 与 &#39;0&#39; 相比较的问题</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2017-08-01 </span>
+        <div class="post-category">
+            
+              <a href="/categories/php/"> php </a>
+            
+          </div>
+        
+        
+      </div>
+    </header>
+
+    
+    
+<div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li>
+<ul>
+<li><a href="#抛出问题">抛出问题</a></li>
+<li><a href="#找到答案">找到答案</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+  </div>
+</div>
+
+    
+    <div class="post-content">
+      
+
+<h3 id="抛出问题">抛出问题</h3>
+
+<p>php 的 <code>== | === | isempty()</code> 等对变量的判断一直是比较烦人的。今天是遇到了一个关于 <code>==</code> 的简单问题：</p>
+
+<pre><code class="language-php">var_dump('0' == false); // true
+var_dump(null == false); // true
+var_dump(null == '0'); // false
+</code></pre>
+
+<p>问题来了，为什么 <code>null == '0'</code> 会是 false 呢？毕竟大家都会把 <code>0, '', '0', false, null, array()</code> 都当做“空”来解读。</p>
+
+<h3 id="找到答案">找到答案</h3>
+
+<p>之前有遇到过好奇为什么 <code>isset()</code> 函数的变量不能是一个方法，而 <code>empty()</code> 可以。然后就简单搜索了下，并跟着文章看了下 php 源码。这次依然是这样，直接从源码中寻找答案。</p>
+
+<p>首先，在<code>zend_language_scanner.l</code> 中搜了下 <code>==</code>，发现了 <code>T_IS_EQUAL</code>，很暴力的在整个目录中搜了下 <code>T_IS_EQUAL</code>，各个文件烦了下，在 <code>zend_language_parser.y</code> 中找到了 <code>ZEND_IS_EQUAL</code>。依然老方法，文件夹搜<code>ZEND_IS_EQUAL</code>，找到了其最后对应函数<code>compare_function</code>。
+就这么一层一层往下找，最后在 <code>zend_operators.c</code> 中约1880行的位置找到了这个函数，其中相关代码如下：</p>
+
+<pre><code class="language-c">            case TYPE_PAIR(IS_NULL, IS_STRING):
+                ZVAL_LONG(result, Z_STRLEN_P(op2) == 0 ? 0 : -1);
+                return SUCCESS;
+
+            case TYPE_PAIR(IS_STRING, IS_NULL):
+                ZVAL_LONG(result, Z_STRLEN_P(op1) == 0 ? 0 : 1);
+                return SUCCESS;
+</code></pre>
+
+<p>现在再来解释问题，就很容易了。PHP 当遇到 null 和字符串比较时，其实相当于计算了字符串长度是否为0。也就是默认了只有<code>'' == null</code> 是成立的。</p>
+
+    </div>
+
+    
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content">NineRec</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">2017-08-01</span>
+  </p>
+  
+  
+</div>
+
+    
+    
+
+    <footer class="post-footer">
+      
+
+      
+      <nav class="post-nav">
+        
+          <a class="prev" href="/post/nginx-log-split/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">Nginx 日志切分</span>
+            <span class="prev-text nav-mobile">上一篇</span>
+          </a>
+        
+          <a class="next" href="/post/my-paied-app/">
+            <span class="next-text nav-default">我的付费应用列表</span>
+            <span class="prev-text nav-mobile">下一篇</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+  
+
+  
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:gongshang1990#163.com" class="iconfont icon-email" title="email"></a>
+      <a href="https://github.com/NineRec" class="iconfont icon-github" title="github"></a>
+      <a href="http://weibo.com/gongshanag" class="iconfont icon-weibo" title="weibo"></a>
+  <a href="https://blog.codepanic.cn/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    
+      2016 - 
+    2018
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">NineRec</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+<script src="/lib/highlight/highlight.pack.js?v=20171001"></script><script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+  <script type="text/javascript" src="/lib/fancybox/jquery.fancybox-3.1.20.min.js"></script>
+<script type="text/javascript" src="/dist/even.min.js?v=3.1.1"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

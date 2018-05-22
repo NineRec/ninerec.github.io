@@ -1,0 +1,2 @@
+User-agent: *
+Sitemap: https://blog.codepanic.cn/sitemap.xml

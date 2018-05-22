@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>CodePanic</title>
+    <link>https://blog.codepanic.cn/</link>
+    <description>Recent content on CodePanic</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Thu, 10 May 2018 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://blog.codepanic.cn/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>关于同理心的一些想法</title>
+      <link>https://blog.codepanic.cn/2018/05/10/thoughts/</link>
+      <pubDate>Thu, 10 May 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.codepanic.cn/2018/05/10/thoughts/</guid>
+      <description>关于同理心 在五一劳动节时，发生了一件不太愉快的事情。事情的来龙去脉并不重要，不过在反思和探讨问题的原因和解决方案时，不止一次的提到了“站在我</description>
+    </item>
+    
+    <item>
+      <title>Nginx 日志切分</title>
+      <link>https://blog.codepanic.cn/post/nginx-log-split/</link>
+      <pubDate>Wed, 11 Oct 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.codepanic.cn/post/nginx-log-split/</guid>
+      <description>抛出问题 Nginx 的 access_log &amp;amp; error_log，在漫长的岁月中不断增长。然而 nginx 日志并没有 rotate 功能。如果简单百度、Bing下，会发现在 N 多博客中，大家都在说</description>
+    </item>
+    
+    <item>
+      <title>null 与 &#39;0&#39; 相比较的问题</title>
+      <link>https://blog.codepanic.cn/post/null-equal-0/</link>
+      <pubDate>Tue, 01 Aug 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.codepanic.cn/post/null-equal-0/</guid>
+      <description>抛出问题 php 的 == | === | isempty() 等对变量的判断一直是比较烦人的。今天是遇到了一个关于 == 的简单问题： var_dump(&#39;0&#39; == false); // true var_dump(null == false); // true var_dump(null == &#39;0&#39;); // false 问题来了，为什么 null == &#39;0&#39;</description>
+    </item>
+    
+    <item>
+      <title>我的付费应用列表</title>
+      <link>https://blog.codepanic.cn/post/my-paied-app/</link>
+      <pubDate>Mon, 17 Jul 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.codepanic.cn/post/my-paied-app/</guid>
+      <description>自从使用了 Mac 后，便给自己定了个规矩，尽量不再使用盗版的软件。毕竟不再是个学生了，也有了自己的收入，没有理由不去尊重自己行业的版权。同时，我坚</description>
+    </item>
+    
+    <item>
+      <title>第三届php开发者大会</title>
+      <link>https://blog.codepanic.cn/post/php2017/</link>
+      <pubDate>Wed, 14 Jun 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.codepanic.cn/post/php2017/</guid>
+      <description>PHP开发者大会结束，整体收获蛮大的，简单做一些总结。 引言 上一届大会举行的时候，就加入了微信群，也一直积极关注大会动向。 但这一届我是依然犹豫</description>
+    </item>
+    
+    <item>
+      <title>3月份读书后感</title>
+      <link>https://blog.codepanic.cn/post/201603-reading-review/</link>
+      <pubDate>Fri, 08 Apr 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.codepanic.cn/post/201603-reading-review/</guid>
+      <description>我一直没有一个良好的阅读习惯。上一篇文章中提到，希望自己能够每个月写一个读书总结，其本意是希望自己能够养成一个良好的阅读习惯。我在写上一篇博</description>
+    </item>
+    
+    <item>
+      <title>2016年2月-总结与展望</title>
+      <link>https://blog.codepanic.cn/post/review-and-hope/</link>
+      <pubDate>Sun, 28 Feb 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.codepanic.cn/post/review-and-hope/</guid>
+      <description>现在并不是一个写总结的好时机，毕竟不是年初年底，也并不是什么时间节点。书写以方面是为了整理整理思想，也留下点文字记录，用来时常提醒下自己；另</description>
+    </item>
+    
+    <item>
+      <title>My Love Story</title>
+      <link>https://blog.codepanic.cn/post/my-love-story/</link>
+      <pubDate>Wed, 01 Jan 2014 20:14:33 +0800</pubDate>
+      
+      <guid>https://blog.codepanic.cn/post/my-love-story/</guid>
+      <description>仙踪难觅情如梦，蓬断随风叶随风； 同心千载痴情盼，守得云开见月明。 ——题记 不是什么诗情画意的故事，只是近来好友常拿我与家中那位说笑，便总提及“</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Nginx on CodePanic</title>
+    <link>https://blog.codepanic.cn/categories/nginx/</link>
+    <description>Recent content in Nginx on CodePanic</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Wed, 11 Oct 2017 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://blog.codepanic.cn/categories/nginx/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Nginx 日志切分</title>
+      <link>https://blog.codepanic.cn/post/nginx-log-split/</link>
+      <pubDate>Wed, 11 Oct 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.codepanic.cn/post/nginx-log-split/</guid>
+      <description>抛出问题 Nginx 的 access_log &amp;amp; error_log，在漫长的岁月中不断增长。然而 nginx 日志并没有 rotate 功能。如果简单百度、Bing下，会发现在 N 多博客中，大家都在说</description>
+    </item>
+    
+  </channel>
+</rss>
