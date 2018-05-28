@@ -3,6 +3,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://blog.codepanic.cn/post/20180523-building-a-container-from-scratch/</loc>
+    <lastmod>2018-05-23T18:11:45+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
     <loc>https://blog.codepanic.cn/post/thoughts/</loc>
     <lastmod>2018-05-10T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
@@ -66,7 +73,14 @@
   
   <url>
     <loc>https://blog.codepanic.cn/</loc>
-    <lastmod>2018-05-10T00:00:00+00:00</lastmod>
+    <lastmod>2018-05-23T18:11:45+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.codepanic.cn/categories/container/</loc>
+    <lastmod>2018-05-23T18:11:45+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
@@ -94,7 +108,7 @@
   
   <url>
     <loc>https://blog.codepanic.cn/post/</loc>
-    <lastmod>2018-05-10T00:00:00+00:00</lastmod>
+    <lastmod>2018-05-23T18:11:45+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>

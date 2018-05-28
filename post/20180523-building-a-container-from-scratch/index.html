@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <title>关于同理心的一些想法 - CodePanic</title>
+  <title>从零构建一个容器 - CodePanic</title>
   <meta name="renderer" content="webkit" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 
@@ -17,7 +17,7 @@
 
 
 <meta name="author" content="NineRec" />
-  <meta name="description" content="关于同理心 在五一劳动节时，发生了一件不太愉快的事情。事情的来龙去脉并不重要，不过在反思和探讨问题的原因和解决方案时，不止一次的提到了“站在我" />
+  <meta name="description" content="Bbackground 这是基于 Liz Rice 在 Container Camp 的会议分享，Liz 在不到 20 分钟的时间里，用 100 行左右的 Golang 代码，构建了一个容器。分享链接为Building a container from scratch in Go。 Rootfs" />
 
   <meta name="keywords" content="NineRec, code panic, blog" />
 
@@ -29,7 +29,7 @@
 <meta name="generator" content="Hugo 0.40.3" />
 
 
-<link rel="canonical" href="https://blog.codepanic.cn/post/thoughts/" />
+<link rel="canonical" href="https://blog.codepanic.cn/post/20180523-building-a-container-from-scratch/" />
 
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -49,20 +49,16 @@
 
 
 
-<meta property="og:title" content="关于同理心的一些想法" />
-<meta property="og:description" content="关于同理心 在五一劳动节时，发生了一件不太愉快的事情。事情的来龙去脉并不重要，不过在反思和探讨问题的原因和解决方案时，不止一次的提到了“站在我" />
+<meta property="og:title" content="从零构建一个容器" />
+<meta property="og:description" content="Bbackground 这是基于 Liz Rice 在 Container Camp 的会议分享，Liz 在不到 20 分钟的时间里，用 100 行左右的 Golang 代码，构建了一个容器。分享链接为Building a container from scratch in Go。 Rootfs" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://blog.codepanic.cn/post/thoughts/" />
+<meta property="og:url" content="https://blog.codepanic.cn/post/20180523-building-a-container-from-scratch/" />
 
 
 
-<meta property="article:published_time" content="2018-05-10T00:00:00&#43;00:00"/>
+<meta property="article:published_time" content="2018-05-23T18:11:45&#43;08:00"/>
 
-<meta property="article:modified_time" content="2018-05-10T00:00:00&#43;00:00"/>
-
-
-
-
+<meta property="article:modified_time" content="2018-05-23T18:11:45&#43;08:00"/>
 
 
 
@@ -70,20 +66,24 @@
 
 
 
-<meta itemprop="name" content="关于同理心的一些想法">
-<meta itemprop="description" content="关于同理心 在五一劳动节时，发生了一件不太愉快的事情。事情的来龙去脉并不重要，不过在反思和探讨问题的原因和解决方案时，不止一次的提到了“站在我">
 
 
-<meta itemprop="datePublished" content="2018-05-10T00:00:00&#43;00:00" />
-<meta itemprop="dateModified" content="2018-05-10T00:00:00&#43;00:00" />
-<meta itemprop="wordCount" content="714">
+
+
+<meta itemprop="name" content="从零构建一个容器">
+<meta itemprop="description" content="Bbackground 这是基于 Liz Rice 在 Container Camp 的会议分享，Liz 在不到 20 分钟的时间里，用 100 行左右的 Golang 代码，构建了一个容器。分享链接为Building a container from scratch in Go。 Rootfs">
+
+
+<meta itemprop="datePublished" content="2018-05-23T18:11:45&#43;08:00" />
+<meta itemprop="dateModified" content="2018-05-23T18:11:45&#43;08:00" />
+<meta itemprop="wordCount" content="490">
 
 
 
 <meta itemprop="keywords" content="" />
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="关于同理心的一些想法"/>
-<meta name="twitter:description" content="关于同理心 在五一劳动节时，发生了一件不太愉快的事情。事情的来龙去脉并不重要，不过在反思和探讨问题的原因和解决方案时，不止一次的提到了“站在我"/>
+<meta name="twitter:title" content="从零构建一个容器"/>
+<meta name="twitter:description" content="Bbackground 这是基于 Liz Rice 在 Container Camp 的会议分享，Liz 在不到 20 分钟的时间里，用 100 行左右的 Golang 代码，构建了一个容器。分享链接为Building a container from scratch in Go。 Rootfs"/>
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -146,13 +146,13 @@
           <article class="post">
     
     <header class="post-header">
-      <h1 class="post-title">关于同理心的一些想法</h1>
+      <h1 class="post-title">从零构建一个容器</h1>
 
       <div class="post-meta">
-        <span class="post-time"> 2018-05-10 </span>
+        <span class="post-time"> 2018-05-23 </span>
         <div class="post-category">
             
-              <a href="/categories/essay/"> essay </a>
+              <a href="/categories/container/"> Container </a>
             
           </div>
         
@@ -170,11 +170,9 @@
 <ul>
 <li>
 <ul>
-<li>
-<ul>
-<li><a href="#关于同理心">关于同理心</a></li>
-<li><a href="#let-s-talk">Let&rsquo;s talk</a></li>
-</ul></li>
+<li><a href="#bbackground">Bbackground</a></li>
+<li><a href="#rootfs">Rootfs</a></li>
+<li><a href="#container-from-scratch">Container from scratch</a></li>
 </ul></li>
 </ul>
 </nav>
@@ -185,19 +183,42 @@
     <div class="post-content">
       
 
-<h3 id="关于同理心">关于同理心</h3>
+<h2 id="bbackground">Bbackground</h2>
 
-<p>在五一劳动节时，发生了一件不太愉快的事情。事情的来龙去脉并不重要，不过在反思和探讨问题的原因和解决方案时，不止一次的提到了“站在我的角度”，站在对方的角度，说得高大上一些，应该就是同理心了。在自我思考的过程中，有一些关键词跃入了脑中。或许通过文字的方式，能够放慢自己的思考，将这些东西整理、表达出来。</p>
+<p>这是基于 Liz Rice 在 Container Camp 的会议分享，Liz 在不到 20 分钟的时间里，用 100 行左右的 Golang 代码，构建了一个容器。分享链接为<a href="https://www.youtube.com/watch?v=Utf-A4rODH8">Building a container from scratch in Go</a>。</p>
 
-<p>和将心比心、感同身受、推己及人一样，同理心也是说要站在对方的角度和位置上，去猜测对方的想法，去预判对方的感受，从而去更好的做决策。这一切的前提，是我得了解你，这样才能正确的站在你的角度上去看待问题，去感受情感变化。老夫老妻的默契，是他们共同经历了生活的五彩斑斓，看到过太多对方的反应，从而也足够了解对方，所以才总能做出符合对方心意的事情，有了一种心有灵犀的默契感。</p>
+<h2 id="rootfs">Rootfs</h2>
 
-<p>但如果想要达到相处的融洽，都只能是等着一起经历越来越多的事情，或许是有些悲惨了。其实交谈是个不错的解决方案。美剧中情感戏的冲突解决，经典台词应该就是那句“Let&rsquo;s talk”，然后主角们会说“When I was young……”、“At that moment……”。真诚的交流，相当于是在直白地表达了“我的角度、我的感受”。</p>
+<p>Liz 在用到文件系统时，展示了她虚拟机上的 <code>/home/rootfs</code>，说了句 &ldquo;I just happen to have one lying around&rdquo;。通常我们自己的 Linux 系统中并没有这么个目录，不过从视频的评论中可以找到一些相关链接，能够帮忙我们了解并构建一个 chroot。</p>
 
-<h3 id="let-s-talk">Let&rsquo;s talk</h3>
+<ul>
+<li>Ubuntu 帮助文档 - <a href="https://help.ubuntu.com/community/BasicChroot">BasicChroot</a></li>
+<li>TLDP 文章 - <a href="http://www.tldp.org/HOWTO/Bootdisk-HOWTO/buildroot.html">Building a root filesystem</a></li>
+</ul>
 
-<p>交流或许才是最原始的IT（Information Tech），交流让信息流动了起来：你经历过什么、你的内心所想、你的当前状态等等，都可以一定程度上传达给聆听者。然后聆听者基于这些信息，就可以做出更好的决策（感觉就是阿里吹嘘的DT-Data Tech）。</p>
+<p>我参考 Ubuntu-BasicChroot 的 Creating a chroot 章节操作了下，略需注意，文档中的 <code>Lucid</code> 版本太过陈旧，应该根据实际情况选择ubuntu的版本。Ubuntu 下步骤简述如下：</p>
 
-<p>有的人遇到问题，会潜意识的倾向于回避问题（我应该就是其中之一），然后不敢去交流问题，或者不知道该如何交流。这个时候强制自己去面对问题，去沟通交流，即使你还没有做好准备，没有理清思绪。</p>
+<pre><code class="language-bash"># 1. `apt` 安装 `schroot` 和 `debootstrap`;
+apt install schroot debootstrap
+
+# 2. 修改 `schroot` 配置 `/etc/schroot/schroot.conf`，新增下文配置;
+[xenial] # 合适的版本，这里选 16.04 的 Xenial Xerus
+description=Ubuntu Xenial
+location=/home/rootfs # 你期望的地址
+priority=3
+users=root
+groups=sbuild
+root-groups=root
+
+# 3. 使用 `debootstrap` 命令在指定目录下载系统文件，选清华的镜像；
+sudo debootstrap --variant=buildd --arch i386 xenial /home/rootfs https://mirrors.tuna.tsinghua.edu.cn/ubuntu/
+</code></pre>
+
+<h2 id="container-from-scratch">Container from scratch</h2>
+
+<p>Liz Rice 的代码见Gist： <a href="https://gist.github.com/lizrice/a5ef4d175fd0cd3491c7e8d716826d27">Container from scratch</a></p>
+
+<p>基于代码，可以对容器就是“Namespace 和 Cgroup”有个更直接的理解。Namespace 决定了你能看到什么，而 Cgroup，决定了你能用那些资源（代码中没有明确展示）。</p>
 
     </div>
 
@@ -209,7 +230,7 @@
   </p>
   <p class="copyright-item">
     <span class="item-title">上次更新</span>
-    <span class="item-content">2018-05-10</span>
+    <span class="item-content">2018-05-23</span>
   </p>
   
   <p class="copyright-item">
@@ -227,14 +248,9 @@
       
       <nav class="post-nav">
         
-          <a class="prev" href="/post/20180523-building-a-container-from-scratch/">
-            <i class="iconfont icon-left"></i>
-            <span class="prev-text nav-default">从零构建一个容器</span>
-            <span class="prev-text nav-mobile">上一篇</span>
-          </a>
         
-          <a class="next" href="/post/nginx-log-split/">
-            <span class="next-text nav-default">Nginx 日志切分</span>
+          <a class="next" href="/post/thoughts/">
+            <span class="next-text nav-default">关于同理心的一些想法</span>
             <span class="prev-text nav-mobile">下一篇</span>
             <i class="iconfont icon-right"></i>
           </a>
