@@ -17,7 +17,10 @@
 
 
 <meta name="author" content="NineRec" />
-  <meta name="description" content="抛出问题 php 的 == | === | isempty() 等对变量的判断一直是比较烦人的。今天是遇到了一个关于 == 的简单问题： var_dump(&#39;0&#39; == false); // true var_dump(null == false); // true var_dump(null == &#39;0&#39;); // false 问题来了，为什么 null == &#39;0&#39;" />
+  <meta name="description" content="抛出问题 php 的 == | === | isempty() 等对变量的判断一直是比较烦人的。今天是遇到了一个关于 == 的简单问题：
+var_dump(&#39;0&#39; == false); // true var_dump(null == false); // true var_dump(null == &#39;0&#39;); // false  问题来了，为什么 null == &#39;0&#39; 会是 false 呢？毕竟大家都会把 0, &#39;&#39;, &#39;0&#39;, false, null, array() 都当做“空”来解读。
+
+" />
 
   <meta name="keywords" content="NineRec, code panic, blog" />
 
@@ -50,7 +53,18 @@
 
 
 <meta property="og:title" content="null 与 &#39;0&#39; 相比较的问题" />
-<meta property="og:description" content="抛出问题 php 的 == | === | isempty() 等对变量的判断一直是比较烦人的。今天是遇到了一个关于 == 的简单问题： var_dump(&#39;0&#39; == false); // true var_dump(null == false); // true var_dump(null == &#39;0&#39;); // false 问题来了，为什么 null == &#39;0&#39;" />
+<meta property="og:description" content="抛出问题
+
+php 的 == | === | isempty() 等对变量的判断一直是比较烦人的。今天是遇到了一个关于 == 的简单问题：
+
+var_dump(&#39;0&#39; == false); // true
+var_dump(null == false); // true
+var_dump(null == &#39;0&#39;); // false
+
+
+问题来了，为什么 null == &#39;0&#39; 会是 false 呢？毕竟大家都会把 0, &#39;&#39;, &#39;0&#39;, false, null, array() 都当做“空”来解读。
+
+" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://blog.codepanic.cn/post/null-equal-0/" />
 
@@ -71,7 +85,18 @@
 
 
 <meta itemprop="name" content="null 与 &#39;0&#39; 相比较的问题">
-<meta itemprop="description" content="抛出问题 php 的 == | === | isempty() 等对变量的判断一直是比较烦人的。今天是遇到了一个关于 == 的简单问题： var_dump(&#39;0&#39; == false); // true var_dump(null == false); // true var_dump(null == &#39;0&#39;); // false 问题来了，为什么 null == &#39;0&#39;">
+<meta itemprop="description" content="抛出问题
+
+php 的 == | === | isempty() 等对变量的判断一直是比较烦人的。今天是遇到了一个关于 == 的简单问题：
+
+var_dump(&#39;0&#39; == false); // true
+var_dump(null == false); // true
+var_dump(null == &#39;0&#39;); // false
+
+
+问题来了，为什么 null == &#39;0&#39; 会是 false 呢？毕竟大家都会把 0, &#39;&#39;, &#39;0&#39;, false, null, array() 都当做“空”来解读。
+
+">
 
 
 <meta itemprop="datePublished" content="2017-08-01T00:00:00&#43;00:00" />
@@ -83,7 +108,18 @@
 <meta itemprop="keywords" content="" />
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="null 与 &#39;0&#39; 相比较的问题"/>
-<meta name="twitter:description" content="抛出问题 php 的 == | === | isempty() 等对变量的判断一直是比较烦人的。今天是遇到了一个关于 == 的简单问题： var_dump(&#39;0&#39; == false); // true var_dump(null == false); // true var_dump(null == &#39;0&#39;); // false 问题来了，为什么 null == &#39;0&#39;"/>
+<meta name="twitter:description" content="抛出问题
+
+php 的 == | === | isempty() 等对变量的判断一直是比较烦人的。今天是遇到了一个关于 == 的简单问题：
+
+var_dump(&#39;0&#39; == false); // true
+var_dump(null == false); // true
+var_dump(null == &#39;0&#39;); // false
+
+
+问题来了，为什么 null == &#39;0&#39; 会是 false 呢？毕竟大家都会把 0, &#39;&#39;, &#39;0&#39;, false, null, array() 都当做“空”来解读。
+
+"/>
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -183,9 +219,7 @@
 
     
     <div class="post-content">
-      
-
-<h3 id="抛出问题">抛出问题</h3>
+      <h3 id="抛出问题">抛出问题</h3>
 
 <p>php 的 <code>== | === | isempty()</code> 等对变量的判断一直是比较烦人的。今天是遇到了一个关于 <code>==</code> 的简单问题：</p>
 
@@ -195,6 +229,8 @@ var_dump(null == '0'); // false
 </code></pre>
 
 <p>问题来了，为什么 <code>null == '0'</code> 会是 false 呢？毕竟大家都会把 <code>0, '', '0', false, null, array()</code> 都当做“空”来解读。</p>
+
+<p></p>
 
 <h3 id="找到答案">找到答案</h3>
 
@@ -213,7 +249,6 @@ var_dump(null == '0'); // false
 </code></pre>
 
 <p>现在再来解释问题，就很容易了。PHP 当遇到 null 和字符串比较时，其实相当于计算了字符串长度是否为0。也就是默认了只有<code>'' == null</code> 是成立的。</p>
-
     </div>
 
     

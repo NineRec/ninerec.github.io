@@ -154,7 +154,11 @@
   
   <div class="post-content">
     <div class="post-summary">
-      Background 这是基于 Liz Rice 在 Container Camp 的会议分享，Liz 在不到 20 分钟的时间里，用 100 行左右的 Golang 代码，构建了一个容器。分享链接为Building a container from scratch in Go。 Rootfs
+      <h2 id="background">Background</h2>
+
+<p>这是基于 Liz Rice 在 Container Camp 的会议分享，Liz 在不到 20 分钟的时间里，用 100 行左右的 Golang 代码，构建了一个容器。分享链接为<a href="https://www.youtube.com/watch?v=Utf-A4rODH8">Building a container from scratch in Go</a>。</p>
+
+<p></p>
     </div>
     <div class="read-more">
       <a href="/post/20180523-building-a-container-from-scratch/" class="read-more-link">阅读更多</a>
@@ -179,7 +183,9 @@
   
   <div class="post-content">
     <div class="post-summary">
-      关于同理心 在五一劳动节时，发生了一件不太愉快的事情。事情的来龙去脉并不重要，不过在反思和探讨问题的原因和解决方案时，不止一次的提到了“站在我
+      <p>在五一劳动节时，发生了一件不太愉快的事情。事情的来龙去脉并不重要，不过在反思和探讨问题的原因和解决方案时，不止一次的提到了“站在我的角度”，站在对方的角度，说得高大上一些，应该就是同理心了。在自我思考的过程中，有一些关键词跃入了脑中。或许通过文字的方式，能够放慢自己的思考，将这些东西整理、表达出来。</p>
+
+<p></p>
     </div>
     <div class="read-more">
       <a href="/post/thoughts/" class="read-more-link">阅读更多</a>
@@ -204,7 +210,15 @@
   
   <div class="post-content">
     <div class="post-summary">
-      抛出问题 Nginx 的 access_log &amp; error_log，在漫长的岁月中不断增长。然而 nginx 日志并没有 rotate 功能。如果简单百度、Bing下，会发现在 N 多博客中，大家都在说
+      <h3 id="抛出问题">抛出问题</h3>
+
+<p>Nginx 的 <code>access_log &amp; error_log</code>，在漫长的岁月中不断增长。然而 nginx 日志并没有 rotate 功能。如果简单百度、Bing下，会发现在 N 多博客中，大家都在说写个定时脚本，然后通过脚本定时重命名日志、向 Nginx 主进程发送 USR1 信号，让 Nginx 重新加载日志文件，从而达到切割日志的效果。</p>
+
+<p>这样的操作难免需要动手的部分太多，而且考虑到其他如日志压缩、定期删除日志等，工作量也还不少。</p>
+
+<p>这里应该有更舒适的办法。</p>
+
+<p></p>
     </div>
     <div class="read-more">
       <a href="/post/nginx-log-split/" class="read-more-link">阅读更多</a>
@@ -229,7 +243,18 @@
   
   <div class="post-content">
     <div class="post-summary">
-      抛出问题 php 的 == | === | isempty() 等对变量的判断一直是比较烦人的。今天是遇到了一个关于 == 的简单问题： var_dump('0' == false); // true var_dump(null == false); // true var_dump(null == '0'); // false 问题来了，为什么 null == '0'
+      <h3 id="抛出问题">抛出问题</h3>
+
+<p>php 的 <code>== | === | isempty()</code> 等对变量的判断一直是比较烦人的。今天是遇到了一个关于 <code>==</code> 的简单问题：</p>
+
+<pre><code class="language-php">var_dump('0' == false); // true
+var_dump(null == false); // true
+var_dump(null == '0'); // false
+</code></pre>
+
+<p>问题来了，为什么 <code>null == '0'</code> 会是 false 呢？毕竟大家都会把 <code>0, '', '0', false, null, array()</code> 都当做“空”来解读。</p>
+
+<p></p>
     </div>
     <div class="read-more">
       <a href="/post/null-equal-0/" class="read-more-link">阅读更多</a>
@@ -254,7 +279,11 @@
   
   <div class="post-content">
     <div class="post-summary">
-      自从使用了 Mac 后，便给自己定了个规矩，尽量不再使用盗版的软件。毕竟不再是个学生了，也有了自己的收入，没有理由不去尊重自己行业的版权。同时，我坚
+      <p>自从使用了 Mac 后，便给自己定了个规矩，尽量不再使用盗版的软件。毕竟不再是个学生了，也有了自己的收入，没有理由不去尊重自己行业的版权。同时，我坚信能够提高效率的软件，都是值得付费的。</p>
+
+<p>这里列出一些自己已经开始付费的软件，算是一种推荐，也方便自己以后更换电脑后，找回某些软件的 licence。</p>
+
+<p></p>
     </div>
     <div class="read-more">
       <a href="/post/my-paied-app/" class="read-more-link">阅读更多</a>

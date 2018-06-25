@@ -17,7 +17,9 @@
 
 
 <meta name="author" content="NineRec" />
-  <meta name="description" content="Background 这是基于 Liz Rice 在 Container Camp 的会议分享，Liz 在不到 20 分钟的时间里，用 100 行左右的 Golang 代码，构建了一个容器。分享链接为Building a container from scratch in Go。 Rootfs" />
+  <meta name="description" content="Background 这是基于 Liz Rice 在 Container Camp 的会议分享，Liz 在不到 20 分钟的时间里，用 100 行左右的 Golang 代码，构建了一个容器。分享链接为Building a container from scratch in Go。
+
+" />
 
   <meta name="keywords" content="NineRec, code panic, blog" />
 
@@ -50,7 +52,11 @@
 
 
 <meta property="og:title" content="从零构建一个容器" />
-<meta property="og:description" content="Background 这是基于 Liz Rice 在 Container Camp 的会议分享，Liz 在不到 20 分钟的时间里，用 100 行左右的 Golang 代码，构建了一个容器。分享链接为Building a container from scratch in Go。 Rootfs" />
+<meta property="og:description" content="Background
+
+这是基于 Liz Rice 在 Container Camp 的会议分享，Liz 在不到 20 分钟的时间里，用 100 行左右的 Golang 代码，构建了一个容器。分享链接为Building a container from scratch in Go。
+
+" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://blog.codepanic.cn/post/20180523-building-a-container-from-scratch/" />
 
@@ -71,7 +77,11 @@
 
 
 <meta itemprop="name" content="从零构建一个容器">
-<meta itemprop="description" content="Background 这是基于 Liz Rice 在 Container Camp 的会议分享，Liz 在不到 20 分钟的时间里，用 100 行左右的 Golang 代码，构建了一个容器。分享链接为Building a container from scratch in Go。 Rootfs">
+<meta itemprop="description" content="Background
+
+这是基于 Liz Rice 在 Container Camp 的会议分享，Liz 在不到 20 分钟的时间里，用 100 行左右的 Golang 代码，构建了一个容器。分享链接为Building a container from scratch in Go。
+
+">
 
 
 <meta itemprop="datePublished" content="2018-05-23T18:11:45&#43;08:00" />
@@ -83,7 +93,11 @@
 <meta itemprop="keywords" content="" />
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="从零构建一个容器"/>
-<meta name="twitter:description" content="Background 这是基于 Liz Rice 在 Container Camp 的会议分享，Liz 在不到 20 分钟的时间里，用 100 行左右的 Golang 代码，构建了一个容器。分享链接为Building a container from scratch in Go。 Rootfs"/>
+<meta name="twitter:description" content="Background
+
+这是基于 Liz Rice 在 Container Camp 的会议分享，Liz 在不到 20 分钟的时间里，用 100 行左右的 Golang 代码，构建了一个容器。分享链接为Building a container from scratch in Go。
+
+"/>
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -181,11 +195,11 @@
 
     
     <div class="post-content">
-      
-
-<h2 id="background">Background</h2>
+      <h2 id="background">Background</h2>
 
 <p>这是基于 Liz Rice 在 Container Camp 的会议分享，Liz 在不到 20 分钟的时间里，用 100 行左右的 Golang 代码，构建了一个容器。分享链接为<a href="https://www.youtube.com/watch?v=Utf-A4rODH8">Building a container from scratch in Go</a>。</p>
+
+<p></p>
 
 <h2 id="rootfs">Rootfs</h2>
 
@@ -219,7 +233,6 @@ sudo debootstrap --variant=buildd --arch i386 xenial /home/rootfs https://mirror
 <p>Liz Rice 的代码见Gist： <a href="https://gist.github.com/lizrice/a5ef4d175fd0cd3491c7e8d716826d27">Container from scratch</a></p>
 
 <p>基于代码，可以对容器就是“Namespace 和 Cgroup”有个更直接的理解。Namespace 决定了你能看到什么，而 Cgroup，决定了你能用那些资源（代码中没有明确展示）。</p>
-
     </div>
 
     

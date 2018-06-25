@@ -17,7 +17,18 @@
       <pubDate>Tue, 01 Aug 2017 00:00:00 +0000</pubDate>
       
       <guid>https://blog.codepanic.cn/post/null-equal-0/</guid>
-      <description>抛出问题 php 的 == | === | isempty() 等对变量的判断一直是比较烦人的。今天是遇到了一个关于 == 的简单问题： var_dump(&#39;0&#39; == false); // true var_dump(null == false); // true var_dump(null == &#39;0&#39;); // false 问题来了，为什么 null == &#39;0&#39;</description>
+      <description>&lt;h3 id=&#34;抛出问题&#34;&gt;抛出问题&lt;/h3&gt;
+
+&lt;p&gt;php 的 &lt;code&gt;== | === | isempty()&lt;/code&gt; 等对变量的判断一直是比较烦人的。今天是遇到了一个关于 &lt;code&gt;==&lt;/code&gt; 的简单问题：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-php&#34;&gt;var_dump(&#39;0&#39; == false); // true
+var_dump(null == false); // true
+var_dump(null == &#39;0&#39;); // false
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;问题来了，为什么 &lt;code&gt;null == &#39;0&#39;&lt;/code&gt; 会是 false 呢？毕竟大家都会把 &lt;code&gt;0, &#39;&#39;, &#39;0&#39;, false, null, array()&lt;/code&gt; 都当做“空”来解读。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -26,7 +37,9 @@
       <pubDate>Wed, 14 Jun 2017 00:00:00 +0000</pubDate>
       
       <guid>https://blog.codepanic.cn/post/php2017/</guid>
-      <description>PHP开发者大会结束，整体收获蛮大的，简单做一些总结。 引言 上一届大会举行的时候，就加入了微信群，也一直积极关注大会动向。 但这一届我是依然犹豫</description>
+      <description>&lt;p&gt;PHP开发者大会结束，整体收获蛮大的，简单做一些总结。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
     </item>
     
   </channel>

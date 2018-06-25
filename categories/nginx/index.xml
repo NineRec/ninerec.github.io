@@ -17,7 +17,15 @@
       <pubDate>Wed, 11 Oct 2017 00:00:00 +0000</pubDate>
       
       <guid>https://blog.codepanic.cn/post/nginx-log-split/</guid>
-      <description>抛出问题 Nginx 的 access_log &amp;amp; error_log，在漫长的岁月中不断增长。然而 nginx 日志并没有 rotate 功能。如果简单百度、Bing下，会发现在 N 多博客中，大家都在说</description>
+      <description>&lt;h3 id=&#34;抛出问题&#34;&gt;抛出问题&lt;/h3&gt;
+
+&lt;p&gt;Nginx 的 &lt;code&gt;access_log &amp;amp; error_log&lt;/code&gt;，在漫长的岁月中不断增长。然而 nginx 日志并没有 rotate 功能。如果简单百度、Bing下，会发现在 N 多博客中，大家都在说写个定时脚本，然后通过脚本定时重命名日志、向 Nginx 主进程发送 USR1 信号，让 Nginx 重新加载日志文件，从而达到切割日志的效果。&lt;/p&gt;
+
+&lt;p&gt;这样的操作难免需要动手的部分太多，而且考虑到其他如日志压缩、定期删除日志等，工作量也还不少。&lt;/p&gt;
+
+&lt;p&gt;这里应该有更舒适的办法。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
     </item>
     
   </channel>
