@@ -19,9 +19,7 @@
       <guid>https://blog.codepanic.cn/post/20180523-building-a-container-from-scratch/</guid>
       <description>&lt;h2 id=&#34;background&#34;&gt;Background&lt;/h2&gt;
 
-&lt;p&gt;这是基于 Liz Rice 在 Container Camp 的会议分享，Liz 在不到 20 分钟的时间里，用 100 行左右的 Golang 代码，构建了一个容器。分享链接为&lt;a href=&#34;https://www.youtube.com/watch?v=Utf-A4rODH8&#34;&gt;Building a container from scratch in Go&lt;/a&gt;。&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
+&lt;p&gt;这是基于 Liz Rice 在 Container Camp 的会议分享，Liz 在不到 20 分钟的时间里，用 100 行左右的 Golang 代码，构建了一个容器。分享链接为&lt;a href=&#34;https://www.youtube.com/watch?v=Utf-A4rODH8&#34;&gt;Building a container from scratch in Go&lt;/a&gt;。&lt;/p&gt;</description>
     </item>
     
   </channel>
