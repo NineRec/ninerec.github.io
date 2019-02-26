@@ -1,15 +1,24 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Essay on CodePanic</title>
+    <title>essay on CodePanic</title>
     <link>https://blog.codepanic.cn/categories/essay/</link>
-    <description>Recent content in Essay on CodePanic</description>
+    <description>Recent content in essay on CodePanic</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Thu, 10 May 2018 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 26 Feb 2019 11:35:39 +0800</lastBuildDate>
     
 	<atom:link href="https://blog.codepanic.cn/categories/essay/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>若饭第一天</title>
+      <link>https://blog.codepanic.cn/post/first-day-ruofan/</link>
+      <pubDate>Tue, 26 Feb 2019 11:35:39 +0800</pubDate>
+      
+      <guid>https://blog.codepanic.cn/post/first-day-ruofan/</guid>
+      <description>上周收到了若饭正餐粉，今天晚上兴致冲冲的尝试了一下，感受如下。 口感：豆奶的味道，不是很好喝。 饱腹感：饱腹感很不错，7点冲了下，大概 10 点多还没</description>
+    </item>
     
     <item>
       <title>关于同理心的一些想法</title>
