@@ -3,6 +3,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://blog.codepanic.cn/post/grab-branding/</loc>
+    <lastmod>2019-02-26T16:08:26+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
     <loc>https://blog.codepanic.cn/post/first-day-ruofan/</loc>
     <lastmod>2019-02-26T11:35:39+08:00</lastmod>
     <changefreq>weekly</changefreq>
@@ -80,7 +87,7 @@
   
   <url>
     <loc>https://blog.codepanic.cn/</loc>
-    <lastmod>2019-02-26T11:35:39+08:00</lastmod>
+    <lastmod>2019-02-26T16:08:26+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
@@ -101,7 +108,7 @@
   
   <url>
     <loc>https://blog.codepanic.cn/post/</loc>
-    <lastmod>2019-02-26T11:35:39+08:00</lastmod>
+    <lastmod>2019-02-26T16:08:26+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
