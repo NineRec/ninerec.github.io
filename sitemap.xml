@@ -17,7 +17,7 @@
   </url>
   
   <url>
-    <loc>https://blog.codepanic.cn/post/20180523-building-a-container-from-scratch/</loc>
+    <loc>https://blog.codepanic.cn/post/building-container-from-scratch/</loc>
     <lastmod>2018-05-23T18:11:45+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
@@ -100,6 +100,13 @@
   </url>
   
   <url>
+    <loc>https://blog.codepanic.cn/tags/grab/</loc>
+    <lastmod>2019-02-26T16:08:26+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://blog.codepanic.cn/categories/nginx/</loc>
     <lastmod>2017-10-11T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
@@ -122,13 +129,21 @@
   
   <url>
     <loc>https://blog.codepanic.cn/tags/</loc>
+    <lastmod>2019-02-26T16:08:26+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://blog.codepanic.cn/categories/essay/</loc>
-    <lastmod>2019-02-26T11:35:39+08:00</lastmod>
+    <lastmod>2019-02-26T16:08:26+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.codepanic.cn/tags/go/</loc>
+    <lastmod>2018-05-23T18:11:45+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
