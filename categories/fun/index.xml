@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>fun on CodePanic</title>
+    <link>https://blog.codepanic.cn/categories/fun/</link>
+    <description>Recent content in fun on CodePanic</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <copyright>NineRec</copyright>
+    <lastBuildDate>Wed, 23 Oct 2019 09:42:55 +0800</lastBuildDate>
+    
+	<atom:link href="https://blog.codepanic.cn/categories/fun/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Too Busy</title>
+      <link>https://blog.codepanic.cn/post/20191023-too-busy/</link>
+      <pubDate>Wed, 23 Oct 2019 09:42:55 +0800</pubDate>
+      
+      <guid>https://blog.codepanic.cn/post/20191023-too-busy/</guid>
+      <description>Too busy to do important things.</description>
+    </item>
+    
+  </channel>
+</rss>

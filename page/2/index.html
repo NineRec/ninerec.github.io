@@ -45,7 +45,7 @@
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://blog.codepanic.cn/" />
 
-<meta property="og:updated_time" content="2017-08-01T00:00:00&#43;00:00"/>
+<meta property="og:updated_time" content="2017-10-11T00:00:00&#43;00:00"/>
 
 <meta itemprop="name" content="CodePanic">
 <meta itemprop="description" content="My blog -- blog.codepanic.cn.">
@@ -113,6 +113,33 @@
       <div class="content-wrapper">
         <div id="content" class="content">
           <section id="posts" class="posts">
+    <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/post/nginx-log-split/">Nginx 日志切分</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2017-10-11 </span>
+      <div class="post-category">
+          <a href="/categories/nginx/"> Nginx </a>
+          </div>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      <h3 id="抛出问题">抛出问题</h3>
+
+<p>Nginx 的 <code>access_log &amp; error_log</code>，在漫长的岁月中不断增长。然而 nginx 日志并没有 rotate 功能。如果简单百度、Bing下，会发现在 N 多博客中，大家都在说写个定时脚本，然后通过脚本定时重命名日志、向 Nginx 主进程发送 USR1 信号，让 Nginx 重新加载日志文件，从而达到切割日志的效果。</p>
+
+<p>这样的操作难免需要动手的部分太多，而且考虑到其他如日志压缩、定期删除日志等，工作量也还不少。</p>
+
+<p>这里应该有更舒适的办法。</p>
+    </div>
+    <div class="read-more">
+      <a href="/post/nginx-log-split/" class="read-more-link">阅读更多</a>
+    </div>
+  </div>
+</article>
+
     <article class="post">
   <header class="post-header">
     <h1 class="post-title"><a class="post-link" href="/post/null-equal-0/">null 与 &#39;0&#39; 相比较的问题</a></h1>
@@ -206,27 +233,6 @@ var_dump(null == '0'); // false
     </div>
     <div class="read-more">
       <a href="/post/201603-reading-review/" class="read-more-link">阅读更多</a>
-    </div>
-  </div>
-</article>
-
-    <article class="post">
-  <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/post/review-and-hope/">2016年2月-总结与展望</a></h1>
-    <div class="post-meta">
-      <span class="post-time"> 2016-02-28 </span>
-      <div class="post-category">
-          <a href="/categories/essay/"> essay </a>
-          </div>
-    </div>
-  </header>
-  
-  <div class="post-content">
-    <div class="post-summary">
-      <p>现在并不是一个写总结的好时机，毕竟不是年初年底，也并不是什么时间节点。书写以方面是为了整理整理思想，也留下点文字记录，用来时常提醒下自己；另一方面，是为了给自己一些规划，督促自己进步。</p>
-    </div>
-    <div class="read-more">
-      <a href="/post/review-and-hope/" class="read-more-link">阅读更多</a>
     </div>
   </div>
 </article>

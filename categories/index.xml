@@ -6,6 +6,7 @@
     <description>Recent content in Categories on CodePanic</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
+    <copyright>NineRec</copyright>
     
 	<atom:link href="https://blog.codepanic.cn/categories/index.xml" rel="self" type="application/rss+xml" />
     
@@ -43,6 +44,15 @@
       <pubDate>Tue, 26 Feb 2019 16:08:26 +0800</pubDate>
       
       <guid>https://blog.codepanic.cn/categories/essay/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>fun</title>
+      <link>https://blog.codepanic.cn/categories/fun/</link>
+      <pubDate>Wed, 23 Oct 2019 09:42:55 +0800</pubDate>
+      
+      <guid>https://blog.codepanic.cn/categories/fun/</guid>
       <description></description>
     </item>
     
