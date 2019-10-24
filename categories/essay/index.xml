@@ -7,10 +7,19 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>NineRec</copyright>
-    <lastBuildDate>Tue, 26 Feb 2019 16:08:26 +0800</lastBuildDate>
+    <lastBuildDate>Wed, 23 Oct 2019 09:42:55 +0800</lastBuildDate>
     
 	<atom:link href="https://blog.codepanic.cn/categories/essay/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Too Busy</title>
+      <link>https://blog.codepanic.cn/post/20191023-too-busy/</link>
+      <pubDate>Wed, 23 Oct 2019 09:42:55 +0800</pubDate>
+      
+      <guid>https://blog.codepanic.cn/post/20191023-too-busy/</guid>
+      <description>&lt;p&gt;随手记录一些最近有意思的事情，把这里当微博来用。&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>Grab Branding</title>
