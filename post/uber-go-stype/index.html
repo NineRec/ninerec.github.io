@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <title>Too Busy - CodePanic</title>
+  <title>Uber Go Style - CodePanic</title>
   <meta name="renderer" content="webkit" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 
@@ -16,7 +16,8 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
 
 
-<meta name="author" content="NineRec" /><meta name="description" content="随手记录一些最近有意思的事情，把这里当微博来用。
+<meta name="author" content="NineRec" /><meta name="description" content="围观了《Uber Go 语言编码规范》，记录一些觉得有意思的部分。
+Github 链接: https://github.com/uber-go/guide
 " /><meta name="keywords" content="NineRec, code panic, blog" />
 
 
@@ -27,7 +28,7 @@
 <meta name="generator" content="Hugo 0.59.0 with theme even" />
 
 
-<link rel="canonical" href="https://blog.codepanic.cn/post/20191023-too-busy/" />
+<link rel="canonical" href="https://blog.codepanic.cn/post/uber-go-stype/" />
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
@@ -39,26 +40,32 @@
 <link href="/lib/fancybox/jquery.fancybox-3.1.20.min.css" rel="stylesheet">
 
 
-<meta property="og:title" content="Too Busy" />
-<meta property="og:description" content="随手记录一些最近有意思的事情，把这里当微博来用。" />
+<meta property="og:title" content="Uber Go Style" />
+<meta property="og:description" content="围观了《Uber Go 语言编码规范》，记录一些觉得有意思的部分。
+
+Github 链接: https://github.com/uber-go/guide" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://blog.codepanic.cn/post/20191023-too-busy/" />
-<meta property="article:published_time" content="2019-10-23T09:42:55+08:00" />
-<meta property="article:modified_time" content="2019-10-24T09:42:55+08:00" />
-<meta itemprop="name" content="Too Busy">
-<meta itemprop="description" content="随手记录一些最近有意思的事情，把这里当微博来用。">
+<meta property="og:url" content="https://blog.codepanic.cn/post/uber-go-stype/" />
+<meta property="article:published_time" content="2019-10-14T09:57:06+08:00" />
+<meta property="article:modified_time" content="2019-10-14T09:57:06+08:00" />
+<meta itemprop="name" content="Uber Go Style">
+<meta itemprop="description" content="围观了《Uber Go 语言编码规范》，记录一些觉得有意思的部分。
+
+Github 链接: https://github.com/uber-go/guide">
 
 
-<meta itemprop="datePublished" content="2019-10-23T09:42:55&#43;08:00" />
-<meta itemprop="dateModified" content="2019-10-24T09:42:55&#43;08:00" />
-<meta itemprop="wordCount" content="181">
+<meta itemprop="datePublished" content="2019-10-14T09:57:06&#43;08:00" />
+<meta itemprop="dateModified" content="2019-10-14T09:57:06&#43;08:00" />
+<meta itemprop="wordCount" content="741">
 
 
 
 <meta itemprop="keywords" content="" />
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Too Busy"/>
-<meta name="twitter:description" content="随手记录一些最近有意思的事情，把这里当微博来用。"/>
+<meta name="twitter:title" content="Uber Go Style"/>
+<meta name="twitter:description" content="围观了《Uber Go 语言编码规范》，记录一些觉得有意思的部分。
+
+Github 链接: https://github.com/uber-go/guide"/>
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -121,12 +128,12 @@
           <article class="post">
     
     <header class="post-header">
-      <h1 class="post-title">Too Busy</h1>
+      <h1 class="post-title">Uber Go Style</h1>
 
       <div class="post-meta">
-        <span class="post-time"> 2019-10-23 </span>
+        <span class="post-time"> 2019-10-14 </span>
         <div class="post-category">
-            <a href="/categories/essay/"> essay </a>
+            <a href="/categories/golang/"> golang </a>
             </div>
         
       </div>
@@ -139,61 +146,116 @@
 <ul>
 <li>
 <ul>
-<li><a href="#2019-10-23-too-busy">2019-10-23 Too Busy</a></li>
-<li><a href="#2019-10-24-早晨">2019-10-24 早晨</a></li>
-<li><a href="#2019-10-29-gitlab-profile">2019-10-29 gitlab profile</a></li>
+<li><a href="#styles-are-the-conventions">Styles are the conventions</a></li>
+<li><a href="#zero-value-mutexes-are-valid">Zero-value <del>Mutexes</del> are Valid</a></li>
+<li><a href="#start-enums-at-one">Start Enums at One</a></li>
+<li><a href="#error-wrapping">Error Wrapping</a></li>
+<li><a href="#package-names">Package Names</a></li>
+<li><a href="#structure-your-code">Structure your code</a></li>
 </ul></li>
 </ul>
 </nav>
   </div>
 </div>
     <div class="post-content">
-      <p>随手记录一些最近有意思的事情，把这里当微博来用。</p>
+      <p>围观了《Uber Go 语言编码规范》，记录一些觉得有意思的部分。</p>
 
-<h2 id="2019-10-23-too-busy">2019-10-23 Too Busy</h2>
+<p>Github 链接: <a href="https://github.com/uber-go/guide">https://github.com/uber-go/guide</a></p>
 
-<p>Too busy to do important things.</p>
+<h2 id="styles-are-the-conventions">Styles are the conventions</h2>
 
-<p><img src="https://fieldboss.com/wp-content/uploads/2018/08/too-busy.png" alt="too buzy" /></p>
+<ol>
+<li>编码规范更多是写代码的惯例，更准确的说，这是 Uber 公司内推荐使用的编码惯例。</li>
+<li>规范是为了提升组内整体的 Coding &amp; Review  效率，“约定大于 <del>配置</del> 个人喜好”。</li>
+<li>不一定说规范反对的就是错误的，更多是通过规范，提升一群人一起写代码的效率，避免一些常被忽略的错误。</li>
+</ol>
 
-<hr />
+<h2 id="zero-value-mutexes-are-valid">Zero-value <del>Mutexes</del> are Valid</h2>
 
-<h2 id="2019-10-24-早晨">2019-10-24 早晨</h2>
+<p>有一些场景，零值或者说，默认值是有意义而且可以直接使用的，通常，这些场景可以直接 <code>var foo TYPE</code>。</p>
 
-<p>早上听到南方室友在和别人问候早安，就是“早晨”。</p>
+<pre><code>var mu sync.Mutex
+mu.Lock()
 
-<p>然后就在想，是不是不同时间段的问候就是“上午”，“中午”，“晚上”，甚至“半夜”&hellip;</p>
+// 补充一个 slice 的
+var slc []int
+slc = append(slc, 12)
+</code></pre>
 
-<p>查了一下，另一个很有意思的是晚安，也带了个“早”字：</p>
+<h2 id="start-enums-at-one">Start Enums at One</h2>
 
-<table>
-<thead>
-<tr>
-<th>早安！</th>
-<th>晚安！</th>
-</tr>
-</thead>
+<ol>
+<li>同样也是默认值的问题，考虑的点依然是默认值是否有实际的含义
 
-<tbody>
-<tr>
-<td>早晨！</td>
-<td>早唞！</td>
-</tr>
+<ul>
+<li>除非 0 有实际意义，我们应该从 1 开始，避免无意义的默认值导致一些问题；</li>
+<li>Go 的默认值是个有意思的坑，每个类型都有自己的默认值，而且很多地方，你如果不明确赋值，你就会拿到一个默认值。</li>
+</ul></li>
+<li>(补充) 我们是否应该使用 iota?
 
-<tr>
-<td>zou2 san4！</td>
-<td>zou2 au2！</td>
-</tr>
-</tbody>
-</table>
+<ul>
+<li>其实如果 enums 值过多，而且偶尔变更，或者需要删除，不用 iota 更合适。否则我们删除某个中间的枚举，只能在代码里留下 <code>_</code>。</li>
+</ul></li>
+</ol>
 
-<hr />
+<p>类似的建议，如果是 string 类型的 Enums，要考虑空字符串 <code>&quot;&quot;</code> 是否有实际意义。</p>
 
-<h2 id="2019-10-29-gitlab-profile">2019-10-29 gitlab profile</h2>
+<h2 id="error-wrapping">Error Wrapping</h2>
 
-<p>昨天晚上，为了这些蓝色小方格子提交了一个 diff&hellip;</p>
+<ol>
+<li>如果没有上下文，“Var ExporetedErr = error.New(“&hellip;”)”</li>
+<li>如果有要增加的上下文： “pkg/errors”.Wrap
 
-<p><img src="/static/gitlab-profile-2019-10-29.png" alt="gitlab profie" /></p>
+<ul>
+<li>如果使用了 “pkg/errors”.Wrap，可以只在代码的最上层做 logging。</li>
+</ul></li>
+</ol>
+
+<h2 id="package-names">Package Names</h2>
+
+<ol>
+<li>Not &ldquo;common&rdquo;, &ldquo;util&rdquo;, &ldquo;shared&rdquo;, or &ldquo;lib&rdquo;. These are bad, uninformative names.
+
+<ul>
+<li>What should we use?</li>
+</ul></li>
+<li>Short and succinct. Remember that the name is identified in full at every call site.
+
+<ul>
+<li>Prefer ext/Dal than ext/fooddataservice, FDT than fooddeliverytaskpool</li>
+<li>Does not need to be renamed using named imports at most call sites</li>
+</ul></li>
+</ol>
+
+<h2 id="structure-your-code">Structure your code</h2>
+
+<ol>
+<li>分组并且排序所有的 functions/methods：
+
+<ul>
+<li>Const &gt; Type &gt; Var &gt; Init &gt; Exported &gt; unexported</li>
+</ul></li>
+<li>减少缩紧层级：
+
+<ul>
+<li>去掉不必要的 Else，“prefer early return than else”。</li>
+</ul></li>
+
+<li><p>按逻辑结构组织代码 (<a href="https://about.sourcegraph.com/handbook/engineering/go_style_guide">https://about.sourcegraph.com/handbook/engineering/go_style_guide</a>)</p>
+
+<pre><code>a, b, c := Vector{1, 2, 3}, Vector{4, 5, 6}, Vector{7, 8, 9}
+a, b := swap(a, b)
+
+total := add([]Vector(a, b, c))...)
+
+// better structure
+a, b := Vector{1, 2, 3}, Vector{4, 5, 6}
+a, b := swap(a, b)
+
+c := Vector{7, 8, 9}
+total := add([]Vector(a, b, c))...)
+</code></pre></li>
+</ol>
     </div>
 
     <div class="post-copyright">
@@ -204,7 +266,7 @@
   <p class="copyright-item">
     <span class="item-title">上次更新</span>
     <span class="item-content">
-        2019-10-24
+        2019-10-14
         
     </span>
   </p>
@@ -217,9 +279,13 @@
 <footer class="post-footer">
       
       <nav class="post-nav">
-        
-        <a class="next" href="/post/uber-go-stype/">
-            <span class="next-text nav-default">Uber Go Style</span>
+        <a class="prev" href="/post/20191023-too-busy/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">Too Busy</span>
+            <span class="prev-text nav-mobile">上一篇</span>
+          </a>
+        <a class="next" href="/post/grab-branding/">
+            <span class="next-text nav-default">Grab Branding</span>
             <span class="next-text nav-mobile">下一篇</span>
             <i class="iconfont icon-right"></i>
           </a>
