@@ -24,7 +24,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.59.0 with theme even" />
+<meta name="generator" content="Hugo 0.76.5 with theme even" />
 
 
 <link rel="canonical" href="https://blog.codepanic.cn/post/building-container-from-scratch/" />
@@ -36,13 +36,12 @@
 
 
 
-<link href="/sass/main.min.6eb09ed45a88bd339269c14515d2a11f2e0afdadbdd763d83f9b5c797166b081.css" rel="stylesheet">
+<link href="/sass/main.min.2e81bbed97b8b282c1aeb57488cc71c8d8c8ec559f3931531bd396bf31e0d4dd.css" rel="stylesheet">
 <link href="/lib/fancybox/jquery.fancybox-3.1.20.min.css" rel="stylesheet">
 
 
 <meta property="og:title" content="从零构建一个容器" />
 <meta property="og:description" content="Background
-
 这是基于 Liz Rice 在 Container Camp 的会议分享，Liz 在不到 20 分钟的时间里，用 100 行左右的 Golang 代码，构建了一个容器。分享链接为Building a container from scratch in Go。" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://blog.codepanic.cn/post/building-container-from-scratch/" />
@@ -50,12 +49,9 @@
 <meta property="article:modified_time" content="2018-05-23T18:11:45+08:00" />
 <meta itemprop="name" content="从零构建一个容器">
 <meta itemprop="description" content="Background
-
 这是基于 Liz Rice 在 Container Camp 的会议分享，Liz 在不到 20 分钟的时间里，用 100 行左右的 Golang 代码，构建了一个容器。分享链接为Building a container from scratch in Go。">
-
-
-<meta itemprop="datePublished" content="2018-05-23T18:11:45&#43;08:00" />
-<meta itemprop="dateModified" content="2018-05-23T18:11:45&#43;08:00" />
+<meta itemprop="datePublished" content="2018-05-23T18:11:45+08:00" />
+<meta itemprop="dateModified" content="2018-05-23T18:11:45+08:00" />
 <meta itemprop="wordCount" content="490">
 
 
@@ -64,7 +60,6 @@
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="从零构建一个容器"/>
 <meta name="twitter:description" content="Background
-
 这是基于 Liz Rice 在 Container Camp 的会议分享，Liz 在不到 20 分钟的时间里，用 100 行左右的 Golang 代码，构建了一个容器。分享链接为Building a container from scratch in Go。"/>
 
 <!--[if lte IE 9]>
@@ -100,12 +95,21 @@
         <li class="mobile-menu-item">Categories</li>
       </a>
   </ul>
+
+  
+
+
 </nav>
+
   <div class="container" id="mobile-panel">
     <header id="header" class="header">
         <div class="logo-wrapper">
   <a href="/" class="logo">CodePanic</a>
 </div>
+
+
+
+
 
 <nav class="site-navbar">
   <ul id="menu" class="menu">
@@ -120,6 +124,7 @@
       </li>
   </ul>
 </nav>
+
     </header>
 
     <main id="main" class="main">
@@ -143,53 +148,40 @@
   <h2 class="post-toc-title">文章目录</h2>
   <div class="post-toc-content always-active">
     <nav id="TableOfContents">
-<ul>
-<li>
-<ul>
-<li><a href="#background">Background</a></li>
-<li><a href="#rootfs">Rootfs</a></li>
-<li><a href="#container-from-scratch">Container from scratch</a></li>
-</ul></li>
-</ul>
+  <ul>
+    <li><a href="#background">Background</a></li>
+    <li><a href="#rootfs">Rootfs</a></li>
+    <li><a href="#container-from-scratch">Container from scratch</a></li>
+  </ul>
 </nav>
   </div>
 </div>
     <div class="post-content">
       <h2 id="background">Background</h2>
-
 <p>这是基于 Liz Rice 在 Container Camp 的会议分享，Liz 在不到 20 分钟的时间里，用 100 行左右的 Golang 代码，构建了一个容器。分享链接为<a href="https://www.youtube.com/watch?v=Utf-A4rODH8">Building a container from scratch in Go</a>。</p>
-
 <h2 id="rootfs">Rootfs</h2>
-
 <p>Liz 在用到文件系统时，展示了她虚拟机上的 <code>/home/rootfs</code>，说了句 &ldquo;I just happen to have one lying around&rdquo;。通常我们自己的 Linux 系统中并没有这么个目录，不过从视频的评论中可以找到一些相关链接，能够帮忙我们了解并构建一个 chroot。</p>
-
 <ul>
 <li>Ubuntu 帮助文档 - <a href="https://help.ubuntu.com/community/BasicChroot">BasicChroot</a></li>
 <li>TLDP 文章 - <a href="http://www.tldp.org/HOWTO/Bootdisk-HOWTO/buildroot.html">Building a root filesystem</a></li>
 </ul>
-
 <p>我参考 Ubuntu-BasicChroot 的 Creating a chroot 章节操作了下，略需注意，文档中的 <code>Lucid</code> 版本太过陈旧，应该根据实际情况选择ubuntu的版本。Ubuntu 下步骤简述如下：</p>
-
-<pre><code class="language-bash"># 1. `apt` 安装 `schroot` 和 `debootstrap`;
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># 1. `apt` 安装 `schroot` 和 `debootstrap`;</span>
 apt install schroot debootstrap
 
-# 2. 修改 `schroot` 配置 `/etc/schroot/schroot.conf`，新增下文配置;
-[xenial] # 合适的版本，这里选 16.04 的 Xenial Xerus
-description=Ubuntu Xenial
-location=/home/rootfs # 你期望的地址
-priority=3
-users=root
-groups=sbuild
-root-groups=root
+<span style="color:#75715e"># 2. 修改 `schroot` 配置 `/etc/schroot/schroot.conf`，新增下文配置;</span>
+<span style="color:#f92672">[</span>xenial<span style="color:#f92672">]</span> <span style="color:#75715e"># 合适的版本，这里选 16.04 的 Xenial Xerus</span>
+description<span style="color:#f92672">=</span>Ubuntu Xenial
+location<span style="color:#f92672">=</span>/home/rootfs <span style="color:#75715e"># 你期望的地址</span>
+priority<span style="color:#f92672">=</span><span style="color:#ae81ff">3</span>
+users<span style="color:#f92672">=</span>root
+groups<span style="color:#f92672">=</span>sbuild
+root-groups<span style="color:#f92672">=</span>root
 
-# 3. 使用 `debootstrap` 命令在指定目录下载系统文件，选清华的镜像；
-sudo debootstrap --variant=buildd --arch i386 xenial /home/rootfs https://mirrors.tuna.tsinghua.edu.cn/ubuntu/
-</code></pre>
-
-<h2 id="container-from-scratch">Container from scratch</h2>
-
+<span style="color:#75715e"># 3. 使用 `debootstrap` 命令在指定目录下载系统文件，选清华的镜像；</span>
+sudo debootstrap --variant<span style="color:#f92672">=</span>buildd --arch i386 xenial /home/rootfs https://mirrors.tuna.tsinghua.edu.cn/ubuntu/
+</code></pre></div><h2 id="container-from-scratch">Container from scratch</h2>
 <p>Liz Rice 的代码见Gist： <a href="https://gist.github.com/lizrice/a5ef4d175fd0cd3491c7e8d716826d27">Container from scratch</a></p>
-
 <p>基于代码，可以对容器就是“Namespace 和 Cgroup”有个更直接的理解。Namespace 决定了你能看到什么，而 Cgroup，决定了你能用那些资源（代码中没有明确展示）。</p>
     </div>
 
@@ -262,13 +254,10 @@ sudo debootstrap --variant=buildd --arch i386 xenial /home/rootfs https://mirror
   <span class="copyright-year">
     &copy; 
     2016 - 
-    2020
-    <span class="heart">
-      <i class="iconfont icon-heart"></i>
-    </span>
-    <span class="author">NineRec</span>
+    2021<span class="heart"><i class="iconfont icon-heart"></i></span><span>NineRec</span>
   </span>
 </div>
+
     </footer>
 
     <div class="back-to-top" id="back-to-top">
@@ -281,7 +270,7 @@ sudo debootstrap --variant=buildd --arch i386 xenial /home/rootfs https://mirror
 
 
 
-<script type="text/javascript" src="/js/main.min.d7b7ada643c9c1a983026e177f141f7363b4640d619caf01d8831a6718cd44ea.js"></script>
+<script type="text/javascript" src="/js/main.min.c12618f9a600c40bd024996677e951e64d3487006775aeb22e200c990006c5c7.js"></script>
 
 <script id="baidu_analytics">
   var _hmt = _hmt || [];

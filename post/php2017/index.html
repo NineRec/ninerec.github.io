@@ -24,7 +24,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.59.0 with theme even" />
+<meta name="generator" content="Hugo 0.76.5 with theme even" />
 
 
 <link rel="canonical" href="https://blog.codepanic.cn/post/php2017/" />
@@ -36,7 +36,7 @@
 
 
 
-<link href="/sass/main.min.6eb09ed45a88bd339269c14515d2a11f2e0afdadbdd763d83f9b5c797166b081.css" rel="stylesheet">
+<link href="/sass/main.min.2e81bbed97b8b282c1aeb57488cc71c8d8c8ec559f3931531bd396bf31e0d4dd.css" rel="stylesheet">
 <link href="/lib/fancybox/jquery.fancybox-3.1.20.min.css" rel="stylesheet">
 
 
@@ -48,10 +48,8 @@
 <meta property="article:modified_time" content="2017-06-14T00:00:00+00:00" />
 <meta itemprop="name" content="第三届php开发者大会">
 <meta itemprop="description" content="PHP开发者大会结束，整体收获蛮大的，简单做一些总结。">
-
-
-<meta itemprop="datePublished" content="2017-06-14T00:00:00&#43;00:00" />
-<meta itemprop="dateModified" content="2017-06-14T00:00:00&#43;00:00" />
+<meta itemprop="datePublished" content="2017-06-14T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2017-06-14T00:00:00+00:00" />
 <meta itemprop="wordCount" content="1524">
 
 
@@ -94,12 +92,21 @@
         <li class="mobile-menu-item">Categories</li>
       </a>
   </ul>
+
+  
+
+
 </nav>
+
   <div class="container" id="mobile-panel">
     <header id="header" class="header">
         <div class="logo-wrapper">
   <a href="/" class="logo">CodePanic</a>
 </div>
+
+
+
+
 
 <nav class="site-navbar">
   <ul id="menu" class="menu">
@@ -114,6 +121,7 @@
       </li>
   </ul>
 </nav>
+
     </header>
 
     <main id="main" class="main">
@@ -137,85 +145,55 @@
   <h2 class="post-toc-title">文章目录</h2>
   <div class="post-toc-content always-active">
     <nav id="TableOfContents">
-<ul>
-<li>
-<ul>
-<li><a href="#引言">引言</a></li>
-<li><a href="#个人会议纪要">个人会议纪要</a>
-<ul>
-<li><a href="#微博新一代-lamp-平台架构">微博新一代 LAMP 平台架构</a></li>
-<li><a href="#瓜子后端技术架构的变迁">瓜子后端技术架构的变迁</a></li>
-<li><a href="#其他">其他</a></li>
-</ul></li>
-<li><a href="#感想">感想</a></li>
-</ul></li>
-</ul>
+  <ul>
+    <li><a href="#引言">引言</a></li>
+    <li><a href="#个人会议纪要">个人会议纪要</a>
+      <ul>
+        <li><a href="#微博新一代-lamp-平台架构">微博新一代 LAMP 平台架构</a></li>
+        <li><a href="#瓜子后端技术架构的变迁">瓜子后端技术架构的变迁</a></li>
+        <li><a href="#其他">其他</a></li>
+      </ul>
+    </li>
+    <li><a href="#感想">感想</a></li>
+  </ul>
 </nav>
   </div>
 </div>
     <div class="post-content">
       <p>PHP开发者大会结束，整体收获蛮大的，简单做一些总结。</p>
-
 <h2 id="引言">引言</h2>
-
 <p>上一届大会举行的时候，就加入了微信群，也一直积极关注大会动向。
 但这一届我是依然犹豫要不要参加，在票价提升了两轮后才买的三等票。</p>
-
 <p>参加大会前，就端正了下自己的想法，永远不要期望一次大会能给你带来多大的提升。</p>
-
 <h2 id="个人会议纪要">个人会议纪要</h2>
-
 <p>我并没有关注所有的议题。其原因么，很多老师都是之前或多或少关注过的，有些内容并没有那么新颖。而且个人兴趣点不同，有些议题并没有太关心。当然大会两天，偶尔很累也是重要的原因。</p>
-
 <h3 id="微博新一代-lamp-平台架构">微博新一代 LAMP 平台架构</h3>
-
 <p>关注在应对突发事件的高并发，对比了传统方案，给出微博 PC 站的基于 Docker 的混合云方案，讲解详细，深入细节。其分享中给出了很多实践上的细节，很有意思。</p>
-
 <p>应对突发事件，传统方案：冗余设备，扩充主机、服务降级、城市降级（保留一线二线城市）。微博新 LAMP 平台，将 PHP 服务 Docker 化，架构上从下至上，分为主机层、资源配置层（环境、代码、基础服务）、Docker 层、业务层。其效果就是能够动态扩容，将各个服务的冗余机器集中在一起分配。</p>
-
 <p>其思想上，很有些 pool 的概念，类似连接池、进程池、线程池，将资源集中在一起维护，实现更高效、合理的资源分配。</p>
-
 <p>之前就在微博上看到有人吐槽微博在机器使用上非常抠门，混合云动态扩容，极尽全力去解约开支。我觉得这样的做法很有价值，开源节流永远是企业的生钱之道，而且这也是追求“极致”的一种表现嘛。</p>
-
 <h3 id="瓜子后端技术架构的变迁">瓜子后端技术架构的变迁</h3>
-
 <p>互联网公司的架构变迁，貌似是各个公司都经常讲的，而且多少有些大同小异。</p>
-
 <p>瓜子的分享，一方面纪鹏程纪老师将得很好，条理清晰；另一方面，在监控、性能上的一些做法，很值得学习，而且很多也都是非常扎实的实践经验。</p>
-
 <ol>
 <li>XHProf 做性能评测，并关注性能监控；没有监控，没有数字，就永远不会有性能的优化；</li>
 <li>单元测试 + swagger 做接口管理；知易行难，好的实践；</li>
 <li>KONG + OpenRestry 做接口网关；</li>
 <li>Canal + Kafka 做表级别的服务耦合；是个解约开发成本的方案，和消息队列比，各有优缺吧。</li>
 </ol>
-
 <h3 id="其他">其他</h3>
-
 <p>信海龙老师的《聊聊稳定性保障那些事》，一次扎实的稳定性整体性的介绍、实践原则和案例分享。</p>
-
 <p>陌陌的《复杂 PHP 系统性能瓶颈排查及优化》，一个重点就是也用了 XHProf 做性能分析和监控；他们关于代码优化的一些 Tips，则在另一个 PPT 上看到过。</p>
-
 <p>韩天峰的《使用 C++ 11 编写 PHP 7 扩展》，PHP-X 非常好的一个开源项目，听完了有种上手尝试的冲动。</p>
-
 <p>李嘉璇老师的《PHP 在机器学习上的应用及云深度学习平台的架构设计与实现》，因为硕士时候的研究方向，很多词都听说过，大致是个机器学习的入门介绍吧。诚然 PHP-ML 扩展了 PHP 的应用边界，不过现实实践中，还是哪个语言擅长，用那个语言更好。</p>
-
 <p>叶金荣叶老师的《MySQL 5.7 优化不求人》，我听得很认真，毕竟了解基础服务的能力边界，更易于做出更好的服务。</p>
-
 <p>鸟哥《The Next Generation of PHP》，PHP 未来的进化方向，更多依然是在性能上，JIT 着实让大家期待。</p>
-
 <p>《PHP 与 APM：技术内幕和最佳实践》，睡着了……哎，浪费了</p>
-
 <p>《Swoole 2.0 原生协程高性能开发实践》，也是个实践分享，没有 Swoole 的实践经验，羞涩…</p>
-
 <p>刘奇老师的《如何无痛解决 MySQL 扩展性和一致性问题》，PingCAP 的 TiDB，在各种地方都能看到报道，也在博客上听过介绍。他们的博客我也浏览过几篇文章。很和我口味的是，No Silver Bullet，讲了分布式 DB 不擅长地方。</p>
-
 <p>圆桌讨论，讲了三个很常见，也困扰过我很久的问题。进步的方向就在那里，成长的路，还是要自己一步一步往前走。</p>
-
 <h2 id="感想">感想</h2>
-
 <p>个人期望的最佳参会方式，是能根据大会提前公布的议题，多多思考总结一些自己的想法，会议的时候一方面能够更好的去理解嘉宾的分享；另一方面，可以提前针对性的准备一些问题，从而更好的与老师们交流。</p>
-
 <p>另一方面，技术会议，永远是技术公司们 PR 的好时机。也是技术主管们针对性招聘的一个机会。</p>
     </div>
 
@@ -286,13 +264,10 @@
   <span class="copyright-year">
     &copy; 
     2016 - 
-    2020
-    <span class="heart">
-      <i class="iconfont icon-heart"></i>
-    </span>
-    <span class="author">NineRec</span>
+    2021<span class="heart"><i class="iconfont icon-heart"></i></span><span>NineRec</span>
   </span>
 </div>
+
     </footer>
 
     <div class="back-to-top" id="back-to-top">
@@ -305,7 +280,7 @@
 
 
 
-<script type="text/javascript" src="/js/main.min.d7b7ada643c9c1a983026e177f141f7363b4640d619caf01d8831a6718cd44ea.js"></script>
+<script type="text/javascript" src="/js/main.min.c12618f9a600c40bd024996677e951e64d3487006775aeb22e200c990006c5c7.js"></script>
 
 <script id="baidu_analytics">
   var _hmt = _hmt || [];

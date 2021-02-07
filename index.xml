@@ -7,11 +7,7 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>NineRec</copyright>
-    <lastBuildDate>Wed, 11 Mar 2020 22:31:59 +0800</lastBuildDate>
-    
-	<atom:link href="https://blog.codepanic.cn/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Wed, 11 Mar 2020 22:31:59 +0800</lastBuildDate><atom:link href="https://blog.codepanic.cn/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>2020 Commits</title>
       <link>https://blog.codepanic.cn/post/2020-commits/</link>
@@ -46,8 +42,16 @@
       
       <guid>https://blog.codepanic.cn/post/uber-go-stype/</guid>
       <description>&lt;p&gt;围观了《Uber Go 语言编码规范》，记录一些觉得有意思的部分。&lt;/p&gt;
-
 &lt;p&gt;Github 链接: &lt;a href=&#34;https://github.com/uber-go/guide&#34;&gt;https://github.com/uber-go/guide&lt;/a&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Thoughts On Code Structure</title>
+      <link>https://blog.codepanic.cn/post/20190930-code-structure/</link>
+      <pubDate>Mon, 30 Sep 2019 09:19:44 +0800</pubDate>
+      
+      <guid>https://blog.codepanic.cn/post/20190930-code-structure/</guid>
+      <description>&lt;p&gt;在前公司和现公司，都有纠结过代码目录结构的问题。&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -57,7 +61,6 @@
       
       <guid>https://blog.codepanic.cn/post/grab-branding/</guid>
       <description>&lt;p&gt;公司要在技术圈子做一些宣传，为了能够吸引更多优秀工程师。厚着脸皮也去凑了个热闹。当然这里只是我早先计划的一些答案，和现场发挥的差异蛮大。&lt;/p&gt;
-
 &lt;p&gt;视频链接: &lt;a href=&#34;https://www.youtube.com/watch?v=oFMlPZD57FQ&#34;&gt;https://www.youtube.com/watch?v=oFMlPZD57FQ&lt;/a&gt;&lt;/p&gt;</description>
     </item>
     
@@ -77,7 +80,6 @@
       
       <guid>https://blog.codepanic.cn/post/building-container-from-scratch/</guid>
       <description>&lt;h2 id=&#34;background&#34;&gt;Background&lt;/h2&gt;
-
 &lt;p&gt;这是基于 Liz Rice 在 Container Camp 的会议分享，Liz 在不到 20 分钟的时间里，用 100 行左右的 Golang 代码，构建了一个容器。分享链接为&lt;a href=&#34;https://www.youtube.com/watch?v=Utf-A4rODH8&#34;&gt;Building a container from scratch in Go&lt;/a&gt;。&lt;/p&gt;</description>
     </item>
     
@@ -97,11 +99,8 @@
       
       <guid>https://blog.codepanic.cn/post/nginx-log-split/</guid>
       <description>&lt;h3 id=&#34;抛出问题&#34;&gt;抛出问题&lt;/h3&gt;
-
 &lt;p&gt;Nginx 的 &lt;code&gt;access_log &amp;amp; error_log&lt;/code&gt;，在漫长的岁月中不断增长。然而 nginx 日志并没有 rotate 功能。如果简单百度、Bing下，会发现在 N 多博客中，大家都在说写个定时脚本，然后通过脚本定时重命名日志、向 Nginx 主进程发送 USR1 信号，让 Nginx 重新加载日志文件，从而达到切割日志的效果。&lt;/p&gt;
-
 &lt;p&gt;这样的操作难免需要动手的部分太多，而且考虑到其他如日志压缩、定期删除日志等，工作量也还不少。&lt;/p&gt;
-
 &lt;p&gt;这里应该有更舒适的办法。&lt;/p&gt;</description>
     </item>
     
@@ -112,15 +111,11 @@
       
       <guid>https://blog.codepanic.cn/post/null-equal-0/</guid>
       <description>&lt;h3 id=&#34;抛出问题&#34;&gt;抛出问题&lt;/h3&gt;
-
 &lt;p&gt;php 的 &lt;code&gt;== | === | isempty()&lt;/code&gt; 等对变量的判断一直是比较烦人的。今天是遇到了一个关于 &lt;code&gt;==&lt;/code&gt; 的简单问题：&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-php&#34;&gt;var_dump(&#39;0&#39; == false); // true
-var_dump(null == false); // true
-var_dump(null == &#39;0&#39;); // false
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;问题来了，为什么 &lt;code&gt;null == &#39;0&#39;&lt;/code&gt; 会是 false 呢？毕竟大家都会把 &lt;code&gt;0, &#39;&#39;, &#39;0&#39;, false, null, array()&lt;/code&gt; 都当做“空”来解读。&lt;/p&gt;</description>
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-php&#34; data-lang=&#34;php&#34;&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;var_dump&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;0&amp;#39;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;==&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;false&lt;/span&gt;); &lt;span style=&#34;color:#75715e&#34;&gt;// true
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;var_dump&lt;/span&gt;(&lt;span style=&#34;color:#66d9ef&#34;&gt;null&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;==&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;false&lt;/span&gt;); &lt;span style=&#34;color:#75715e&#34;&gt;// true
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;var_dump&lt;/span&gt;(&lt;span style=&#34;color:#66d9ef&#34;&gt;null&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;==&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;0&amp;#39;&lt;/span&gt;); &lt;span style=&#34;color:#75715e&#34;&gt;// false
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;问题来了，为什么 &lt;code&gt;null == &#39;0&#39;&lt;/code&gt; 会是 false 呢？毕竟大家都会把 &lt;code&gt;0, &#39;&#39;, &#39;0&#39;, false, null, array()&lt;/code&gt; 都当做“空”来解读。&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -130,7 +125,6 @@ var_dump(null == &#39;0&#39;); // false
       
       <guid>https://blog.codepanic.cn/post/my-paied-app/</guid>
       <description>&lt;p&gt;自从使用了 Mac 后，便给自己定了个规矩，尽量不再使用盗版的软件。毕竟不再是个学生了，也有了自己的收入，没有理由不去尊重自己行业的版权。同时，我坚信能够提高效率的软件，都是值得付费的。&lt;/p&gt;
-
 &lt;p&gt;这里列出一些自己已经开始付费的软件，算是一种推荐，也方便自己以后更换电脑后，找回某些软件的 licence。&lt;/p&gt;</description>
     </item>
     
@@ -150,7 +144,6 @@ var_dump(null == &#39;0&#39;); // false
       
       <guid>https://blog.codepanic.cn/post/201603-reading-review/</guid>
       <description>&lt;p&gt;我一直没有一个良好的阅读习惯。上一篇文章中提到，希望自己能够每个月写一个读书总结，其本意是希望自己能够养成一个良好的阅读习惯。我在写上一篇博客的时候，其实特别希望自己能够在一个月内至少完成一本书的阅读。&lt;/p&gt;
-
 &lt;p&gt;在三月份，我并没有去完成整本书的阅读，而且发现在最近的一段时间里，阅读的习惯有些被荒废的感觉，也懒得动手去继续自己的文字总结。但三月份，我主要的阅读集中在两本书：《高效能人士的7个习惯》和《Morden PHP》。当然，都还没有读完。&lt;/p&gt;</description>
     </item>
     

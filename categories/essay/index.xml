@@ -7,11 +7,7 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>NineRec</copyright>
-    <lastBuildDate>Wed, 11 Mar 2020 22:31:59 +0800</lastBuildDate>
-    
-	<atom:link href="https://blog.codepanic.cn/categories/essay/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Wed, 11 Mar 2020 22:31:59 +0800</lastBuildDate><atom:link href="https://blog.codepanic.cn/categories/essay/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>2020 Commits</title>
       <link>https://blog.codepanic.cn/post/2020-commits/</link>
@@ -37,7 +33,6 @@
       
       <guid>https://blog.codepanic.cn/post/grab-branding/</guid>
       <description>&lt;p&gt;公司要在技术圈子做一些宣传，为了能够吸引更多优秀工程师。厚着脸皮也去凑了个热闹。当然这里只是我早先计划的一些答案，和现场发挥的差异蛮大。&lt;/p&gt;
-
 &lt;p&gt;视频链接: &lt;a href=&#34;https://www.youtube.com/watch?v=oFMlPZD57FQ&#34;&gt;https://www.youtube.com/watch?v=oFMlPZD57FQ&lt;/a&gt;&lt;/p&gt;</description>
     </item>
     
@@ -66,7 +61,6 @@
       
       <guid>https://blog.codepanic.cn/post/my-paied-app/</guid>
       <description>&lt;p&gt;自从使用了 Mac 后，便给自己定了个规矩，尽量不再使用盗版的软件。毕竟不再是个学生了，也有了自己的收入，没有理由不去尊重自己行业的版权。同时，我坚信能够提高效率的软件，都是值得付费的。&lt;/p&gt;
-
 &lt;p&gt;这里列出一些自己已经开始付费的软件，算是一种推荐，也方便自己以后更换电脑后，找回某些软件的 licence。&lt;/p&gt;</description>
     </item>
     

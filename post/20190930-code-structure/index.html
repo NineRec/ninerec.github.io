@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <title>我的付费应用列表 - CodePanic</title>
+  <title>Thoughts On Code Structure - CodePanic</title>
   <meta name="renderer" content="webkit" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 
@@ -16,8 +16,7 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
 
 
-<meta name="author" content="NineRec" /><meta name="description" content="自从使用了 Mac 后，便给自己定了个规矩，尽量不再使用盗版的软件。毕竟不再是个学生了，也有了自己的收入，没有理由不去尊重自己行业的版权。同时，我坚信能够提高效率的软件，都是值得付费的。
-这里列出一些自己已经开始付费的软件，算是一种推荐，也方便自己以后更换电脑后，找回某些软件的 licence。
+<meta name="author" content="NineRec" /><meta name="description" content="在前公司和现公司，都有纠结过代码目录结构的问题。
 " /><meta name="keywords" content="NineRec, code panic, blog" />
 
 
@@ -28,7 +27,7 @@
 <meta name="generator" content="Hugo 0.76.5 with theme even" />
 
 
-<link rel="canonical" href="https://blog.codepanic.cn/post/my-paied-app/" />
+<link rel="canonical" href="https://blog.codepanic.cn/post/20190930-code-structure/" />
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
@@ -41,27 +40,24 @@
 <link href="/lib/fancybox/jquery.fancybox-3.1.20.min.css" rel="stylesheet">
 
 
-<meta property="og:title" content="我的付费应用列表" />
-<meta property="og:description" content="自从使用了 Mac 后，便给自己定了个规矩，尽量不再使用盗版的软件。毕竟不再是个学生了，也有了自己的收入，没有理由不去尊重自己行业的版权。同时，我坚信能够提高效率的软件，都是值得付费的。
-这里列出一些自己已经开始付费的软件，算是一种推荐，也方便自己以后更换电脑后，找回某些软件的 licence。" />
+<meta property="og:title" content="Thoughts On Code Structure" />
+<meta property="og:description" content="在前公司和现公司，都有纠结过代码目录结构的问题。" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://blog.codepanic.cn/post/my-paied-app/" />
-<meta property="article:published_time" content="2017-07-17T00:00:00+00:00" />
-<meta property="article:modified_time" content="2020-07-08T11:31:50+08:00" />
-<meta itemprop="name" content="我的付费应用列表">
-<meta itemprop="description" content="自从使用了 Mac 后，便给自己定了个规矩，尽量不再使用盗版的软件。毕竟不再是个学生了，也有了自己的收入，没有理由不去尊重自己行业的版权。同时，我坚信能够提高效率的软件，都是值得付费的。
-这里列出一些自己已经开始付费的软件，算是一种推荐，也方便自己以后更换电脑后，找回某些软件的 licence。">
-<meta itemprop="datePublished" content="2017-07-17T00:00:00+00:00" />
-<meta itemprop="dateModified" content="2020-07-08T11:31:50+08:00" />
-<meta itemprop="wordCount" content="763">
+<meta property="og:url" content="https://blog.codepanic.cn/post/20190930-code-structure/" />
+<meta property="article:published_time" content="2019-09-30T09:19:44+08:00" />
+<meta property="article:modified_time" content="2021-02-07T09:19:44+08:00" />
+<meta itemprop="name" content="Thoughts On Code Structure">
+<meta itemprop="description" content="在前公司和现公司，都有纠结过代码目录结构的问题。">
+<meta itemprop="datePublished" content="2019-09-30T09:19:44+08:00" />
+<meta itemprop="dateModified" content="2021-02-07T09:19:44+08:00" />
+<meta itemprop="wordCount" content="147">
 
 
 
-<meta itemprop="keywords" content="" />
+<meta itemprop="keywords" content="go," />
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="我的付费应用列表"/>
-<meta name="twitter:description" content="自从使用了 Mac 后，便给自己定了个规矩，尽量不再使用盗版的软件。毕竟不再是个学生了，也有了自己的收入，没有理由不去尊重自己行业的版权。同时，我坚信能够提高效率的软件，都是值得付费的。
-这里列出一些自己已经开始付费的软件，算是一种推荐，也方便自己以后更换电脑后，找回某些软件的 licence。"/>
+<meta name="twitter:title" content="Thoughts On Code Structure"/>
+<meta name="twitter:description" content="在前公司和现公司，都有纠结过代码目录结构的问题。"/>
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -134,12 +130,12 @@
           <article class="post">
     
     <header class="post-header">
-      <h1 class="post-title">我的付费应用列表</h1>
+      <h1 class="post-title">Thoughts On Code Structure</h1>
 
       <div class="post-meta">
-        <span class="post-time"> 2017-07-17 </span>
+        <span class="post-time"> 2019-09-30 </span>
         <div class="post-category">
-            <a href="/categories/essay/"> essay </a>
+            <a href="/categories/go/"> go </a>
             </div>
         
       </div>
@@ -152,12 +148,8 @@
   <ul>
     <li>
       <ul>
-        <li><a href="#charles---代理软件">Charles - 代理软件</a></li>
-        <li><a href="#affinity-photo---图像编辑">Affinity Photo - 图像编辑</a></li>
-        <li><a href="#affinity-designer---矢量图编辑">Affinity Designer - 矢量图编辑</a></li>
-        <li><a href="#dash---api-文档管理查询">Dash - API 文档管理查询</a></li>
-        <li><a href="#quiver">Quiver</a></li>
-        <li><a href="#马克飞象---markdown-笔记软件">马克飞象 - Markdown 笔记软件</a></li>
+        <li><a href="#why---价值">Why - 价值</a></li>
+        <li><a href="#how---方法和建议">How - 方法和建议</a></li>
       </ul>
     </li>
   </ul>
@@ -165,33 +157,18 @@
   </div>
 </div>
     <div class="post-content">
-      <p>自从使用了 Mac 后，便给自己定了个规矩，尽量不再使用盗版的软件。毕竟不再是个学生了，也有了自己的收入，没有理由不去尊重自己行业的版权。同时，我坚信能够提高效率的软件，都是值得付费的。</p>
-<p>这里列出一些自己已经开始付费的软件，算是一种推荐，也方便自己以后更换电脑后，找回某些软件的 licence。</p>
-<h3 id="charles---代理软件">Charles - 代理软件</h3>
-<p>Charles 是个跨平台的代理软件，我进入新公司后才开始较多使用。不注册也是可以使用的，不过每半小时会强制退出下，总这样挺糟心，也非常浪费时间。</p>
-<h3 id="affinity-photo---图像编辑">Affinity Photo - 图像编辑</h3>
-<p>Affinity Photo 是 PhotoShop 的替代软件。相比而言，购买 PhotoShop 需要按年付费且费用昂贵。而 Affinity Photo 则是一次性付费，且价格公道。</p>
-<p>Affinity Photo 实现了 PhotoShop 的大部分功能，且能够处理 PSD 文件，对于我这种只是偶尔用一用的人，实在是太合适了。</p>
-<h3 id="affinity-designer---矢量图编辑">Affinity Designer - 矢量图编辑</h3>
+      <p>在前公司和现公司，都有纠结过代码目录结构的问题。</p>
+<h3 id="why---价值">Why - 价值</h3>
+<p>去纠结代码结构，本身的目的，是为了能够达到代码的可扩展，从而更轻松的完成需求的迭代。</p>
+<p>这里引用下 Martin 博客上的几句话，其余不在赘述。</p>
 <blockquote>
-<p>added at 2020-07</p>
+<p>Software that contains a lot of cruft is much harder to modify, leading to features that arrive more slowly and with more defects.<br>
+&hellip;&hellip;<br>
+High internal quality leads to faster delivery of new features &hellip;&hellip; attention to internal quality pays off in weeks not months      <br>
+&mdash; Martin Fowlers</p>
 </blockquote>
-<p>Affinity Designer 是 Adobe Illustrator 的替代软件。 类似 Affinity Photo，也是个相比较而言价格更优惠的替代品，一次性付费。适合我这种百八十年才会用偶尔用一次，而且还是自己弄着玩的。</p>
-<h3 id="dash---api-文档管理查询">Dash - API 文档管理查询</h3>
-<p>开发者中很有名气的软件。方便在日常开发的过程中，查询各种语言、框架、基础组件的 API，而且可以和自己常用的开发软件较好的集成。</p>
-<p>是个提升开发效率的实用软件，也是一次性付费的，大版本升级应该是需要重新购买。</p>
-<h3 id="quiver">Quiver</h3>
-<blockquote>
-<p>added at 2020-07</p>
-</blockquote>
-<p>Quiver 是个早期以 block 形式著称的文档笔记软件，对 markedown 和 code block 都有可以接受的支持。</p>
-<p>不过最近在换用 Notion，会觉得 Notion 的使用体验，feature 丰富程度都更优秀。而且 Notion 的 database 的概念确实能够满足更多的需求。</p>
-<h3 id="马克飞象---markdown-笔记软件">马克飞象 - Markdown 笔记软件</h3>
-<blockquote>
-<p>updated at 2020-07: 已经不再使用马克飞象</p>
-</blockquote>
-<p>这是个国产的 MD 笔记软件，按年付费。一个支持 Markdown 格式，结构简单且便于搜索的记事本，正好符合我的需求。</p>
-<p>2018年注：马克飞象在文档、tag 等的同步上总是出错，体验并不是很好，同时 MD 的编辑体验也一般。另由于 Typora 新增目录功能后，在文档管理上方便了很多，最近 Typora(Free) 的使用频率上提高了很多。</p>
+<h3 id="how---方法和建议">How - 方法和建议</h3>
+<p>[TBD]</p>
     </div>
 
     <div class="post-copyright">
@@ -202,7 +179,7 @@
   <p class="copyright-item">
     <span class="item-title">上次更新</span>
     <span class="item-content">
-        2020-07-08
+        2021-02-07
         
     </span>
   </p>
@@ -213,15 +190,17 @@
   </p>
 </div>
 <footer class="post-footer">
-      
+      <div class="post-tags">
+          <a href="/tags/go/">go</a>
+          </div>
       <nav class="post-nav">
-        <a class="prev" href="/post/null-equal-0/">
+        <a class="prev" href="/post/uber-go-stype/">
             <i class="iconfont icon-left"></i>
-            <span class="prev-text nav-default">null 与 &#39;0&#39; 相比较的问题</span>
+            <span class="prev-text nav-default">Uber Go Style</span>
             <span class="prev-text nav-mobile">上一篇</span>
           </a>
-        <a class="next" href="/post/php2017/">
-            <span class="next-text nav-default">第三届php开发者大会</span>
+        <a class="next" href="/post/grab-branding/">
+            <span class="next-text nav-default">Grab Branding</span>
             <span class="next-text nav-mobile">下一篇</span>
             <i class="iconfont icon-right"></i>
           </a>
