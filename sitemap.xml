@@ -2,6 +2,41 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://blog.codepanic.cn/categories/</loc>
+    <lastmod>2022-03-01T09:42:55+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.codepanic.cn/</loc>
+    <lastmod>2022-03-01T09:42:55+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.codepanic.cn/categories/interview/</loc>
+    <lastmod>2022-03-01T09:42:55+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.codepanic.cn/post/</loc>
+    <lastmod>2022-03-01T09:42:55+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.codepanic.cn/post/20220211-reverse-interview/</loc>
+    <lastmod>2022-03-01T09:42:55+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
     <loc>https://blog.codepanic.cn/post/2020-commits/</loc>
     <lastmod>2020-07-08T20:31:50+08:00</lastmod>
     <changefreq>weekly</changefreq>
@@ -9,29 +44,8 @@
   </url>
   
   <url>
-    <loc>https://blog.codepanic.cn/categories/</loc>
-    <lastmod>2021-02-07T09:19:44+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.codepanic.cn/</loc>
-    <lastmod>2021-02-07T09:19:44+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
     <loc>https://blog.codepanic.cn/categories/essay/</loc>
     <lastmod>2020-07-08T20:31:50+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.codepanic.cn/post/</loc>
-    <lastmod>2021-02-07T09:19:44+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
