@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <title>Thoughts On Code Structure - CodePanic</title>
+  <title>Feynman 的 12 个问题 - CodePanic</title>
   <meta name="renderer" content="webkit" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 
@@ -16,7 +16,7 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
 
 
-<meta name="author" content="NineRec" /><meta name="description" content="在前公司和现公司，都有纠结过代码目录结构的问题。
+<meta name="author" content="NineRec" /><meta name="description" content="在有意思的 Quotes 中补充了 Feynman 的12个问题的引用，很有意思，也单独写一下。
 " /><meta name="keywords" content="NineRec, code panic, blog" />
 
 
@@ -27,7 +27,7 @@
 <meta name="generator" content="Hugo 0.104.3 with theme even" />
 
 
-<link rel="canonical" href="https://blog.codepanic.cn/post/20190930-code-structure/" />
+<link rel="canonical" href="https://blog.codepanic.cn/post/feynman-12-problems/" />
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
@@ -40,20 +40,20 @@
 <link href="/lib/fancybox/jquery.fancybox-3.1.20.min.css" rel="stylesheet">
 
 
-<meta property="og:title" content="Thoughts On Code Structure" />
-<meta property="og:description" content="在前公司和现公司，都有纠结过代码目录结构的问题。" />
+<meta property="og:title" content="Feynman 的 12 个问题" />
+<meta property="og:description" content="在有意思的 Quotes 中补充了 Feynman 的12个问题的引用，很有意思，也单独写一下。" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://blog.codepanic.cn/post/20190930-code-structure/" /><meta property="article:section" content="post" />
-<meta property="article:published_time" content="2019-09-30T09:19:44+08:00" />
-<meta property="article:modified_time" content="2021-02-07T09:19:44+08:00" />
+<meta property="og:url" content="https://blog.codepanic.cn/post/feynman-12-problems/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2022-10-20T11:27:06+08:00" />
+<meta property="article:modified_time" content="2022-10-20T11:27:06+08:00" />
 
-<meta itemprop="name" content="Thoughts On Code Structure">
-<meta itemprop="description" content="在前公司和现公司，都有纠结过代码目录结构的问题。"><meta itemprop="datePublished" content="2019-09-30T09:19:44+08:00" />
-<meta itemprop="dateModified" content="2021-02-07T09:19:44+08:00" />
-<meta itemprop="wordCount" content="147">
-<meta itemprop="keywords" content="go," /><meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Thoughts On Code Structure"/>
-<meta name="twitter:description" content="在前公司和现公司，都有纠结过代码目录结构的问题。"/>
+<meta itemprop="name" content="Feynman 的 12 个问题">
+<meta itemprop="description" content="在有意思的 Quotes 中补充了 Feynman 的12个问题的引用，很有意思，也单独写一下。"><meta itemprop="datePublished" content="2022-10-20T11:27:06+08:00" />
+<meta itemprop="dateModified" content="2022-10-20T11:27:06+08:00" />
+<meta itemprop="wordCount" content="573">
+<meta itemprop="keywords" content="essay," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Feynman 的 12 个问题"/>
+<meta name="twitter:description" content="在有意思的 Quotes 中补充了 Feynman 的12个问题的引用，很有意思，也单独写一下。"/>
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -126,12 +126,12 @@
           <article class="post">
     
     <header class="post-header">
-      <h1 class="post-title">Thoughts On Code Structure</h1>
+      <h1 class="post-title">Feynman 的 12 个问题</h1>
 
       <div class="post-meta">
-        <span class="post-time"> 2019-09-30 </span>
+        <span class="post-time"> 2022-10-20 </span>
         <div class="post-category">
-            <a href="/categories/go/"> go </a>
+            <a href="/categories/essay/"> essay </a>
             </div>
         
       </div>
@@ -140,31 +140,27 @@
     <div class="post-toc" id="post-toc">
   <h2 class="post-toc-title">文章目录</h2>
   <div class="post-toc-content always-active">
-    <nav id="TableOfContents">
-  <ul>
-    <li>
-      <ul>
-        <li><a href="#why---价值">Why - 价值</a></li>
-        <li><a href="#how---方法和建议">How - 方法和建议</a></li>
-      </ul>
-    </li>
-  </ul>
-</nav>
+    <nav id="TableOfContents"></nav>
   </div>
 </div>
     <div class="post-content">
-      <p>在前公司和现公司，都有纠结过代码目录结构的问题。</p>
-<h3 id="why---价值">Why - 价值</h3>
-<p>去纠结代码结构，本身的目的，是为了能够达到代码的可扩展，从而更轻松的完成需求的迭代。</p>
-<p>这里引用下 Martin 博客上的几句话，其余不在赘述。</p>
+      <p>在<a href="/quotes/">有意思的 Quotes </a>中补充了 Feynman 的12个问题的引用，很有意思，也单独写一下。</p>
 <blockquote>
-<p>Software that contains a lot of cruft is much harder to modify, leading to features that arrive more slowly and with more defects.<br>
-&hellip;&hellip;<br>
-High internal quality leads to faster delivery of new features &hellip;&hellip; attention to internal quality pays off in weeks not months      <br>
-&mdash; Martin Fowlers</p>
+<p>You have to keep a dozen of your favorite problems constantly present in your mind, although by and large they will lay in a dormant state. Every time you hear or read a new trick or a new result, test it against each of your twelve problems to see whether it helps. Every once in a while there will be a hit, and people will say: &ldquo;How did he do it? He must be a genius!&rdquo;</p>
+<p>&ndash; <!-- raw HTML omitted -->Richard Feynman<!-- raw HTML omitted --></p>
 </blockquote>
-<h3 id="how---方法和建议">How - 方法和建议</h3>
-<p>[TBD]</p>
+<p>这段话最近是在 <a href="https://alumni.media.mit.edu/~cahn/life/gian-carlo-rota-10-lessons.html">Ten Lessons I wish I had been Taught
+</a> 中再次看到的。之前有依稀的印象，也有不同的朋友在一起表达过，聪明人解决问题看似毫不费力，很多时候就是有一直将需要解决的问题放在脑子里。</p>
+<p>最近在播客中有听到一个说法，走出校园后的三个十年，应该各有侧重：</p>
+<ul>
+<li>前十年 - 主要为积累自己，提升自己，input</li>
+<li>中间十年 - 释放能力，output</li>
+<li>后面十年 - 更多是帮助他人，投资等</li>
+</ul>
+<p>想了想，自己应该快要步入中间十年了。在刚毕业时，一心想着多做些事情，有冲劲有干劲，每天脑子里想着工作中需要解决的问题。也正因如此，总是能够想到一些不错的技术方案，或者学习理解到各种工作中看到的解决方案，技术难点等。</p>
+<p>但随着经验积累，工作内容有更换，但是挑战似乎变少了，面对挑战的那股子劲儿也变少了。更让自己悲伤的是，不再有脑子中时刻盘旋着的自己喜欢的，想要解决的问题。</p>
+<p>与我而言，让别人夸一句“He must be a genius”或许并不重要，但我享受脑子里一直盘旋着问题，有所期待有所努力方向的感觉。现在工作虽少了很多乐趣，但依然时刻准备着。如果有让自己感兴趣的事情，还是要能够冲上去，肝一波。</p>
+<p>共勉。</p>
     </div>
 
     <div class="post-copyright">
@@ -175,7 +171,7 @@ High internal quality leads to faster delivery of new features &hellip;&hellip; 
   <p class="copyright-item">
     <span class="item-title">上次更新</span>
     <span class="item-content">
-        2021-02-07
+        2022-10-20
         
     </span>
   </p>
@@ -187,16 +183,12 @@ High internal quality leads to faster delivery of new features &hellip;&hellip; 
 </div>
 <footer class="post-footer">
       <div class="post-tags">
-          <a href="/tags/go/">go</a>
+          <a href="/tags/essay/">essay</a>
           </div>
       <nav class="post-nav">
-        <a class="prev" href="/post/uber-go-stype/">
-            <i class="iconfont icon-left"></i>
-            <span class="prev-text nav-default">Uber Go Style</span>
-            <span class="prev-text nav-mobile">上一篇</span>
-          </a>
-        <a class="next" href="/post/grab-branding/">
-            <span class="next-text nav-default">Grab Branding</span>
+        
+        <a class="next" href="/post/20220211-reverse-interview/">
+            <span class="next-text nav-default">作答反向面试-假设我有个【一人公司】</span>
             <span class="next-text nav-mobile">下一篇</span>
             <i class="iconfont icon-right"></i>
           </a>
