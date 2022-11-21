@@ -2,14 +2,28 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://blog.codepanic.cn/categories/</loc>
-    <lastmod>2022-10-20T11:27:06+08:00</lastmod>
+    <loc>https://blog.codepanic.cn/</loc>
+    <lastmod>2022-11-21T14:10:27+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://blog.codepanic.cn/</loc>
+    <loc>https://blog.codepanic.cn/post/</loc>
+    <lastmod>2022-11-21T14:10:27+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.codepanic.cn/post/20220211-thoughts-of-working/</loc>
+    <lastmod>2022-11-21T14:10:27+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.codepanic.cn/categories/</loc>
     <lastmod>2022-10-20T11:27:06+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
@@ -31,13 +45,6 @@
   
   <url>
     <loc>https://blog.codepanic.cn/post/feynman-12-problems/</loc>
-    <lastmod>2022-10-20T11:27:06+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.codepanic.cn/post/</loc>
     <lastmod>2022-10-20T11:27:06+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
