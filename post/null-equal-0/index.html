@@ -25,7 +25,7 @@ var_dump(&amp;#39;0&amp;#39; == false); // true var_dump(null == false); // true
 
 
 
-<meta name="generator" content="Hugo 0.104.3 with theme even" />
+<meta name="generator" content="Hugo 0.107.0 with theme even" />
 
 
 <link rel="canonical" href="https://blog.codepanic.cn/post/null-equal-0/" />
@@ -180,11 +180,11 @@ var_dump(null == &#39;0&#39;); // false
 <p>首先，在<code>zend_language_scanner.l</code> 中搜了下 <code>==</code>，发现了 <code>T_IS_EQUAL</code>，很暴力的在整个目录中搜了下 <code>T_IS_EQUAL</code>，各个文件烦了下，在 <code>zend_language_parser.y</code> 中找到了 <code>ZEND_IS_EQUAL</code>。依然老方法，文件夹搜<code>ZEND_IS_EQUAL</code>，找到了其最后对应函数<code>compare_function</code>。
 就这么一层一层往下找，最后在 <code>zend_operators.c</code> 中约1880行的位置找到了这个函数，其中相关代码如下：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span>            <span style="color:#66d9ef">case</span> <span style="color:#a6e22e">TYPE_PAIR</span>(IS_NULL, IS_STRING)<span style="color:#f92672">:</span>
-</span></span><span style="display:flex;"><span>                ZVAL_LONG(result, Z_STRLEN_P(op2) <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span> <span style="color:#f92672">?</span> <span style="color:#ae81ff">0</span> <span style="color:#f92672">:</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>);
+</span></span><span style="display:flex;"><span>                <span style="color:#a6e22e">ZVAL_LONG</span>(result, <span style="color:#a6e22e">Z_STRLEN_P</span>(op2) <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span> <span style="color:#f92672">?</span> <span style="color:#ae81ff">0</span> <span style="color:#f92672">:</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>);
 </span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">return</span> SUCCESS;
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">case</span> <span style="color:#a6e22e">TYPE_PAIR</span>(IS_STRING, IS_NULL)<span style="color:#f92672">:</span>
-</span></span><span style="display:flex;"><span>                ZVAL_LONG(result, Z_STRLEN_P(op1) <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span> <span style="color:#f92672">?</span> <span style="color:#ae81ff">0</span> <span style="color:#f92672">:</span> <span style="color:#ae81ff">1</span>);
+</span></span><span style="display:flex;"><span>                <span style="color:#a6e22e">ZVAL_LONG</span>(result, <span style="color:#a6e22e">Z_STRLEN_P</span>(op1) <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span> <span style="color:#f92672">?</span> <span style="color:#ae81ff">0</span> <span style="color:#f92672">:</span> <span style="color:#ae81ff">1</span>);
 </span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">return</span> SUCCESS;
 </span></span></code></pre></div><p>现在再来解释问题，就很容易了。PHP 当遇到 null 和字符串比较时，其实相当于计算了字符串长度是否为0。也就是默认了只有<code>'' == null</code> 是成立的。</p>
     </div>
@@ -256,7 +256,7 @@ var_dump(null == &#39;0&#39;); // false
   <span class="copyright-year">
     &copy; 
     2016 - 
-    2022<span class="heart"><i class="iconfont icon-heart"></i></span><span>NineRec</span>
+    2023<span class="heart"><i class="iconfont icon-heart"></i></span><span>NineRec</span>
   </span>
 </div>
 
