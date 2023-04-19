@@ -5,7 +5,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
   <title>从零构建一个容器 - CodePanic</title>
   <meta name="renderer" content="webkit" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
 <meta http-equiv="Cache-Control" content="no-transform" />
 <meta http-equiv="Cache-Control" content="no-siteapp" />
@@ -16,28 +16,31 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
 
 
-<meta name="author" content="NineRec" /><meta name="description" content="Background 这是基于 Liz Rice 在 Container Camp 的会议分享，Liz 在不到 20 分钟的时间里，用 100 行左右的 Golang 代码，构建了一个容器。分享链接为Building a container from scratch in Go。
-" /><meta name="keywords" content="NineRec, code panic, blog" />
+<meta name="author"
+    content="NineRec" /><meta name="description" content="Background 这是基于 Liz Rice 在 Container Camp 的会议分享，Liz 在不到 20 分钟的时间里，用 100 行左右的 Golang 代码，构建了一个容器。分享链接为Building a container from scratch in Go。
+" /><meta name="keywords"
+    content="NineRec, code panic, blog" />
 
 
 
 
 
 
-<meta name="generator" content="Hugo 0.107.0 with theme even" />
+<meta name="generator" content="Hugo 0.111.1 with theme even" />
 
 
 <link rel="canonical" href="https://blog.codepanic.cn/post/building-container-from-scratch/" />
-<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-<link rel="manifest" href="/manifest.json">
-<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+<link rel="apple-touch-icon" sizes="180x180" href="/%20apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/%20favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/%20favicon-16x16.png">
+<link rel="manifest" href="/%20manifest.json">
+<link rel="mask-icon" href="/%20safari-pinned-tab.svg" color="#5bbad5">
 
 
 
 <link href="/sass/main.min.f92fd13721ddf72129410fd8250e73152cc6f2438082b6c0208dc24ee7c13fc4.css" rel="stylesheet">
-<link href="/lib/fancybox/jquery.fancybox-3.1.20.min.css" rel="stylesheet">
+
+<link href="/%20lib/fancybox/jquery.fancybox-3.1.20.min.css" rel="stylesheet">
 
 
 <meta property="og:title" content="从零构建一个容器" />
@@ -47,7 +50,6 @@
 <meta property="og:url" content="https://blog.codepanic.cn/post/building-container-from-scratch/" /><meta property="article:section" content="post" />
 <meta property="article:published_time" content="2018-05-23T18:11:45+08:00" />
 <meta property="article:modified_time" content="2018-05-23T18:11:45+08:00" />
-
 <meta itemprop="name" content="从零构建一个容器">
 <meta itemprop="description" content="Background
 这是基于 Liz Rice 在 Container Camp 的会议分享，Liz 在不到 20 分钟的时间里，用 100 行左右的 Golang 代码，构建了一个容器。分享链接为Building a container from scratch in Go。"><meta itemprop="datePublished" content="2018-05-23T18:11:45+08:00" />

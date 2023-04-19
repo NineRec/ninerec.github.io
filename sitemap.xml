@@ -2,21 +2,77 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://blog.codepanic.cn/post/20230101-2022-yearly-review/</loc>
-    <lastmod>2023-01-04T16:12:28+08:00</lastmod>
+    <loc>https://blog.codepanic.cn/tags/chatgpt/</loc>
+    <lastmod>2023-04-19T13:40:10+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
     <loc>https://blog.codepanic.cn/</loc>
-    <lastmod>2023-01-04T16:12:28+08:00</lastmod>
+    <lastmod>2023-04-19T13:40:10+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.codepanic.cn/tags/financial/</loc>
+    <lastmod>2023-04-19T13:40:10+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
     <loc>https://blog.codepanic.cn/post/</loc>
+    <lastmod>2023-04-19T13:40:10+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.codepanic.cn/tags/</loc>
+    <lastmod>2023-04-19T13:40:10+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.codepanic.cn/post/financial-vocab-from-chatgpt/</loc>
+    <lastmod>2023-04-19T13:40:10+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.codepanic.cn/post/2022-yearly-review/</loc>
+    <lastmod>2023-01-04T16:12:28+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.codepanic.cn/categories/</loc>
+    <lastmod>2023-01-04T16:12:28+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.codepanic.cn/tags/essay/</loc>
+    <lastmod>2023-01-04T16:12:28+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.codepanic.cn/categories/essay/</loc>
+    <lastmod>2023-01-04T16:12:28+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.codepanic.cn/tags/review/</loc>
     <lastmod>2023-01-04T16:12:28+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
@@ -30,35 +86,7 @@
   </url>
   
   <url>
-    <loc>https://blog.codepanic.cn/categories/</loc>
-    <lastmod>2022-10-20T11:27:06+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.codepanic.cn/tags/essay/</loc>
-    <lastmod>2022-10-20T11:27:06+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.codepanic.cn/categories/essay/</loc>
-    <lastmod>2022-10-20T11:27:06+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
     <loc>https://blog.codepanic.cn/post/feynman-12-problems/</loc>
-    <lastmod>2022-10-20T11:27:06+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.codepanic.cn/tags/</loc>
     <lastmod>2022-10-20T11:27:06+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>

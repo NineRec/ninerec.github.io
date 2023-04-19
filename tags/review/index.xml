@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>review on CodePanic</title>
+    <link>https://blog.codepanic.cn/tags/review/</link>
+    <description>Recent content in review on CodePanic</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <copyright>NineRec</copyright>
+    <lastBuildDate>Wed, 04 Jan 2023 16:12:28 +0800</lastBuildDate><atom:link href="https://blog.codepanic.cn/tags/review/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>2022 年度总结</title>
+      <link>https://blog.codepanic.cn/post/2022-yearly-review/</link>
+      <pubDate>Wed, 04 Jan 2023 16:12:28 +0800</pubDate>
+      
+      <guid>https://blog.codepanic.cn/post/2022-yearly-review/</guid>
+      <description>&lt;p&gt;2022 年对我而言，是个在技术和职业上成长缓慢的一年。不过即使在这样的一个年份里，个人生活依然是发生了很大的变化。&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

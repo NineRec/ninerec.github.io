@@ -5,7 +5,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
   <title>Nginx 日志切分 - CodePanic</title>
   <meta name="renderer" content="webkit" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
 <meta http-equiv="Cache-Control" content="no-transform" />
 <meta http-equiv="Cache-Control" content="no-siteapp" />
@@ -16,30 +16,33 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
 
 
-<meta name="author" content="NineRec" /><meta name="description" content="抛出问题 Nginx 的 access_log &amp;amp; error_log，在漫长的岁月中不断增长。然而 nginx 日志并没有 rotate 功能。如果简单百度、Bing下，会发现在 N 多博客中，大家都在说写个定时脚本，然后通过脚本定时重命名日志、向 Nginx 主进程发送 USR1 信号，让 Nginx 重新加载日志文件，从而达到切割日志的效果。
+<meta name="author"
+    content="NineRec" /><meta name="description" content="抛出问题 Nginx 的 access_log &amp;amp; error_log，在漫长的岁月中不断增长。然而 nginx 日志并没有 rotate 功能。如果简单百度、Bing下，会发现在 N 多博客中，大家都在说写个定时脚本，然后通过脚本定时重命名日志、向 Nginx 主进程发送 USR1 信号，让 Nginx 重新加载日志文件，从而达到切割日志的效果。
 这样的操作难免需要动手的部分太多，而且考虑到其他如日志压缩、定期删除日志等，工作量也还不少。
 这里应该有更舒适的办法。
-" /><meta name="keywords" content="NineRec, code panic, blog" />
+" /><meta name="keywords"
+    content="NineRec, code panic, blog" />
 
 
 
 
 
 
-<meta name="generator" content="Hugo 0.107.0 with theme even" />
+<meta name="generator" content="Hugo 0.111.1 with theme even" />
 
 
 <link rel="canonical" href="https://blog.codepanic.cn/post/nginx-log-split/" />
-<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-<link rel="manifest" href="/manifest.json">
-<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+<link rel="apple-touch-icon" sizes="180x180" href="/%20apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/%20favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/%20favicon-16x16.png">
+<link rel="manifest" href="/%20manifest.json">
+<link rel="mask-icon" href="/%20safari-pinned-tab.svg" color="#5bbad5">
 
 
 
 <link href="/sass/main.min.f92fd13721ddf72129410fd8250e73152cc6f2438082b6c0208dc24ee7c13fc4.css" rel="stylesheet">
-<link href="/lib/fancybox/jquery.fancybox-3.1.20.min.css" rel="stylesheet">
+
+<link href="/%20lib/fancybox/jquery.fancybox-3.1.20.min.css" rel="stylesheet">
 
 
 <meta property="og:title" content="Nginx 日志切分" />
@@ -51,7 +54,6 @@ Nginx 的 access_log &amp; error_log，在漫长的岁月中不断增长。然�
 <meta property="og:url" content="https://blog.codepanic.cn/post/nginx-log-split/" /><meta property="article:section" content="post" />
 <meta property="article:published_time" content="2017-10-11T00:00:00+00:00" />
 <meta property="article:modified_time" content="2017-10-11T00:00:00+00:00" />
-
 <meta itemprop="name" content="Nginx 日志切分">
 <meta itemprop="description" content="抛出问题
 Nginx 的 access_log &amp; error_log，在漫长的岁月中不断增长。然而 nginx 日志并没有 rotate 功能。如果简单百度、Bing下，会发现在 N 多博客中，大家都在说写个定时脚本，然后通过脚本定时重命名日志、向 Nginx 主进程发送 USR1 信号，让 Nginx 重新加载日志文件，从而达到切割日志的效果。
