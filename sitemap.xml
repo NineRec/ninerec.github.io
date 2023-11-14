@@ -2,6 +2,27 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://blog.codepanic.cn/post/kottke-choosing-leader/</loc>
+    <lastmod>2023-11-14T12:30:44+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.codepanic.cn/</loc>
+    <lastmod>2023-11-14T12:30:44+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.codepanic.cn/post/</loc>
+    <lastmod>2023-11-14T12:30:44+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
     <loc>https://blog.codepanic.cn/tags/chatgpt/</loc>
     <lastmod>2023-04-19T13:40:10+08:00</lastmod>
     <changefreq>weekly</changefreq>
@@ -9,21 +30,7 @@
   </url>
   
   <url>
-    <loc>https://blog.codepanic.cn/</loc>
-    <lastmod>2023-04-19T13:40:10+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
     <loc>https://blog.codepanic.cn/tags/financial/</loc>
-    <lastmod>2023-04-19T13:40:10+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.codepanic.cn/post/</loc>
     <lastmod>2023-04-19T13:40:10+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
@@ -79,7 +86,7 @@
   </url>
   
   <url>
-    <loc>https://blog.codepanic.cn/post/20220211-thoughts-of-working/</loc>
+    <loc>https://blog.codepanic.cn/post/thoughts-of-working/</loc>
     <lastmod>2022-11-21T14:10:27+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>

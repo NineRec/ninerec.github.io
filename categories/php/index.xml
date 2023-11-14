@@ -7,12 +7,12 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>NineRec</copyright>
-    <lastBuildDate>Tue, 01 Aug 2017 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.codepanic.cn/categories/php/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 01 Aug 2017 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://blog.codepanic.cn/categories/php/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>null 与 &#39;0&#39; 相比较的问题</title>
       <link>https://blog.codepanic.cn/post/null-equal-0/</link>
       <pubDate>Tue, 01 Aug 2017 00:00:00 +0000</pubDate>
-      
       <guid>https://blog.codepanic.cn/post/null-equal-0/</guid>
       <description>&lt;h3 id=&#34;抛出问题&#34;&gt;抛出问题&lt;/h3&gt;
 &lt;p&gt;php 的 &lt;code&gt;== | === | isempty()&lt;/code&gt; 等对变量的判断一直是比较烦人的。今天是遇到了一个关于 &lt;code&gt;==&lt;/code&gt; 的简单问题：&lt;/p&gt;
@@ -21,15 +21,12 @@
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;var_dump&lt;/span&gt;(&lt;span style=&#34;color:#66d9ef&#34;&gt;null&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;==&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;0&amp;#39;&lt;/span&gt;); &lt;span style=&#34;color:#75715e&#34;&gt;// false
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;问题来了，为什么 &lt;code&gt;null == &#39;0&#39;&lt;/code&gt; 会是 false 呢？毕竟大家都会把 &lt;code&gt;0, &#39;&#39;, &#39;0&#39;, false, null, array()&lt;/code&gt; 都当做“空”来解读。&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>第三届php开发者大会</title>
       <link>https://blog.codepanic.cn/post/php2017/</link>
       <pubDate>Wed, 14 Jun 2017 00:00:00 +0000</pubDate>
-      
       <guid>https://blog.codepanic.cn/post/php2017/</guid>
       <description>&lt;p&gt;PHP开发者大会结束，整体收获蛮大的，简单做一些总结。&lt;/p&gt;</description>
     </item>
-    
   </channel>
 </rss>

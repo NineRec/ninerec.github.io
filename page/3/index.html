@@ -23,7 +23,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.111.1 with theme even" />
+<meta name="generator" content="Hugo 0.120.4 with theme even" />
 
 
 <link rel="canonical" href="https://blog.codepanic.cn/" />
@@ -45,6 +45,7 @@
 <meta property="og:description" content="Code Panic, 记录让人恐慌的代码，记录代码的恐慌，也记录生活琐碎。" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://blog.codepanic.cn/" />
+
 <meta itemprop="name" content="CodePanic">
 <meta itemprop="description" content="Code Panic, 记录让人恐慌的代码，记录代码的恐慌，也记录生活琐碎。"><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="CodePanic"/>
@@ -119,6 +120,28 @@
       <div class="content-wrapper">
         <div id="content" class="content">
           <section id="posts" class="posts">
+    <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/post/grab-branding/">Grab Branding</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2019-02-26 </span>
+      <div class="post-category">
+          <a href="/categories/essay/"> essay </a>
+          </div>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      <p>公司要在技术圈子做一些宣传，为了能够吸引更多优秀工程师。厚着脸皮也去凑了个热闹。当然这里只是我早先计划的一些答案，和现场发挥的差异蛮大。</p>
+<p>视频链接: <a href="https://www.youtube.com/watch?v=oFMlPZD57FQ">https://www.youtube.com/watch?v=oFMlPZD57FQ</a></p>
+    </div>
+    <div class="read-more">
+      <a href="/post/grab-branding/" class="read-more-link">阅读更多</a>
+    </div>
+  </div>
+</article>
+
     <article class="post">
   <header class="post-header">
     <h1 class="post-title"><a class="post-link" href="/post/first-day-ruofan/">若饭第一天</a></h1>
@@ -203,32 +226,6 @@
     </div>
     <div class="read-more">
       <a href="/post/nginx-log-split/" class="read-more-link">阅读更多</a>
-    </div>
-  </div>
-</article>
-
-    <article class="post">
-  <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/post/null-equal-0/">null 与 &#39;0&#39; 相比较的问题</a></h1>
-    <div class="post-meta">
-      <span class="post-time"> 2017-08-01 </span>
-      <div class="post-category">
-          <a href="/categories/php/"> php </a>
-          </div>
-    </div>
-  </header>
-  
-  <div class="post-content">
-    <div class="post-summary">
-      <h3 id="抛出问题">抛出问题</h3>
-<p>php 的 <code>== | === | isempty()</code> 等对变量的判断一直是比较烦人的。今天是遇到了一个关于 <code>==</code> 的简单问题：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-php" data-lang="php"><span style="display:flex;"><span><span style="color:#a6e22e">var_dump</span>(<span style="color:#e6db74">&#39;0&#39;</span> <span style="color:#f92672">==</span> <span style="color:#66d9ef">false</span>); <span style="color:#75715e">// true
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">var_dump</span>(<span style="color:#66d9ef">null</span> <span style="color:#f92672">==</span> <span style="color:#66d9ef">false</span>); <span style="color:#75715e">// true
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">var_dump</span>(<span style="color:#66d9ef">null</span> <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;0&#39;</span>); <span style="color:#75715e">// false
-</span></span></span></code></pre></div><p>问题来了，为什么 <code>null == '0'</code> 会是 false 呢？毕竟大家都会把 <code>0, '', '0', false, null, array()</code> 都当做“空”来解读。</p>
-    </div>
-    <div class="read-more">
-      <a href="/post/null-equal-0/" class="read-more-link">阅读更多</a>
     </div>
   </div>
 </article>

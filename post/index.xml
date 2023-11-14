@@ -7,146 +7,125 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>NineRec</copyright>
-    <lastBuildDate>Wed, 19 Apr 2023 13:40:10 +0800</lastBuildDate><atom:link href="https://blog.codepanic.cn/post/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 14 Nov 2023 12:30:44 +0800</lastBuildDate>
+    <atom:link href="https://blog.codepanic.cn/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>20231113 Kottke Choosing Leader</title>
+      <link>https://blog.codepanic.cn/post/kottke-choosing-leader/</link>
+      <pubDate>Tue, 14 Nov 2023 12:30:44 +0800</pubDate>
+      <guid>https://blog.codepanic.cn/post/kottke-choosing-leader/</guid>
+      <description>内容发现自 Choosing a Leader Wisely 原文应该来自 The Marginalian Choose your leaders with wisdom and forethought. To be led by a coward is to be controlled by all that the coward fears. To be led by a fool is to be led by the opportunists who control the fool. To be led by a thief is to offer up your most precious</description>
+    </item>
     <item>
       <title>金融相关词汇 - ChatGPT 来解释</title>
       <link>https://blog.codepanic.cn/post/financial-vocab-from-chatgpt/</link>
       <pubDate>Wed, 19 Apr 2023 13:40:10 +0800</pubDate>
-      
       <guid>https://blog.codepanic.cn/post/financial-vocab-from-chatgpt/</guid>
       <description>&lt;p&gt;3 月份在看墨腾的一份报告的时候有遇到很多金融财经相关词汇，顺手让 ChatGPT 解释了一下。&lt;/p&gt;
 &lt;p&gt;所有的内容更适合做个参考，是否严谨需要自行判断了。&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>2022 年度总结</title>
       <link>https://blog.codepanic.cn/post/2022-yearly-review/</link>
       <pubDate>Wed, 04 Jan 2023 16:12:28 +0800</pubDate>
-      
       <guid>https://blog.codepanic.cn/post/2022-yearly-review/</guid>
       <description>&lt;p&gt;2022 年对我而言，是个在技术和职业上成长缓慢的一年。不过即使在这样的一个年份里，个人生活依然是发生了很大的变化。&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>关于好工作的思考片段</title>
-      <link>https://blog.codepanic.cn/post/20220211-thoughts-of-working/</link>
+      <link>https://blog.codepanic.cn/post/thoughts-of-working/</link>
       <pubDate>Mon, 21 Nov 2022 14:10:27 +0800</pubDate>
-      
-      <guid>https://blog.codepanic.cn/post/20220211-thoughts-of-working/</guid>
+      <guid>https://blog.codepanic.cn/post/thoughts-of-working/</guid>
       <description>当时觉得大家做事的氛围和风格还可以，可是后来就逐渐发现，企业文化这东西真不是那么容易改变的，尤其对于这样一艘巨轮来说，逐渐 Oracle 的一些缓慢和笨重</description>
     </item>
-    
     <item>
       <title>Feynman 的 12 个问题</title>
       <link>https://blog.codepanic.cn/post/feynman-12-problems/</link>
       <pubDate>Thu, 20 Oct 2022 11:27:06 +0800</pubDate>
-      
       <guid>https://blog.codepanic.cn/post/feynman-12-problems/</guid>
       <description>&lt;p&gt;在&lt;a href=&#34;https://blog.codepanic.cn/quotes/&#34;&gt;有意思的 Quotes &lt;/a&gt;中补充了 Feynman 的12个问题的引用，很有意思，也单独写一下。&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>作答反向面试-假设我有个【一人公司】</title>
       <link>https://blog.codepanic.cn/post/20220211-reverse-interview/</link>
       <pubDate>Tue, 01 Mar 2022 09:42:55 +0800</pubDate>
-      
       <guid>https://blog.codepanic.cn/post/20220211-reverse-interview/</guid>
       <description>&lt;p&gt;基于自己的过往经验，以我能 cover 的情况来回答下“反向面试”的各个问题。同时我会删掉部分问题，回答问题时加上和当前公司的情况对比。&lt;/p&gt;
 &lt;p&gt;反向面试来源： &lt;a href=&#34;https://github.com/yifeikong/reverse-interview-zh&#34;&gt;https://github.com/yifeikong/reverse-interview-zh&lt;/a&gt;&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>2020 Commits</title>
       <link>https://blog.codepanic.cn/post/2020-commits/</link>
       <pubDate>Wed, 11 Mar 2020 22:31:59 +0800</pubDate>
-      
       <guid>https://blog.codepanic.cn/post/2020-commits/</guid>
       <description>&lt;p&gt;2020 年的“微博”集合，主要就是 Git 提交记录。&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Too Busy</title>
       <link>https://blog.codepanic.cn/post/20191023-too-busy/</link>
       <pubDate>Wed, 23 Oct 2019 09:42:55 +0800</pubDate>
-      
       <guid>https://blog.codepanic.cn/post/20191023-too-busy/</guid>
       <description>&lt;p&gt;随手记录一些最近有意思的事情，把这里当微博来用。&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Uber Go Style</title>
       <link>https://blog.codepanic.cn/post/uber-go-stype/</link>
       <pubDate>Mon, 14 Oct 2019 09:57:06 +0800</pubDate>
-      
       <guid>https://blog.codepanic.cn/post/uber-go-stype/</guid>
       <description>&lt;p&gt;围观了《Uber Go 语言编码规范》，记录一些觉得有意思的部分。&lt;/p&gt;
 &lt;p&gt;Github 链接: &lt;a href=&#34;https://github.com/uber-go/guide&#34;&gt;https://github.com/uber-go/guide&lt;/a&gt;&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Thoughts On Code Structure</title>
       <link>https://blog.codepanic.cn/post/20190930-code-structure/</link>
       <pubDate>Mon, 30 Sep 2019 09:19:44 +0800</pubDate>
-      
       <guid>https://blog.codepanic.cn/post/20190930-code-structure/</guid>
       <description>&lt;p&gt;在前公司和现公司，都有纠结过代码目录结构的问题。&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Grab Branding</title>
       <link>https://blog.codepanic.cn/post/grab-branding/</link>
       <pubDate>Tue, 26 Feb 2019 16:08:26 +0800</pubDate>
-      
       <guid>https://blog.codepanic.cn/post/grab-branding/</guid>
       <description>&lt;p&gt;公司要在技术圈子做一些宣传，为了能够吸引更多优秀工程师。厚着脸皮也去凑了个热闹。当然这里只是我早先计划的一些答案，和现场发挥的差异蛮大。&lt;/p&gt;
 &lt;p&gt;视频链接: &lt;a href=&#34;https://www.youtube.com/watch?v=oFMlPZD57FQ&#34;&gt;https://www.youtube.com/watch?v=oFMlPZD57FQ&lt;/a&gt;&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>若饭第一天</title>
       <link>https://blog.codepanic.cn/post/first-day-ruofan/</link>
       <pubDate>Tue, 26 Feb 2019 11:35:39 +0800</pubDate>
-      
       <guid>https://blog.codepanic.cn/post/first-day-ruofan/</guid>
       <description>&lt;p&gt;上周收到了若饭正餐粉，今天晚上兴致冲冲的尝试了一下，感受如下。&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>从零构建一个容器</title>
       <link>https://blog.codepanic.cn/post/building-container-from-scratch/</link>
       <pubDate>Wed, 23 May 2018 18:11:45 +0800</pubDate>
-      
       <guid>https://blog.codepanic.cn/post/building-container-from-scratch/</guid>
       <description>&lt;h2 id=&#34;background&#34;&gt;Background&lt;/h2&gt;
 &lt;p&gt;这是基于 Liz Rice 在 Container Camp 的会议分享，Liz 在不到 20 分钟的时间里，用 100 行左右的 Golang 代码，构建了一个容器。分享链接为&lt;a href=&#34;https://www.youtube.com/watch?v=Utf-A4rODH8&#34;&gt;Building a container from scratch in Go&lt;/a&gt;。&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>关于同理心的一些想法</title>
       <link>https://blog.codepanic.cn/post/thoughts/</link>
       <pubDate>Thu, 10 May 2018 00:00:00 +0000</pubDate>
-      
       <guid>https://blog.codepanic.cn/post/thoughts/</guid>
       <description>&lt;p&gt;在五一劳动节时，发生了一件不太愉快的事情。事情的来龙去脉并不重要，不过在反思和探讨问题的原因和解决方案时，不止一次的提到了“站在我的角度”，站在对方的角度，说得高大上一些，应该就是同理心了。在自我思考的过程中，有一些关键词跃入了脑中。或许通过文字的方式，能够放慢自己的思考，将这些东西整理、表达出来。&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Nginx 日志切分</title>
       <link>https://blog.codepanic.cn/post/nginx-log-split/</link>
       <pubDate>Wed, 11 Oct 2017 00:00:00 +0000</pubDate>
-      
       <guid>https://blog.codepanic.cn/post/nginx-log-split/</guid>
       <description>&lt;h3 id=&#34;抛出问题&#34;&gt;抛出问题&lt;/h3&gt;
 &lt;p&gt;Nginx 的 &lt;code&gt;access_log &amp;amp; error_log&lt;/code&gt;，在漫长的岁月中不断增长。然而 nginx 日志并没有 rotate 功能。如果简单百度、Bing下，会发现在 N 多博客中，大家都在说写个定时脚本，然后通过脚本定时重命名日志、向 Nginx 主进程发送 USR1 信号，让 Nginx 重新加载日志文件，从而达到切割日志的效果。&lt;/p&gt;
 &lt;p&gt;这样的操作难免需要动手的部分太多，而且考虑到其他如日志压缩、定期删除日志等，工作量也还不少。&lt;/p&gt;
 &lt;p&gt;这里应该有更舒适的办法。&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>null 与 &#39;0&#39; 相比较的问题</title>
       <link>https://blog.codepanic.cn/post/null-equal-0/</link>
       <pubDate>Tue, 01 Aug 2017 00:00:00 +0000</pubDate>
-      
       <guid>https://blog.codepanic.cn/post/null-equal-0/</guid>
       <description>&lt;h3 id=&#34;抛出问题&#34;&gt;抛出问题&lt;/h3&gt;
 &lt;p&gt;php 的 &lt;code&gt;== | === | isempty()&lt;/code&gt; 等对变量的判断一直是比较烦人的。今天是遇到了一个关于 &lt;code&gt;==&lt;/code&gt; 的简单问题：&lt;/p&gt;
@@ -155,53 +134,42 @@
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;var_dump&lt;/span&gt;(&lt;span style=&#34;color:#66d9ef&#34;&gt;null&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;==&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;0&amp;#39;&lt;/span&gt;); &lt;span style=&#34;color:#75715e&#34;&gt;// false
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;问题来了，为什么 &lt;code&gt;null == &#39;0&#39;&lt;/code&gt; 会是 false 呢？毕竟大家都会把 &lt;code&gt;0, &#39;&#39;, &#39;0&#39;, false, null, array()&lt;/code&gt; 都当做“空”来解读。&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>我的付费应用列表</title>
       <link>https://blog.codepanic.cn/post/my-paied-app/</link>
       <pubDate>Mon, 17 Jul 2017 00:00:00 +0000</pubDate>
-      
       <guid>https://blog.codepanic.cn/post/my-paied-app/</guid>
       <description>&lt;p&gt;自从使用了 Mac 后，便给自己定了个规矩，尽量不再使用盗版的软件。毕竟不再是个学生了，也有了自己的收入，没有理由不去尊重自己行业的版权。同时，我坚信能够提高效率的软件，都是值得付费的。&lt;/p&gt;
 &lt;p&gt;这里列出一些自己已经开始付费的软件，算是一种推荐，也方便自己以后更换电脑后，找回某些软件的 licence。&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>第三届php开发者大会</title>
       <link>https://blog.codepanic.cn/post/php2017/</link>
       <pubDate>Wed, 14 Jun 2017 00:00:00 +0000</pubDate>
-      
       <guid>https://blog.codepanic.cn/post/php2017/</guid>
       <description>&lt;p&gt;PHP开发者大会结束，整体收获蛮大的，简单做一些总结。&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>3月份读书后感</title>
       <link>https://blog.codepanic.cn/post/201603-reading-review/</link>
       <pubDate>Fri, 08 Apr 2016 00:00:00 +0000</pubDate>
-      
       <guid>https://blog.codepanic.cn/post/201603-reading-review/</guid>
       <description>&lt;p&gt;我一直没有一个良好的阅读习惯。上一篇文章中提到，希望自己能够每个月写一个读书总结，其本意是希望自己能够养成一个良好的阅读习惯。我在写上一篇博客的时候，其实特别希望自己能够在一个月内至少完成一本书的阅读。&lt;/p&gt;
 &lt;p&gt;在三月份，我并没有去完成整本书的阅读，而且发现在最近的一段时间里，阅读的习惯有些被荒废的感觉，也懒得动手去继续自己的文字总结。但三月份，我主要的阅读集中在两本书：《高效能人士的7个习惯》和《Morden PHP》。当然，都还没有读完。&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>2016年2月-总结与展望</title>
       <link>https://blog.codepanic.cn/post/review-and-hope/</link>
       <pubDate>Sun, 28 Feb 2016 00:00:00 +0000</pubDate>
-      
       <guid>https://blog.codepanic.cn/post/review-and-hope/</guid>
       <description>&lt;p&gt;现在并不是一个写总结的好时机，毕竟不是年初年底，也并不是什么时间节点。书写以方面是为了整理整理思想，也留下点文字记录，用来时常提醒下自己；另一方面，是为了给自己一些规划，督促自己进步。&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>My Love Story</title>
       <link>https://blog.codepanic.cn/post/my-love-story/</link>
       <pubDate>Wed, 01 Jan 2014 20:14:33 +0800</pubDate>
-      
       <guid>https://blog.codepanic.cn/post/my-love-story/</guid>
       <description>&lt;p&gt;纪念曾经的美好&amp;hellip;&lt;/p&gt;</description>
     </item>
-    
   </channel>
 </rss>

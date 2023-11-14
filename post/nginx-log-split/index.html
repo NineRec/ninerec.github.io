@@ -26,7 +26,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.111.1 with theme even" />
+<meta name="generator" content="Hugo 0.120.4 with theme even" />
 
 
 <link rel="canonical" href="https://blog.codepanic.cn/post/nginx-log-split/" />
@@ -51,6 +51,7 @@ Nginx 的 access_log &amp; error_log，在漫长的岁月中不断增长。然�
 <meta property="og:url" content="https://blog.codepanic.cn/post/nginx-log-split/" /><meta property="article:section" content="post" />
 <meta property="article:published_time" content="2017-10-11T00:00:00+00:00" />
 <meta property="article:modified_time" content="2017-10-11T00:00:00+00:00" />
+
 <meta itemprop="name" content="Nginx 日志切分">
 <meta itemprop="description" content="抛出问题
 Nginx 的 access_log &amp; error_log，在漫长的岁月中不断增长。然而 nginx 日志并没有 rotate 功能。如果简单百度、Bing下，会发现在 N 多博客中，大家都在说写个定时脚本，然后通过脚本定时重命名日志、向 Nginx 主进程发送 USR1 信号，让 Nginx 重新加载日志文件，从而达到切割日志的效果。

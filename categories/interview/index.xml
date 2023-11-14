@@ -7,16 +7,15 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>NineRec</copyright>
-    <lastBuildDate>Tue, 01 Mar 2022 09:42:55 +0800</lastBuildDate><atom:link href="https://blog.codepanic.cn/categories/interview/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 01 Mar 2022 09:42:55 +0800</lastBuildDate>
+    <atom:link href="https://blog.codepanic.cn/categories/interview/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>作答反向面试-假设我有个【一人公司】</title>
       <link>https://blog.codepanic.cn/post/20220211-reverse-interview/</link>
       <pubDate>Tue, 01 Mar 2022 09:42:55 +0800</pubDate>
-      
       <guid>https://blog.codepanic.cn/post/20220211-reverse-interview/</guid>
       <description>&lt;p&gt;基于自己的过往经验，以我能 cover 的情况来回答下“反向面试”的各个问题。同时我会删掉部分问题，回答问题时加上和当前公司的情况对比。&lt;/p&gt;
 &lt;p&gt;反向面试来源： &lt;a href=&#34;https://github.com/yifeikong/reverse-interview-zh&#34;&gt;https://github.com/yifeikong/reverse-interview-zh&lt;/a&gt;&lt;/p&gt;</description>
     </item>
-    
   </channel>
 </rss>
