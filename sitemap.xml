@@ -2,14 +2,14 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://blog.codepanic.cn/post/kottke-choosing-leader/</loc>
+    <loc>https://blog.codepanic.cn/</loc>
     <lastmod>2023-11-14T12:30:44+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://blog.codepanic.cn/</loc>
+    <loc>https://blog.codepanic.cn/post/kottke-choosing-leader/</loc>
     <lastmod>2023-11-14T12:30:44+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
