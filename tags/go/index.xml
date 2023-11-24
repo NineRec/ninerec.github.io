@@ -6,16 +6,8 @@
     <description>Recent content in go on CodePanic</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <copyright>NineRec</copyright>
-    <lastBuildDate>Mon, 30 Sep 2019 09:19:44 +0800</lastBuildDate>
+    <lastBuildDate>Wed, 23 May 2018 18:11:45 +0800</lastBuildDate>
     <atom:link href="https://blog.codepanic.cn/tags/go/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Thoughts On Code Structure</title>
-      <link>https://blog.codepanic.cn/post/20190930-code-structure/</link>
-      <pubDate>Mon, 30 Sep 2019 09:19:44 +0800</pubDate>
-      <guid>https://blog.codepanic.cn/post/20190930-code-structure/</guid>
-      <description>&lt;p&gt;在前公司和现公司，都有纠结过代码目录结构的问题。&lt;/p&gt;</description>
-    </item>
     <item>
       <title>从零构建一个容器</title>
       <link>https://blog.codepanic.cn/post/building-container-from-scratch/</link>

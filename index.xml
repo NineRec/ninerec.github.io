@@ -6,7 +6,6 @@
     <description>Recent content on CodePanic</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <copyright>NineRec</copyright>
     <lastBuildDate>Tue, 14 Nov 2023 12:30:44 +0800</lastBuildDate>
     <atom:link href="https://blog.codepanic.cn/index.xml" rel="self" type="application/rss+xml" />
     <item>
@@ -14,7 +13,14 @@
       <link>https://blog.codepanic.cn/post/kottke-choosing-leader/</link>
       <pubDate>Tue, 14 Nov 2023 12:30:44 +0800</pubDate>
       <guid>https://blog.codepanic.cn/post/kottke-choosing-leader/</guid>
-      <description>内容发现自 Choosing a Leader Wisely 原文应该来自 The Marginalian Choose your leaders with wisdom and forethought. To be led by a coward is to be controlled by all that the coward fears. To be led by a fool is to be led by the opportunists who control the fool. To be led by a thief is to offer up your most precious</description>
+      <description>&lt;blockquote&gt;
+&lt;p&gt;Choose your leaders with wisdom and forethought.&lt;br&gt;
+To be led by a coward is to be controlled by all that the coward fears.&lt;br&gt;
+To be led by a fool is to be led by the opportunists who control the fool.&lt;br&gt;
+To be led by a thief is to offer up your most precious treasures to be stolen.&lt;br&gt;
+To be led by a liar is to ask to be told lies.&lt;br&gt;
+To be led by a tyrant is to sell yourself and those you love into slavery.&lt;/p&gt;
+&lt;/blockquote&gt;</description>
     </item>
     <item>
       <title>金融相关词汇 - ChatGPT 来解释</title>
@@ -36,7 +42,12 @@
       <link>https://blog.codepanic.cn/post/thoughts-of-working/</link>
       <pubDate>Mon, 21 Nov 2022 14:10:27 +0800</pubDate>
       <guid>https://blog.codepanic.cn/post/thoughts-of-working/</guid>
-      <description>当时觉得大家做事的氛围和风格还可以，可是后来就逐渐发现，企业文化这东西真不是那么容易改变的，尤其对于这样一艘巨轮来说，逐渐 Oracle 的一些缓慢和笨重</description>
+      <description>当时觉得大家做事的氛围和风格还可以，可是后来就逐渐发现，企业文化这东西真不是那么容易改变的，尤其对于这样一艘巨轮来说，逐渐 Oracle 的一些缓慢和笨重的老毛病就慢慢散播开来了。团队之间的扯皮越来越多，一年中的 code freeze 时间占比越来越大，org 中开始有越来越多的 program manager 专门催进度……我觉得自己做得不够果断的是，我确实看到了这些问题，却没有足够警醒和趁早行动（其实也是因为懒……）
+&amp;ndash; 四火的唠叨 《入职后一些零散的感受和思考》
+我自己也一直在想，找工作如何判断团队或者公司有工程师文化，是否是个高效的值得加入的团队呢？
+反向面试的时候，问一下，团队的上线发布流程是怎么样的，发布周期又是怎么样？code freeze大概都是什么时候？这都会是不错的问题。
+冗长的发布，开发工程师没有发布权限，基本上都是团队笨重的表现； 总是有code freeze，团队的迭代效率不会高，而且大概也是系统稳定性差带来的后果。 而我，已经经历了两家公司，每周固定一个发布窗口，发布由QA操作。有稍大一些的活动就会 code freeze。原因大概都是：
+周期性发布：因为线上的问题通常都伴随着发布，周期发布可以减少发布次数，发布的次数少了，出问题的概率也就少了； QA执行发布：开发和部署职能分离；确保QA在发布后可以执行线上的回归； Code Freeze：和周期性发布原因类似，通过避免发布来避免可能引入的新问题； 个人认为，团队流程上，重点应该是更敏捷更高质量的发布，不是单纯通过增加流程来确保发布的安全。个人也赞同有 code freeze，但是反对有任何的活动，都提前很早就开始 freeze。</description>
     </item>
     <item>
       <title>Feynman 的 12 个问题</title>
@@ -72,7 +83,13 @@
       <link>https://blog.codepanic.cn/quotes/</link>
       <pubDate>Mon, 14 Oct 2019 10:08:36 +0800</pubDate>
       <guid>https://blog.codepanic.cn/quotes/</guid>
-      <description>有意思的 Quotes The proper use of comments is to compensate for our failure to express ourself in code. &amp;ndash; Robert C. Martin What we need are notions，not notations. &amp;ndash; 高斯 It is not worth an intelligent man’s time to be in the majority. By definition, there are already enough people to do</description>
+      <description>有意思的 Quotes The proper use of comments is to compensate for our failure to express ourself in code.
+&amp;ndash; Robert C. Martin
+What we need are notions，not notations.
+&amp;ndash; 高斯
+It is not worth an intelligent man’s time to be in the majority. By definition, there are already enough people to do that.
+&amp;ndash; G. H. Hardy
+What you don’t use, you don’t pay for. And further: what you do use, you couldn’t hand code any better.</description>
     </item>
     <item>
       <title>Uber Go Style</title>
