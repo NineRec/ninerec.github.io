@@ -3,27 +3,41 @@
   
   <url>
     <loc>https://blog.codepanic.cn/categories/</loc>
-    <lastmod>2023-11-14T12:30:44+08:00</lastmod>
+    <lastmod>2024-02-18T18:08:58+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
     <loc>https://blog.codepanic.cn/</loc>
-    <lastmod>2023-11-14T12:30:44+08:00</lastmod>
+    <lastmod>2024-02-18T18:08:58+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://blog.codepanic.cn/post/kottke-choosing-leader/</loc>
-    <lastmod>2023-11-14T12:30:44+08:00</lastmod>
+    <loc>https://blog.codepanic.cn/categories/golang/</loc>
+    <lastmod>2024-02-18T18:08:58+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.codepanic.cn/post/golang-embedding-struct/</loc>
+    <lastmod>2024-02-18T18:08:58+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
     <loc>https://blog.codepanic.cn/post/</loc>
+    <lastmod>2024-02-18T18:08:58+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.codepanic.cn/post/kottke-choosing-leader/</loc>
     <lastmod>2023-11-14T12:30:44+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
@@ -137,13 +151,6 @@
   <url>
     <loc>https://blog.codepanic.cn/quotes/</loc>
     <lastmod>2021-02-07T10:08:36+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.codepanic.cn/categories/golang/</loc>
-    <lastmod>2021-02-07T09:19:44+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
