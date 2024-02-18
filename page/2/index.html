@@ -266,10 +266,11 @@
     <div class="post-summary">
       <h3 id="抛出问题">抛出问题</h3>
 <p>php 的 <code>== | === | isempty()</code> 等对变量的判断一直是比较烦人的。今天是遇到了一个关于 <code>==</code> 的简单问题：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-php" data-lang="php"><span style="display:flex;"><span><span style="color:#a6e22e">var_dump</span>(<span style="color:#e6db74">&#39;0&#39;</span> <span style="color:#f92672">==</span> <span style="color:#66d9ef">false</span>); <span style="color:#75715e">// true
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">var_dump</span>(<span style="color:#66d9ef">null</span> <span style="color:#f92672">==</span> <span style="color:#66d9ef">false</span>); <span style="color:#75715e">// true
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">var_dump</span>(<span style="color:#66d9ef">null</span> <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;0&#39;</span>); <span style="color:#75715e">// false
-</span></span></span></code></pre></div><p>问题来了，为什么 <code>null == '0'</code> 会是 false 呢？毕竟大家都会把 <code>0, '', '0', false, null, array()</code> 都当做“空”来解读。</p>
+<pre><code class="language-php">var_dump('0' == false); // true
+var_dump(null == false); // true
+var_dump(null == '0'); // false
+</code></pre>
+<p>问题来了，为什么 <code>null == '0'</code> 会是 false 呢？毕竟大家都会把 <code>0, '', '0', false, null, array()</code> 都当做“空”来解读。</p>
     </div>
     <div class="read-more">
       <a href="/post/null-equal-0/" class="read-more-link">阅读更多</a>

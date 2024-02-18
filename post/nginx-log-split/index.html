@@ -172,7 +172,7 @@ Nginx 的 access_log &amp; error_log，在漫长的岁月中不断增长。然�
 <p>其实这时候就是体现不同的搜索引擎在解决技术问题时的能力了。Google 简单搜索了下，找到了如下文章： <a href="https://www.digitalocean.com/community/tutorials/how-to-configure-logging-and-log-rotation-in-nginx-on-an-ubuntu-vps">How To Configure Logging and Log Rotation in Nginx on an Ubuntu VPS</a></p>
 <p>关注 <code>Log Rotation</code> 那段，可以发现一个很好用的工具 <code>logrotate</code>。简单在系统安装后，应该是自带了 Nginx 日志切割的配置文件，根据自己的环境简单配置后，每日就可以安心的看到切分好的日志了，而且还会删掉 N 天前的日志，也不用担心磁盘爆了。</p>
 <p>我的配置：</p>
-<pre tabindex="0"><code>/var/log/nginx/*log {
+<pre><code>/var/log/nginx/*log {
     create 0644 nginx nginx
     daily
     rotate 10

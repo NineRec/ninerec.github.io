@@ -157,38 +157,39 @@
 <p>花了些时间写出示例代码，其实也就找到了问题的关键词，剩下的 GPT 就可以帮忙解释了。关键词是： Embedded Struct。</p>
 <h2 id="代码示例">代码示例</h2>
 <p>Playground link: <a href="https://go.dev/play/p/Y457QhV-0NJ">https://go.dev/play/p/Y457QhV-0NJ</a></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#f92672">package</span> <span style="color:#a6e22e">main</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> (
-</span></span><span style="display:flex;"><span>	<span style="color:#e6db74">&#34;fmt&#34;</span>
-</span></span><span style="display:flex;"><span>)
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">type</span> <span style="color:#a6e22e">Foo</span> <span style="color:#66d9ef">struct</span> {
-</span></span><span style="display:flex;"><span>}
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">func</span> (<span style="color:#a6e22e">m</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">Foo</span>) <span style="color:#a6e22e">DoNothing</span>() {
-</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#e6db74">&#34;Fine here&#34;</span>)
-</span></span><span style="display:flex;"><span>}
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">type</span> <span style="color:#a6e22e">EmbeddingFoo</span> <span style="color:#66d9ef">struct</span> {
-</span></span><span style="display:flex;"><span>	<span style="color:#f92672">*</span><span style="color:#a6e22e">Foo</span>
-</span></span><span style="display:flex;"><span>}
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">main</span>() {
-</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">varFoo</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">Foo</span>
-</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">varEFoo</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">EmbeddingFoo</span>
-</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">newEFoo</span> <span style="color:#f92672">:=</span> new(<span style="color:#a6e22e">EmbeddingFoo</span>)
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#e6db74">&#34;VarFoo: &#34;</span>, <span style="color:#a6e22e">varFoo</span>)
-</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#e6db74">&#34;VarEFoo: &#34;</span>, <span style="color:#a6e22e">varEFoo</span>)
-</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#e6db74">&#34;NewEFoo: &#34;</span>, <span style="color:#a6e22e">newEFoo</span>)
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">varFoo</span>.<span style="color:#a6e22e">DoNothing</span>()
-</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">newEFoo</span>.<span style="color:#a6e22e">DoNothing</span>()
-</span></span><span style="display:flex;"><span>	<span style="color:#75715e">// varEFoo.DoNothing() // will panic here
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	<span style="color:#75715e">// varEFoo.Foo.DoNothing() // same as above
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>}
-</span></span></code></pre></div><h2 id="gpt-的解释">GPT 的解释</h2>
+<pre><code class="language-go">package main
+
+import (
+	&quot;fmt&quot;
+)
+
+type Foo struct {
+}
+
+func (m *Foo) DoNothing() {
+	fmt.Println(&quot;Fine here&quot;)
+}
+
+type EmbeddingFoo struct {
+	*Foo
+}
+
+func main() {
+	var varFoo *Foo
+	var varEFoo *EmbeddingFoo
+	newEFoo := new(EmbeddingFoo)
+
+	fmt.Println(&quot;VarFoo: &quot;, varFoo)
+	fmt.Println(&quot;VarEFoo: &quot;, varEFoo)
+	fmt.Println(&quot;NewEFoo: &quot;, newEFoo)
+
+	varFoo.DoNothing()
+	newEFoo.DoNothing()
+	// varEFoo.DoNothing() // will panic here
+	// varEFoo.Foo.DoNothing() // same as above
+}
+</code></pre>
+<h2 id="gpt-的解释">GPT 的解释</h2>
 <p>The last two commented lines in the Go code will cause a panic because <code>varEFoo</code> is a nil pointer to an <code>EmbeddingFoo</code> struct, which itself embeds a pointer to a <code>Foo</code> struct. When you try to call a method on a nil pointer, Go will panic at runtime.</p>
 <p>Here&rsquo;s a step-by-step explanation in pseudocode:</p>
 <ol>
@@ -200,14 +201,15 @@
 <li><code>varEFoo.Foo.DoNothing()</code> will also panic because you are trying to dereference <code>Foo</code> on a nil <code>varEFoo</code>.</li>
 </ol>
 <p>Now, here&rsquo;s the explanation in Go comments:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#75715e">// varEFoo is a nil pointer to an EmbeddingFoo, which means it points to no actual memory allocation.
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// Calling a method on a nil pointer will cause a runtime panic.
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// varEFoo.DoNothing() // will panic here
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e">// Even though DoNothing() can be called on a nil *Foo receiver,
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// varEFoo itself is nil, so attempting to access its embedded Foo (which is also nil) will cause a panic.
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// varEFoo.Foo.DoNothing() // same as above
-</span></span></span></code></pre></div><p>Remember, in Go, you can call methods on nil struct pointers if the method does not access any struct fields. However, if the struct pointer itself is nil, dereferencing it in any way, such as calling a method, will cause a runtime panic.</p>
+<pre><code class="language-go">// varEFoo is a nil pointer to an EmbeddingFoo, which means it points to no actual memory allocation.
+// Calling a method on a nil pointer will cause a runtime panic.
+// varEFoo.DoNothing() // will panic here
+
+// Even though DoNothing() can be called on a nil *Foo receiver,
+// varEFoo itself is nil, so attempting to access its embedded Foo (which is also nil) will cause a panic.
+// varEFoo.Foo.DoNothing() // same as above
+</code></pre>
+<p>Remember, in Go, you can call methods on nil struct pointers if the method does not access any struct fields. However, if the struct pointer itself is nil, dereferencing it in any way, such as calling a method, will cause a runtime panic.</p>
 <p>对于 varFoo 和 varEFoo 都是 nil pointer，调用 <code>DoNothing()</code> 情况不同的更详细的解释如下：</p>
 <ul>
 <li>

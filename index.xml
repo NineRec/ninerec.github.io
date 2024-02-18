@@ -161,10 +161,11 @@ What you don’t use, you don’t pay for. And further: what you do use, you cou
       <guid>https://blog.codepanic.cn/post/null-equal-0/</guid>
       <description>&lt;h3 id=&#34;抛出问题&#34;&gt;抛出问题&lt;/h3&gt;
 &lt;p&gt;php 的 &lt;code&gt;== | === | isempty()&lt;/code&gt; 等对变量的判断一直是比较烦人的。今天是遇到了一个关于 &lt;code&gt;==&lt;/code&gt; 的简单问题：&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-php&#34; data-lang=&#34;php&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;var_dump&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;0&amp;#39;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;==&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;false&lt;/span&gt;); &lt;span style=&#34;color:#75715e&#34;&gt;// true
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;var_dump&lt;/span&gt;(&lt;span style=&#34;color:#66d9ef&#34;&gt;null&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;==&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;false&lt;/span&gt;); &lt;span style=&#34;color:#75715e&#34;&gt;// true
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;var_dump&lt;/span&gt;(&lt;span style=&#34;color:#66d9ef&#34;&gt;null&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;==&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;0&amp;#39;&lt;/span&gt;); &lt;span style=&#34;color:#75715e&#34;&gt;// false
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;问题来了，为什么 &lt;code&gt;null == &#39;0&#39;&lt;/code&gt; 会是 false 呢？毕竟大家都会把 &lt;code&gt;0, &#39;&#39;, &#39;0&#39;, false, null, array()&lt;/code&gt; 都当做“空”来解读。&lt;/p&gt;</description>
+&lt;pre&gt;&lt;code class=&#34;language-php&#34;&gt;var_dump(&#39;0&#39; == false); // true
+var_dump(null == false); // true
+var_dump(null == &#39;0&#39;); // false
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;问题来了，为什么 &lt;code&gt;null == &#39;0&#39;&lt;/code&gt; 会是 false 呢？毕竟大家都会把 &lt;code&gt;0, &#39;&#39;, &#39;0&#39;, false, null, array()&lt;/code&gt; 都当做“空”来解读。&lt;/p&gt;</description>
     </item>
     <item>
       <title>我的付费应用列表</title>
