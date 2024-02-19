@@ -6,8 +6,16 @@
     <description>Recent content on CodePanic</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sun, 18 Feb 2024 18:08:58 +0800</lastBuildDate>
+    <lastBuildDate>Mon, 19 Feb 2024 11:46:18 +0800</lastBuildDate>
     <atom:link href="https://blog.codepanic.cn/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>2023 年度总结</title>
+      <link>https://blog.codepanic.cn/post/2023-yearly-review/</link>
+      <pubDate>Mon, 19 Feb 2024 11:46:18 +0800</pubDate>
+      <guid>https://blog.codepanic.cn/post/2023-yearly-review/</guid>
+      <description>&lt;p&gt;2023 年最大的变化，就是有了娃，有了车。娃让生活的味道更浓了，车让自己的出行半径扩大了。&lt;/p&gt;
+&lt;p&gt;反观工作，有变化但是依然不那么大，乐观点看，算是稳步中有一定的进步吧。&lt;/p&gt;</description>
+    </item>
     <item>
       <title>Golang Embedding Struct</title>
       <link>https://blog.codepanic.cn/post/golang-embedding-struct/</link>
