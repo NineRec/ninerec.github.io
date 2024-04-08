@@ -1,28 +1,33 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>golang on CodePanic</title>
+    <title>Golang on CodePanic</title>
     <link>https://blog.codepanic.cn/categories/golang/</link>
-    <description>Recent content in golang on CodePanic</description>
+    <description>Recent content in Golang on CodePanic</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sun, 18 Feb 2024 18:08:58 +0800</lastBuildDate>
+    <lastBuildDate>Mon, 08 Apr 2024 10:56:28 +0800</lastBuildDate>
     <atom:link href="https://blog.codepanic.cn/categories/golang/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Why Go Atomic Not Using Generics</title>
+      <link>https://blog.codepanic.cn/post/go-atomic-not-using-generics/</link>
+      <pubDate>Mon, 08 Apr 2024 10:56:28 +0800</pubDate>
+      <guid>https://blog.codepanic.cn/post/go-atomic-not-using-generics/</guid>
+      <description>&lt;p&gt;一个很简单的思考题： 为什么 Golang 的 &lt;code&gt;sync/atomic&lt;/code&gt; 包没有用范型的方式，而是直接创建了多个类型 &lt;code&gt;atomic.Bool&lt;/code&gt;, &lt;code&gt;atomic.Int32&lt;/code&gt; etc?&lt;/p&gt;</description>
+    </item>
     <item>
       <title>Golang Embedding Struct</title>
       <link>https://blog.codepanic.cn/post/golang-embedding-struct/</link>
       <pubDate>Sun, 18 Feb 2024 18:08:58 +0800</pubDate>
       <guid>https://blog.codepanic.cn/post/golang-embedding-struct/</guid>
-      <description>&lt;p&gt;公司代码遇到了 nil pointer 的 panic，结果第一眼看过去，是 protobuf 生成的 GetXXX 风格的代码。&lt;/p&gt;
-&lt;p&gt;花了些时间写出示例代码，其实也就找到了问题的关键词，剩下的 GPT 就可以帮忙解释了。关键词是： Embedded Struct。&lt;/p&gt;</description>
+      <description>&lt;p&gt;公司代码遇到了 nil pointer 的 panic，结果第一眼看过去，是 protobuf 生成的 GetXXX 风格的代码。&lt;/p&gt;&#xA;&lt;p&gt;花了些时间写出示例代码，其实也就找到了问题的关键词，剩下的 GPT 就可以帮忙解释了。关键词是： Embedded Struct。&lt;/p&gt;</description>
     </item>
     <item>
       <title>Uber Go Style</title>
       <link>https://blog.codepanic.cn/post/uber-go-stype/</link>
       <pubDate>Mon, 14 Oct 2019 09:57:06 +0800</pubDate>
       <guid>https://blog.codepanic.cn/post/uber-go-stype/</guid>
-      <description>&lt;p&gt;围观了《Uber Go 语言编码规范》，记录一些觉得有意思的部分。&lt;/p&gt;
-&lt;p&gt;Github 链接: &lt;a href=&#34;https://github.com/uber-go/guide&#34;&gt;https://github.com/uber-go/guide&lt;/a&gt;&lt;/p&gt;</description>
+      <description>&lt;p&gt;围观了《Uber Go 语言编码规范》，记录一些觉得有意思的部分。&lt;/p&gt;&#xA;&lt;p&gt;Github 链接: &lt;a href=&#34;https://github.com/uber-go/guide&#34;&gt;https://github.com/uber-go/guide&lt;/a&gt;&lt;/p&gt;</description>
     </item>
     <item>
       <title>Thoughts On Code Structure</title>

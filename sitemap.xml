@@ -2,21 +2,42 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://blog.codepanic.cn/post/2023-yearly-review/</loc>
-    <lastmod>2024-02-19T11:46:18+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
     <loc>https://blog.codepanic.cn/categories/</loc>
-    <lastmod>2024-02-19T11:46:18+08:00</lastmod>
+    <lastmod>2024-04-08T10:56:28+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
     <loc>https://blog.codepanic.cn/</loc>
+    <lastmod>2024-04-08T10:56:28+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.codepanic.cn/categories/golang/</loc>
+    <lastmod>2024-04-08T10:56:28+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.codepanic.cn/post/</loc>
+    <lastmod>2024-04-08T10:56:28+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.codepanic.cn/post/go-atomic-not-using-generics/</loc>
+    <lastmod>2024-04-08T10:56:28+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.codepanic.cn/post/2023-yearly-review/</loc>
     <lastmod>2024-02-19T11:46:18+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
@@ -37,13 +58,6 @@
   </url>
   
   <url>
-    <loc>https://blog.codepanic.cn/post/</loc>
-    <lastmod>2024-02-19T11:46:18+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
     <loc>https://blog.codepanic.cn/tags/review/</loc>
     <lastmod>2024-02-19T11:46:18+08:00</lastmod>
     <changefreq>weekly</changefreq>
@@ -53,13 +67,6 @@
   <url>
     <loc>https://blog.codepanic.cn/tags/</loc>
     <lastmod>2024-02-19T11:46:18+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.codepanic.cn/categories/golang/</loc>
-    <lastmod>2024-02-18T18:08:58+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>

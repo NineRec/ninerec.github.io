@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>php on CodePanic</title>
+    <title>Php on CodePanic</title>
     <link>https://blog.codepanic.cn/categories/php/</link>
-    <description>Recent content in php on CodePanic</description>
+    <description>Recent content in Php on CodePanic</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <lastBuildDate>Tue, 01 Aug 2017 00:00:00 +0000</lastBuildDate>
@@ -13,13 +13,7 @@
       <link>https://blog.codepanic.cn/post/null-equal-0/</link>
       <pubDate>Tue, 01 Aug 2017 00:00:00 +0000</pubDate>
       <guid>https://blog.codepanic.cn/post/null-equal-0/</guid>
-      <description>&lt;h3 id=&#34;抛出问题&#34;&gt;抛出问题&lt;/h3&gt;
-&lt;p&gt;php 的 &lt;code&gt;== | === | isempty()&lt;/code&gt; 等对变量的判断一直是比较烦人的。今天是遇到了一个关于 &lt;code&gt;==&lt;/code&gt; 的简单问题：&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&#34;language-php&#34;&gt;var_dump(&#39;0&#39; == false); // true
-var_dump(null == false); // true
-var_dump(null == &#39;0&#39;); // false
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;问题来了，为什么 &lt;code&gt;null == &#39;0&#39;&lt;/code&gt; 会是 false 呢？毕竟大家都会把 &lt;code&gt;0, &#39;&#39;, &#39;0&#39;, false, null, array()&lt;/code&gt; 都当做“空”来解读。&lt;/p&gt;</description>
+      <description>&lt;h3 id=&#34;抛出问题&#34;&gt;抛出问题&lt;/h3&gt;&#xA;&lt;p&gt;php 的 &lt;code&gt;== | === | isempty()&lt;/code&gt; 等对变量的判断一直是比较烦人的。今天是遇到了一个关于 &lt;code&gt;==&lt;/code&gt; 的简单问题：&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code class=&#34;language-php&#34;&gt;var_dump(&#39;0&#39; == false); // true&#xA;var_dump(null == false); // true&#xA;var_dump(null == &#39;0&#39;); // false&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;问题来了，为什么 &lt;code&gt;null == &#39;0&#39;&lt;/code&gt; 会是 false 呢？毕竟大家都会把 &lt;code&gt;0, &#39;&#39;, &#39;0&#39;, false, null, array()&lt;/code&gt; 都当做“空”来解读。&lt;/p&gt;</description>
     </item>
     <item>
       <title>第三届php开发者大会</title>

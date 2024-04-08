@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <title>2022 年度总结 - CodePanic</title>
+  <title>Why Go Atomic Not Using Generics - CodePanic</title>
   <meta name="renderer" content="webkit" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 
@@ -16,7 +16,7 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
 
 
-<meta name="author" content="NineRec" /><meta name="description" content="2022 年对我而言，是个在技术和职业上成长缓慢的一年。不过即使在这样的一个年份里，个人生活依然是发生了很大的变化。
+<meta name="author" content="NineRec" /><meta name="description" content="一个很简单的思考题： 为什么 Golang 的 sync/atomic 包没有用范型的方式，而是直接创建了多个类型 atomic.Bool, atomic.Int32 etc?
 " /><meta name="keywords" content="NineRec, code panic, blog" />
 
 
@@ -27,7 +27,7 @@
 <meta name="generator" content="Hugo 0.124.1 with theme even" />
 
 
-<link rel="canonical" href="https://blog.codepanic.cn/post/2022-yearly-review/" />
+<link rel="canonical" href="https://blog.codepanic.cn/post/go-atomic-not-using-generics/" />
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
@@ -40,18 +40,18 @@
 <link href="/lib/fancybox/jquery.fancybox-3.1.20.min.css" rel="stylesheet">
 
 
-<meta property="og:title" content="2022 年度总结" />
-<meta property="og:description" content="2022 年对我而言，是个在技术和职业上成长缓慢的一年。不过即使在这样的一个年份里，个人生活依然是发生了很大的变化。" />
+<meta property="og:title" content="Why Go Atomic Not Using Generics" />
+<meta property="og:description" content="一个很简单的思考题： 为什么 Golang 的 sync/atomic 包没有用范型的方式，而是直接创建了多个类型 atomic.Bool, atomic.Int32 etc?" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://blog.codepanic.cn/post/2022-yearly-review/" /><meta property="article:section" content="post" />
-<meta property="article:published_time" content="2023-01-04T16:12:28+08:00" />
-<meta property="article:modified_time" content="2023-01-04T16:12:28+08:00" />
-<meta itemprop="name" content="2022 年度总结">
-<meta itemprop="description" content="2022 年对我而言，是个在技术和职业上成长缓慢的一年。不过即使在这样的一个年份里，个人生活依然是发生了很大的变化。"><meta itemprop="datePublished" content="2023-01-04T16:12:28+08:00" />
-<meta itemprop="dateModified" content="2023-01-04T16:12:28+08:00" />
-<meta itemprop="wordCount" content="50">
-<meta itemprop="keywords" content="essay,review," /><meta name="twitter:card" content="summary"/><meta name="twitter:title" content="2022 年度总结"/>
-<meta name="twitter:description" content="2022 年对我而言，是个在技术和职业上成长缓慢的一年。不过即使在这样的一个年份里，个人生活依然是发生了很大的变化。"/>
+<meta property="og:url" content="https://blog.codepanic.cn/post/go-atomic-not-using-generics/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2024-04-08T10:56:28+08:00" />
+<meta property="article:modified_time" content="2024-04-08T10:56:28+08:00" />
+<meta itemprop="name" content="Why Go Atomic Not Using Generics">
+<meta itemprop="description" content="一个很简单的思考题： 为什么 Golang 的 sync/atomic 包没有用范型的方式，而是直接创建了多个类型 atomic.Bool, atomic.Int32 etc?"><meta itemprop="datePublished" content="2024-04-08T10:56:28+08:00" />
+<meta itemprop="dateModified" content="2024-04-08T10:56:28+08:00" />
+<meta itemprop="wordCount" content="54">
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/><meta name="twitter:title" content="Why Go Atomic Not Using Generics"/>
+<meta name="twitter:description" content="一个很简单的思考题： 为什么 Golang 的 sync/atomic 包没有用范型的方式，而是直接创建了多个类型 atomic.Bool, atomic.Int32 etc?"/>
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -124,12 +124,12 @@
           <article class="post">
     
     <header class="post-header">
-      <h1 class="post-title">2022 年度总结</h1>
+      <h1 class="post-title">Why Go Atomic Not Using Generics</h1>
 
       <div class="post-meta">
-        <span class="post-time"> 2023-01-04 </span>
+        <span class="post-time"> 2024-04-08 </span>
         <div class="post-category">
-            <a href="/categories/essay/"> essay </a>
+            <a href="/categories/golang/"> golang </a>
             </div>
         
       </div>
@@ -138,35 +138,25 @@
     <div class="post-toc" id="post-toc">
   <h2 class="post-toc-title">文章目录</h2>
   <div class="post-toc-content always-active">
-    <nav id="TableOfContents">
-  <ul>
-    <li>
-      <ul>
-        <li><a href="#技术与职业上的退步">技术与职业上的退步</a></li>
-        <li><a href="#生活的巨大变化">生活的巨大变化</a></li>
-      </ul>
-    </li>
-  </ul>
-</nav>
+    <nav id="TableOfContents"></nav>
   </div>
 </div>
     <div class="post-content">
-      <p>2022 年对我而言，是个在技术和职业上成长缓慢的一年。不过即使在这样的一个年份里，个人生活依然是发生了很大的变化。</p>
-<h3 id="技术与职业上的退步">技术与职业上的退步</h3>
-<p>2022 年值得一提的是，我一直在使用 RSS 阅读器 - NetNewsWire 来订阅和阅读博客文章。而且从 12 月份开始，已经可以做到日清了。</p>
-<p>在 22 年，有再一次的尝试学习 Rust，并且因此而关注到了很喜欢的博主 <a href="https://fasterthanli.me/">fasterthanli.me</a>。他的每一篇文章都巨长无比，但又质量奇高。</p>
-<p>但是在其他方面，例如工作和工作之外的 Coding 上，22 年是个大退步。22 年 5 月份加入当前的公司。在公司工作中，虽然依然会跟进线上问题，做 code review，但编码的比例进一步下降。Gitlab 的 22 年 commit 地图惨不忍睹。总体上，我会认为现在的这家公司不论业务还是技术，并不让自己兴奋。</p>
-<p><img src="/static/gitlab-commits-2023-01-01.png" alt="2022 gitlab commits"></p>
-<p>在 Github 上，今年只有可怜的 4 天有 commits。除了在学极客时间的《Rust 第一课》的时候写的部分代码外，其他都是 Blog 的 commits。</p>
-<p><img src="/static/github-commits-2022.png" alt="2022 github commits"></p>
-<h3 id="生活的巨大变化">生活的巨大变化</h3>
-<p>2022 年对于我的个人生活而言，倒是充满了各种大事件。</p>
+      <p>一个很简单的思考题： 为什么 Golang 的 <code>sync/atomic</code> 包没有用范型的方式，而是直接创建了多个类型 <code>atomic.Bool</code>, <code>atomic.Int32</code> etc?</p>
+<p>答案其实也很简单，rsc 有在 github issue 里回复过，总结而言：</p>
+<ol>
+<li>不同类型的方法是不同的。例如 Bool 和 Pointer[T] 类型不应该有 Add 方法,而整数类型应该有Add方法。泛型无法实现这种不同类型不同的方法。</li>
+<li>没有办法写一个通用的约束来限制这些类型。例如写一个约束 <code>atomic.Val[*byte]</code> 需要写 <code>[T ~*E, E any]</code>，但是无法同时添加其他类型。</li>
+</ol>
 <ul>
-<li>亲人在年初去世，而且因为疫情原因，安置过程也很坎坷；</li>
-<li>自己在年中换了城市，从北方换到了差异巨大的南方城市；</li>
-<li>9 月份开始婚纱照，10 月份结婚和发现老婆怀孕了；</li>
+<li>以及如果使用泛型，类型推断会更加复杂。例如如果 T 推断为 bool，就不知道 E 是什么类型了。</li>
 </ul>
-<p>或许可以说，我的生活像是被按下了加速键。而且年末的这段时间，还进入了婆媳共处的阶段，也是颇为难搞定。</p>
+<ol start="3">
+<li>使用泛型的调用代码会更加重复冗长，例如atomic.Int[int32],而直接用atomic.Int32更简洁。</li>
+<li>泛型函数体内实现也会更加复杂。</li>
+</ol>
+<p>rsc 的总结是：The non-generic API is simpler to explain and easier to use.</p>
+<p>Refer: <a href="https://github.com/golang/go/issues/50860">sync/atomic: add typed atomic values</a></p>
     </div>
 
     <div class="post-copyright">
@@ -177,7 +167,7 @@
   <p class="copyright-item">
     <span class="item-title">上次更新</span>
     <span class="item-content">
-        2023-01-04
+        2024-04-08
         
     </span>
   </p>
@@ -188,18 +178,11 @@
   </p>
 </div>
 <footer class="post-footer">
-      <div class="post-tags">
-          <a href="/tags/essay/">essay</a>
-          <a href="/tags/review/">review</a>
-          </div>
+      
       <nav class="post-nav">
-        <a class="prev" href="/post/financial-vocab-from-chatgpt/">
-            <i class="iconfont icon-left"></i>
-            <span class="prev-text nav-default">金融相关词汇 - ChatGPT 来解释</span>
-            <span class="prev-text nav-mobile">上一篇</span>
-          </a>
-        <a class="next" href="/post/thoughts-of-working/">
-            <span class="next-text nav-default">关于好工作的思考片段</span>
+        
+        <a class="next" href="/post/2023-yearly-review/">
+            <span class="next-text nav-default">2023 年度总结</span>
             <span class="next-text nav-mobile">下一篇</span>
             <i class="iconfont icon-right"></i>
           </a>

@@ -6,45 +6,42 @@
     <description>Recent content on CodePanic</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Mon, 19 Feb 2024 11:46:18 +0800</lastBuildDate>
+    <lastBuildDate>Mon, 08 Apr 2024 10:56:28 +0800</lastBuildDate>
     <atom:link href="https://blog.codepanic.cn/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Why Go Atomic Not Using Generics</title>
+      <link>https://blog.codepanic.cn/post/go-atomic-not-using-generics/</link>
+      <pubDate>Mon, 08 Apr 2024 10:56:28 +0800</pubDate>
+      <guid>https://blog.codepanic.cn/post/go-atomic-not-using-generics/</guid>
+      <description>&lt;p&gt;一个很简单的思考题： 为什么 Golang 的 &lt;code&gt;sync/atomic&lt;/code&gt; 包没有用范型的方式，而是直接创建了多个类型 &lt;code&gt;atomic.Bool&lt;/code&gt;, &lt;code&gt;atomic.Int32&lt;/code&gt; etc?&lt;/p&gt;</description>
+    </item>
     <item>
       <title>2023 年度总结</title>
       <link>https://blog.codepanic.cn/post/2023-yearly-review/</link>
       <pubDate>Mon, 19 Feb 2024 11:46:18 +0800</pubDate>
       <guid>https://blog.codepanic.cn/post/2023-yearly-review/</guid>
-      <description>&lt;p&gt;2023 年最大的变化，就是有了娃，有了车。娃让生活的味道更浓了，车让自己的出行半径扩大了。&lt;/p&gt;
-&lt;p&gt;反观工作，有变化但是依然不那么大，乐观点看，算是稳步中有一定的进步吧。&lt;/p&gt;</description>
+      <description>&lt;p&gt;2023 年最大的变化，就是有了娃，有了车。娃让生活的味道更浓了，车让自己的出行半径扩大了。&lt;/p&gt;&#xA;&lt;p&gt;反观工作，有变化但是依然不那么大，乐观点看，算是稳步中有一定的进步吧。&lt;/p&gt;</description>
     </item>
     <item>
       <title>Golang Embedding Struct</title>
       <link>https://blog.codepanic.cn/post/golang-embedding-struct/</link>
       <pubDate>Sun, 18 Feb 2024 18:08:58 +0800</pubDate>
       <guid>https://blog.codepanic.cn/post/golang-embedding-struct/</guid>
-      <description>&lt;p&gt;公司代码遇到了 nil pointer 的 panic，结果第一眼看过去，是 protobuf 生成的 GetXXX 风格的代码。&lt;/p&gt;
-&lt;p&gt;花了些时间写出示例代码，其实也就找到了问题的关键词，剩下的 GPT 就可以帮忙解释了。关键词是： Embedded Struct。&lt;/p&gt;</description>
+      <description>&lt;p&gt;公司代码遇到了 nil pointer 的 panic，结果第一眼看过去，是 protobuf 生成的 GetXXX 风格的代码。&lt;/p&gt;&#xA;&lt;p&gt;花了些时间写出示例代码，其实也就找到了问题的关键词，剩下的 GPT 就可以帮忙解释了。关键词是： Embedded Struct。&lt;/p&gt;</description>
     </item>
     <item>
       <title>Kottke Choosing Leader</title>
       <link>https://blog.codepanic.cn/post/kottke-choosing-leader/</link>
       <pubDate>Tue, 14 Nov 2023 12:30:44 +0800</pubDate>
       <guid>https://blog.codepanic.cn/post/kottke-choosing-leader/</guid>
-      <description>&lt;blockquote&gt;
-&lt;p&gt;Choose your leaders with wisdom and forethought.&lt;br&gt;
-To be led by a coward is to be controlled by all that the coward fears.&lt;br&gt;
-To be led by a fool is to be led by the opportunists who control the fool.&lt;br&gt;
-To be led by a thief is to offer up your most precious treasures to be stolen.&lt;br&gt;
-To be led by a liar is to ask to be told lies.&lt;br&gt;
-To be led by a tyrant is to sell yourself and those you love into slavery.&lt;/p&gt;
-&lt;/blockquote&gt;</description>
+      <description>&lt;blockquote&gt;&#xA;&lt;p&gt;Choose your leaders with wisdom and forethought.&lt;br&gt;&#xA;To be led by a coward is to be controlled by all that the coward fears.&lt;br&gt;&#xA;To be led by a fool is to be led by the opportunists who control the fool.&lt;br&gt;&#xA;To be led by a thief is to offer up your most precious treasures to be stolen.&lt;br&gt;&#xA;To be led by a liar is to ask to be told lies.&lt;br&gt;&#xA;To be led by a tyrant is to sell yourself and those you love into slavery.&lt;/p&gt;&#xA;&lt;/blockquote&gt;</description>
     </item>
     <item>
       <title>金融相关词汇 - ChatGPT 来解释</title>
       <link>https://blog.codepanic.cn/post/financial-vocab-from-chatgpt/</link>
       <pubDate>Wed, 19 Apr 2023 13:40:10 +0800</pubDate>
       <guid>https://blog.codepanic.cn/post/financial-vocab-from-chatgpt/</guid>
-      <description>&lt;p&gt;3 月份在看墨腾的一份报告的时候有遇到很多金融财经相关词汇，顺手让 ChatGPT 解释了一下。&lt;/p&gt;
-&lt;p&gt;所有的内容更适合做个参考，是否严谨需要自行判断了。&lt;/p&gt;</description>
+      <description>&lt;p&gt;3 月份在看墨腾的一份报告的时候有遇到很多金融财经相关词汇，顺手让 ChatGPT 解释了一下。&lt;/p&gt;&#xA;&lt;p&gt;所有的内容更适合做个参考，是否严谨需要自行判断了。&lt;/p&gt;</description>
     </item>
     <item>
       <title>2022 年度总结</title>
@@ -58,12 +55,7 @@ To be led by a tyrant is to sell yourself and those you love into slavery.&lt;/p
       <link>https://blog.codepanic.cn/post/thoughts-of-working/</link>
       <pubDate>Mon, 21 Nov 2022 14:10:27 +0800</pubDate>
       <guid>https://blog.codepanic.cn/post/thoughts-of-working/</guid>
-      <description>当时觉得大家做事的氛围和风格还可以，可是后来就逐渐发现，企业文化这东西真不是那么容易改变的，尤其对于这样一艘巨轮来说，逐渐 Oracle 的一些缓慢和笨重的老毛病就慢慢散播开来了。团队之间的扯皮越来越多，一年中的 code freeze 时间占比越来越大，org 中开始有越来越多的 program manager 专门催进度……我觉得自己做得不够果断的是，我确实看到了这些问题，却没有足够警醒和趁早行动（其实也是因为懒……）
-&amp;ndash; 四火的唠叨 《入职后一些零散的感受和思考》
-我自己也一直在想，找工作如何判断团队或者公司有工程师文化，是否是个高效的值得加入的团队呢？
-反向面试的时候，问一下，团队的上线发布流程是怎么样的，发布周期又是怎么样？code freeze大概都是什么时候？这都会是不错的问题。
-冗长的发布，开发工程师没有发布权限，基本上都是团队笨重的表现； 总是有code freeze，团队的迭代效率不会高，而且大概也是系统稳定性差带来的后果。 而我，已经经历了两家公司，每周固定一个发布窗口，发布由QA操作。有稍大一些的活动就会 code freeze。原因大概都是：
-周期性发布：因为线上的问题通常都伴随着发布，周期发布可以减少发布次数，发布的次数少了，出问题的概率也就少了； QA执行发布：开发和部署职能分离；确保QA在发布后可以执行线上的回归； Code Freeze：和周期性发布原因类似，通过避免发布来避免可能引入的新问题； 个人认为，团队流程上，重点应该是更敏捷更高质量的发布，不是单纯通过增加流程来确保发布的安全。个人也赞同有 code freeze，但是反对有任何的活动，都提前很早就开始 freeze。</description>
+      <description>当时觉得大家做事的氛围和风格还可以，可是后来就逐渐发现，企业文化这东西真不是那么容易改变的，尤其对于这样一艘巨轮来说，逐渐 Oracle 的一些缓慢和笨重的老毛病就慢慢散播开来了。团队之间的扯皮越来越多，一年中的 code freeze 时间占比越来越大，org 中开始有越来越多的 program manager 专门催进度……我觉得自己做得不够果断的是，我确实看到了这些问题，却没有足够警醒和趁早行动（其实也是因为懒……）&#xA;&amp;ndash; 四火的唠叨 《入职后一些零散的感受和思考》&#xA;我自己也一直在想，找工作如何判断团队或者公司有工程师文化，是否是个高效的值得加入的团队呢？&#xA;反向面试的时候，问一下，团队的上线发布流程是怎么样的，发布周期又是怎么样？code freeze大概都是什么时候？这都会是不错的问题。&#xA;冗长的发布，开发工程师没有发布权限，基本上都是团队笨重的表现； 总是有code freeze，团队的迭代效率不会高，而且大概也是系统稳定性差带来的后果。 而我，已经经历了两家公司，每周固定一个发布窗口，发布由QA操作。有稍大一些的活动就会 code freeze。原因大概都是：&#xA;周期性发布：因为线上的问题通常都伴随着发布，周期发布可以减少发布次数，发布的次数少了，出问题的概率也就少了； QA执行发布：开发和部署职能分离；确保QA在发布后可以执行线上的回归； Code Freeze：和周期性发布原因类似，通过避免发布来避免可能引入的新问题； 个人认为，团队流程上，重点应该是更敏捷更高质量的发布，不是单纯通过增加流程来确保发布的安全。个人也赞同有 code freeze，但是反对有任何的活动，都提前很早就开始 freeze。</description>
     </item>
     <item>
       <title>Feynman 的 12 个问题</title>
@@ -77,8 +69,7 @@ To be led by a tyrant is to sell yourself and those you love into slavery.&lt;/p
       <link>https://blog.codepanic.cn/post/20220211-reverse-interview/</link>
       <pubDate>Tue, 01 Mar 2022 09:42:55 +0800</pubDate>
       <guid>https://blog.codepanic.cn/post/20220211-reverse-interview/</guid>
-      <description>&lt;p&gt;基于自己的过往经验，以我能 cover 的情况来回答下“反向面试”的各个问题。同时我会删掉部分问题，回答问题时加上和当前公司的情况对比。&lt;/p&gt;
-&lt;p&gt;反向面试来源： &lt;a href=&#34;https://github.com/yifeikong/reverse-interview-zh&#34;&gt;https://github.com/yifeikong/reverse-interview-zh&lt;/a&gt;&lt;/p&gt;</description>
+      <description>&lt;p&gt;基于自己的过往经验，以我能 cover 的情况来回答下“反向面试”的各个问题。同时我会删掉部分问题，回答问题时加上和当前公司的情况对比。&lt;/p&gt;&#xA;&lt;p&gt;反向面试来源： &lt;a href=&#34;https://github.com/yifeikong/reverse-interview-zh&#34;&gt;https://github.com/yifeikong/reverse-interview-zh&lt;/a&gt;&lt;/p&gt;</description>
     </item>
     <item>
       <title>2020 Commits</title>
@@ -99,21 +90,14 @@ To be led by a tyrant is to sell yourself and those you love into slavery.&lt;/p
       <link>https://blog.codepanic.cn/quotes/</link>
       <pubDate>Mon, 14 Oct 2019 10:08:36 +0800</pubDate>
       <guid>https://blog.codepanic.cn/quotes/</guid>
-      <description>有意思的 Quotes The proper use of comments is to compensate for our failure to express ourself in code.
-&amp;ndash; Robert C. Martin
-What we need are notions，not notations.
-&amp;ndash; 高斯
-It is not worth an intelligent man’s time to be in the majority. By definition, there are already enough people to do that.
-&amp;ndash; G. H. Hardy
-What you don’t use, you don’t pay for. And further: what you do use, you couldn’t hand code any better.</description>
+      <description>有意思的 Quotes The proper use of comments is to compensate for our failure to express ourself in code.&#xA;&amp;ndash; Robert C. Martin&#xA;What we need are notions，not notations.&#xA;&amp;ndash; 高斯&#xA;It is not worth an intelligent man’s time to be in the majority. By definition, there are already enough people to do that.&#xA;&amp;ndash; G. H. Hardy&#xA;What you don’t use, you don’t pay for. And further: what you do use, you couldn’t hand code any better.</description>
     </item>
     <item>
       <title>Uber Go Style</title>
       <link>https://blog.codepanic.cn/post/uber-go-stype/</link>
       <pubDate>Mon, 14 Oct 2019 09:57:06 +0800</pubDate>
       <guid>https://blog.codepanic.cn/post/uber-go-stype/</guid>
-      <description>&lt;p&gt;围观了《Uber Go 语言编码规范》，记录一些觉得有意思的部分。&lt;/p&gt;
-&lt;p&gt;Github 链接: &lt;a href=&#34;https://github.com/uber-go/guide&#34;&gt;https://github.com/uber-go/guide&lt;/a&gt;&lt;/p&gt;</description>
+      <description>&lt;p&gt;围观了《Uber Go 语言编码规范》，记录一些觉得有意思的部分。&lt;/p&gt;&#xA;&lt;p&gt;Github 链接: &lt;a href=&#34;https://github.com/uber-go/guide&#34;&gt;https://github.com/uber-go/guide&lt;/a&gt;&lt;/p&gt;</description>
     </item>
     <item>
       <title>Thoughts On Code Structure</title>
@@ -127,8 +111,7 @@ What you don’t use, you don’t pay for. And further: what you do use, you cou
       <link>https://blog.codepanic.cn/post/grab-branding/</link>
       <pubDate>Tue, 26 Feb 2019 16:08:26 +0800</pubDate>
       <guid>https://blog.codepanic.cn/post/grab-branding/</guid>
-      <description>&lt;p&gt;公司要在技术圈子做一些宣传，为了能够吸引更多优秀工程师。厚着脸皮也去凑了个热闹。当然这里只是我早先计划的一些答案，和现场发挥的差异蛮大。&lt;/p&gt;
-&lt;p&gt;视频链接: &lt;a href=&#34;https://www.youtube.com/watch?v=oFMlPZD57FQ&#34;&gt;https://www.youtube.com/watch?v=oFMlPZD57FQ&lt;/a&gt;&lt;/p&gt;</description>
+      <description>&lt;p&gt;公司要在技术圈子做一些宣传，为了能够吸引更多优秀工程师。厚着脸皮也去凑了个热闹。当然这里只是我早先计划的一些答案，和现场发挥的差异蛮大。&lt;/p&gt;&#xA;&lt;p&gt;视频链接: &lt;a href=&#34;https://www.youtube.com/watch?v=oFMlPZD57FQ&#34;&gt;https://www.youtube.com/watch?v=oFMlPZD57FQ&lt;/a&gt;&lt;/p&gt;</description>
     </item>
     <item>
       <title>若饭第一天</title>
@@ -142,8 +125,7 @@ What you don’t use, you don’t pay for. And further: what you do use, you cou
       <link>https://blog.codepanic.cn/post/building-container-from-scratch/</link>
       <pubDate>Wed, 23 May 2018 18:11:45 +0800</pubDate>
       <guid>https://blog.codepanic.cn/post/building-container-from-scratch/</guid>
-      <description>&lt;h2 id=&#34;background&#34;&gt;Background&lt;/h2&gt;
-&lt;p&gt;这是基于 Liz Rice 在 Container Camp 的会议分享，Liz 在不到 20 分钟的时间里，用 100 行左右的 Golang 代码，构建了一个容器。分享链接为&lt;a href=&#34;https://www.youtube.com/watch?v=Utf-A4rODH8&#34;&gt;Building a container from scratch in Go&lt;/a&gt;。&lt;/p&gt;</description>
+      <description>&lt;h2 id=&#34;background&#34;&gt;Background&lt;/h2&gt;&#xA;&lt;p&gt;这是基于 Liz Rice 在 Container Camp 的会议分享，Liz 在不到 20 分钟的时间里，用 100 行左右的 Golang 代码，构建了一个容器。分享链接为&lt;a href=&#34;https://www.youtube.com/watch?v=Utf-A4rODH8&#34;&gt;Building a container from scratch in Go&lt;/a&gt;。&lt;/p&gt;</description>
     </item>
     <item>
       <title>关于同理心的一些想法</title>
@@ -157,31 +139,21 @@ What you don’t use, you don’t pay for. And further: what you do use, you cou
       <link>https://blog.codepanic.cn/post/nginx-log-split/</link>
       <pubDate>Wed, 11 Oct 2017 00:00:00 +0000</pubDate>
       <guid>https://blog.codepanic.cn/post/nginx-log-split/</guid>
-      <description>&lt;h3 id=&#34;抛出问题&#34;&gt;抛出问题&lt;/h3&gt;
-&lt;p&gt;Nginx 的 &lt;code&gt;access_log &amp;amp; error_log&lt;/code&gt;，在漫长的岁月中不断增长。然而 nginx 日志并没有 rotate 功能。如果简单百度、Bing下，会发现在 N 多博客中，大家都在说写个定时脚本，然后通过脚本定时重命名日志、向 Nginx 主进程发送 USR1 信号，让 Nginx 重新加载日志文件，从而达到切割日志的效果。&lt;/p&gt;
-&lt;p&gt;这样的操作难免需要动手的部分太多，而且考虑到其他如日志压缩、定期删除日志等，工作量也还不少。&lt;/p&gt;
-&lt;p&gt;这里应该有更舒适的办法。&lt;/p&gt;</description>
+      <description>&lt;h3 id=&#34;抛出问题&#34;&gt;抛出问题&lt;/h3&gt;&#xA;&lt;p&gt;Nginx 的 &lt;code&gt;access_log &amp;amp; error_log&lt;/code&gt;，在漫长的岁月中不断增长。然而 nginx 日志并没有 rotate 功能。如果简单百度、Bing下，会发现在 N 多博客中，大家都在说写个定时脚本，然后通过脚本定时重命名日志、向 Nginx 主进程发送 USR1 信号，让 Nginx 重新加载日志文件，从而达到切割日志的效果。&lt;/p&gt;&#xA;&lt;p&gt;这样的操作难免需要动手的部分太多，而且考虑到其他如日志压缩、定期删除日志等，工作量也还不少。&lt;/p&gt;&#xA;&lt;p&gt;这里应该有更舒适的办法。&lt;/p&gt;</description>
     </item>
     <item>
       <title>null 与 &#39;0&#39; 相比较的问题</title>
       <link>https://blog.codepanic.cn/post/null-equal-0/</link>
       <pubDate>Tue, 01 Aug 2017 00:00:00 +0000</pubDate>
       <guid>https://blog.codepanic.cn/post/null-equal-0/</guid>
-      <description>&lt;h3 id=&#34;抛出问题&#34;&gt;抛出问题&lt;/h3&gt;
-&lt;p&gt;php 的 &lt;code&gt;== | === | isempty()&lt;/code&gt; 等对变量的判断一直是比较烦人的。今天是遇到了一个关于 &lt;code&gt;==&lt;/code&gt; 的简单问题：&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&#34;language-php&#34;&gt;var_dump(&#39;0&#39; == false); // true
-var_dump(null == false); // true
-var_dump(null == &#39;0&#39;); // false
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;问题来了，为什么 &lt;code&gt;null == &#39;0&#39;&lt;/code&gt; 会是 false 呢？毕竟大家都会把 &lt;code&gt;0, &#39;&#39;, &#39;0&#39;, false, null, array()&lt;/code&gt; 都当做“空”来解读。&lt;/p&gt;</description>
+      <description>&lt;h3 id=&#34;抛出问题&#34;&gt;抛出问题&lt;/h3&gt;&#xA;&lt;p&gt;php 的 &lt;code&gt;== | === | isempty()&lt;/code&gt; 等对变量的判断一直是比较烦人的。今天是遇到了一个关于 &lt;code&gt;==&lt;/code&gt; 的简单问题：&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code class=&#34;language-php&#34;&gt;var_dump(&#39;0&#39; == false); // true&#xA;var_dump(null == false); // true&#xA;var_dump(null == &#39;0&#39;); // false&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;问题来了，为什么 &lt;code&gt;null == &#39;0&#39;&lt;/code&gt; 会是 false 呢？毕竟大家都会把 &lt;code&gt;0, &#39;&#39;, &#39;0&#39;, false, null, array()&lt;/code&gt; 都当做“空”来解读。&lt;/p&gt;</description>
     </item>
     <item>
       <title>我的付费应用列表</title>
       <link>https://blog.codepanic.cn/post/my-paied-app/</link>
       <pubDate>Mon, 17 Jul 2017 00:00:00 +0000</pubDate>
       <guid>https://blog.codepanic.cn/post/my-paied-app/</guid>
-      <description>&lt;p&gt;自从使用了 Mac 后，便给自己定了个规矩，尽量不再使用盗版的软件。毕竟不再是个学生了，也有了自己的收入，没有理由不去尊重自己行业的版权。同时，我坚信能够提高效率的软件，都是值得付费的。&lt;/p&gt;
-&lt;p&gt;这里列出一些自己已经开始付费的软件，算是一种推荐，也方便自己以后更换电脑后，找回某些软件的 licence。&lt;/p&gt;</description>
+      <description>&lt;p&gt;自从使用了 Mac 后，便给自己定了个规矩，尽量不再使用盗版的软件。毕竟不再是个学生了，也有了自己的收入，没有理由不去尊重自己行业的版权。同时，我坚信能够提高效率的软件，都是值得付费的。&lt;/p&gt;&#xA;&lt;p&gt;这里列出一些自己已经开始付费的软件，算是一种推荐，也方便自己以后更换电脑后，找回某些软件的 licence。&lt;/p&gt;</description>
     </item>
     <item>
       <title>第三届php开发者大会</title>
@@ -195,8 +167,7 @@ var_dump(null == &#39;0&#39;); // false
       <link>https://blog.codepanic.cn/post/201603-reading-review/</link>
       <pubDate>Fri, 08 Apr 2016 00:00:00 +0000</pubDate>
       <guid>https://blog.codepanic.cn/post/201603-reading-review/</guid>
-      <description>&lt;p&gt;我一直没有一个良好的阅读习惯。上一篇文章中提到，希望自己能够每个月写一个读书总结，其本意是希望自己能够养成一个良好的阅读习惯。我在写上一篇博客的时候，其实特别希望自己能够在一个月内至少完成一本书的阅读。&lt;/p&gt;
-&lt;p&gt;在三月份，我并没有去完成整本书的阅读，而且发现在最近的一段时间里，阅读的习惯有些被荒废的感觉，也懒得动手去继续自己的文字总结。但三月份，我主要的阅读集中在两本书：《高效能人士的7个习惯》和《Morden PHP》。当然，都还没有读完。&lt;/p&gt;</description>
+      <description>&lt;p&gt;我一直没有一个良好的阅读习惯。上一篇文章中提到，希望自己能够每个月写一个读书总结，其本意是希望自己能够养成一个良好的阅读习惯。我在写上一篇博客的时候，其实特别希望自己能够在一个月内至少完成一本书的阅读。&lt;/p&gt;&#xA;&lt;p&gt;在三月份，我并没有去完成整本书的阅读，而且发现在最近的一段时间里，阅读的习惯有些被荒废的感觉，也懒得动手去继续自己的文字总结。但三月份，我主要的阅读集中在两本书：《高效能人士的7个习惯》和《Morden PHP》。当然，都还没有读完。&lt;/p&gt;</description>
     </item>
     <item>
       <title>2016年2月-总结与展望</title>

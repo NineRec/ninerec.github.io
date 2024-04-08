@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>go on CodePanic</title>
+    <title>Go on CodePanic</title>
     <link>https://blog.codepanic.cn/tags/go/</link>
-    <description>Recent content in go on CodePanic</description>
+    <description>Recent content in Go on CodePanic</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <lastBuildDate>Wed, 23 May 2018 18:11:45 +0800</lastBuildDate>
@@ -13,8 +13,7 @@
       <link>https://blog.codepanic.cn/post/building-container-from-scratch/</link>
       <pubDate>Wed, 23 May 2018 18:11:45 +0800</pubDate>
       <guid>https://blog.codepanic.cn/post/building-container-from-scratch/</guid>
-      <description>&lt;h2 id=&#34;background&#34;&gt;Background&lt;/h2&gt;
-&lt;p&gt;这是基于 Liz Rice 在 Container Camp 的会议分享，Liz 在不到 20 分钟的时间里，用 100 行左右的 Golang 代码，构建了一个容器。分享链接为&lt;a href=&#34;https://www.youtube.com/watch?v=Utf-A4rODH8&#34;&gt;Building a container from scratch in Go&lt;/a&gt;。&lt;/p&gt;</description>
+      <description>&lt;h2 id=&#34;background&#34;&gt;Background&lt;/h2&gt;&#xA;&lt;p&gt;这是基于 Liz Rice 在 Container Camp 的会议分享，Liz 在不到 20 分钟的时间里，用 100 行左右的 Golang 代码，构建了一个容器。分享链接为&lt;a href=&#34;https://www.youtube.com/watch?v=Utf-A4rODH8&#34;&gt;Building a container from scratch in Go&lt;/a&gt;。&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>

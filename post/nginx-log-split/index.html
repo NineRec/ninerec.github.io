@@ -26,7 +26,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.120.4 with theme even" />
+<meta name="generator" content="Hugo 0.124.1 with theme even" />
 
 
 <link rel="canonical" href="https://blog.codepanic.cn/post/nginx-log-split/" />
@@ -51,7 +51,6 @@ Nginx 的 access_log &amp; error_log，在漫长的岁月中不断增长。然�
 <meta property="og:url" content="https://blog.codepanic.cn/post/nginx-log-split/" /><meta property="article:section" content="post" />
 <meta property="article:published_time" content="2017-10-11T00:00:00+00:00" />
 <meta property="article:modified_time" content="2017-10-11T00:00:00+00:00" />
-
 <meta itemprop="name" content="Nginx 日志切分">
 <meta itemprop="description" content="抛出问题
 Nginx 的 access_log &amp; error_log，在漫长的岁月中不断增长。然而 nginx 日志并没有 rotate 功能。如果简单百度、Bing下，会发现在 N 多博客中，大家都在说写个定时脚本，然后通过脚本定时重命名日志、向 Nginx 主进程发送 USR1 信号，让 Nginx 重新加载日志文件，从而达到切割日志的效果。
@@ -59,8 +58,7 @@ Nginx 的 access_log &amp; error_log，在漫长的岁月中不断增长。然�
 这里应该有更舒适的办法。"><meta itemprop="datePublished" content="2017-10-11T00:00:00+00:00" />
 <meta itemprop="dateModified" content="2017-10-11T00:00:00+00:00" />
 <meta itemprop="wordCount" content="70">
-<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Nginx 日志切分"/>
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/><meta name="twitter:title" content="Nginx 日志切分"/>
 <meta name="twitter:description" content="抛出问题
 Nginx 的 access_log &amp; error_log，在漫长的岁月中不断增长。然而 nginx 日志并没有 rotate 功能。如果简单百度、Bing下，会发现在 N 多博客中，大家都在说写个定时脚本，然后通过脚本定时重命名日志、向 Nginx 主进程发送 USR1 信号，让 Nginx 重新加载日志文件，从而达到切割日志的效果。
 这样的操作难免需要动手的部分太多，而且考虑到其他如日志压缩、定期删除日志等，工作量也还不少。

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>chatGPT on CodePanic</title>
+    <title>ChatGPT on CodePanic</title>
     <link>https://blog.codepanic.cn/tags/chatgpt/</link>
-    <description>Recent content in chatGPT on CodePanic</description>
+    <description>Recent content in ChatGPT on CodePanic</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <lastBuildDate>Wed, 19 Apr 2023 13:40:10 +0800</lastBuildDate>
@@ -13,8 +13,7 @@
       <link>https://blog.codepanic.cn/post/financial-vocab-from-chatgpt/</link>
       <pubDate>Wed, 19 Apr 2023 13:40:10 +0800</pubDate>
       <guid>https://blog.codepanic.cn/post/financial-vocab-from-chatgpt/</guid>
-      <description>&lt;p&gt;3 月份在看墨腾的一份报告的时候有遇到很多金融财经相关词汇，顺手让 ChatGPT 解释了一下。&lt;/p&gt;
-&lt;p&gt;所有的内容更适合做个参考，是否严谨需要自行判断了。&lt;/p&gt;</description>
+      <description>&lt;p&gt;3 月份在看墨腾的一份报告的时候有遇到很多金融财经相关词汇，顺手让 ChatGPT 解释了一下。&lt;/p&gt;&#xA;&lt;p&gt;所有的内容更适合做个参考，是否严谨需要自行判断了。&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>
