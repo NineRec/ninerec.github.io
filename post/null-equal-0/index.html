@@ -25,7 +25,7 @@ var_dump(&#39;0&#39; == false); // true var_dump(null == false); // true var_dum
 
 
 
-<meta name="generator" content="Hugo 0.124.1 with theme even" />
+<meta name="generator" content="Hugo 0.131.0 with theme even" />
 
 
 <link rel="canonical" href="https://blog.codepanic.cn/post/null-equal-0/" />
@@ -41,36 +41,28 @@ var_dump(&#39;0&#39; == false); // true var_dump(null == false); // true var_dum
 <link href="/lib/fancybox/jquery.fancybox-3.1.20.min.css" rel="stylesheet">
 
 
-<meta property="og:title" content="null 与 &#39;0&#39; 相比较的问题" />
-<meta property="og:description" content="抛出问题
-php 的 == | === | isempty() 等对变量的判断一直是比较烦人的。今天是遇到了一个关于 == 的简单问题：
-var_dump(&#39;0&#39; == false); // true
-var_dump(null == false); // true
-var_dump(null == &#39;0&#39;); // false
+<meta property="og:url" content="https://blog.codepanic.cn/post/null-equal-0/">
+  <meta property="og:site_name" content="CodePanic">
+  <meta property="og:title" content="null 与 &#39;0&#39; 相比较的问题">
+  <meta property="og:description" content="抛出问题 php 的 == | === | isempty() 等对变量的判断一直是比较烦人的。今天是遇到了一个关于 == 的简单问题：
+var_dump(&#39;0&#39; == false); // true var_dump(null == false); // true var_dump(null == &#39;0&#39;); // false 问题来了，为什么 null == &#39;0&#39; 会是 false 呢？毕竟大家都会把 0, &#39;&#39;, &#39;0&#39;, false, null, array() 都当做“空”来解读。">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="post">
+    <meta property="article:published_time" content="2017-08-01T00:00:00+00:00">
+    <meta property="article:modified_time" content="2017-08-01T00:00:00+00:00">
 
-问题来了，为什么 null == &#39;0&#39; 会是 false 呢？毕竟大家都会把 0, &#39;&#39;, &#39;0&#39;, false, null, array() 都当做“空”来解读。" />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="https://blog.codepanic.cn/post/null-equal-0/" /><meta property="article:section" content="post" />
-<meta property="article:published_time" content="2017-08-01T00:00:00+00:00" />
-<meta property="article:modified_time" content="2017-08-01T00:00:00+00:00" />
-<meta itemprop="name" content="null 与 &#39;0&#39; 相比较的问题">
-<meta itemprop="description" content="抛出问题
-php 的 == | === | isempty() 等对变量的判断一直是比较烦人的。今天是遇到了一个关于 == 的简单问题：
-var_dump(&#39;0&#39; == false); // true
-var_dump(null == false); // true
-var_dump(null == &#39;0&#39;); // false
-
-问题来了，为什么 null == &#39;0&#39; 会是 false 呢？毕竟大家都会把 0, &#39;&#39;, &#39;0&#39;, false, null, array() 都当做“空”来解读。"><meta itemprop="datePublished" content="2017-08-01T00:00:00+00:00" />
-<meta itemprop="dateModified" content="2017-08-01T00:00:00+00:00" />
-<meta itemprop="wordCount" content="92">
-<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/><meta name="twitter:title" content="null 与 &#39;0&#39; 相比较的问题"/>
-<meta name="twitter:description" content="抛出问题
-php 的 == | === | isempty() 等对变量的判断一直是比较烦人的。今天是遇到了一个关于 == 的简单问题：
-var_dump(&#39;0&#39; == false); // true
-var_dump(null == false); // true
-var_dump(null == &#39;0&#39;); // false
-
-问题来了，为什么 null == &#39;0&#39; 会是 false 呢？毕竟大家都会把 0, &#39;&#39;, &#39;0&#39;, false, null, array() 都当做“空”来解读。"/>
+  <meta itemprop="name" content="null 与 &#39;0&#39; 相比较的问题">
+  <meta itemprop="description" content="抛出问题 php 的 == | === | isempty() 等对变量的判断一直是比较烦人的。今天是遇到了一个关于 == 的简单问题：
+var_dump(&#39;0&#39; == false); // true var_dump(null == false); // true var_dump(null == &#39;0&#39;); // false 问题来了，为什么 null == &#39;0&#39; 会是 false 呢？毕竟大家都会把 0, &#39;&#39;, &#39;0&#39;, false, null, array() 都当做“空”来解读。">
+  <meta itemprop="datePublished" content="2017-08-01T00:00:00+00:00">
+  <meta itemprop="dateModified" content="2017-08-01T00:00:00+00:00">
+  <meta itemprop="wordCount" content="92">
+  <meta itemprop="keywords" content="Php">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="null 与 &#39;0&#39; 相比较的问题">
+  <meta name="twitter:description" content="抛出问题 php 的 == | === | isempty() 等对变量的判断一直是比较烦人的。今天是遇到了一个关于 == 的简单问题：
+var_dump(&#39;0&#39; == false); // true var_dump(null == false); // true var_dump(null == &#39;0&#39;); // false 问题来了，为什么 null == &#39;0&#39; 会是 false 呢？毕竟大家都会把 0, &#39;&#39;, &#39;0&#39;, false, null, array() 都当做“空”来解读。">
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -275,9 +267,7 @@ var_dump(null == '0'); // false
 
 
 
-<script type="text/javascript" src="/js/main.min.4ae89da218555efa0e7093a20b92017d2e1202b66fff9fc2edf4cb8d44b44c6e.js"></script>
-
-<script id="baidu_analytics">
+<script type="text/javascript" src="/js/main.min.4ae89da218555efa0e7093a20b92017d2e1202b66fff9fc2edf4cb8d44b44c6e.js"></script><script id="baidu_analytics">
   var _hmt = _hmt || [];
   (function() {
     if (window.location.hostname === 'localhost') return;

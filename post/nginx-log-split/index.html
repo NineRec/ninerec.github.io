@@ -26,7 +26,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.124.1 with theme even" />
+<meta name="generator" content="Hugo 0.131.0 with theme even" />
 
 
 <link rel="canonical" href="https://blog.codepanic.cn/post/nginx-log-split/" />
@@ -42,27 +42,31 @@
 <link href="/lib/fancybox/jquery.fancybox-3.1.20.min.css" rel="stylesheet">
 
 
-<meta property="og:title" content="Nginx 日志切分" />
-<meta property="og:description" content="抛出问题
-Nginx 的 access_log &amp; error_log，在漫长的岁月中不断增长。然而 nginx 日志并没有 rotate 功能。如果简单百度、Bing下，会发现在 N 多博客中，大家都在说写个定时脚本，然后通过脚本定时重命名日志、向 Nginx 主进程发送 USR1 信号，让 Nginx 重新加载日志文件，从而达到切割日志的效果。
+<meta property="og:url" content="https://blog.codepanic.cn/post/nginx-log-split/">
+  <meta property="og:site_name" content="CodePanic">
+  <meta property="og:title" content="Nginx 日志切分">
+  <meta property="og:description" content="抛出问题 Nginx 的 access_log &amp; error_log，在漫长的岁月中不断增长。然而 nginx 日志并没有 rotate 功能。如果简单百度、Bing下，会发现在 N 多博客中，大家都在说写个定时脚本，然后通过脚本定时重命名日志、向 Nginx 主进程发送 USR1 信号，让 Nginx 重新加载日志文件，从而达到切割日志的效果。
 这样的操作难免需要动手的部分太多，而且考虑到其他如日志压缩、定期删除日志等，工作量也还不少。
-这里应该有更舒适的办法。" />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="https://blog.codepanic.cn/post/nginx-log-split/" /><meta property="article:section" content="post" />
-<meta property="article:published_time" content="2017-10-11T00:00:00+00:00" />
-<meta property="article:modified_time" content="2017-10-11T00:00:00+00:00" />
-<meta itemprop="name" content="Nginx 日志切分">
-<meta itemprop="description" content="抛出问题
-Nginx 的 access_log &amp; error_log，在漫长的岁月中不断增长。然而 nginx 日志并没有 rotate 功能。如果简单百度、Bing下，会发现在 N 多博客中，大家都在说写个定时脚本，然后通过脚本定时重命名日志、向 Nginx 主进程发送 USR1 信号，让 Nginx 重新加载日志文件，从而达到切割日志的效果。
+这里应该有更舒适的办法。">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="post">
+    <meta property="article:published_time" content="2017-10-11T00:00:00+00:00">
+    <meta property="article:modified_time" content="2017-10-11T00:00:00+00:00">
+
+  <meta itemprop="name" content="Nginx 日志切分">
+  <meta itemprop="description" content="抛出问题 Nginx 的 access_log &amp; error_log，在漫长的岁月中不断增长。然而 nginx 日志并没有 rotate 功能。如果简单百度、Bing下，会发现在 N 多博客中，大家都在说写个定时脚本，然后通过脚本定时重命名日志、向 Nginx 主进程发送 USR1 信号，让 Nginx 重新加载日志文件，从而达到切割日志的效果。
 这样的操作难免需要动手的部分太多，而且考虑到其他如日志压缩、定期删除日志等，工作量也还不少。
-这里应该有更舒适的办法。"><meta itemprop="datePublished" content="2017-10-11T00:00:00+00:00" />
-<meta itemprop="dateModified" content="2017-10-11T00:00:00+00:00" />
-<meta itemprop="wordCount" content="70">
-<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/><meta name="twitter:title" content="Nginx 日志切分"/>
-<meta name="twitter:description" content="抛出问题
-Nginx 的 access_log &amp; error_log，在漫长的岁月中不断增长。然而 nginx 日志并没有 rotate 功能。如果简单百度、Bing下，会发现在 N 多博客中，大家都在说写个定时脚本，然后通过脚本定时重命名日志、向 Nginx 主进程发送 USR1 信号，让 Nginx 重新加载日志文件，从而达到切割日志的效果。
+这里应该有更舒适的办法。">
+  <meta itemprop="datePublished" content="2017-10-11T00:00:00+00:00">
+  <meta itemprop="dateModified" content="2017-10-11T00:00:00+00:00">
+  <meta itemprop="wordCount" content="70">
+  <meta itemprop="keywords" content="Nginx">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Nginx 日志切分">
+  <meta name="twitter:description" content="抛出问题 Nginx 的 access_log &amp; error_log，在漫长的岁月中不断增长。然而 nginx 日志并没有 rotate 功能。如果简单百度、Bing下，会发现在 N 多博客中，大家都在说写个定时脚本，然后通过脚本定时重命名日志、向 Nginx 主进程发送 USR1 信号，让 Nginx 重新加载日志文件，从而达到切割日志的效果。
 这样的操作难免需要动手的部分太多，而且考虑到其他如日志压缩、定期删除日志等，工作量也还不少。
-这里应该有更舒适的办法。"/>
+这里应该有更舒适的办法。">
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -268,9 +272,7 @@ Nginx 的 access_log &amp; error_log，在漫长的岁月中不断增长。然�
 
 
 
-<script type="text/javascript" src="/js/main.min.4ae89da218555efa0e7093a20b92017d2e1202b66fff9fc2edf4cb8d44b44c6e.js"></script>
-
-<script id="baidu_analytics">
+<script type="text/javascript" src="/js/main.min.4ae89da218555efa0e7093a20b92017d2e1202b66fff9fc2edf4cb8d44b44c6e.js"></script><script id="baidu_analytics">
   var _hmt = _hmt || [];
   (function() {
     if (window.location.hostname === 'localhost') return;

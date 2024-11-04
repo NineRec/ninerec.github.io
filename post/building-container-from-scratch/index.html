@@ -24,7 +24,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.124.1 with theme even" />
+<meta name="generator" content="Hugo 0.131.0 with theme even" />
 
 
 <link rel="canonical" href="https://blog.codepanic.cn/post/building-container-from-scratch/" />
@@ -40,21 +40,26 @@
 <link href="/lib/fancybox/jquery.fancybox-3.1.20.min.css" rel="stylesheet">
 
 
-<meta property="og:title" content="从零构建一个容器" />
-<meta property="og:description" content="Background
-这是基于 Liz Rice 在 Container Camp 的会议分享，Liz 在不到 20 分钟的时间里，用 100 行左右的 Golang 代码，构建了一个容器。分享链接为Building a container from scratch in Go。" />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="https://blog.codepanic.cn/post/building-container-from-scratch/" /><meta property="article:section" content="post" />
-<meta property="article:published_time" content="2018-05-23T18:11:45+08:00" />
-<meta property="article:modified_time" content="2018-05-23T18:11:45+08:00" />
-<meta itemprop="name" content="从零构建一个容器">
-<meta itemprop="description" content="Background
-这是基于 Liz Rice 在 Container Camp 的会议分享，Liz 在不到 20 分钟的时间里，用 100 行左右的 Golang 代码，构建了一个容器。分享链接为Building a container from scratch in Go。"><meta itemprop="datePublished" content="2018-05-23T18:11:45+08:00" />
-<meta itemprop="dateModified" content="2018-05-23T18:11:45+08:00" />
-<meta itemprop="wordCount" content="117">
-<meta itemprop="keywords" content="go," /><meta name="twitter:card" content="summary"/><meta name="twitter:title" content="从零构建一个容器"/>
-<meta name="twitter:description" content="Background
-这是基于 Liz Rice 在 Container Camp 的会议分享，Liz 在不到 20 分钟的时间里，用 100 行左右的 Golang 代码，构建了一个容器。分享链接为Building a container from scratch in Go。"/>
+<meta property="og:url" content="https://blog.codepanic.cn/post/building-container-from-scratch/">
+  <meta property="og:site_name" content="CodePanic">
+  <meta property="og:title" content="从零构建一个容器">
+  <meta property="og:description" content="Background 这是基于 Liz Rice 在 Container Camp 的会议分享，Liz 在不到 20 分钟的时间里，用 100 行左右的 Golang 代码，构建了一个容器。分享链接为Building a container from scratch in Go。">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="post">
+    <meta property="article:published_time" content="2018-05-23T18:11:45+08:00">
+    <meta property="article:modified_time" content="2018-05-23T18:11:45+08:00">
+    <meta property="article:tag" content="Go">
+
+  <meta itemprop="name" content="从零构建一个容器">
+  <meta itemprop="description" content="Background 这是基于 Liz Rice 在 Container Camp 的会议分享，Liz 在不到 20 分钟的时间里，用 100 行左右的 Golang 代码，构建了一个容器。分享链接为Building a container from scratch in Go。">
+  <meta itemprop="datePublished" content="2018-05-23T18:11:45+08:00">
+  <meta itemprop="dateModified" content="2018-05-23T18:11:45+08:00">
+  <meta itemprop="wordCount" content="117">
+  <meta itemprop="keywords" content="Go">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="从零构建一个容器">
+  <meta name="twitter:description" content="Background 这是基于 Liz Rice 在 Container Camp 的会议分享，Liz 在不到 20 分钟的时间里，用 100 行左右的 Golang 代码，构建了一个容器。分享链接为Building a container from scratch in Go。">
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -265,9 +270,7 @@ sudo debootstrap --variant=buildd --arch i386 xenial /home/rootfs https://mirror
 
 
 
-<script type="text/javascript" src="/js/main.min.4ae89da218555efa0e7093a20b92017d2e1202b66fff9fc2edf4cb8d44b44c6e.js"></script>
-
-<script id="baidu_analytics">
+<script type="text/javascript" src="/js/main.min.4ae89da218555efa0e7093a20b92017d2e1202b66fff9fc2edf4cb8d44b44c6e.js"></script><script id="baidu_analytics">
   var _hmt = _hmt || [];
   (function() {
     if (window.location.hostname === 'localhost') return;

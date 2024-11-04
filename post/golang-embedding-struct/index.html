@@ -25,7 +25,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.124.1 with theme even" />
+<meta name="generator" content="Hugo 0.131.0 with theme even" />
 
 
 <link rel="canonical" href="https://blog.codepanic.cn/post/golang-embedding-struct/" />
@@ -41,21 +41,28 @@
 <link href="/lib/fancybox/jquery.fancybox-3.1.20.min.css" rel="stylesheet">
 
 
-<meta property="og:title" content="Golang Embedding Struct" />
-<meta property="og:description" content="公司代码遇到了 nil pointer 的 panic，结果第一眼看过去，是 protobuf 生成的 GetXXX 风格的代码。
-花了些时间写出示例代码，其实也就找到了问题的关键词，剩下的 GPT 就可以帮忙解释了。关键词是： Embedded Struct。" />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="https://blog.codepanic.cn/post/golang-embedding-struct/" /><meta property="article:section" content="post" />
-<meta property="article:published_time" content="2024-02-18T18:08:58+08:00" />
-<meta property="article:modified_time" content="2024-02-18T18:08:58+08:00" />
-<meta itemprop="name" content="Golang Embedding Struct">
-<meta itemprop="description" content="公司代码遇到了 nil pointer 的 panic，结果第一眼看过去，是 protobuf 生成的 GetXXX 风格的代码。
-花了些时间写出示例代码，其实也就找到了问题的关键词，剩下的 GPT 就可以帮忙解释了。关键词是： Embedded Struct。"><meta itemprop="datePublished" content="2024-02-18T18:08:58+08:00" />
-<meta itemprop="dateModified" content="2024-02-18T18:08:58+08:00" />
-<meta itemprop="wordCount" content="465">
-<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/><meta name="twitter:title" content="Golang Embedding Struct"/>
-<meta name="twitter:description" content="公司代码遇到了 nil pointer 的 panic，结果第一眼看过去，是 protobuf 生成的 GetXXX 风格的代码。
-花了些时间写出示例代码，其实也就找到了问题的关键词，剩下的 GPT 就可以帮忙解释了。关键词是： Embedded Struct。"/>
+<meta property="og:url" content="https://blog.codepanic.cn/post/golang-embedding-struct/">
+  <meta property="og:site_name" content="CodePanic">
+  <meta property="og:title" content="Golang Embedding Struct">
+  <meta property="og:description" content="公司代码遇到了 nil pointer 的 panic，结果第一眼看过去，是 protobuf 生成的 GetXXX 风格的代码。
+花了些时间写出示例代码，其实也就找到了问题的关键词，剩下的 GPT 就可以帮忙解释了。关键词是： Embedded Struct。">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="post">
+    <meta property="article:published_time" content="2024-02-18T18:08:58+08:00">
+    <meta property="article:modified_time" content="2024-02-18T18:08:58+08:00">
+
+  <meta itemprop="name" content="Golang Embedding Struct">
+  <meta itemprop="description" content="公司代码遇到了 nil pointer 的 panic，结果第一眼看过去，是 protobuf 生成的 GetXXX 风格的代码。
+花了些时间写出示例代码，其实也就找到了问题的关键词，剩下的 GPT 就可以帮忙解释了。关键词是： Embedded Struct。">
+  <meta itemprop="datePublished" content="2024-02-18T18:08:58+08:00">
+  <meta itemprop="dateModified" content="2024-02-18T18:08:58+08:00">
+  <meta itemprop="wordCount" content="465">
+  <meta itemprop="keywords" content="Golang">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Golang Embedding Struct">
+  <meta name="twitter:description" content="公司代码遇到了 nil pointer 的 panic，结果第一眼看过去，是 protobuf 生成的 GetXXX 风格的代码。
+花了些时间写出示例代码，其实也就找到了问题的关键词，剩下的 GPT 就可以帮忙解释了。关键词是： Embedded Struct。">
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -312,9 +319,7 @@ func main() {
 
 
 
-<script type="text/javascript" src="/js/main.min.4ae89da218555efa0e7093a20b92017d2e1202b66fff9fc2edf4cb8d44b44c6e.js"></script>
-
-<script id="baidu_analytics">
+<script type="text/javascript" src="/js/main.min.4ae89da218555efa0e7093a20b92017d2e1202b66fff9fc2edf4cb8d44b44c6e.js"></script><script id="baidu_analytics">
   var _hmt = _hmt || [];
   (function() {
     if (window.location.hostname === 'localhost') return;
