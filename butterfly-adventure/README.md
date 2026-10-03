@@ -15,11 +15,11 @@ Visit `http://localhost:8080/butterfly-adventure/`. A Hugo build publishes the s
 ## Interactions
 
 - Garden: three actions per chapter, plus a continuous transition into the next chapter. The egg splits before the caterpillar crawls out; a grown caterpillar climbs, hangs in a J, and reveals a chrysalis; the chrysalis opens before the folded butterfly emerges; wings expand and dry before flight. Tap a flower after takeoff to invite the butterfly for nectar. Chapter buttons allow revisiting any stage. The ordering game remains available after the final chapter.
-- Pip: animated SVG with articulated arms, head, and blinking eyes. Pip leans in to observe, offers leaves, cheers, and waves at story events. Tap Pip for a greeting.
-- Zoo: six animal friends, horizontal dragging, arrow buttons, keyboard arrows, English names followed by animal calls, individual actions, and discovery progress.
-- Sea: six ocean friends, horizontal dragging, English names, swim-away-and-return animations, and discovery progress. The jellyfish floats and pulses rather than walking.
-- Audio: bundled AAC/MP3 clips, started by a user tap. No `speechSynthesis`, runtime TTS, remote fonts, CDNs, or audio services. A single playback channel prevents overlapping narration. The name and zoo call are in the same clip, avoiding Safari's restrictions on starting a second audio element after the first ends. Mute and page visibility stop playback.
-- Touch: Pointer Events, a horizontal drag threshold, vertical page scrolling, cancellation cleanup, and click suppression after drags. No hover-dependent controls. Controls meet the 44-pixel touch target minimum. Browser zoom is allowed.
+- Zoey: animated SVG with articulated arms, head, and blinking eyes. Zoey leans in to observe, offers leaves, cheers, and waves at story events. Tap Zoey for a greeting.
+- Zoo: ten animal friends, native horizontal touch scrolling with momentum, a scene position slider, arrow buttons, keyboard arrows, English names followed by animal calls, individual actions, and discovery progress.
+- Sea: ten ocean friends, native horizontal touch scrolling, a scene position slider, English names, swim-away-and-return animations, and discovery progress. The jellyfish floats and pulses rather than walking.
+- Audio: bundled English female-voice (Samantha) AAC/MP3 clips, started by a user tap. No `speechSynthesis`, runtime TTS, remote fonts, CDNs, or audio services. A single playback channel prevents overlapping narration. The name and zoo call are in the same clip, avoiding Safari's restrictions on starting a second audio element after the first ends. Mute and page visibility stop playback.
+- Touch: Native touch pan and pinch zoom with vertical page scrolling; Pointer Events handle mouse/pen dragging only. Horizontal, diagonal, and animal-started swipes are supported, with cancellation cleanup and click suppression after drags. No hover-dependent controls. Controls meet the 44-pixel touch target minimum. Browser zoom is allowed.
 - Reduced motion: suppresses ambient motion and resolves story transitions immediately while preserving their final states and text.
 
 ## Check
@@ -38,6 +38,6 @@ Browser simulations cannot verify physical iPad speakers or OS volume settings; 
 
 ## Audio maintenance
 
-`audio/narration.json` contains every English recording's transcript. `tools/build-adventure-audio.py` can regenerate narration and name/call clips on macOS with `say -v Daniel` and `afconvert`. Those tools are **build-time only**. They are not required to run or serve the book. If story text changes, update the transcripts and regenerate the bundled clips.
+`audio/narration.json` contains every English recording's transcript. `tools/build-adventure-audio.py` can regenerate narration and name/call clips on macOS with `say -v Samantha` and `afconvert`. Those tools are **build-time only**. They are not required to run or serve the book. If story text changes, update the transcripts and regenerate the bundled clips.
 
-See `credits.html` for recording sources, authors, licenses, and edits. The monkey clip is a human imitation, and the owl hoot is a crafted effect; other zoo calls are recordings. The source giraffe call and its edited clip retain CC BY-SA 4.0.
+See `credits.html` for recording sources, authors, licenses, and edits. The monkey clip is a human imitation; the owl hoot and tiger growl are crafted effects. Bear and duck calls are recordings, and the frog sound is a contributed ribbit effect. The giraffe and duck clips retain their respective share-alike licenses. Audio credits include sources for the new calls.
