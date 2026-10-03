@@ -1,43 +1,56 @@
-# Little Wonders
+# Zoey's Little Wonders
 
-An English interactive picture book adapted from the supplied `butterfly-adventure.html`. It is a dependency-free static page inside this Hugo blog.
+Six English games built as dependency-free static pages inside this Hugo blog. The butterfly lifecycle is adapted from the supplied reference; the other worlds, learning games, characters, and ingredients use original vector artwork.
 
 ## Open
-
-From the repository root:
 
 ```sh
 python3 -m http.server 8080 --directory static
 ```
 
-Visit `http://localhost:8080/butterfly-adventure/`. A Hugo build publishes the same page at `/butterfly-adventure/`, with an alias at `/butterfly-adventure.html`. You can also open `index.html` directly; use the whole folder so its scripts and audio stay together. After downloading the folder, it does not require an internet connection. This is not a service-worker offline cache: a hosted copy needs a connection to load its files.
+Open `/butterfly-adventure/` for the separate game selection page. Each door opens `play.html?game=garden|zoo|sea|clock|market|kitchen`. The old `/butterfly-adventure.html` alias still points to the club. Each game fills the available viewport with a fixed body, safe-area padding, and responsive controls. Browser Fullscreen API is an optional explicit button on supported devices; CSS full-viewport layout is always the default. Only Zoo/Sea worlds and their friend index pan. There is no scrollable page behind the game.
 
-## Interactions
+The whole folder can be downloaded and served without internet. A hosted copy needs a connection to load its assets; it is not a service-worker offline cache.
 
-- Garden: three actions per chapter, plus a continuous transition into the next chapter. The egg splits before the caterpillar crawls out; a grown caterpillar climbs, hangs in a J, and reveals a chrysalis; the chrysalis opens before the folded butterfly emerges; wings expand and dry before flight. Tap a flower after takeoff to invite the butterfly for nectar. Chapter buttons allow revisiting any stage. The ordering game remains available after the final chapter.
-- Zoey: animated SVG with articulated arms, head, and blinking eyes. Zoey leans in to observe, offers leaves, cheers, and waves at story events. Tap Zoey for a greeting.
-- Zoo: ten animal friends, native horizontal touch scrolling with momentum, a scene position slider, arrow buttons, keyboard arrows, English names followed by animal calls, individual actions, and discovery progress.
-- Sea: ten ocean friends, native horizontal touch scrolling, a scene position slider, English names, swim-away-and-return animations, and discovery progress. The jellyfish floats and pulses rather than walking.
-- Audio: bundled English female-voice (Samantha) AAC/MP3 clips, started by a user tap. No `speechSynthesis`, runtime TTS, remote fonts, CDNs, or audio services. A single playback channel prevents overlapping narration. The name and zoo call are in the same clip, avoiding Safari's restrictions on starting a second audio element after the first ends. Mute and page visibility stop playback.
-- Touch: Native touch pan and pinch zoom with vertical page scrolling; Pointer Events handle mouse/pen dragging only. Horizontal, diagonal, and animal-started swipes are supported, with cancellation cleanup and click suppression after drags. No hover-dependent controls. Controls meet the 44-pixel touch target minimum. Browser zoom is allowed.
-- Reduced motion: suppresses ambient motion and resolves story transitions immediately while preserving their final states and text.
+## Games
 
-## Check
+- **Garden:** continuous hatching, growing, hanging in a J, forming/opening the chrysalis, unfolding/drying wings, flight, flowers, and an ordering game shown in an overlay. The articulated SVG Zoey watches, feeds, cheers, and waves.
+- **Zoo:** 24 familiar animals including hippo, rhino, otter, panda, kangaroo, penguin, crocodile, flamingo, gorilla, fox, deer, rabbit, horse, and cow. Native two-dimensional touch panning, mouse/pen dragging, four directional controls, keyboard arrows, a horizontal position slider, and a friend index. Each animal has three characteristic actions; another tap chooses a different action. Names and calls share one audio clip.
+- **Sea:** 18 friends, including seal, pufferfish, starfish, manta ray, swordfish, shrimp, lobster, and a storybook mermaid. Routes vary in direction, distance, and timing, and every animal returns. Fish turn to face their routes; turtles paddle, rays flap, octopuses pulse/jet, jellyfish pulse vertically, seahorses stay upright, crabs scuttle, starfish crawl along the sand, and shrimp/lobsters flick backward.
+- **Clock Cottage:** eight routines at 08:00, 10:00, 12:00, 15:00, 16:00, 18:00, 20:00 and 21:00. The minute hand remains at 12. Drag/tap the short hand or use keyboard arrows and Enter. It snaps to twelve integer positions. The routine card shows AM/PM and 24-hour equivalents; 15:00 maps to 3 and 21:00 to 9. Incorrect hours get a gentle reminder. Correct hours reveal their activity, including mermaid swimming and a princess story.
+- **Market:** three shopping lists of fruit and vegetables. Tap or drag items into the basket; incorrect and surplus items return to the shelf. Once the list is complete, add exactly one coin per item. Coins can also be dragged and removed from the tray. Payment is accepted only when item and coin counts match.
+- **Kitchen:** preview the final dish first. Follow the ingredient order to make a fruit boat, vegetable soup, or strawberry milk. Incorrect ingredients return to the shelf. Stir with a circular touch gesture or the stir button. Soup bubbles for a visible waiting interval; every recipe becomes its finished dish. Changing recipes cancels pending flights and timers.
 
-`tools/test-butterfly-adventure.cjs` runs a local server and browser integration checks. It requires Playwright to be installed in an external environment, keeping the Hugo project free of Node dependencies.
+## Materials first
+
+`materials.html` is an independent gallery of the exact assets used in games. It lets each animal's three motions run without scenery, then return to its neutral state. Food, coins, containers, and dishes also have independent movement previews. `art.js` provides the original SVGs; `materials.js` adds articulated animals and ingredients; `creatures.js` shares catalogs and movement profiles between the gallery and games.
+
+The browser checks first exercise all 126 animal action variants in the gallery, then assemble and test the actual game interactions. Motion cancellation, replay, reduced motion, and interrupted recipes are covered.
+
+## One production voice
+
+All 108 English recordings use the selected `.voice-lab` **Zoey / 03-curious** fictional reference. The exact reference, prompt, transcript, checksum and pinned model revisions are versioned in `tools/voice/`. Existing and future lines use that same reference through the Base model. The build process runs locally; deployed games only load bundled AAC. There is no device TTS, runtime model, CDN, remote font, or audio service.
 
 ```sh
-npm install --prefix /tmp/little-wonders-check playwright
-/tmp/little-wonders-check/node_modules/.bin/playwright install chromium webkit
-NODE_PATH=/tmp/little-wonders-check/node_modules node tools/test-butterfly-adventure.cjs
+.voice-lab/.venv/bin/python tools/build-adventure-audio.py
+.voice-lab/.venv/bin/python tools/check-adventure-audio.py --transcribe
 ```
 
-Set `BROWSER_EXECUTABLE` to use an existing Chromium executable, or `BROWSER=webkit` to run the WebKit iPad simulation. Screenshots and reports go to a temporary directory printed by the script. The checks cover the full life cycle, intermediate transition frames, repeated taps, interruption and replay, the ordering game, all animal interactions, touch dragging versus tapping, keyboard controls, audio loading/decoding, mute, reduced motion, responsive layout, and discovery progress.
+Edit `audio/narration.json` when adding/changing a line. The generator fingerprints each transcript, voice configuration and call source; current clips are skipped. `audio/recording-info.json` tracks output checksums, durations, seeds and voice identity. `tools/voice/production-qa.json` records waveform and normalized ASR transcript checks.
 
-Browser simulations cannot verify physical iPad speakers or OS volume settings; a real-device pass remains useful. Safari requires a user gesture for sound, so the book never attempts background autoplay.
+Animal calls include licensed recordings, contributed/human imitations, and soft original crafted effects. `tools/build-animal-effects.py` regenerates the new crafted effects; it leaves licensed recordings intact. See `credits.html` for source authors, licenses and edits.
 
-## Audio maintenance
+## Browser checks
 
-`audio/narration.json` contains every English recording's transcript. `tools/build-adventure-audio.py` can regenerate narration and name/call clips on macOS with `say -v Samantha` and `afconvert`. Those tools are **build-time only**. They are not required to run or serve the book. If story text changes, update the transcripts and regenerate the bundled clips.
+Use an external Playwright installation, keeping Hugo free of Node dependencies:
 
-See `credits.html` for recording sources, authors, licenses, and edits. The monkey clip is a human imitation; the owl hoot and tiger growl are crafted effects. Bear and duck calls are recordings, and the frog sound is a contributed ribbit effect. The giraffe and duck clips retain their respective share-alike licenses. Audio credits include sources for the new calls.
+```sh
+npm install --prefix /tmp/zoey-check playwright
+/tmp/zoey-check/node_modules/.bin/playwright install chromium webkit
+NODE_PATH=/tmp/zoey-check/node_modules node tools/test-butterfly-adventure.cjs
+NODE_PATH=/tmp/zoey-check/node_modules BROWSER=webkit node tools/test-butterfly-adventure.cjs
+```
+
+Chromium exercises real dispatched touch gestures, including diagonal two-axis pan, food/coin dragging, and circular stirring. WebKit exercises native taps and pointer dragging. Both cover the complete lifecycle, 42 animal interactions, random action selection, all three learning games, wrong choices, exact coin payments, recipe order/wait, four viewport sizes, and decoding every recording. Set `BASE_URL` to test a deployed club. Screenshots and reports are written to a printed temporary directory.
+
+These are browser/iPad simulations; physical iPad speakers and OS volume settings still require a real-device check. Sound starts with a user tap and stops on mute, page hiding, or navigation.
