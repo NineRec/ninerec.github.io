@@ -31,7 +31,13 @@
     let duration=1700;
     function part(selector,transform,origin){
       if(reduce())return;
-      node.querySelectorAll(selector).forEach(p=>{p.style.transformBox='view-box';p.style.transformOrigin=origin||'130px 110px';animations.push(animate(p,[{transform:'none'},{transform,offset:.45},{transform:'none'}],duration));});
+      node.querySelectorAll(selector).forEach(p=>{
+        // A drawing may specify its actual joint in viewBox coordinates.
+        const joint=p.dataset.motionOrigin?.trim().split(/\s+/).map(Number);
+        p.style.transformBox='view-box';
+        p.style.transformOrigin=joint?.length===2&&joint.every(Number.isFinite)?`${joint[0]}px ${joint[1]}px`:origin||'130px 110px';
+        animations.push(animate(p,[{transform:'none'},{transform,offset:.45},{transform:'none'}],duration));
+      });
     }
     if(isSea){
       const kind=animal.kind;
@@ -74,6 +80,7 @@
       if(motion==='wave'||motion==='pat chest')part('.animal-paw','rotate(-24deg)','180px 130px');
       if(motion==='flap'||motion==='swing')part('.animal-wing','scaleX(1.18) rotate(-8deg)');
       if(motion==='bow')part('.animal-neck','rotate(-8deg)','148px 108px');
+      if(motion==='bow'||motion==='nod')part('.animal-head','rotate(12deg)');
       if(motion==='swish')part('.animal-tail','rotate(20deg)','62px 137px');
       if(['yawn','nibble','roar'].includes(motion))part('.animal-mouth','scaleY(1.2)','185px 120px');
       if(['trumpet','shower'].includes(motion))part('.animal-trunk','rotate(-52deg)','212px 115px');

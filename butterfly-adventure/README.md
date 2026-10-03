@@ -34,6 +34,12 @@ Completed learning-game rounds, finding every friend in Zoo/Sea, and the butterf
 
 The browser checks first exercise all 126 animal action variants in the gallery, then assemble and test the actual game interactions. Motion cancellation, replay, reduced motion, and interrupted recipes are covered.
 
+The mermaid uses a curved torso, continuous tapered tail trunk, and two overlapping flukes. The giraffe, zebra, deer, and horse now have a continuous back/shoulder/neck silhouette. Animated SVG groups specify their actual joint with `data-motion-origin="x y"` in viewBox coordinates; the flamingo's head, beak, and neck move together at its shoulder. New articulated assets should define their own pivot and overlap the fixed body at that joint, rather than inheriting a fish's tail pivot.
+
+These remain original SVG drawings in the club's palette. The [FreeSVG giraffe silhouette](https://freesvg.org/giraffe-2d) was consulted for the neck/shoulder shape; no external illustration is loaded by the game.
+
+`tools/test-creature-joints.cjs` rasterizes 90 intermediate poses of these six characters, checks that each silhouette remains one connected component, verifies fixed pivots, cancellation, and reduced motion, then taps the assets in the iPad-sized scenes. Run with the same `NODE_PATH` as the other checks; use `BROWSER=webkit` for Safari's engine or `BASE_URL` for production.
+
 ## One production voice
 
 All 170 English and Mandarin recordings use the selected `.voice-lab` **Zoey / 03-curious** fictional reference. The exact reference, prompt, transcript, checksum and pinned model revisions are versioned in `tools/voice/`. Existing and future lines use that same reference through the Base model. The build process runs locally; deployed games only load bundled AAC. There is no device TTS, runtime model, CDN, remote font, or audio service.
