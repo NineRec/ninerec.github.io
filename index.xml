@@ -34,7 +34,7 @@
       <link>https://blog.codepanic.cn/post/kottke-choosing-leader/</link>
       <pubDate>Tue, 14 Nov 2023 12:30:44 +0800</pubDate>
       <guid>https://blog.codepanic.cn/post/kottke-choosing-leader/</guid>
-      <description>&lt;blockquote&gt;&#xA;&lt;p&gt;Choose your leaders with wisdom and forethought.&lt;br&gt;&#xA;To be led by a coward is to be controlled by all that the coward fears.&lt;br&gt;&#xA;To be led by a fool is to be led by the opportunists who control the fool.&lt;br&gt;&#xA;To be led by a thief is to offer up your most precious treasures to be stolen.&lt;br&gt;&#xA;To be led by a liar is to ask to be told lies.&lt;br&gt;&#xA;To be led by a tyrant is to sell yourself and those you love into slavery.&lt;/p&gt;&#xA;&lt;/blockquote&gt;</description>
+      <description>&lt;blockquote&gt;&#xA;&lt;p&gt;Choose your leaders with wisdom and forethought.&lt;br&gt;&#xA;To be led by a coward is to be controlled by all that the coward fears.&lt;br&gt;&#xA;To be led by a fool is to be led by the opportunists who control the fool.&lt;br&gt;&#xA;To be led by a thief is to offer up your most precious treasures to be stolen.&lt;br&gt;&#xA;To be led by a liar is to ask to be told lies.&lt;br&gt;&#xA;To be led by a tyrant is to sell yourself and those you love into slavery.&lt;/p&gt;&lt;/blockquote&gt;</description>
     </item>
     <item>
       <title>金融相关词汇 - ChatGPT 来解释</title>
@@ -90,7 +90,7 @@
       <link>https://blog.codepanic.cn/quotes/</link>
       <pubDate>Mon, 14 Oct 2019 10:08:36 +0800</pubDate>
       <guid>https://blog.codepanic.cn/quotes/</guid>
-      <description>有意思的 Quotes The proper use of comments is to compensate for our failure to express ourself in code.&#xA;&amp;ndash; Robert C. Martin&#xA;What we need are notions，not notations.&#xA;&amp;ndash; 高斯&#xA;It is not worth an intelligent man’s time to be in the majority. By definition, there are already enough people to do that.&#xA;&amp;ndash; G. H. Hardy&#xA;What you don’t use, you don’t pay for. And further: what you do use, you couldn’t hand code any better.</description>
+      <description>&lt;h2 id=&#34;有意思的-quotes&#34;&gt;有意思的 Quotes&lt;/h2&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;The proper use of comments is to compensate for our failure to express ourself in code.&lt;/p&gt;&#xA;&lt;p&gt;&amp;ndash; Robert C. Martin&lt;/p&gt;&lt;/blockquote&gt;&#xA;&lt;hr&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;What we need are notions，not notations.&lt;/p&gt;&#xA;&lt;p&gt;&amp;ndash; 高斯&lt;/p&gt;&lt;/blockquote&gt;&#xA;&lt;hr&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;It is not worth an intelligent man’s time to be in the majority. By definition, there are already enough people to do that.&lt;/p&gt;&#xA;&lt;p&gt;&amp;ndash; G. H. Hardy&lt;/p&gt;&lt;/blockquote&gt;&#xA;&lt;hr&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;What you don’t use, you don’t pay for. And further: what you do use, you couldn’t hand code any better.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Uber Go Style</title>
