@@ -27,7 +27,7 @@
       ['Up, up, and away! Zoey waves as the butterfly takes flight.', 'Tap a flower to invite it for nectar. A butterfly can lay eggs, and the story begins again.']]}
   ];
   const WORLD_WIDTH = CreatureCatalog.width, WORLD_HEIGHT = CreatureCatalog.height;
-  const AUDIO_VERSION = 'curious-club-20261004';
+  const AUDIO_VERSION = 'little-learners-20261004';
   const zoo = CreatureCatalog.zoo, sea = CreatureCatalog.sea;
   let customNarration = null;
   let world = 'garden', stage = 0, counts = [0,0,0,0], busy = false, epoch = 0;
@@ -185,7 +185,9 @@
     const a=(world==='zoo'?zoo:sea).find(a=>a.id===id), button=$('panorama').querySelector(`[data-animal="${id}"]`);
     if(!a||!button)return;
 
+    const newFriend=!discovered[world].has(id);
     selected[world]=id;discovered[world].add(id);
+    if(newFriend&&discovered[world].size===(world==='zoo'?zoo:sea).length)window.LittleCelebration?.burst();
     $('panorama').querySelectorAll('.animal').forEach(b=>{b.classList.toggle('selected',b===button);b.setAttribute('aria-pressed',b===button);});
     button.classList.add('discovered','acting');
     $('animal-index').querySelectorAll('button').forEach(b=>{b.classList.toggle('found',discovered[world].has(b.dataset.find));b.setAttribute('aria-pressed',b.dataset.find===id);b.innerHTML=(world==='zoo'?zoo:sea).find(a=>a.id===b.dataset.find).name+(discovered[world].has(b.dataset.find)?'<span aria-hidden="true"> ✓</span>':'');});
@@ -276,7 +278,7 @@
     if(i!==gameStep){$('game-feedback').textContent=['Look for the tiny egg on the leaf.','Who hatches from the egg? The caterpillar!','What does the caterpillar become? A chrysalis.','Who comes out of the chrysalis? The butterfly!'][gameStep];return;}
     const slot=$('game-slots').children[gameStep];slot.classList.add('filled');slot.innerHTML=use(stages[i].symbol,stages[i].view)+`<span>${stages[i].name}</span>`;slot.setAttribute('aria-label',`Stage ${i+1}: ${stages[i].name}`);button.disabled=true;gameStep++;
     $('game-feedback').textContent=gameStep===4?'You did it! Egg → caterpillar → chrysalis → butterfly. A wonderful circle of life.':'Wonderful! What comes next?';
-    if(gameStep===4){gestureGuide('cheer');playAudio('game-complete.m4a');$('game-reset').focus({preventScroll:true});}else $('game-choices').querySelector('button:not(:disabled)').focus({preventScroll:true});
+    if(gameStep===4){window.LittleCelebration?.burst();gestureGuide('cheer');playAudio('game-complete.m4a');$('game-reset').focus({preventScroll:true});}else $('game-choices').querySelector('button:not(:disabled)').focus({preventScroll:true});
   });
   $('game-reset').addEventListener('click',resetGame);
   $('restart').addEventListener('click',()=>{counts=[0,0,0,0];stage=0;discovered.zoo.clear();discovered.sea.clear();selected={zoo:null,sea:null};scrolls.zoo={x:0,y:0};scrolls.sea={x:0,y:0};changeWorld('garden');gestureGuide('wave');});

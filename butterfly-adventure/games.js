@@ -3,9 +3,9 @@
   'use strict';
   const $=id=>document.getElementById(id),art=AdventureArt,book=AdventureBook;
   const requested=new URLSearchParams(location.search).get('game');
-  const game=['garden','zoo','sea','clock','market','kitchen'].includes(requested)?requested:'garden';
+  const game=['garden','zoo','sea','clock','market','kitchen','traffic','counting','letters','seedling'].includes(requested)?requested:'garden';
   document.body.dataset.game=game;
-  document.title=({garden:'Butterfly Garden',zoo:'A Day at the Zoo',sea:'Under the Sea',clock:'Clock Cottage',market:'The Little Market',kitchen:"Zoey's Kitchen"})[game]+" · Zoey's Little Wonders";
+  document.title=({garden:'Butterfly Garden',zoo:'A Day at the Zoo',sea:'Under the Sea',clock:'Clock Cottage',market:'The Little Market',kitchen:"Zoey's Kitchen",traffic:'A Little Walk',counting:'A Counting Picnic',letters:'The Letter Post',seedling:'挖呀种花园'})[game]+" · Zoey's Little Wonders";
   const reduce=()=>matchMedia('(prefers-reduced-motion: reduce)').matches;
   let currentVoice=`${game}-intro`;
   function speak(id){currentVoice=id;book.playAudio(`${id}.m4a`);}
@@ -26,7 +26,7 @@
     $('toy-listen').addEventListener('click',()=>speak(currentVoice));
   }
   function message(main,detail='',id='toy-message'){$(id).innerHTML=main+(detail?`<small>${detail}</small>`:'');}
-  function celebrate(node){node.classList.add('celebrate');const sparkle=document.createElement('span');sparkle.className='toy-sparkles';sparkle.setAttribute('aria-hidden','true');sparkle.textContent='✦   ✧   ✦';node.append(sparkle);setTimeout(()=>sparkle.remove(),1000);}
+  function celebrate(node){window.LittleCelebration?.burst();node.classList.add('celebrate');const sparkle=document.createElement('span');sparkle.className='toy-sparkles';sparkle.setAttribute('aria-hidden','true');sparkle.textContent='✦   ✧   ✦';node.append(sparkle);setTimeout(()=>sparkle.remove(),1000);}
   function guide(){return `<div class="toy-guide guide" style="position:relative;right:auto;bottom:auto">${art.kid()}</div>`;}
   // Pointer dragging supports iPad; taps and keyboard clicks are equivalent alternatives.
   function bindPick(container,dropSelector,callback){
@@ -161,5 +161,6 @@
     window.addEventListener('pagehide',()=>{clearInterval(state.timer);state.token++;});
     reset(0);
   }
-  if(game==='clock')clockGame();else if(game==='market')marketGame();else kitchenGame();
+  if(['traffic','counting','letters','seedling'].includes(game))MiniGames.start(game,{$,art,shell,speak,setVoice:id=>currentVoice=id,message,guide,bindPick,returnTile,fly,celebrate,foodNames});
+  else if(game==='clock')clockGame();else if(game==='market')marketGame();else kitchenGame();
 })();
