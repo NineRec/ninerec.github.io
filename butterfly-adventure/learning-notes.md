@@ -22,3 +22,5 @@ Walking follows the [Singapore Police Force's pedestrian guidance](https://www.p
 The Chinese garden uses original spoken text about digging and growing. It shows a condensed life sequence and explicitly explains that real plants need time and grow at different speeds. There is no reproduction of the referenced song's recording or melody.
 
 Before integration, the 15 new vector playthings were tested independently in `materials.html` with the same motion helper later used in the stories. Game tests then exercise incorrect choices, touch drags, interrupted actions, all 26 letters, all garden sizes, reduced motion and small/large screens. Completion confetti is silent, has no flashing, cannot intercept touches and removes itself.
+
+Plant-growth facts are also checked against NParks’ [Every Child a Seed plant journal](https://www.nparks.gov.sg/docs/default-source/learn-docs/programme/every-child-seed/ecas-2025/every-child-a-seed_my-plant-journal.pdf?sfvrsn=9c522073_1). The game describes the needs of growing flowers rather than treating every seed’s germination requirements as identical.

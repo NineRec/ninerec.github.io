@@ -970,12 +970,12 @@
       "sha256": "99a735013eeff1b78738638dba324ed072593f26aedbe99ae55032fc3522ec26"
     },
     "seedling-fact": {
-      "fingerprint": "aa993179a466ee4820b788406b87b61ca3ab49eff86852d8c73285e214b6e1f2",
+      "fingerprint": "fa8c24343ce42a60ceb71d62c46301bff5e51427a082d4658ce0510163f6ad9d",
       "seed": 6892501,
       "language": "Chinese",
-      "speech_seconds": 4.88,
-      "duration_seconds": 4.88,
-      "sha256": "27f4f5961cf0941ec885327613d3aec1a764aedad05b1fd5c18bb2659a71d6aa"
+      "speech_seconds": 6.48,
+      "duration_seconds": 6.48,
+      "sha256": "5d317edea61beafdcbf4243290b4a12637d5e6d713039f0cd30c5584fed4e50e"
     },
     "number-1": {
       "fingerprint": "d4a797098ea1f458722e8c31ced8c9168cee7c185f26ed959a9e8d28ef9ffc6c",
