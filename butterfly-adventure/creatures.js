@@ -4,9 +4,10 @@
   const zooNames=['Lion','Elephant','Giraffe','Zebra','Monkey','Owl','Tiger','Bear','Duck','Frog','Hippo','Rhino','Otter','Panda','Kangaroo','Penguin','Crocodile','Flamingo','Gorilla','Fox','Deer','Rabbit','Horse','Cow'];
   const zooActions={lion:['Roar','Stretch','Swish'],elephant:['Trumpet','Flap ears','Shower'],giraffe:['Bow','Reach up','Step'],zebra:['Trot','Nod','Shake'],monkey:['Hop','Swing','Wave'],owl:['Flap','Peek','Bow'],tiger:['Stretch','Swish','Pounce'],bear:['Wave','Stretch','Sway'],duck:['Waddle','Flap','Nod'],frog:['Hop','Big hop','Peek'],hippo:['Yawn','Wade','Wiggle ears'],rhino:['Nod','Stomp','Swish'],otter:['Roll','Wave','Slide'],panda:['Nibble','Wave','Sway'],kangaroo:['Hop','Big hop','Wave'],penguin:['Waddle','Flap','Slide'],crocodile:['Swish','Yawn','Crawl'],flamingo:['Balance','Bow','Flap'],gorilla:['Wave','Pat chest','Sway'],fox:['Peek','Swish','Pounce'],deer:['Bow','Step','Peek'],rabbit:['Hop','Wiggle ears','Nibble'],horse:['Trot','Nod','Swish'],cow:['Nibble','Nod','Swish']};
   const seaNames={turtle:'Sea turtle',clownfish:'Clownfish',dolphin:'Dolphin',octopus:'Octopus',whale:'Whale',jellyfish:'Jellyfish',shark:'Shark',stingray:'Stingray',seahorse:'Seahorse',crab:'Crab',seal:'Seal',pufferfish:'Pufferfish',starfish:'Starfish',manta:'Manta ray',swordfish:'Swordfish',shrimp:'Shrimp',lobster:'Lobster',mermaid:'Mermaid'};
+  const seaActions={turtle:['Paddle','Glide','Turn'],clownfish:['Tail wag','Quick dash','Peek'],dolphin:['Leap','Wave a flipper','Dive'],octopus:['Eight-arm wave','Jet','Curl the arms'],whale:['Glide','Blow a spout','Wave a flipper'],jellyfish:['Bell pulse','Float up','Tassel dance'],shark:['Cruise','Tail sweep','Turn'],stingray:['Fin ripple','Sand glide','Gentle turn'],seahorse:['Fin flutter','Sway','Little rise'],crab:['Sideways steps','Wave claws','Little shuffle'],seal:['Flipper wave','Playful dive','Glide'],pufferfish:['Little puff','Fin flutter','Wiggle'],starfish:['Slow crawl','Tiny turn','Sand stroll'],manta:['Wing sweep','Soar','Bank'],swordfish:['Quick dash','Glide','Turn'],shrimp:['Tail flick','Backward dart','Curl'],lobster:['Claw wave','Tail flick','Crawl'],mermaid:['Swim','Tail wave','Dive']};
   const seaKinds={turtle:'paddle',clownfish:'dart',dolphin:'arc',octopus:'jet',whale:'glide',jellyfish:'pulse',shark:'glide',stingray:'ray',seahorse:'upright',crab:'scuttle',seal:'arc',pufferfish:'puff',starfish:'crawl',manta:'ray',swordfish:'dart',shrimp:'backward',lobster:'backward',mermaid:'arc'};
   const zoo=zooNames.map((name,i)=>({id:name.toLowerCase(),name,x:250+(i%6)*410,y:150+Math.floor(i/6)*295,width:name==='elephant'?265:220,actions:zooActions[name.toLowerCase()],detail:`Hello, ${name.toLowerCase()}! Tap again for another little surprise.`}));
-  const sea=Object.entries(seaNames).map(([id,name],i)=>({id,name,x:230+(i%6)*415,y:110+Math.floor(i/6)*400,width:['whale','manta','shark'].includes(id)?265:220,kind:seaKinds[id],detail:({pulse:'Pulsing softly up and down.',upright:'A little fin keeps our friend upright.',scuttle:'Sideways steps along the sandy seabed.',crawl:'A slow crawl on tiny tube feet.',backward:'A quick flick of the tail, backwards!',ray:'Wide fins glide like wings.',puff:'A little puff, then a gentle swim.',paddle:'Paddling with wonderful flippers.',jet:'A pulse of water and waving arms.'})[seaKinds[id]]||'Follow our friend through the water. It always comes back!'}));
+  const sea=Object.entries(seaNames).map(([id,name],i)=>({id,name,actions:seaActions[id],x:230+(i%6)*415,y:110+Math.floor(i/6)*400,width:['whale','manta','shark'].includes(id)?265:220,kind:seaKinds[id],detail:({pulse:'Pulsing softly up and down.',upright:'A little fin keeps our friend upright.',scuttle:'Sideways steps along the sandy seabed.',crawl:'A slow crawl on tiny tube feet.',backward:'A quick flick of the tail, backwards!',ray:'Wide fins glide like wings.',puff:'A little puff, then a gentle swim.',paddle:'Paddling with wonderful flippers.',jet:'A pulse of water and waving arms.'})[seaKinds[id]]||'Follow our friend through the water. It always comes back!'}));
   // Bottom dwellers stay near the sand, even when their route changes.
   for(const a of sea)if(['crab','starfish','lobster'].includes(a.id))a.y=1100;
   window.CreatureCatalog={zoo,sea,width:2700,height:1400};
@@ -24,7 +25,7 @@
     if(running.has(node))running.get(node).cancel();
     const animal=zoo.find(a=>a.id===id)||sea.find(a=>a.id===id),isSea=!!animal.kind;
     const index=forced??randomAction(id,isSea?3:animal.actions.length);
-    const name=isSea?`${animal.kind} ${index+1}`:animal.actions[index];
+    const name=animal.actions[index];
     node.dataset.motion=name;node.dataset.motionIndex=index;
     const animations=[],oldAnimation=node.style.animation;node.style.animation='none';
     const frames=[{transform:'translate(0,0) rotate(0) scale(1)',opacity:1}];
@@ -44,7 +45,7 @@
       let direction=Math.random()<.5?-1:1;
       if(direction===directions.get(id))direction=-direction;
       directions.set(id,direction);node.dataset.direction=direction;
-      const distance=(150+Math.random()*140)*direction, vertical=(Math.random()-.5)*130;
+      const speed=[.78,1.18,.95][index],distance=(150+Math.random()*140)*direction*speed, vertical=(Math.random()-.5)*130;
       duration=['crawl','upright','pulse'].includes(kind)?4200:3200+Math.random()*900;
       const move=(x,y,rotation=0,scale=1)=>`translate(${x}px,${y}px) rotate(${rotation}deg) scale(${scale})`;
       if(kind==='pulse')frames.push({transform:move(25*direction,-70-Math.random()*35,0,.9),offset:.3},{transform:move(-15*direction,-105-Math.random()*35,0,1.06),offset:.6});
@@ -52,6 +53,7 @@
       else if(kind==='scuttle'||kind==='crawl')frames.push({transform:move(distance*(kind==='crawl'?.35:.75),0,0),offset:.45},{transform:move(distance*.15,0,0),offset:.8});
       else if(kind==='backward')frames.push({transform:move(-distance,15,6*direction),offset:.25},{transform:move(-distance*.4,-10,-4*direction),offset:.7});
       else if(kind==='puff')frames.push({transform:move(0,0,0,1.23),offset:.2},{transform:move(distance*.6,vertical,0,1),offset:.6});
+      else if(kind==='arc'&&index===2)frames.push({transform:move(distance*.5,80,-12*direction),offset:.3},{transform:move(distance,35,10*direction),offset:.65});
       else if(kind==='arc')frames.push({transform:move(distance*.55,-85,-10*direction),offset:.3},{transform:move(distance,vertical,8*direction),offset:.6});
       else if(kind==='jet')frames.push({transform:move(distance*.3,-25,0,.85),offset:.2},{transform:move(distance,vertical,-8*direction),offset:.5});
       else if(kind==='dart')frames.push({transform:move(distance,vertical,-6*direction),offset:.28},{transform:move(distance*.6,-vertical,6*direction),offset:.68});
@@ -61,10 +63,31 @@
         const drawing=node.querySelector('svg');
         if(!reduce())animations.push(animate(drawing,[{transform:`scaleX(${direction})`},{transform:`scaleX(${direction})`,offset:.58},{transform:`scaleX(${-direction})`,offset:.6},{transform:'scaleX(1)'}],duration,{easing:'steps(1,end)'}));
       }
-      part('.animal-tail','rotate(12deg)','65px 115px');
-      part('.animal-wing,.animal-fin','scaleY(.78)');
-      part('.tentacles','scaleX(.85) skewX(5deg)');
-      part('.animal-claw,.animal-leg','rotate(7deg)');
+      part('.animal-tail',`rotate(${index===1?20:12}deg)`,'65px 115px');
+      if(id==='octopus'){
+        node.querySelectorAll('.octopus-arm').forEach((arm,i)=>{
+          if(reduce())return;
+          const angle=(i%2?1:-1)*(index===2?12:7),peak=.24+(i%4)*.1;
+          animations.push(animate(arm,[{transform:'none'},{transform:`rotate(${angle}deg)`,offset:peak},{transform:`rotate(${-angle*.45}deg)`,offset:Math.min(.85,peak+.25)},{transform:'none'}],duration));
+        });
+      }else if(id==='jellyfish'){
+        part('.jelly-bell','scale(1.04,.94)');
+        node.querySelectorAll('.jelly-tentacle').forEach((arm,i)=>{
+          if(!reduce())animations.push(animate(arm,[{transform:'none'},{transform:`rotate(${i%2?-5:5}deg)`,offset:.25+i*.08},{transform:'none'}],duration));
+        });
+      }else if(id==='turtle'){
+        part('.fin-front','rotate(-13deg)');part('.fin-rear','rotate(10deg)');
+        part('.animal-head','rotate(4deg)');
+      }else if(kind==='ray'){
+        part('.ray-left','rotate(-9deg) scaleY(.91)');part('.ray-right','rotate(9deg) scaleY(.91)');
+      }else part('.animal-wing,.animal-fin','rotate(-12deg) scaleY(.92)');
+      if(id==='whale')part('.animal-spout',index===1?'scaleY(1.4)':'scaleY(.9)');
+      if(kind==='scuttle'||kind==='backward'){
+        node.querySelectorAll('.animal-leg').forEach((leg,i)=>{
+          if(!reduce())animations.push(animate(leg,[{transform:'none'},{transform:`rotate(${i%2?-8:8}deg)`,offset:.3},{transform:`rotate(${i%2?6:-6}deg)`,offset:.65},{transform:'none'}],duration));
+        });
+        part('.animal-claw',index===1?'rotate(-17deg)':'rotate(9deg)');
+      }
     }else{
       const dx=index===1?-20:20;
       const motion=name.toLowerCase();
@@ -84,7 +107,14 @@
       if(motion==='swish')part('.animal-tail','rotate(20deg)','62px 137px');
       if(['yawn','nibble','roar'].includes(motion))part('.animal-mouth',motion==='nibble'?'scaleY(.65)':'scaleY(2.2)','185px 120px');
       if(['trumpet','shower'].includes(motion))part('.animal-trunk','rotate(-52deg)','212px 115px');
-      if(['trot','step','stomp','crawl','wade','waddle'].includes(motion))part('.animal-leg','rotate(8deg)');
+      if(['trot','step','stomp','crawl','wade','waddle'].includes(motion)){part('.animal-leg:not(.leg-rear)','rotate(8deg)');part('.leg-rear','rotate(-8deg)');}
+      if(['bear','panda','gorilla'].includes(id)){
+        // Sitting feet stay planted while the upper body expresses the action.
+        frames.length=1;
+        if(motion==='stretch'){part('.paw-left','rotate(32deg)');part('.paw-right','rotate(-32deg)');part('.animal-head','rotate(-5deg)');}
+        else if(motion==='sway')part('.animal-head','rotate(7deg)');
+        else if(motion==='nibble')part('.paw-left','rotate(28deg)');
+      }
       if(motion==='big hop')frames[1].transform=`translate(${dx}px,-65px) rotate(-3deg)`;
     }
     frames.push({transform:'translate(0,0) rotate(0) scale(1)',opacity:1});
@@ -100,5 +130,5 @@
     if(!animations.length)queueMicrotask(()=>{node.style.animation=oldAnimation;running.delete(node);});
     return controller;
   }
-  window.CreatureMotion={play,cancelAll(){for(const handle of running.values())handle.cancel();running.clear();},actions(id){return zoo.find(a=>a.id===id)?.actions||['Explore','Return','Glide'];}};
+  window.CreatureMotion={play,cancelAll(){for(const handle of running.values())handle.cancel();running.clear();},actions(id){return (zoo.find(a=>a.id===id)||sea.find(a=>a.id===id))?.actions||[];}};
 })();

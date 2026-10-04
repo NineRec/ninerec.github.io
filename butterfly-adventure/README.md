@@ -38,9 +38,13 @@ The browser checks first exercise all 126 animal action variants in the gallery,
 
 The mermaid uses a curved torso, continuous tapered tail trunk, and two overlapping flukes. The giraffe, zebra, deer, and horse now have a continuous back/shoulder/neck silhouette. Animated SVG groups specify their actual joint with `data-motion-origin="x y"` in viewBox coordinates; the flamingo's head, beak, and neck move together at its shoulder. New articulated assets should define their own pivot and overlap the fixed body at that joint, rather than inheriting a fish's tail pivot.
 
+The animal review preserves species identity instead of reusing one rounded fish shape: clownfish bands, a dolphin's beak and arched back, a shark's pointed snout/gills/tall dorsal fin, a whale's large head/throat grooves, four turtle flippers, eight independently moving octopus arms, a pulsing jellyfish bell, curled seahorse tail, crab eye stalks, and a segmented lobster/shrimp. Manta rays have broad swept wings and curled head fins; stingrays have a kite silhouette and long thin tail. Each has its own palette and articulated motion. The [Monterey Bay Aquarium octopus exhibit](https://www.montereybayaquarium.org/visit/exhibits/giant-pacific-octopus/) and [NOAA manta ray reference](https://www.fisheries.noaa.gov/species/giant-manta-ray) were consulted for these features; the drawings remain original and load no external resources.
+
+Bear and panda feet are painted in front of the belly with visible toe/heel pads, and stay planted while the arms/head move. Gorilla uses its own broad body and knuckle hands. Rabbit hind feet, monkey foot placement, crocodile splayed legs and frog webbed toes are distinct. Four-legged animals use overlapping near/far legs, with paws, split hooves, solid hooves or column-like elephant feet as appropriate.
+
 These remain original SVG drawings in the club's palette. The [FreeSVG giraffe silhouette](https://freesvg.org/giraffe-2d) was consulted for the neck/shoulder shape; no external illustration is loaded by the game.
 
-`tools/test-creature-joints.cjs` rasterizes 630 intermediate poses of all 42 animals, checks that each silhouette remains one connected component, verifies fixed pivots, cancellation, and reduced motion, then taps the assets in the iPad-sized scenes. Run with the same `NODE_PATH` as the other checks; use `BROWSER=webkit` for Safari's engine or `BASE_URL` for production.
+`tools/test-creature-joints.cjs` rasterizes 630 intermediate poses of all 42 animals, checks connected silhouettes, fixed pivots, species limb counts, visible bear/panda foot pads, planted feet, cancellation and reduced motion. It then taps all 42 animals twice, checks native two-axis panning and automatic progression, and verifies phone and both iPad orientations. Run with the same `NODE_PATH` as the other checks; use `BROWSER=webkit` for Safari's engine or `BASE_URL` for production.
 
 ## One production voice
 
