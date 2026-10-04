@@ -17,7 +17,7 @@ The designs take inspiration from Singapore's [ECDA Early Years Development Fram
 
 Four different activities were selected so children can choose between life practice, numbers, English letters and a Mandarin nature story. Each has small, repeatable successes rather than scores, lives or a time limit. The difficulty controls let an adult choose simpler matching or a further challenge; they do not label children by achievement.
 
-Walking follows the [Singapore Police Force's pedestrian guidance](https://www.police.gov.sg/Knowledge-Hub/Traffic/Road-Safety-Tips/Road-Safety-Tips-for-Pedestrians): wait for the pedestrian green, look right–left–right, check traffic, and walk with a grown-up. The game freezes the safe crossing opportunity while practising, so it teaches observation rather than racing a signal.
+Walking follows the [Singapore Police Force's pedestrian guidance](https://www.police.gov.sg/Knowledge-Hub/Traffic/Road-Safety-Tips/Road-Safety-Tips-for-Pedestrians): wait for the pedestrian green, look right–left–right, check traffic, and walk with a grown-up. The child-facing game now uses route arrows, a hand for red and footsteps for green. It waits for actual car animations to stop, then holds the safe crossing opportunity while Zoey walks with a grown-up. The written observation sequence is omitted from the child controls.
 
 The Chinese garden uses original spoken text about digging and growing. It shows a condensed life sequence and explicitly explains that real plants need time and grow at different speeds. There is no reproduction of the referenced song's recording or melody.
 

@@ -17,20 +17,22 @@ The whole folder can be downloaded and served without internet. A hosted copy ne
 - **Garden:** continuous hatching, growing, hanging in a J, forming/opening the chrysalis, unfolding/drying wings, flight, flowers, and an ordering game shown in an overlay. The articulated SVG Zoey watches, feeds, cheers, and waves.
 - **Zoo:** 24 familiar animals including hippo, rhino, otter, panda, kangaroo, penguin, crocodile, flamingo, gorilla, fox, deer, rabbit, horse, and cow. Native two-dimensional touch panning, mouse/pen dragging, four directional controls, keyboard arrows, a horizontal position slider, and a friend index. Each animal has three characteristic actions; another tap chooses a different action. Names and calls share one audio clip.
 - **Sea:** 18 friends, including seal, pufferfish, starfish, manta ray, swordfish, shrimp, lobster, and a storybook mermaid. Routes vary in direction, distance, and timing, and every animal returns. Fish turn to face their routes; turtles paddle, rays flap, octopuses pulse/jet, jellyfish pulse vertically, seahorses stay upright, crabs scuttle, starfish crawl along the sand, and shrimp/lobsters flick backward.
-- **Clock Cottage:** eight routines at 08:00, 10:00, 12:00, 15:00, 16:00, 18:00, 20:00 and 21:00. The minute hand remains at 12. Drag/tap the short hand or use keyboard arrows and Enter. It snaps to twelve integer positions. The routine card shows AM/PM and 24-hour equivalents; 15:00 maps to 3 and 21:00 to 9. Incorrect hours get a gentle reminder. Correct hours reveal their activity, including mermaid swimming and a princess story.
-- **Market:** three shopping lists of fruit and vegetables. Tap or drag items into the basket; incorrect and surplus items return to the shelf. Once the list is complete, add exactly one coin per item. Coins can also be dragged and removed from the tray. Payment is accepted only when item and coin counts match.
-- **Kitchen:** preview the final dish first. Follow the ingredient order to make a fruit boat, vegetable soup, or strawberry milk. Incorrect ingredients return to the shelf. Stir with a circular touch gesture or the stir button. Soup bubbles for a visible waiting interval; every recipe becomes its finished dish. Changing recipes cancels pending flights and timers.
+- **Clock Cottage:** eight routines at 08:00, 10:00, 12:00, 15:00, 16:00, 18:00, 20:00 and 21:00. The minute hand remains at 12. Drag/tap the short hand or use keyboard arrows and Enter. It snaps to twelve integer positions. A large numeral and activity picture show the next hour; 15:00 maps to 3 and 21:00 to 9. Incorrect hours get a gentle reminder. Correct hours reveal their activity, including mermaid swimming and a princess story.
+- **Market:** three shopping lists of fruit and vegetables. Tap or drag items into the basket; incorrect and surplus items return to the shelf. Once the list is complete, add exactly one coin per item. Coins can also be dragged and removed from the tray. Six large shelf choices, a picture list and empty coin slots make the task readable without words. Payment is accepted only when item and coin counts match; tap the cashier or the large green check to pay. The cashier thanks the child and automatically starts a fresh list.
+- **Kitchen:** The final dish is visible while cooking starts immediately. Follow the ingredient order to make a fruit boat, vegetable soup, or strawberry milk. Incorrect ingredients return to the shelf. Stir with a circular touch gesture or the stir button. Soup bubbles for a visible waiting interval; every recipe becomes its finished dish. Completed recipes automatically cycle boat → soup → milk. Changing recipes cancels pending flights, boiling timers and automatic progression.
 
-- **A Little Walk:** three destinations with a pedestrian signal. Red means wait, then right–left–right observations and stopped traffic are required before Zoey walks with a grown-up. Pressing walk early never moves the characters. The green signal stays steady while the child practices; there is no rush or countdown punishment.
-- **Counting Picnic:** one touch/drag corresponds to one food item. Match a picture and quantity, remove a piece to recount, and check the exact total. Two levels cover 1–5 and 1–10; the animals are fictional picnic companions, not animal-feeding advice.
+- **A Little Walk:** three destinations with a pedestrian signal. Two picture arrows select left/right paths through three crossings. A car and bus approach from opposite directions while a van turns. Red means wait; green appears only after the actual vehicle motions have stopped, then Zoey walks with a grown-up. Pressing walk early never moves the characters. The green signal stays steady while the child practices; there is no rush or countdown punishment.
+- **Counting Picnic:** one touch/drag corresponds to one food item. Match a picture and quantity; the exact count completes the card automatically. A piece can be removed before completion. Two levels cover 1–5 and 1–10; the animals are fictional picnic companions, not animal-feeding advice.
 - **Letter Post:** all 26 letters have picture cards and recorded letter names. Match capitals, or pair capitals and lowercase. Tap a postbox or drag the envelope. The deck visits all 26 before shuffling again; each delivery is a small success.
 - **挖呀种花园:** an original Mandarin interactive planting story inspired by the idea of digging in a little garden. No song recording, melody or additional song lyrics are reproduced. Dig three times, plant 1/3/5 seeds, cover, water twice, invite sunlight, and see the flowers grow. Tool taps, drags, and tapping the garden all work. Real plants are described as needing days and different growth times.
+
+Every game starts with its pictures ready for interaction. The browser tries to play bundled narration immediately; if autoplay requires a gesture, one large ▶ unlocks sound. Words remain available to screen readers but children follow pictures, numerals, highlighted objects and voices. Success gives a short confetti pause followed by the next round automatically. A small star ring shows the pause; its timer stops while the tab is hidden, and changing a recipe or mode cancels it.
 
 Completed learning-game rounds, finding every friend in Zoo/Sea, and the butterfly ordering game get quiet paper confetti. It never blocks touches, cleans itself up, and becomes one static star when reduced motion is requested.
 
 ## Materials first
 
-`materials.html` is an independent gallery of the exact assets used in games. It lets each animal's three motions run without scenery, then return to its neutral state. Food, coins, containers, dishes, and 15 new playthings also have independent movement previews. `mini-art.js` shares their SVGs and baseline motions. `art.js` provides the original SVGs; `materials.js` adds articulated animals and ingredients; `creatures.js` shares catalogs and movement profiles between the gallery and games.
+`materials.html` is an independent gallery of the exact assets used in games. It lets each animal's three motions run without scenery, then return to its neutral state. All 104 materials are redrawn in the same soft palette. Food, coins, containers, dishes, 15 playthings, lifecycle stages, Zoey, the grown-up, cashier/register, buildings, vehicles and icon controls also have independent movement previews. `mini-art.js` shares their SVGs and baseline motions. `art.js` provides the lifecycle and character SVGs; `materials.js` adds articulated animals and ingredients; `creatures.js` shares catalogs and movement profiles between the gallery and games.
 
 The browser checks first exercise all 126 animal action variants in the gallery, then assemble and test the actual game interactions. Motion cancellation, replay, reduced motion, and interrupted recipes are covered.
 
@@ -38,11 +40,11 @@ The mermaid uses a curved torso, continuous tapered tail trunk, and two overlapp
 
 These remain original SVG drawings in the club's palette. The [FreeSVG giraffe silhouette](https://freesvg.org/giraffe-2d) was consulted for the neck/shoulder shape; no external illustration is loaded by the game.
 
-`tools/test-creature-joints.cjs` rasterizes 90 intermediate poses of these six characters, checks that each silhouette remains one connected component, verifies fixed pivots, cancellation, and reduced motion, then taps the assets in the iPad-sized scenes. Run with the same `NODE_PATH` as the other checks; use `BROWSER=webkit` for Safari's engine or `BASE_URL` for production.
+`tools/test-creature-joints.cjs` rasterizes 630 intermediate poses of all 42 animals, checks that each silhouette remains one connected component, verifies fixed pivots, cancellation, and reduced motion, then taps the assets in the iPad-sized scenes. Run with the same `NODE_PATH` as the other checks; use `BROWSER=webkit` for Safari's engine or `BASE_URL` for production.
 
 ## One production voice
 
-All 170 English and Mandarin recordings use the selected `.voice-lab` **Zoey / 03-curious** fictional reference. The exact reference, prompt, transcript, checksum and pinned model revisions are versioned in `tools/voice/`. Existing and future lines use that same reference through the Base model. The build process runs locally; deployed games only load bundled AAC. There is no device TTS, runtime model, CDN, remote font, or audio service.
+All 181 English and Mandarin recordings use the selected `.voice-lab` **Zoey / 03-curious** fictional reference. The exact reference, prompt, transcript, checksum and pinned model revisions are versioned in `tools/voice/`. Existing and future lines use that same reference through the Base model. The build process runs locally; deployed games only load bundled AAC. There is no device TTS, runtime model, CDN, remote font, or audio service.
 
 ```sh
 .voice-lab/.venv/bin/python tools/build-adventure-audio.py
@@ -60,14 +62,17 @@ Use an external Playwright installation, keeping Hugo free of Node dependencies:
 ```sh
 npm install --prefix /tmp/zoey-check playwright
 /tmp/zoey-check/node_modules/.bin/playwright install chromium webkit
-NODE_PATH=/tmp/zoey-check/node_modules node tools/test-butterfly-adventure.cjs
-NODE_PATH=/tmp/zoey-check/node_modules BROWSER=webkit node tools/test-butterfly-adventure.cjs
-NODE_PATH=/tmp/zoey-check/node_modules node tools/test-little-learners.cjs
-NODE_PATH=/tmp/zoey-check/node_modules BROWSER=webkit node tools/test-little-learners.cjs
+NODE_PATH=/tmp/zoey-check/node_modules node tools/test-picture-play.cjs
+NODE_PATH=/tmp/zoey-check/node_modules BROWSER=webkit node tools/test-picture-play.cjs
+NODE_PATH=/tmp/zoey-check/node_modules node tools/test-creature-joints.cjs
+NODE_PATH=/tmp/zoey-check/node_modules BROWSER=webkit node tools/test-creature-joints.cjs
+NODE_PATH=/tmp/zoey-check/node_modules node tools/test-picture-audio.cjs
 ```
 
-Chromium exercises real dispatched touch gestures, including diagonal two-axis pan, food/coin dragging, and circular stirring. WebKit exercises native taps and pointer dragging. Both cover the complete lifecycle, 42 animal interactions, random action selection, the original three learning games, wrong choices, exact coin payments, recipe order/wait, four viewport sizes, and decoding every recording. `tools/test-little-learners.cjs` additionally covers the four new games, all 26 letters, all three garden sizes, ten-piece counting, pedestrian checks, interrupted actions, and reduced-motion celebrations. Set `BASE_URL` to test a deployed club. Screenshots and reports are written to a printed temporary directory.
+Chromium exercises real dispatched touch gestures, including diagonal two-axis pan, food/coin dragging, circular stirring and envelope delivery. WebKit exercises native taps and pointer drags. Both cover 104 material previews, the continuous lifecycle, all 42 animal interactions, eight hours, three cashier lists, all recipes, left/right routes to three destinations, the full 1–10 number deck, all 26 letters, all three garden sizes, automatic progression, interrupted actions, visibility pause/resume, five viewport sizes, reduced motion and decoding all 181 recordings. `test-creature-joints.cjs` additionally validates 630 rasterized animal poses; `test-picture-audio.cjs` checks actual AAC playback, queued encouragement and the next recipe after narration. The previous two browser-test entry points forward to the new picture-interaction suite. Set `BASE_URL` to test a deployed club. Screenshots and reports are written to a printed temporary directory.
 
-These are browser/iPad simulations; physical iPad speakers and OS volume settings still require a real-device check. Sound starts with a user tap and stops on mute, page hiding, or navigation.
+`tools/check-picture-deployment.py` compares live versioned assets and new voice recordings against the checkout, so a cached page cannot masquerade as a verified deployment.
+
+These are browser/iPad simulations; physical iPad touch and speaker behavior still require a real-device check. Audio stops on mute, page hiding, or navigation.
 
 See [learning-notes.md](learning-notes.md) for the ten proposed activities, chosen designs and Singapore framework references.

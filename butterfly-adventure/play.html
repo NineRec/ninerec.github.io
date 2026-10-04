@@ -6,17 +6,19 @@
   <meta name="theme-color" content="#f6f2e7">
   <meta name="description" content="An interactive English picture book. Grow a butterfly, meet the zoo animals, and explore a magical ocean with an animated little guide.">
   <title>Little Wonders · An explorer's storybook</title>
-  <link rel="stylesheet" href="styles.css?v=joined-creatures-20261004">
-  <script defer src="art.js?v=joined-creatures-20261004"></script>
-  <link rel="stylesheet" href="club.css?v=joined-creatures-20261004">
-  <script defer src="materials.js?v=joined-creatures-20261004"></script>
-  <script defer src="mini-art.js?v=joined-creatures-20261004"></script>
-  <script defer src="celebration.js?v=joined-creatures-20261004"></script>
-  <script defer src="mini-games.js?v=joined-creatures-20261004"></script>
-  <link rel="stylesheet" href="learning.css?v=joined-creatures-20261004">
-  <script defer src="creatures.js?v=joined-creatures-20261004"></script>
-  <script defer src="app.js?v=joined-creatures-20261004"></script>
-  <script defer src="games.js?v=joined-creatures-20261004"></script>
+  <link rel="stylesheet" href="styles.css?v=picture-play-20261004">
+  <script defer src="art.js?v=picture-play-20261004"></script>
+  <link rel="stylesheet" href="club.css?v=picture-play-20261004">
+  <script defer src="materials.js?v=picture-play-20261004"></script>
+  <script defer src="mini-art.js?v=picture-play-20261004"></script>
+  <script defer src="celebration.js?v=picture-play-20261004"></script>
+  <script defer src="mini-games.js?v=picture-play-20261004"></script>
+  <link rel="stylesheet" href="learning.css?v=picture-play-20261004">
+  <script defer src="creatures.js?v=picture-play-20261004"></script>
+  <script defer src="play-flow.js?v=picture-play-20261004"></script>
+  <link rel="stylesheet" href="picture-play.css?v=picture-play-20261004">
+  <script defer src="app.js?v=picture-play-20261004"></script>
+  <script defer src="games.js?v=picture-play-20261004"></script>
 </head>
 <body class="play-page">
   <div id="svg-library" aria-hidden="true"></div>
@@ -36,12 +38,12 @@
           <rect width="1000" height="470" fill="url(#sky)"/><circle cx="810" cy="77" r="47" fill="#f5df9e" opacity=".55"/><path d="M0 309q160-79 307-22t305-1t388-1v185H0Z" fill="#d2dfb8"/><path d="M0 394q164-45 324-5t349-18t327 15v84H0Z" fill="#bccd9b" opacity=".65"/>
           <g fill="none" stroke="#91ae72" stroke-width="3" opacity=".5"><path d="M35 439q-4-72 33-113M54 377q-29-29-36-22M66 356q37-15 39-34M944 438q-4-98-48-125M921 364q23-34 44-37M899 321q-22-2-31-28"/></g><g fill="#a4bb84" opacity=".6"><ellipse cx="49" cy="352" rx="12" ry="28" transform="rotate(-45 49 352)"/><ellipse cx="87" cy="335" rx="12" ry="28" transform="rotate(45 87 335)"/><ellipse cx="947" cy="341" rx="12" ry="28" transform="rotate(45 947 341)"/></g>
           <g fill="#faf5d8" opacity=".8"><circle cx="101" cy="155" r="3"/><circle cx="160" cy="234" r="4"/><circle cx="604" cy="160" r="4"/><circle cx="701" cy="113" r="3"/><circle cx="449" cy="84" r="3"/></g>
-          <g id="garden-branch"><path d="M99 132q173-74 448-47" fill="none" stroke="#93784e" stroke-width="13" stroke-linecap="round"/><path d="M478 85l38-38M214 104l-24-38" stroke="#93784e" stroke-width="7" stroke-linecap="round"/><use href="#leaf" x="482" y="16" width="85" height="55"/><use href="#leaf" x="146" y="35" width="95" height="65"/></g>
+          <g id="garden-branch"><path d="M93 137C224 73 398 71 551 89" fill="none" stroke="#ad8058" stroke-width="13" stroke-linecap="round"/><path d="M478 85l38-38M214 104l-24-38" stroke="#ad8058" stroke-width="7" stroke-linecap="round"/><use href="#leaf" x="482" y="16" width="85" height="55"/><use href="#leaf" x="146" y="35" width="95" height="65"/></g>
           <g id="big-leaf"><path d="M122 365C153 234 397 173 629 220C602 358 339 438 122 365Z" fill="url(#leaf-light)"/><path d="M100 380L563 243M214 344l8-62M296 316l75 72M387 287l31-62M480 263l57 51" fill="none" stroke="#678d4a" stroke-width="4" stroke-linecap="round" opacity=".65"/></g>
-          <g id="egg-actor"><g id="egg-bottom"><path d="M-45 0C-48 60-29 89 0 91C32 88 48 58 45 0" fill="#f5edc9" stroke="#aab586" stroke-width="2.5"/><path d="M-28 0Q-30 58-16 80M-7 0Q-11 64 0 85M18 0Q18 60 25 76" fill="none" stroke="#d1d2a7" stroke-width="2"/></g><g id="egg-top"><path d="M-45 1C-43-63-21-91 0-91C27-90 45-54 45 1" fill="#f9f2d4" stroke="#aab586" stroke-width="2.5"/><path d="M-30 0Q-35-53-13-78M-9 0Q-15-65 0-84M17 0Q13-63 18-74" fill="none" stroke="#d1d2a7" stroke-width="2"/><ellipse cx="-18" cy="-51" rx="9" ry="17" fill="#fffbe6"/></g><path id="egg-crack" d="M-43 2l15-9 12 16 14-13 13 13 11-15 21 8" fill="none" stroke="#7e8b66" stroke-width="3"/><g id="embryo"><ellipse cy="20" rx="22" ry="33" fill="#94ad6f" opacity=".25"/></g></g>
+          <g id="egg-actor"><g id="egg-bottom"><path d="M-45 0C-47 53-27 88 0 89C29 88 48 53 45 0" fill="#f8edc9" stroke="#a8b584" stroke-width="2.5"/><path d="M-28 0Q-30 58-16 80M-7 0Q-11 64 0 85M18 0Q18 60 25 76" fill="none" stroke="#d1d2a7" stroke-width="2"/></g><g id="egg-top"><path d="M-45 1C-45-48-25-90 0-91C28-90 45-48 45 1" fill="#fcf3d5" stroke="#a8b584" stroke-width="2.5"/><path d="M-30 0Q-35-53-13-78M-9 0Q-15-65 0-84M17 0Q13-63 18-74" fill="none" stroke="#d1d2a7" stroke-width="2"/><ellipse cx="-18" cy="-51" rx="9" ry="17" fill="#fffbe6"/></g><path id="egg-crack" d="M-43 2l15-9 12 16 14-13 13 13 11-15 21 8" fill="none" stroke="#7e8b66" stroke-width="3"/><g id="embryo"><ellipse cy="20" rx="22" ry="33" fill="#94ad6f" opacity=".25"/></g></g>
           <g id="worm-actor"><g id="worm-motion"><use href="#caterpillar" width="300" height="145"/></g></g>
-          <g id="hanging-worm"><path d="M370 86v63" stroke="#fff5d4" stroke-width="3"/><path d="M370 149v46q-2 84 35 85q32-4 19-34" stroke="#a3c875" stroke-width="38" fill="none" stroke-linecap="round"/><path d="M351 180h37M352 211h37M360 244l33-11M390 262l5-33" stroke="#789d53" stroke-width="2"/><circle cx="425" cy="244" r="21" fill="#b1d284"/><circle cx="429" cy="240" r="3" fill="#3f5536"/></g>
-          <g id="chrysalis-actor"><path d="M0-60v-33" stroke="#f8f0d4" stroke-width="3"/><g id="chrysalis-left"><path d="M0-61C-17-64-45-23-40 14C-36 48-15 74 0 103Z" fill="#a7c780" stroke="#6f9255" stroke-width="2.5"/><path d="M-27-21q-9 34 16 82M-40 10L0 26M-32 42L0 54" fill="none" stroke="#7b9f5c" stroke-width="3"/><path d="M-25-28q-9 17-8 30" stroke="#cfdfa5" stroke-width="6" fill="none" stroke-linecap="round"/></g><g id="chrysalis-right"><path d="M0-61C17-64 45-23 40 14C36 48 15 74 0 103Z" fill="#94b76e" stroke="#6f9255" stroke-width="2.5"/><path d="M27-21q9 34-16 82M40 10L0 26M32 42L0 54" fill="none" stroke="#7b9f5c" stroke-width="3"/></g><path id="pupa-crack" d="M0-38l-8 23 13 20-14 23 12 23-5 34" stroke="#547447" stroke-width="3" fill="none"/></g>
+          <g id="hanging-worm"><path d="M370 86v63" stroke="#fff5d4" stroke-width="3"/><path d="M370 149C370 180 366 214 379 245C397 284 424 269 423 245" stroke="#a4c585" stroke-width="38" fill="none" stroke-linecap="round"/><path d="M351 180h37M352 211h37M360 244l33-11M390 262l5-33" stroke="#759454" stroke-width="2"/><circle cx="425" cy="244" r="21" fill="#b5ce91"/><circle cx="429" cy="240" r="3" fill="#345747"/><path d="M425 253q8 6 12-1" stroke="#345747" stroke-width="2" fill="none" stroke-linecap="round"/></g>
+          <g id="chrysalis-actor"><path d="M0-60v-33" stroke="#f8f0d4" stroke-width="3"/><g id="chrysalis-left"><path d="M0-61C-22-53-43-25-40 10C-37 45-14 77 0 103Z" fill="#a6c587" stroke="#739558" stroke-width="2.5"/><path d="M-27-21q-9 34 16 82M-40 10L0 26M-32 42L0 54" fill="none" stroke="#7b9f5c" stroke-width="3"/><path d="M-25-28q-9 17-8 30" stroke="#cfdfa5" stroke-width="6" fill="none" stroke-linecap="round"/></g><g id="chrysalis-right"><path d="M0-61C22-53 43-25 40 10C37 45 14 77 0 103Z" fill="#94b675" stroke="#739558" stroke-width="2.5"/><path d="M27-21q9 34-16 82M40 10L0 26M32 42L0 54" fill="none" stroke="#7b9f5c" stroke-width="3"/></g><path id="pupa-crack" d="M0-38l-8 23 13 20-14 23 12 23-5 34" stroke="#547447" stroke-width="3" fill="none"/></g>
           <g id="butterfly-actor"><g id="butterfly-wings"></g></g>
           <g id="snack-leaf"><use href="#leaf" width="95" height="65"/></g>
           <g class="foreground-flowers"><use href="#flower" x="61" y="353" width="54" height="95"/><use href="#flower" x="553" y="367" width="48" height="85"/><use href="#flower" x="654" y="388" width="35" height="66"/></g>
@@ -56,7 +58,7 @@
     <section id="new-game" class="new-game" hidden></section>
     <div class="page-note"><span><span aria-hidden="true">✳</span> Made for little hands &amp; big imaginations</span><button id="restart">Start a fresh adventure ↻</button></div>
     <details class="grownups"><summary>A note for grown-ups</summary><p>Explore at your child's pace. Tap Zoey to say hello. The garden follows egg → caterpillar → chrysalis → butterfly; the animations show a process that takes days or weeks in nature. At the zoo, tap each animal to hear its English name and call. Under the sea, tap each friend to watch it swim away and return. Swipe either panorama in any direction, move the scene slider, or use the arrow buttons. All voices and sounds come with this book. Turn the device volume up to listen.</p><p>Artwork is animated SVG. Monkey chatter is a playful human imitation; the owl hoot and tiger growl are crafted sound effects. The other calls include recordings and a contributed frog sound effect. <a href="credits.html">Audio credits &amp; licenses</a>.</p></details>
-    <footer class="footer">LITTLE WONDERS <span>·</span> SIX GAMES, ONE CURIOUS HEART</footer>
+    <footer class="footer">LITTLE WONDERS <span>·</span> TEN GAMES, ONE CURIOUS HEART</footer>
   </main><p id="audio-status" class="toast" role="status" hidden></p>
 </body>
 </html>

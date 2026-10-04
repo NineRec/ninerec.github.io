@@ -79,11 +79,12 @@
       if(motion.includes('ears'))part('.animal-ear','rotate(-18deg)','170px 70px');
       if(motion==='wave'||motion==='pat chest')part('.animal-paw','rotate(-24deg)','180px 130px');
       if(motion==='flap'||motion==='swing')part('.animal-wing','scaleX(1.18) rotate(-8deg)');
-      if(motion==='bow')part('.animal-neck','rotate(-8deg)','148px 108px');
+      if(motion==='bow')part('.animal-neck','rotate(10deg)','148px 108px');
       if(motion==='bow'||motion==='nod')part('.animal-head','rotate(12deg)');
       if(motion==='swish')part('.animal-tail','rotate(20deg)','62px 137px');
-      if(['yawn','nibble','roar'].includes(motion))part('.animal-mouth','scaleY(1.2)','185px 120px');
+      if(['yawn','nibble','roar'].includes(motion))part('.animal-mouth',motion==='nibble'?'scaleY(.65)':'scaleY(2.2)','185px 120px');
       if(['trumpet','shower'].includes(motion))part('.animal-trunk','rotate(-52deg)','212px 115px');
+      if(['trot','step','stomp','crawl','wade','waddle'].includes(motion))part('.animal-leg','rotate(8deg)');
       if(motion==='big hop')frames[1].transform=`translate(${dx}px,-65px) rotate(-3deg)`;
     }
     frames.push({transform:'translate(0,0) rotate(0) scale(1)',opacity:1});

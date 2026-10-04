@@ -17,3 +17,4 @@
 @media(max-width:350px){.play-page .pan-track{display:none}}
 /* The shared motion controller also owns articulated parts inside each world. */
 .play-page .animal.acting .animal-trunk,.play-page .animal.acting .animal-paw,.play-page .animal.acting .animal-wing,.play-page .animal.acting .animal-tail{animation:none!important}
+.material-stage>[data-basic-material],.material-stage>[data-play-material]{display:block;width:100%;height:100%}.material-stage svg{max-width:100%;height:100%;margin:auto}.material-card[data-kind=icon] .material-stage{background:#52745c}

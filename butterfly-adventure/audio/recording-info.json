@@ -11,7 +11,7 @@
   "model": "mlx-community/Qwen3-TTS-12Hz-1.7B-Base-8bit",
   "model_revision": "e7dd0585652209fa0d7783659aad4e8a324de11c",
   "reference_sha256": "4408318aac13b69082a9e2724955ec9304e1ad5f5b05f44fa7f3b3d7ca9364bd",
-  "clips": 170,
+  "clips": 181,
   "recordings": {
     "garden-0-0": {
       "fingerprint": "9d456d0d82b51ab51131edb38f3459e1c997a9d9fe25c69821867b54af01e2e3",
@@ -497,11 +497,12 @@
       "sha256": "214a49a27b1268f17e70ec46144b1684b87b01f6fe1641d9005de7cec1593e58"
     },
     "market-pay": {
-      "fingerprint": "1bf464a551e4d7a43f19a57d79b8d461c7146d12f0be66c3aaf90e829866dffe",
+      "fingerprint": "40f1cb36df4454303d78e137e366b3fc5ed9e3818599b4cd04246f0d6170383d",
       "seed": 10585685,
-      "speech_seconds": 5.84,
-      "duration_seconds": 5.84,
-      "sha256": "8fa39c22f3a56bc9cc33d094fd6dc10691d43372b9973d022522d2215013cce0"
+      "language": "English",
+      "speech_seconds": 6.64,
+      "duration_seconds": 6.64,
+      "sha256": "d427b6167419062777d49ab4caf11bf59303900e2007d49871fb5c868aff3a4b"
     },
     "market-coins": {
       "fingerprint": "cc229bbb067c33dd19f823f7485cc9c58a1c4702f2861ab9a184d4cc5c29461f",
@@ -511,11 +512,12 @@
       "sha256": "28f3e947b138a60ce824c5701b60cb67adbde748dbb7043f290d6427a2b38893"
     },
     "market-done": {
-      "fingerprint": "16bff03a79bd7906d3f52bcbba1bebd3d8201b36b090176155965c4f871caeb1",
+      "fingerprint": "f85d00377cf47824f2d9eb7757806f47346f363e70413af22f874aebd132770a",
       "seed": 11701121,
-      "speech_seconds": 4.48,
-      "duration_seconds": 4.48,
-      "sha256": "08765e1757fb439cf93a6e07c3f760339e4891b134353c5b5bfefc2a053c7806"
+      "language": "English",
+      "speech_seconds": 4.16,
+      "duration_seconds": 4.16,
+      "sha256": "06b47250f6a33d1f735496cfe9ac06753a140ed93e93578aab1678c16cdcda8e"
     },
     "kitchen-intro": {
       "fingerprint": "4a02231432ab59d4ab04be7c9a873d8d7dc7c94437ffd3d4d8c188a8ed36f23c",
@@ -770,20 +772,20 @@
       "sha256": "31f7cc1e58d832dfb3702121c089f84e895d008a7a83242c4658db9f019d4336"
     },
     "traffic-intro": {
-      "fingerprint": "423f91c4bbdd7109dd743f629dfabe7a6e8de1d7875bcc931ea7898c5b0c2a42",
+      "fingerprint": "7c28fa6666f51b6de1292c135c7ac644ef6f9b5a2b59eb6279bae36f9e1d1cc9",
       "seed": 2124763,
       "language": "English",
-      "speech_seconds": 3.84,
-      "duration_seconds": 3.84,
-      "sha256": "81b034b364240f3147bc1cb4e0455ca8798cab5b294620da0da3eafd31c55dd3"
+      "speech_seconds": 6.0,
+      "duration_seconds": 6.0,
+      "sha256": "88a15bbc902525140b06be0263b6b2881d62d0188133a16a98b4f47e42a2460c"
     },
     "traffic-wait": {
-      "fingerprint": "ea0aef8b104c2ed140a8251412ef5fa38978eaed9770a3bff78c330fb8d49c87",
+      "fingerprint": "793dd796074f2d0eebc79ef295711d198ce0fc0ee28453dee6788c363d1b1e34",
       "seed": 1766449,
       "language": "English",
-      "speech_seconds": 3.44,
-      "duration_seconds": 3.44,
-      "sha256": "703b8acf4bcf732766993be89d59aa7c946a1bd00a1e5ffe2cc633a6992cc417"
+      "speech_seconds": 4.08,
+      "duration_seconds": 4.08,
+      "sha256": "ba367f130dfccba3905dc2c137a7a35a2ac798012d50af4ee49660c35d642a8e"
     },
     "traffic-look": {
       "fingerprint": "7b481436bed55850f7007d5f4b3de1c67cacc7753447b6dfa2a7273104ac8b94",
@@ -794,12 +796,12 @@
       "sha256": "6fea7df5590f479c72bf228d9f14f8fad77ab66dbd940377af502fbb267ce638"
     },
     "traffic-wrong": {
-      "fingerprint": "5a7380d143e297878eb0e42c709df9f1f02df6e0a9021b013aba1c07f472bba7",
+      "fingerprint": "13c86a4aa725eae77e3ac02823178ccfe0c869e2d0aa3de457ee66d245b8d145",
       "seed": 3316410,
       "language": "English",
-      "speech_seconds": 4.0,
-      "duration_seconds": 4.0,
-      "sha256": "9b9e20e2682e76fc5232b539a4fd45a31cb2603e567402c736f76f8331692eb4"
+      "speech_seconds": 3.76,
+      "duration_seconds": 3.76,
+      "sha256": "3ad59cccd6bb8b41e771187245f82550ace75e95ed02a1dab4a3a8d2a087435b"
     },
     "traffic-right": {
       "fingerprint": "36eeb244d0c6c421f6cd73a323308fbfda849cc4f916546f77e30a7845eb5c8f",
@@ -826,12 +828,12 @@
       "sha256": "240c948fb70b8ef85f084f9b9059fde1ed6f2647fdecce8ded6b877389fabdce"
     },
     "traffic-done": {
-      "fingerprint": "002e0bbd3a125abbcbb7fa3cf1ae57baed0eb3d54ffada0034c60a13d5b9de2b",
+      "fingerprint": "3a6127a783761065f33a6999dfb809581ae2a01363f337d06907d551f1b707ba",
       "seed": 10370027,
       "language": "English",
-      "speech_seconds": 3.2,
-      "duration_seconds": 3.2,
-      "sha256": "4b7154dc59b44faea6b76cdeda520021b9254b976b0c4ec2201c9cdec8cc0e65"
+      "speech_seconds": 2.96,
+      "duration_seconds": 2.96,
+      "sha256": "02bde1e8ca204cf228e290feacd1f3418eb0d4f5eac7c795b4d812d5d274250a"
     },
     "counting-intro": {
       "fingerprint": "400b088aa15936e5e6c0d2794034b935f717ad563cabb10f47486dc3aae3c7c0",
@@ -1264,6 +1266,94 @@
       "speech_seconds": 1.68,
       "duration_seconds": 1.68,
       "sha256": "1ec58ab238cc5697845d9e675a5af1c320438d4ed47499db55386cace3ae5977"
+    },
+    "traffic-turn-left": {
+      "fingerprint": "73c7b92e59dc6a1b18eb302b20cf01007cddefb0cd0f52019cbc2a4c5fd59bd2",
+      "seed": 13830135,
+      "language": "English",
+      "speech_seconds": 1.2,
+      "duration_seconds": 1.2,
+      "sha256": "2b5e85e50d9c72b23db7491fa6c04401678b18823fedd797b7d87e1dd396146e"
+    },
+    "traffic-turn-right": {
+      "fingerprint": "62de1eb85ea01474cad0a4e46420e9915c9cbff69576955a53196efc20a5e20d",
+      "seed": 16274961,
+      "language": "English",
+      "speech_seconds": 1.2,
+      "duration_seconds": 1.2,
+      "sha256": "b0c5c5ecbbeb291a2a6dc996b912da6846f92b9c8a50e81a4cb29a0896b6cc3c"
+    },
+    "traffic-green": {
+      "fingerprint": "d243170446dcd35a02c18149447fed7a7387ce62ff507b96c98ffd431ac2d324",
+      "seed": 10165675,
+      "language": "English",
+      "speech_seconds": 3.68,
+      "duration_seconds": 3.68,
+      "sha256": "3f2517b8605f12e395302c424e01c78ea1ac19264345358791ee32c4131d3432"
+    },
+    "traffic-park": {
+      "fingerprint": "e4b4548256cba568350b9d278ce6b4d854763dd065cab30d1318dc128abeb8e2",
+      "seed": 12844329,
+      "language": "English",
+      "speech_seconds": 2.56,
+      "duration_seconds": 2.56,
+      "sha256": "b3e8836b46c54c2baee5a89de27a537e0f6bdee5487a5f6044175d1f13c49346"
+    },
+    "traffic-market": {
+      "fingerprint": "1ce44daf963a64b0a50dce2d37fb64f7e6456e673681829ef9fffa0a529e98f7",
+      "seed": 5774851,
+      "language": "English",
+      "speech_seconds": 2.96,
+      "duration_seconds": 2.96,
+      "sha256": "7f3be5f18f6631342b7810a9ce22605bf3e2ec9a40d32af90c35ea10c73030cb"
+    },
+    "traffic-library": {
+      "fingerprint": "b4b12f17943db7ef476587369439bdd3b30690e8e08c9688ae14f052e372e95b",
+      "seed": 3755443,
+      "language": "English",
+      "speech_seconds": 3.52,
+      "duration_seconds": 3.52,
+      "sha256": "37104b6df9237de64d2d6bc9e06ded195f7181a21a143cdfcab1474bfcf474a5"
+    },
+    "traffic-next": {
+      "fingerprint": "0ea70db8e7dc11089a89e953f4c9fc3d8b86993fbb2633198a3d0170a2e3f9cf",
+      "seed": 5423981,
+      "language": "English",
+      "speech_seconds": 2.64,
+      "duration_seconds": 2.64,
+      "sha256": "bba7f4281ce361c4201fbae7638d54d2085e65f6fc0c394bc64f4f906de02b0b"
+    },
+    "market-cashier": {
+      "fingerprint": "6de7238c56ef146dc0661d8ad943fe9bfb92d1112a24c38121261a6936a2fcb6",
+      "seed": 10945264,
+      "language": "English",
+      "speech_seconds": 4.48,
+      "duration_seconds": 4.48,
+      "sha256": "9ad4a00a1704a74a9b946cf60b1fc30fed1efa2461ba8fdc4c6a88161ea9dc5a"
+    },
+    "market-checkout": {
+      "fingerprint": "d5033e0fe0e642f3cdefd1d80f0aeeeb376b2a25d4d9ba73c9afec286b2cd2d9",
+      "seed": 1798752,
+      "language": "English",
+      "speech_seconds": 4.08,
+      "duration_seconds": 4.08,
+      "sha256": "d95ba21f09ee2dcc360a8eb3ce416b09510d3c794dd0ef011d02c4aed04eb9ad"
+    },
+    "kitchen-next": {
+      "fingerprint": "9e96b11d0a12486529af314322d44f08a65f7410d9abe3bf85c526c9bc1183da",
+      "seed": 4370520,
+      "language": "English",
+      "speech_seconds": 3.84,
+      "duration_seconds": 3.84,
+      "sha256": "b2ab23a0ba35fd2a38f09e10ebd89efd26f25b0c29441cda26a24017d2ef0839"
+    },
+    "play-tap": {
+      "fingerprint": "02ed542833d8a5e1afb4ab95ea1048c112190e5a5f65b19e692c5fb613107051",
+      "seed": 8812733,
+      "language": "English",
+      "speech_seconds": 2.64,
+      "duration_seconds": 2.64,
+      "sha256": "5940a5e453faec312983b1b7ba074c59078f7173846520ded17baa6a274ce03f"
     }
   }
 }

@@ -27,7 +27,7 @@
       ['Up, up, and away! Zoey waves as the butterfly takes flight.', 'Tap a flower to invite it for nectar. A butterfly can lay eggs, and the story begins again.']]}
   ];
   const WORLD_WIDTH = CreatureCatalog.width, WORLD_HEIGHT = CreatureCatalog.height;
-  const AUDIO_VERSION = 'joined-creatures-20261004';
+  const AUDIO_VERSION = 'picture-play-20261004';
   const zoo = CreatureCatalog.zoo, sea = CreatureCatalog.sea;
   let customNarration = null;
   let world = 'garden', stage = 0, counts = [0,0,0,0], busy = false, epoch = 0;
@@ -36,15 +36,20 @@
   const animations = new Set(), animalTimers = new Set();
   const audio = new Audio(); audio.preload = 'auto';
   const audioFiles = {lion:'lion.m4a',elephant:'elephant.m4a',giraffe:'giraffe.m4a',zebra:'zebra.m4a',monkey:'monkey.m4a',owl:'owl.m4a'};
-  let toastTimer;
-  function stopAudio(){ audio.pause(); audio.removeAttribute('src'); audio.load(); $('listen').classList.remove('playing'); $('listen-label').textContent='Read to me'; }
+  let toastTimer,lastFile='',soundNeeded=false,startVoice=null,recordings={},queuedFile='',queueDue=0,queueTimer=null;
+  fetch(`audio/recording-info.json?v=${AUDIO_VERSION}`).then(r=>r.json()).then(info=>recordings=info.recordings).catch(()=>{});
+  function audioRemaining(){if(queuedFile&&!muted)return Math.max(0,queueDue-performance.now())+(recordings[queuedFile.replace(/\.m4a$/,'')]?.duration_seconds||3)*1000;if(muted||audio.paused&&soundNeeded)return 0;const key=lastFile.replace(/\.m4a$/,'');const seconds=Number.isFinite(audio.duration)?audio.duration:recordings[key]?.duration_seconds||0;return Math.max(0,(seconds-audio.currentTime)*1000);}
+  function startSound(){if(document.getElementById('sound-start'))return;const b=document.createElement('button');b.id='sound-start';b.className='sound-start';b.setAttribute('aria-label','Start playing with Zoey and sound');b.innerHTML=art.icons.play;document.body.append(b);b.addEventListener('click',()=>playAudio(startVoice?`${startVoice()}.m4a`:narration()));}
+  function queueAudio(file){if(muted||document.hidden)return;const wait=audioRemaining();clearTimeout(queueTimer);queuedFile=file;queueDue=performance.now()+wait;queueTimer=setTimeout(()=>playAudio(file),wait+20);}
+  function startAudio(getVoice){startVoice=getVoice||null;playAudio(getVoice?`${getVoice()}.m4a`:narration());}
+  function stopAudio(){clearTimeout(queueTimer);queuedFile='';audio.pause(); audio.removeAttribute('src'); audio.load(); $('listen').classList.remove('playing'); $('listen-label').textContent='Read to me'; }
   function audioError(){ $('audio-status').textContent="That sound couldn't play. Tap again to retry."; $('audio-status').hidden=false; clearTimeout(toastTimer); toastTimer=setTimeout(()=>$('audio-status').hidden=true,3500); }
   function playAudio(file){
-    stopAudio(); if(muted) return;
-    audio.src=`audio/${file}?v=${AUDIO_VERSION}`;
+    stopAudio(); if(muted||document.hidden) return;
+    lastFile=file;audio.src=`audio/${file}?v=${AUDIO_VERSION}`;
     $('listen').classList.add('playing'); $('listen-label').textContent='Stop listening';
     const requested = audio.src;
-    audio.play().catch(error => {if(audio.src!==requested || error.name==='AbortError')return; $('listen').classList.remove('playing'); $('listen-label').textContent='Read to me'; audioError();});
+    return audio.play().then(()=>{soundNeeded=false;document.getElementById('sound-start')?.remove();}).catch(error => {if(audio.src!==requested || error.name==='AbortError')return;if(error.name==='NotAllowedError'){$('listen').classList.remove('playing');$('listen-label').textContent='Read to me';soundNeeded=true;startSound();return;} $('listen').classList.remove('playing'); $('listen-label').textContent='Read to me'; audioError();});
   }
   audio.addEventListener('ended',()=>{ $('listen').classList.remove('playing'); $('listen-label').textContent='Read to me'; });
   audio.addEventListener('error',()=>{ if(audio.hasAttribute('src')){ $('listen').classList.remove('playing'); $('listen-label').textContent='Read to me'; audioError(); } });
@@ -86,7 +91,7 @@
     $('chapter-title').textContent=d.title; $('garden-caption').textContent=d.captions[n];
     $('story-main').textContent=d.stories[n][0];$('story-detail').textContent=d.stories[n][1];
     $('tap-hint').textContent=d.hints[n];$('tap-hint').hidden=stage===3&&n===3;
-    $('action-label').textContent=n===3?d.next:d.actions[n];$('specimen').setAttribute('aria-label',n===3?d.next:d.actions[n]);
+    $('action-label').innerHTML=art.icons.play;$('action').setAttribute('aria-label',n===3?d.next:d.actions[n]);$('specimen').setAttribute('aria-label',n===3?d.next:d.actions[n]);
     $('back').disabled=stage===0||busy;$('action').disabled=busy;$('specimen').disabled=busy;
     $('progress-count').textContent=`${n} / 3`;$('garden-progress').querySelector('[role=progressbar]').setAttribute('aria-valuenow',n);
     $('garden-progress').querySelectorAll('.dots i').forEach((dot,i)=>dot.classList.toggle('done',i<n));
@@ -95,7 +100,7 @@
   }
   async function act(){
     if(world!=='garden'){exploreNext();return;}
-    if(busy)return;
+    if(busy)return;PlayFlow.cancel();
     if(stage===3&&counts[stage]===3){showGame();return;}
     const s=stage,n=counts[s],run=epoch;
     busy=true;$('book').setAttribute('aria-busy','true');renderGarden();
@@ -144,6 +149,7 @@
       }
       if(run!==epoch)return;
       if(n===3)stage=s+1;else counts[s]=n+1;
+      if(counts[stage]===3){window.LittleCelebration?.burst();PlayFlow.after(()=>stage===3?showGame():act());}
     }catch(error){if(run===epoch){console.error('Story animation failed',error);}}
     finally{if(run===epoch){busy=false;$('book').setAttribute('aria-busy','false');if(world==='garden')renderGarden();}}
   }
@@ -168,16 +174,16 @@
     $('chapter-title').textContent=isSea?'A hello beneath the waves':'So many friends to meet';
     $('explore-scene').classList.toggle('sea',isSea);$('explore-note').textContent=isSea?'THE WONDERFUL OCEAN':'THE SUNNY ZOO';
     $('panorama').innerHTML=sceneBackground(world)+animals.map(a=>`<button class="animal${discovered[world].has(a.id)?' discovered':''}" data-animal="${a.id}" style="left:calc(${a.x/WORLD_WIDTH*100}% - ${a.width/2}px);top:${a.y/WORLD_HEIGHT*100}%;width:${a.width}px" aria-label="Meet the ${a.name.toLowerCase()}" aria-pressed="false"><span class="animal-art">${art.animals[a.id]}</span><span class="animal-name">${a.name}</span></button>`).join('');
-    $('animal-index').innerHTML=animals.map(a=>`<button data-find="${a.id}" class="${discovered[world].has(a.id)?'found':''}" aria-pressed="false">${a.name}<span aria-hidden="true">${discovered[world].has(a.id)?' ✓':''}</span></button>`).join('');
+    $('animal-index').innerHTML=animals.map(a=>`<button data-find="${a.id}" class="${discovered[world].has(a.id)?'found':''}" aria-label="Meet ${a.name}" aria-pressed="false">${art.animals[a.id]}<span class="sr-only">${a.name}</span><span aria-hidden="true">${discovered[world].has(a.id)?' ✓':''}</span></button>`).join('');
     $('animal-bubble').textContent=isSea?'Dive in with me!':'Hello, new friends!';
     $('story-main').textContent=isSea?'Zoey takes a peek beneath the waves. Who is swimming here?':'Zoey follows the winding path. Can you find all twenty-four animal friends?';
     $('story-detail').textContent=isSea?'Swipe in any direction to explore. Tap a sea animal to hear its name and watch it swim away and return.':'Swipe in any direction to explore. Tap an animal to hear its name and call, and see it move.';
-    $('action-label').textContent='Find a new friend';$('back').disabled=false;$('action').disabled=false;
+    $('action-label').innerHTML=art.icons.right;$('action').setAttribute('aria-label','Find a new friend');$('back').disabled=false;$('action').disabled=false;
     $('viewport').scrollLeft=scrolls[world].x;$('viewport').scrollTop=scrolls[world].y;updatePan();updateDiscovery();
   }
   function updateDiscovery(){
-    $('discovery-count').textContent=`${discovered[world].size} of ${(world==='zoo'?zoo:sea).length} friends discovered`;
-    if(discovered[world].size===(world==='zoo'?zoo:sea).length){$('action-label').textContent=world==='zoo'?'Dive into the sea':'Back to the garden';}
+    $('discovery-count').textContent=`${discovered[world].size} / ${(world==='zoo'?zoo:sea).length}`;
+    if(discovered[world].size===(world==='zoo'?zoo:sea).length){$('action').setAttribute('aria-label',world==='zoo'?'Dive into the sea':'Back to the garden');}
   }
   function scrollToAnimal(id){const button=$('panorama').querySelector(`[data-animal="${id}"]`);if(!button)return;const target=button.offsetLeft+button.offsetWidth/2-$('viewport').clientWidth/2,top=button.offsetTop+button.offsetHeight/2-$('viewport').clientHeight/2;$('viewport').scrollTo({left:target,top,behavior:reduced()?'instant':'smooth'});}
   function meet(id){
@@ -187,10 +193,10 @@
 
     const newFriend=!discovered[world].has(id);
     selected[world]=id;discovered[world].add(id);
-    if(newFriend&&discovered[world].size===(world==='zoo'?zoo:sea).length)window.LittleCelebration?.burst();
+    const completed=discovered[world].size===(world==='zoo'?zoo:sea).length;
     $('panorama').querySelectorAll('.animal').forEach(b=>{b.classList.toggle('selected',b===button);b.setAttribute('aria-pressed',b===button);});
     button.classList.add('discovered','acting');
-    $('animal-index').querySelectorAll('button').forEach(b=>{b.classList.toggle('found',discovered[world].has(b.dataset.find));b.setAttribute('aria-pressed',b.dataset.find===id);b.innerHTML=(world==='zoo'?zoo:sea).find(a=>a.id===b.dataset.find).name+(discovered[world].has(b.dataset.find)?'<span aria-hidden="true"> ✓</span>':'');});
+    $('animal-index').querySelectorAll('button').forEach(b=>{b.classList.toggle('found',discovered[world].has(b.dataset.find));b.setAttribute('aria-pressed',b.dataset.find===id);b.innerHTML=art.animals[b.dataset.find]+'<span class="sr-only">'+(world==='zoo'?zoo:sea).find(a=>a.id===b.dataset.find).name+'</span>'+(discovered[world].has(b.dataset.find)?'<span aria-hidden="true"> ✓</span>':'');});
     $('animal-bubble').textContent=`Hello, ${a.name.toLowerCase()}!`;$('story-main').textContent=a.detail;
     $('story-detail').textContent=world==='zoo'?"Zoey waves hello. Tap another animal to meet a new friend.":"Zoey follows along with a wave. Our friend always comes back!";
     gestureGuide('wave');playAudio(audioFiles[id]||`${id}.m4a`);updateDiscovery();
@@ -198,6 +204,7 @@
     button.dataset.action=handle.name;
     $('story-main').textContent=world==='zoo'?`${a.name}: ${handle.name.toLowerCase()}!`:a.detail;
     $('story-detail').textContent=world==='zoo'?'Tap again to discover another action. Swipe up, down, left, or right.':'A different little journey each time. Our friend always returns.';
+    if(completed){if(newFriend)window.LittleCelebration?.burst();PlayFlow.after(()=>{changeWorld(world==='zoo'?'sea':'garden');playAudio(narration());},Math.max(handle.duration+400,audioRemaining()));}
     const marker=button.dataset.action;
     handle.finished.then(()=>{if(button.dataset.action===marker)button.classList.remove('acting');});
   }
@@ -207,12 +214,12 @@
   }
   function changeWorld(next){
     if(world!=='garden')scrolls[world]={x:$('viewport').scrollLeft,y:$('viewport').scrollTop};
-    cancelAnimations();stopAudio();world=next;
+    PlayFlow.cancel();cancelAnimations();stopAudio();world=next;document.body.dataset.game=next;document.title=({garden:'Butterfly Garden',zoo:'A Day at the Zoo',sea:'Under the Sea'})[next]+" · Zoey's Little Wonders";
     document.querySelectorAll('.world-tab').forEach(b=>{b.classList.toggle('active',b.dataset.world===world);b.setAttribute('aria-pressed',b.dataset.world===world);});
     const garden=world==='garden';$('garden-panel').hidden=!garden;$('explore-panel').hidden=garden;$('garden-progress').hidden=!garden;$('explore-instruction').hidden=garden;$('game').hidden=true;
     if(garden)renderGarden();else renderExplore();
   }
-  function changeStage(index){cancelAnimations();stopAudio();stage=index;renderGarden();}
+  function changeStage(index){PlayFlow.cancel();cancelAnimations();stopAudio();stage=index;renderGarden();}
   function updatePan(){
     const vp=$('viewport'), max=vp.scrollWidth-vp.clientWidth, fraction=max?vp.scrollLeft/max:0;
     $('pan-position').value=String(Math.round(fraction*100));$('pan-up').disabled=vp.scrollTop<=1;$('pan-down').disabled=vp.scrollTop>=vp.scrollHeight-vp.clientHeight-1;$('pan-left').disabled=vp.scrollLeft<=1;$('pan-right').disabled=vp.scrollLeft>=max-1;
@@ -268,6 +275,7 @@
     stopAudio();$('game').hidden=false;resetGame();$('game-choices').querySelector('button').focus({preventScroll:true});
   }
   function resetGame(){
+    PlayFlow.cancel();
     gameStep=0;$('game-feedback').textContent='What comes first? Tap a picture.';
     $('game-slots').innerHTML=stages.map((_,i)=>`<div class="game-slot" aria-label="Stage ${i+1}, waiting for your choice">${i+1}<span>?</span></div>`).join('');
     const order=[2,0,3,1];$('game-choices').innerHTML=order.map(i=>`<button data-choice="${i}">${use(stages[i].symbol,stages[i].view)}<span>${stages[i].name}</span></button>`).join('');
@@ -278,22 +286,22 @@
     if(i!==gameStep){$('game-feedback').textContent=['Look for the tiny egg on the leaf.','Who hatches from the egg? The caterpillar!','What does the caterpillar become? A chrysalis.','Who comes out of the chrysalis? The butterfly!'][gameStep];return;}
     const slot=$('game-slots').children[gameStep];slot.classList.add('filled');slot.innerHTML=use(stages[i].symbol,stages[i].view)+`<span>${stages[i].name}</span>`;slot.setAttribute('aria-label',`Stage ${i+1}: ${stages[i].name}`);button.disabled=true;gameStep++;
     $('game-feedback').textContent=gameStep===4?'You did it! Egg → caterpillar → chrysalis → butterfly. A wonderful circle of life.':'Wonderful! What comes next?';
-    if(gameStep===4){window.LittleCelebration?.burst();gestureGuide('cheer');playAudio('game-complete.m4a');$('game-reset').focus({preventScroll:true});}else $('game-choices').querySelector('button:not(:disabled)').focus({preventScroll:true});
+    if(gameStep===4){playAudio('game-complete.m4a');PlayFlow.after(()=>{counts=[0,0,0,0];stage=0;changeWorld('garden');playAudio(narration());});window.LittleCelebration?.burst();gestureGuide('cheer');$('game-reset').focus({preventScroll:true});}else $('game-choices').querySelector('button:not(:disabled)').focus({preventScroll:true});
   });
   $('game-reset').addEventListener('click',resetGame);
   $('restart').addEventListener('click',()=>{counts=[0,0,0,0];stage=0;discovered.zoo.clear();discovered.sea.clear();selected={zoo:null,sea:null};scrolls.zoo={x:0,y:0};scrolls.sea={x:0,y:0};changeWorld('garden');gestureGuide('wave');});
   $('listen').addEventListener('click',()=>{if(!audio.paused){stopAudio();return;}if(muted){muted=false;renderSound();}playAudio(narration());});
   function renderSound(){ $('sound-toggle').setAttribute('aria-pressed',!muted);$('sound-toggle').setAttribute('aria-label',muted?'Unmute sound':'Mute sound');$('sound-label').textContent=muted?'Sound off':'Sound on'; }
-  $('sound-toggle').addEventListener('click',()=>{muted=!muted;renderSound();if(muted)stopAudio();});
+  $('sound-toggle').addEventListener('click',()=>{muted=!muted;renderSound();if(muted){stopAudio();document.getElementById('sound-start')?.remove();}else playAudio(narration());});
   $('back').addEventListener('click',()=>{if(busy)return;if(world==='garden')changeStage(Math.max(0,stage-1));else changeWorld(world==='sea'?'zoo':'garden');});
   $('action').addEventListener('click',act);$('specimen').addEventListener('click',act);
   document.querySelectorAll('[data-world]').forEach(b=>b.addEventListener('click',()=>changeWorld(b.dataset.world)));
   $('nectar-controls').addEventListener('click',e=>{
-    const b=e.target.closest('[data-flower]');if(!b||busy)return;
+    const b=e.target.closest('[data-flower]');if(!b||busy)return;window.PlayFlow?.cancel();
     $('garden').classList.remove('flying');$('garden').classList.add('sipping');
     const target=b.dataset.flower==='left'?'translate(35px,310px) scale(.45)':'translate(510px,325px) scale(.45)';
     const run=epoch;busy=true;$('action').disabled=true;
-    tween('butterfly-actor',[{transform:getComputedStyle($('butterfly-actor')).transform},{transform:target}],1200).catch(()=>{}).finally(()=>{if(run===epoch){busy=false;$('action').disabled=false;}});
+    tween('butterfly-actor',[{transform:getComputedStyle($('butterfly-actor')).transform},{transform:target}],1200).catch(()=>{}).finally(()=>{if(run===epoch){busy=false;$('action').disabled=false;window.PlayFlow?.after(()=>{if(world==='garden'&&stage===3&&counts[3]===3)showGame();});}});
     $('story-main').textContent='A sweet little stop! The butterfly visits a flower for nectar.';gestureGuide('look');playAudio('nectar.m4a');
   });
   // SVG characters remain vectors at every size, with independently articulated arms and eyes.
@@ -305,6 +313,6 @@
   document.querySelector('.life-stops').innerHTML=stages.map((d,i)=>`<button class="life-stop" data-stage="${i}" aria-pressed="${i===0}">${use(d.symbol,d.view)}<span>${d.name}</span><span class="stop-check" aria-hidden="true"></span></button>`).join('');
   document.querySelector('.life-stops').addEventListener('click',e=>{const b=e.target.closest('[data-stage]');if(b&&!busy)changeStage(Number(b.dataset.stage));});
   document.addEventListener('visibilitychange',()=>{if(document.hidden)stopAudio();});window.addEventListener('pagehide',()=>{stopAudio();cancelAnimations();});window.addEventListener('pageshow',e=>{if(e.persisted){if(world==='garden')renderGarden();else renderExplore();}});
-  window.AdventureBook={changeWorld,playAudio,stopAudio,gestureGuide,cancelAnimations,setNarrator(fn){customNarration=fn;},restart(){ $('restart').click(); }};
+  window.AdventureBook={changeWorld,playAudio,stopAudio,startAudio,audioRemaining,queueAudio,gestureGuide,cancelAnimations,get audioPlaying(){return !audio.paused;},setNarrator(fn){customNarration=fn;},restart(){ $('restart').click(); }};
   renderGarden();
 })();
