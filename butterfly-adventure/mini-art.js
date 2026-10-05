@@ -8,6 +8,22 @@
  const wheel=(x)=>C(x,173,23,'#61786b')+C(x,173,12,'#d6d5bb')+C(x,173,4,'#91a18a');
  const vehicle=(color,bus=false)=>S(moving(P(bus?'M30 53Q30 40 45 40H211Q230 40 230 60V174H30Z':'M30 119L68 65Q72 58 80 58H153Q162 58 168 68L200 112H222Q237 112 237 130V175H25V136Q25 120 30 119Z',color)+P(bus?'M46 60H214V114H46Z':'M77 72H108V110H54ZM120 72H148L179 110H120Z','#dce8d6')+L(bus?'M80 60V114M118 60V114M157 60V114M195 60V114':'M114 119V157',color,5)+L('M30 142H47M219 142H233',gold,7)+wheel(72)+wheel(188)));
  const car=vehicle('#cb957b'),bus=vehicle('#d7b467',true),van=vehicle('#95b49c',true);
+ // The tulip grows in five readable steps: one leaf, two, three, every leaf, then the flower.
+ const tulipGreen='#78ad63',tulipVein='#5a9150',tulipRed='#e4586f',tulipPink='#f28fa0',tulipDeep='#c93d5c';
+ const tulipLeaf=(side,scale,tilt=0)=>`<g transform="translate(100 250) rotate(${tilt}) scale(${side*scale} ${scale}) translate(-100 -250)">${P('M100 250C80 210 50 188 28 112C70 142 98 186 100 250Z',tulipGreen)}${L('M99 244C84 206 62 170 38 128',tulipVein,2.4,'opacity=".7"')}</g>`;
+ const tulipBloom=()=>J('toy-moving',100,250,L('M100 250V112',tulipGreen,9)+tulipLeaf(1,1)+tulipLeaf(-1,1)+tulipLeaf(1,.82,10)+tulipLeaf(-1,.82,-10)+
+  J('flower-petals',100,110,P('M72 108C60 74 70 44 86 30C94 50 100 70 100 108Z',tulipPink)+P('M128 108C140 74 130 44 114 30C106 50 100 70 100 108Z',tulipPink)+P('M74 110C76 70 86 40 100 22C114 40 124 70 126 110C116 124 84 124 74 110Z',tulipRed)+P('M100 22C108 40 116 66 118 100C112 80 106 50 100 22Z',tulipDeep,'opacity=".35"')+
+  eyes(88,84,24)+smile(90,98,20)+E(82,96,6,3.6,'#fff','opacity=".35"')+E(118,96,6,3.6,'#fff','opacity=".35"')));
+ const tulipStage=stage=>{
+  const body={
+   0:'',
+   1:L('M100 250V218',tulipGreen,8)+tulipLeaf(1,.5,10),
+   2:L('M100 250V206',tulipGreen,8)+tulipLeaf(1,.62,4)+tulipLeaf(-1,.62,-4),
+   3:L('M100 250V190',tulipGreen,9)+tulipLeaf(1,.8,6)+tulipLeaf(-1,.8,-6)+tulipLeaf(1,.56,-12),
+   4:L('M100 250V108',tulipGreen,9)+tulipLeaf(1,1)+tulipLeaf(-1,1)+tulipLeaf(1,.82,10)+tulipLeaf(-1,.82,-10)+P('M82 112C78 82 88 52 100 36C112 52 122 82 118 112C110 124 90 124 82 112Z',tulipRed)+P('M82 112C82 100 92 98 100 112C108 98 118 100 118 112C112 124 90 124 82 112Z',tulipGreen)
+  }[stage];
+  return `<svg viewBox="0 0 200 260" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" class="tulip tulip-${stage}">${stage===5?tulipBloom():body}</svg>`;
+ };
  AdventureArt.playthings={
   spade:S(moving(L('M140 45V135',brown,12)+P('M117 15H163V37Q141 62 117 37Z','none','stroke="#ad8058" stroke-width="8"')+P('M105 125H177V160Q169 191 141 207Q110 190 105 160Z','#9bb5a4')+L('M115 137H166','#cbd8bc',4))),
   seed:S(L('M63 181Q130 162 198 181','#b59a70',7)+moving(P('M131 56C149 75 165 98 159 121Q153 153 128 151Q96 151 97 122C96 98 116 76 131 56Z','#ba9466')+L('M128 80Q114 104 114 127','#e7cca2',4))),
@@ -22,8 +38,20 @@
   nest:S(P('M38 122Q130 90 225 122Q209 192 130 191Q50 190 38 122Z','#b29770')+E(97,112,23,31,cream)+E(142,104,22,32,cream)+E(180,116,19,27,cream)+L('M40 132Q130 176 222 132M55 155Q130 191 206 154M70 177L182 138M60 135L166 181','#8f7c57',5)),
   umbrella:S(L('M129 80V177Q129 209 155 202Q167 197 165 182',brown,8)+moving(P('M20 116C29 49 70 14 130 14C196 14 236 55 240 116Q211 95 190 115Q161 92 130 115Q98 93 70 115Q45 95 20 116Z','#a5c4b4')+L('M130 15Q90 46 70 115M130 15Q174 40 190 115','#7caa94',3))),
   xylophone:S(L('M30 160L227 112',brown,10)+['#cd957a','#dfb76b','#a8bd8b','#94bbb0','#92a5b4'].map((c,i)=>P(`M${42+i*35} ${ 50+i*13}h28v${139-i*21}q-14 9-28 0Z`,c)+C(56+i*35,137,3,ink)).join('')+moving(L('M72 20L177 60',brown,6)+C(185,64,11,'#b39470'))),
-  yoyo:S(L('M114 20Q67 101 132 122','#b7a17c',3)+moving(C(137,147,56,'#ca927b')+C(137,147, 43,'none','stroke="#edc59e" stroke-width="5"')+C(137,147,10,cream)))
+  yoyo:S(L('M114 20Q67 101 132 122','#b7a17c',3)+moving(C(137,147,56,'#ca927b')+C(137,147, 43,'none','stroke="#edc59e" stroke-width="5"')+C(137,147,10,cream))),
+  worm:S(P('M14 200Q64 152 130 178Q196 152 246 200V214H14Z','#b69a76')+E(70,198,9,4,'#967a5d')+E(190,200,8,4,'#967a5d')+
+   moving(L('M96 204C62 160 124 150 128 110C132 74 98 68 116 46','#e9a3a5',31)+L('M96 204C62 160 124 150 128 110C132 74 98 68 116 46','#d27f86',29,'stroke-dasharray="2 15" opacity=".8"')+L('M112 126Q132 120 130 98','#f4c3c1',32,'opacity=".7"')+
+   C(116,44,25,'#eeb0b0')+eyes(103,38,25)+smile(106,52,20)+E(94,50,6,3.6,rose,'opacity=".45"')+E(138,50,6,3.6,rose,'opacity=".45"'))),
+  rain:S(moving(C(84,92,34,'#cfdbe2')+C(128,74,46,'#cfdbe2')+C(176,94,34,'#cfdbe2')+E(130,100,84,30,'#cfdbe2')+E(130,110,80,18,'#b9c9d3','opacity=".55"')+eyes(113,92,34)+smile(117,108,26)+E(103,106,8,4.5,rose,'opacity=".42"')+E(155,106,8,4.5,rose,'opacity=".42"'))+
+   J('water-drops',130,140,[[78,150],[118,176],[160,152],[196,182],[96,200],[146,206]].map(([x,y])=>P(`M${x} ${y-9}C${x+7} ${y} ${x+7} ${y+6} ${x} ${y+8}C${x-7} ${y+6} ${x-7} ${y} ${x} ${y-9}Z`,'#7fb2d6')).join(''))),
+  grandpa:S(L('M44 212L74 70',brown,9)+P('M52 78L96 60L102 76L62 98Z','#95a6aa')+
+   moving(P('M62 220Q62 154 130 146Q198 154 198 220Z','#86a68f')+L('M130 146V220','#6e8f78',3)+P('M110 142H150L130 168Z',cream)+
+   E(130,98,40,44,peach)+P('M92 100Q96 172 130 176Q164 172 168 100Q150 128 130 128Q110 128 92 100Z','#f6f3ea')+P('M108 112Q130 100 152 112Q130 124 108 112Z','#f6f3ea')+
+   E(96,96,6,10,peach)+E(164,96,6,10,peach)+L('M104 82Q114 76 124 82M136 82Q146 76 156 82','#f2efe6',4)+L('M108 94q6-6 12 0M140 94q6-6 12 0',ink,2.6)+E(130,106,7,5.5,'#e8ae88')+L('M120 126q10 7 20 0',ink,2.4)+E(100,108,7,4,rose,'opacity=".4"')+E(160,108,7,4,rose,'opacity=".4"')+
+   E(130,62,76,15,'#e3c27a')+P('M92 62Q94 16 130 14Q166 16 168 62Z','#efd592')+L('M93 55H167','#b9814f',7)+L('M100 36l60 0M104 26l52 0','#e0bd73',2.4,'opacity=".7"'))),
+  tulip:S(tulipBloom(),'0 0 200 260')
  };
+ AdventureArt.tulipStage=tulipStage;
  AdventureArt.vehicles={car,bus,van};
  AdventureArt.icons={
   check:S(L('M60 115L108 162L202 60',cream,18)),

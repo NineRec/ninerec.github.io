@@ -1,16 +1,78 @@
 /* Shared catalogs and motions; verify these in materials.html before scene assembly. */
 (() => {
   'use strict';
-  const zooNames=['Lion','Elephant','Giraffe','Zebra','Monkey','Owl','Tiger','Bear','Duck','Frog','Hippo','Rhino','Otter','Panda','Kangaroo','Penguin','Crocodile','Flamingo','Gorilla','Fox','Deer','Rabbit','Horse','Cow'];
-  const zooActions={lion:['Roar','Stretch','Swish'],elephant:['Trumpet','Flap ears','Shower'],giraffe:['Bow','Reach up','Step'],zebra:['Trot','Nod','Shake'],monkey:['Hop','Swing','Wave'],owl:['Flap','Peek','Bow'],tiger:['Stretch','Swish','Pounce'],bear:['Wave','Stretch','Sway'],duck:['Waddle','Flap','Nod'],frog:['Hop','Big hop','Peek'],hippo:['Yawn','Wade','Wiggle ears'],rhino:['Nod','Stomp','Swish'],otter:['Roll','Wave','Slide'],panda:['Nibble','Wave','Sway'],kangaroo:['Hop','Big hop','Wave'],penguin:['Waddle','Flap','Slide'],crocodile:['Swish','Yawn','Crawl'],flamingo:['Balance','Bow','Flap'],gorilla:['Wave','Pat chest','Sway'],fox:['Peek','Swish','Pounce'],deer:['Bow','Step','Peek'],rabbit:['Hop','Wiggle ears','Nibble'],horse:['Trot','Nod','Swish'],cow:['Nibble','Nod','Swish']};
-  const seaNames={turtle:'Sea turtle',clownfish:'Clownfish',dolphin:'Dolphin',octopus:'Octopus',whale:'Whale',jellyfish:'Jellyfish',shark:'Shark',stingray:'Stingray',seahorse:'Seahorse',crab:'Crab',seal:'Seal',pufferfish:'Pufferfish',starfish:'Starfish',manta:'Manta ray',swordfish:'Swordfish',shrimp:'Shrimp',lobster:'Lobster',mermaid:'Mermaid'};
-  const seaActions={turtle:['Paddle','Glide','Turn'],clownfish:['Tail wag','Quick dash','Peek'],dolphin:['Leap','Wave a flipper','Dive'],octopus:['Eight-arm wave','Jet','Curl the arms'],whale:['Glide','Blow a spout','Wave a flipper'],jellyfish:['Bell pulse','Float up','Tassel dance'],shark:['Cruise','Tail sweep','Turn'],stingray:['Fin ripple','Sand glide','Gentle turn'],seahorse:['Fin flutter','Sway','Little rise'],crab:['Sideways steps','Wave claws','Little shuffle'],seal:['Flipper wave','Playful dive','Glide'],pufferfish:['Little puff','Fin flutter','Wiggle'],starfish:['Slow crawl','Tiny turn','Sand stroll'],manta:['Wing sweep','Soar','Bank'],swordfish:['Quick dash','Glide','Turn'],shrimp:['Tail flick','Backward dart','Curl'],lobster:['Claw wave','Tail flick','Crawl'],mermaid:['Swim','Tail wave','Dive']};
-  const seaKinds={turtle:'paddle',clownfish:'dart',dolphin:'arc',octopus:'jet',whale:'glide',jellyfish:'pulse',shark:'glide',stingray:'ray',seahorse:'upright',crab:'scuttle',seal:'arc',pufferfish:'puff',starfish:'crawl',manta:'ray',swordfish:'dart',shrimp:'backward',lobster:'backward',mermaid:'arc'};
-  const zoo=zooNames.map((name,i)=>({id:name.toLowerCase(),name,x:250+(i%6)*410,y:150+Math.floor(i/6)*295,width:name==='elephant'?265:220,actions:zooActions[name.toLowerCase()],detail:`Hello, ${name.toLowerCase()}! Tap again for another little surprise.`}));
-  const sea=Object.entries(seaNames).map(([id,name],i)=>({id,name,actions:seaActions[id],x:230+(i%6)*415,y:110+Math.floor(i/6)*400,width:['whale','manta','shark'].includes(id)?265:220,kind:seaKinds[id],detail:({pulse:'Pulsing softly up and down.',upright:'A little fin keeps our friend upright.',scuttle:'Sideways steps along the sandy seabed.',crawl:'A slow crawl on tiny tube feet.',backward:'A quick flick of the tail, backwards!',ray:'Wide fins glide like wings.',puff:'A little puff, then a gentle swim.',paddle:'Paddling with wonderful flippers.',jet:'A pulse of water and waving arms.'})[seaKinds[id]]||'Follow our friend through the water. It always comes back!'}));
-  // Bottom dwellers stay near the sand, even when their route changes.
-  for(const a of sea)if(['crab','starfish','lobster'].includes(a.id))a.y=1100;
-  window.CreatureCatalog={zoo,sea,width:2700,height:1400};
+  // Zoo roster in tour order: Entrance Plaza, then anticlockwise round the park path.
+  // x is the centre, y the top of the drawing; h is the art height in pixels (default 175).
+  const zooPlan=[
+    ['otter','Otter','Entrance Plaza',1020,1930,150,['Roll','Wave','Slide']],
+    ['tiger','Tiger','Entrance Plaza',1280,1760,185,['Stretch','Swish','Pounce']],
+    ['flamingo','Flamingo','Entrance Plaza',1960,1790,190,['Balance','Bow','Flap']],
+    ['duck','Duck','Entrance Plaza',2290,1930,140,['Waddle','Flap','Nod']],
+    ['elephant','Elephant','Elephants of Asia',560,1540,205,['Trumpet','Flap ears','Shower'],270],
+    ['panda','Panda','Elephants of Asia',270,1830,175,['Nibble','Wave','Sway']],
+    ['peacock','Peacock','Elephants of Asia',790,1880,185,['Show off','Strut','Peek']],
+    ['kangaroo','Kangaroo','Australasia',310,1170,195,['Hop','Big hop','Wave']],
+    ['koala','Koala','Australasia',650,1260,150,['Wave','Nibble','Nod']],
+    ['gorilla','Gorilla','Primate Kingdom',300,720,185,['Wave','Pat chest','Sway']],
+    ['orangutan','Orangutan','Primate Kingdom',930,830,180,['Wave','Swing','Sway']],
+    ['lemur','Lemur','Primate Kingdom',580,960,150,['Hop','Swish','Wave']],
+    ['monkey','Monkey','Primate Kingdom',640,570,170,['Hop','Swing','Wave']],
+    ['polarbear','Polar bear','Frozen Tundra',340,220,180,['Sway','Nod','Slide']],
+    ['penguin','Penguin','Frozen Tundra',700,140,160,['Waddle','Flap','Slide']],
+    ['crocodile','Crocodile','Reptile Garden',1290,340,140,['Swish','Yawn','Crawl']],
+    ['snake','Snake','Reptile Garden',1590,150,150,['Slither','Sway','Peek']],
+    ['tortoise','Tortoise','Reptile Garden',1870,380,125,['Crawl','Peek','Nod']],
+    ['frog','Frog','Reptile Garden',1570,500,125,['Hop','Big hop','Peek']],
+    ['deer','Deer','Fragile Forest',1330,880,180,['Bow','Step','Peek']],
+    ['owl','Owl','Fragile Forest',1650,780,155,['Flap','Peek','Bow']],
+    ['fox','Fox','Fragile Forest',1910,1030,155,['Peek','Swish','Pounce']],
+    ['bear','Bear','Fragile Forest',1480,1140,175,['Wave','Stretch','Sway']],
+    ['cow','Cow','KidzWorld',2380,620,175,['Nibble','Nod','Swish']],
+    ['sheep','Sheep','KidzWorld',2690,520,150,['Nibble','Trot','Nod']],
+    ['pig','Pig','KidzWorld',2960,740,140,['Roll','Nod','Swish']],
+    ['horse','Horse','KidzWorld',2490,890,195,['Trot','Nod','Swish']],
+    ['rabbit','Rabbit','KidzWorld',2830,990,135,['Hop','Wiggle ears','Nibble']],
+    ['giraffe','Giraffe','Wild Africa',2400,1120,300,['Bow','Reach up','Step'],245],
+    ['zebra','Zebra','Wild Africa',2710,1260,180,['Trot','Nod','Shake']],
+    ['rhino','Rhino','Wild Africa',2990,1190,185,['Nod','Stomp','Swish']],
+    ['lion','Lion','Wild Africa',2520,1540,185,['Roar','Stretch','Swish']],
+    ['hippo','Hippo','Wild Africa',2850,1560,175,['Yawn','Wade','Wiggle ears']],
+    ['camel','Camel','Wild Africa',2210,1590,205,['Step','Nod','Swish']]
+  ];
+  const zoo=zooPlan.map(([id,name,zone,x,y,h,actions,width])=>({id,name,zone,x,y,h,width:width||Math.max(210,Math.round(h*1.18)),actions,detail:`Hello, ${name.toLowerCase()}! Tap again for another little surprise.`}));
+  // Ocean roster: sunlit surface, coral reef, open ocean, kelp forest, twilight deep and the sandy seabed.
+  const seaKinds={turtle:'paddle',clownfish:'dart',dolphin:'arc',octopus:'jet',whale:'glide',jellyfish:'pulse',shark:'glide',stingray:'ray',seahorse:'upright',crab:'scuttle',seal:'arc',pufferfish:'puff',starfish:'crawl',manta:'ray',swordfish:'dart',shrimp:'backward',lobster:'backward',mermaid:'arc',bluetang:'dart',angelfish:'glide',orca:'arc',narwhal:'glide',moray:'upright',squid:'jet',hermitcrab:'scuttle',seaotter:'glide'};
+  const seaPlan=[
+    ['seal','Seal','Sunny Surface',330,250,150,['Flipper wave','Playful dive','Glide']],
+    ['dolphin','Dolphin','Sunny Surface',900,170,175,['Leap','Wave a flipper','Dive']],
+    ['mermaid','Mermaid','Sunny Surface',1500,320,190,['Swim','Tail wave','Dive']],
+    ['turtle','Sea turtle','Sunny Surface',2050,400,160,['Paddle','Glide','Turn']],
+    ['seaotter','Sea otter','Kelp Forest',2630,118,150,['Float','Crack a shell','Roll']],
+    ['clownfish','Clownfish','Coral Reef',330,720,125,['Tail wag','Quick dash','Peek']],
+    ['bluetang','Blue tang','Coral Reef',640,600,135,['Tail wag','Quick dash','Peek']],
+    ['angelfish','Angelfish','Coral Reef',940,770,160,['Fin flutter','Glide','Turn']],
+    ['seahorse','Seahorse','Coral Reef',230,1010,165,['Fin flutter','Sway','Little rise']],
+    ['pufferfish','Pufferfish','Coral Reef',590,950,130,['Little puff','Fin flutter','Wiggle']],
+    ['narwhal','Narwhal','Open Ocean',1190,880,175,['Glide','Tusk point','Turn']],
+    ['whale','Whale','Open Ocean',1270,540,195,['Glide','Blow a spout','Wave a flipper'],280],
+    ['orca','Orca','Open Ocean',1780,640,185,['Leap','Glide','Tail sweep'],250],
+    ['shark','Shark','Open Ocean',1580,920,175,['Cruise','Tail sweep','Turn'],250],
+    ['swordfish','Swordfish','Open Ocean',2250,770,155,['Quick dash','Glide','Turn']],
+    ['manta','Manta ray','Open Ocean',1980,1060,185,['Wing sweep','Soar','Bank'],250],
+    ['jellyfish','Jellyfish','Kelp Forest',2640,720,170,['Bell pulse','Float up','Tassel dance']],
+    ['octopus','Octopus','Twilight Deep',900,1300,170,['Eight-arm wave','Jet','Curl the arms']],
+    ['squid','Squid','Twilight Deep',1450,1250,150,['Jet','Arm wave','Glide']],
+    ['starfish','Starfish','Sandy Seabed',250,1650,120,['Slow crawl','Tiny turn','Sand stroll']],
+    ['crab','Crab','Sandy Seabed',520,1700,125,['Sideways steps','Wave claws','Little shuffle']],
+    ['shrimp','Shrimp','Sandy Seabed',800,1650,130,['Tail flick','Backward dart','Curl']],
+    ['hermitcrab','Hermit crab','Sandy Seabed',1100,1700,125,['Sideways steps','Wave claws','Peek']],
+    ['lobster','Lobster','Sandy Seabed',1400,1640,150,['Claw wave','Tail flick','Crawl']],
+    ['stingray','Stingray','Sandy Seabed',1800,1660,150,['Fin ripple','Sand glide','Gentle turn']],
+    ['moray','Moray eel','Sandy Seabed',2250,1560,170,['Sway','Peek','Open wide']]
+  ];
+  const seaDetail={pulse:'Pulsing softly up and down.',upright:'A little fin keeps our friend upright.',scuttle:'Sideways steps along the sandy seabed.',crawl:'A slow crawl on tiny tube feet.',backward:'A quick flick of the tail, backwards!',ray:'Wide fins glide like wings.',puff:'A little puff, then a gentle swim.',paddle:'Paddling with wonderful flippers.',jet:'A pulse of water and waving arms.'};
+  const sea=seaPlan.map(([id,name,zone,x,y,h,actions,width])=>({id,name,zone,x,y,h,width:width||Math.max(200,Math.round(h*1.18)),actions,kind:seaKinds[id],detail:seaDetail[seaKinds[id]]||'Follow our friend through the water. It always comes back!'}));
+  window.CreatureCatalog={zoo,sea,worlds:{zoo:{width:3200,height:2250},sea:{width:3000,height:2000}}};
   const running=new Map(),previous=new Map(),directions=new Map();
   const reduce=()=>matchMedia('(prefers-reduced-motion: reduce)').matches;
   function animate(node,frames,duration,options={}){
@@ -93,22 +155,23 @@
       const motion=name.toLowerCase();
       if(motion.includes('hop')||motion==='pounce')frames.push({transform:`translate(${dx}px,-42px) rotate(-3deg)`,offset:.3},{transform:`translate(${-dx}px,-24px) rotate(3deg)`,offset:.65});
       else if(motion==='roll')frames.push({transform:'translate(15px,-12px) rotate(30deg)',offset:.35},{transform:'translate(-10px,-5px) rotate(-15deg)',offset:.7});
-      else if(['trot','step','stomp','crawl','wade','waddle','slide'].includes(motion))frames.push({transform:`translate(${dx}px,-6px) rotate(-4deg)`,offset:.3},{transform:`translate(${-dx}px,0) rotate(4deg)`,offset:.68});
+      else if(['trot','step','stomp','crawl','wade','waddle','slide','strut','slither'].includes(motion))frames.push({transform:`translate(${dx}px,-6px) rotate(-4deg)`,offset:.3},{transform:`translate(${-dx}px,0) rotate(4deg)`,offset:.68});
       else if(motion==='bow'||motion==='nod'||motion==='peek')frames.push({transform:'rotate(8deg) translateY(7px)',offset:.5});
       else if(motion==='stretch'||motion==='reach up')frames.push({transform:'translateY(-14px) scale(1.05,1.1)',offset:.5});
       else if(motion==='roar'||motion==='yawn')frames.push({transform:'scale(1.08) translateY(-5px)',offset:.5});
       else if(motion==='balance')frames.push({transform:'rotate(-6deg) translateY(-9px)',offset:.5});
       else frames.push({transform:`rotate(${index%2?4:-4}deg) translateY(-5px)`,offset:.5});
       if(motion.includes('ears'))part('.animal-ear','rotate(-18deg)','170px 70px');
-      if(motion==='wave'||motion==='pat chest')part('.animal-paw','rotate(-24deg)','180px 130px');
+      if(motion==='wave'||motion==='pat chest'||motion==='swing'){part('.animal-paw:not(.paw-left)','rotate(-24deg)','180px 130px');part('.paw-left',motion==='wave'?'rotate(18deg)':'rotate(24deg)','80px 120px');}
+      if(motion==='show off')part('.peacock-fan','scale(1.14)');
       if(motion==='flap'||motion==='swing')part('.animal-wing','scaleX(1.18) rotate(-8deg)');
       if(motion==='bow')part('.animal-neck','rotate(10deg)','148px 108px');
       if(motion==='bow'||motion==='nod')part('.animal-head','rotate(12deg)');
       if(motion==='swish')part('.animal-tail','rotate(20deg)','62px 137px');
       if(['yawn','nibble','roar'].includes(motion))part('.animal-mouth',motion==='nibble'?'scaleY(.65)':'scaleY(2.2)','185px 120px');
       if(['trumpet','shower'].includes(motion))part('.animal-trunk','rotate(-52deg)','212px 115px');
-      if(['trot','step','stomp','crawl','wade','waddle'].includes(motion)){part('.animal-leg:not(.leg-rear)','rotate(8deg)');part('.leg-rear','rotate(-8deg)');}
-      if(['bear','panda','gorilla'].includes(id)){
+      if(['trot','step','stomp','crawl','wade','waddle','strut'].includes(motion)){part('.animal-leg:not(.leg-rear)','rotate(8deg)');part('.leg-rear','rotate(-8deg)');}
+      if(['bear','panda','gorilla','orangutan','koala','lemur'].includes(id)){
         // Sitting feet stay planted while the upper body expresses the action.
         frames.length=1;
         if(motion==='stretch'){part('.paw-left','rotate(32deg)');part('.paw-right','rotate(-32deg)');part('.animal-head','rotate(-5deg)');}

@@ -7,7 +7,7 @@ The designs take inspiration from Singapore's [ECDA Early Years Development Fram
 | A Little Walk | Waiting, observing and walking with a grown-up | Implemented |
 | Counting Picnic | One-to-one counting and quantities 1–5 / 1–10 | Implemented |
 | Letter Post | Capitals and lowercase paired with familiar pictures | Implemented |
-| Mandarin Planting Garden | Ordered actions, seeds, water, sunlight and growth | Implemented |
+| Mandarin Planting Garden | Ordered actions (dig, seed, cover) and a four-line rhyme: sun, worm, rain and grandpa each help one tulip grow more leaves | Implemented (fourth door) |
 | A Rainy-Day Outing | Choosing clothes and equipment for weather | Candidate |
 | Shape Block Town | Building with circles, squares and triangles | Candidate |
 | Washing Hands Story | Putting everyday care actions in order | Candidate |

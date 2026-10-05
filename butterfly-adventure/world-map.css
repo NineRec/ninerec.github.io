@@ -1,0 +1,10 @@
+/* Zoo and ocean worlds: drawing sizes per animal, always-visible English labels and larger scenes. */
+.play-page .animal{min-height:0;padding-bottom:2px}
+.play-page .animal svg{height:var(--art-h,175px)}
+.play-page .animal-name{position:static!important;width:auto!important;height:auto!important;overflow:visible!important;clip:auto!important;padding:3px 14px 4px!important;margin-top:-3px;border:2px solid #c7cfad!important;border-radius:22px;background:#fffaebf2;color:#4a5a3c;font:800 16px/1.2 ui-rounded,"SF Pro Rounded","Nunito",system-ui,sans-serif;letter-spacing:.02em;white-space:nowrap;box-shadow:0 2px 0 rgba(122,112,72,.22)}
+.play-page .animal.discovered .animal-name:after{content:' ✓';font-size:13px;color:#4d8a3c}
+.play-page .animal.selected .animal-name{background:#fff3bd;border-color:#c1a652!important}
+.play-page .sea .animal-name,.play-page .animal-name.sea{background:#f2fbf6f0;border-color:#a9d1c6!important;color:#2f6068}
+.play-page [data-world=sea] .animal-name{background:#f2fbf6f0;border-color:#a9d1c6!important;color:#2f6068}
+.play-page .panorama>svg{display:block}
+@media(max-width:600px){.play-page .animal-name{font-size:14px;padding:2px 11px 3px!important}}

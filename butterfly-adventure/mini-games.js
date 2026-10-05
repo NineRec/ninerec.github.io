@@ -77,21 +77,80 @@
       envelope.addEventListener('pointerup',end);envelope.addEventListener('pointercancel',end);envelope.addEventListener('lostpointercapture',cleanupDrag);envelope.addEventListener('click',e=>{if(e.detail===0)speak(`letter-${letter().toLowerCase()}`);});
       function nextLetter(){if(phase!=='done')return;round++;if(round===26){round=0;deck=shuffle([...Array(26).keys()]);}reset();speak(`letter-${letter().toLowerCase()}`);}$('letter-next').addEventListener('click',nextLetter);$('new-game').querySelector('.learning-modes').addEventListener('click',e=>{const b=e.target.closest('button[data-level]');if(!b)return;level=Number(b.dataset.level);reset();speak(`letter-${letter().toLowerCase()}`);});window.addEventListener('pagehide',()=>{cleanupDrag();token++;});reset();
     }else if(game==='seedling'){
-      let size=1,phase='dig',digs=0,seeds=0,water=0,busy=false,token=0,timer;
-      const sequence=['dig','seed','cover','water','sun'],correct={dig:'spade',seed:'seed',cover:'soil',water:'water',sun:'sun'},names={dig:'挖一个小坑',seed:'放进小种子',cover:'盖上薄薄的土',water:'轻轻浇两次水',sun:'请太阳来帮忙',growing:'小花正在长大',done:'小花开啦！'};
-      shell('挖呀种花园','中文小故事 · 一颗种子的旅行',`<nav class="learning-modes garden-sizes" aria-label="选择花园大小"><button data-size="1" aria-pressed="true" aria-label="小花园">1</button><button data-size="3" aria-pressed="false" aria-label="中花园">3</button><button data-size="5" aria-pressed="false" aria-label="大花园">5</button></nav><div class="toy-content seedling-content"><aside class="seedling-card"><p class="eyebrow">小园丁的种花计划</p><ol id="seedling-plan"></ol>${guide()}<p class="seedling-fact">小花长大需要适量的水、阳光和时间。<br>每种植物长大的速度都不一样。</p></aside><div class="seedling-work"><button id="garden-bed" class="garden-bed" aria-label="花园：轻点来完成当前的种花步骤"><span class="garden-sky"><span id="garden-sun">${toys.sun}</span><span class="garden-cloud"></span></span><span class="garden-earth"></span><span id="garden-holes" class="garden-holes"></span><span id="garden-plants" class="garden-plants"></span><span id="garden-actor" class="garden-actor"></span><span id="garden-caption" class="garden-caption"></span><span class="garden-rain" id="garden-rain" hidden></span></button><div id="garden-tools" class="garden-tools">${buttons([['spade','小铲子'],['seed','种子'],['soil','盖土'],['water','浇水壶'],['sun','太阳']])}</div></div></div><footer class="toy-footer"><p id="toy-message" class="toy-message" role="status"></p><button id="seedling-again" class="toy-button" disabled>再种一次 ↻</button></footer>`);
+      // One tulip, told as a rhyme: dig, seed, cover, then sun, worm, rain and grandpa each bring more leaves, and it blooms.
+      let phase='dig',digs=0,stage=0,busy=false,token=0,timer;
+      const sequence=['dig','seed','cover','sun','worm','rain','grandpa'],correct={dig:'spade',seed:'seed',cover:'soil',sun:'sun',worm:'worm',rain:'rain',grandpa:'grandpa'};
+      const names={dig:'挖一个小坑',seed:'放进小种子',cover:'盖上薄薄的土',sun:'请大太阳出来',worm:'请小蚯蚓来翻土',rain:'请毛毛雨来浇水',grandpa:'请老爷爷来耕耘',bloom:'小花正在开放',done:'郁金香开花啦！'};
+      const verses={sun:['大太阳当空晒，','一片叶子长出来。'],worm:['小蚯蚓翻土快，','两片叶子长出来。'],rain:['毛毛雨来灌溉，','三片叶子长出来。'],grandpa:['老爷爷来耕耘，','所有叶子长出来。']};
+      const wait=ms=>new Promise(r=>setTimeout(r,reduce()?1:ms)),grounded=svg=>svg.replace('<svg','<svg preserveAspectRatio="xMidYMax meet"');
+      const hearLine=()=>wait(Math.min(2600,Math.max(0,bookAudioRemaining())));
+      shell('挖呀种花园','中文小故事 · 一朵郁金香的旅行',`<div class="toy-content seedling-content"><aside class="seedling-card"><p class="eyebrow">小园丁的种花计划</p><ol id="seedling-plan"></ol>${guide()}<p class="seedling-fact">小花长大需要阳光、泥土和雨水。<br>每种植物长大的速度都不一样。</p></aside><div class="seedling-work"><div id="garden-bed" class="garden-bed" role="group" aria-label="花园"><span class="garden-sky"><span id="garden-sun" class="garden-sun">${toys.sun}</span><span id="garden-cloud" class="garden-cloud">${toys.rain}</span></span><span id="garden-helper" class="garden-helper"></span><span class="garden-earth"></span><span id="garden-hole" class="garden-hole"><span id="garden-seed" class="garden-seed">${toys.seed}</span></span><span class="garden-mound"></span><span id="garden-plant" class="garden-plant"></span><span id="garden-rain" class="garden-rain" hidden></span><span id="garden-dirt" class="garden-dirt" aria-hidden="true"></span><button id="garden-action" class="garden-hit" aria-label="花园：轻点来完成当前的种花步骤"></button><button id="garden-spade" class="garden-spade" aria-label="小铲子：点一点，挖一下">${toys.spade}</button><span id="garden-caption" class="garden-caption"></span></div><div id="garden-tools" class="garden-tools">${buttons([['spade','小铲子'],['seed','种子'],['soil','盖土'],['sun','大太阳'],['worm','小蚯蚓'],['rain','毛毛雨'],['grandpa','老爷爷']])}</div></div></div><footer class="toy-footer"><p id="toy-message" class="toy-message" role="status"></p><button id="seedling-again" class="toy-button" disabled>再种一次 ↻</button></footer>`);
       $('new-game').lang='zh-CN';$('toy-listen').setAttribute('aria-label','听 Zoey 讲');
-      function render(){status(phase);$('new-game').dataset.size=size;$('new-game').dataset.digs=digs;$('new-game').dataset.seeds=seeds;$('new-game').dataset.water=water;$('garden-bed').dataset.phase=phase;$('garden-bed').disabled=busy||phase==='growing'||phase==='done';$('seedling-again').disabled=phase!=='done';$('garden-caption').textContent=names[phase]+(phase==='dig'?` · ${digs}/3`:phase==='seed'?` · ${seeds}/${size}`:phase==='water'?` · ${water}/2`:'');const current=sequence.indexOf(phase);$('seedling-plan').innerHTML=sequence.map((p,i)=>`<li class="${phase==='done'||phase==='growing'||i<current?'step-done':i===current?'step-current':''}">${toys[correct[p]]}<span class="sr-only">${names[p]}</span></li>`).join('');$('garden-holes').innerHTML=Array.from({length:size},(_,i)=>`<span class="garden-hole" style="left:${(i+1)*100/(size+1)}%;opacity:${digs/3}">${seeds>i&&phase!=='cover'&&phase!=='seed'?'':seeds>i?toys.seed:''}</span>`).join('');$('garden-plants').innerHTML=Array.from({length:phase==='growing'||phase==='done'?size:0},(_,i)=>`<span class="garden-flower" style="width:${Math.min(38,85/size)}%;left:${(i+1)*100/(size+1)}%;--flower-delay:${i*110}ms;--flower-hue:${i*27}deg">${toys.flower}</span>`).join('');$('garden-plants').querySelectorAll('svg').forEach(svg=>svg.setAttribute('preserveAspectRatio','xMidYMax meet'));$('garden-tools').querySelectorAll('[data-pick]').forEach(b=>{b.disabled=phase==='growing'||phase==='done';b.classList.toggle('next-ingredient',b.dataset.pick===correct[phase]);});$('new-game').querySelectorAll('[data-size]').forEach(b=>b.setAttribute('aria-pressed',Number(b.dataset.size)===size));}
-      function reset(){flow.cancel();token++;clearTimeout(timer);$('garden-bed').classList.remove('celebrate');busy=false;phase='dig';digs=0;seeds=0;water=0;$('garden-rain').hidden=true;$('garden-actor').innerHTML='';render();message('一颗种子，会长成什么呢？','先用小铲子挖三下。可以点工具，也可以拖进花园。');setVoice('seedling-intro');}
-      async function use(id,node){if(busy||phase==='growing'||phase==='done')return;if(id!==correct[phase]){flash(node);message('先等等，下一步是：'+names[phase]+'。','小园丁可以慢慢来，再试一次。');speak('seedling-wrong');return;}busy=true;const own=token;$('garden-actor').innerHTML=toys[id];PlaythingMotion.play($('garden-actor'),id);if(node!==$('garden-bed'))await fly(node,$('garden-bed'));else await new Promise(r=>setTimeout(r,reduce()?1:250));if(own!==token)return;busy=false;
-        if(phase==='dig'){digs++;if(digs===3){phase='seed';speak('seedling-seed');}else speak('seedling-dig');}
-        else if(phase==='seed'){seeds++;if(seeds===size){phase='cover';speak('seedling-cover');}else speak(size===3?'seedling-medium':'seedling-large');}
-        else if(phase==='cover'){phase='water';speak('seedling-water');}
-        else if(phase==='water'){water++;$('garden-rain').hidden=false;setTimeout(()=>{if(own===token)$('garden-rain').hidden=true;},750);if(water===2){phase='sun';speak('seedling-sun');}else speak('seedling-water');}
-        else if(phase==='sun'){phase='growing';speak('seedling-fact');timer=setTimeout(()=>{if(own!==token)return;phase='done';$('garden-actor').innerHTML='';render();celebrate($('garden-bed'));message(`开花啦！你种出了 ${size} 朵漂亮的花。`,'谢谢你细心照顾。真实的小花要等很多天，慢慢长大。');speak('seedling-done');flow.after(()=>{reset();speak('seedling-intro');});},Math.max(2600,AdventureBook.audioRemaining()));}
-        render();if(phase!=='growing')message(names[phase],phase==='seed'?`还需要 ${size-seeds} 颗种子。`:'按顺序照顾它，看看小花的变化。');else message('小花正在长大……','游戏里时间走得很快，真实植物要慢慢等。');
+      function render(){
+        status(phase);const bed=$('garden-bed');
+        $('new-game').dataset.digs=digs;$('new-game').dataset.stage=stage;bed.dataset.phase=phase;bed.dataset.digs=digs;bed.dataset.stage=stage;
+        $('garden-action').disabled=busy||phase==='bloom'||phase==='done';$('garden-spade').disabled=busy||phase!=='dig';$('seedling-again').disabled=phase!=='done';
+        $('garden-caption').textContent=names[phase]+(phase==='dig'?` · ${digs}/3`:'');
+        const current=sequence.indexOf(phase);
+        $('seedling-plan').innerHTML=sequence.map((p,i)=>`<li class="${phase==='bloom'||phase==='done'||i<current?'step-done':i===current?'step-current':''}">${toys[correct[p]]}<span class="sr-only">${names[p]}</span></li>`).join('');
+        const plant=$('garden-plant');if(plant.dataset.stage!==String(stage)){plant.dataset.stage=stage;plant.innerHTML=stage?grounded(art.tulipStage(stage)):'';}
+        $('garden-tools').querySelectorAll('[data-pick]').forEach(b=>{b.disabled=phase==='bloom'||phase==='done';b.classList.toggle('next-ingredient',b.dataset.pick===correct[phase]);});
       }
-      bindPick($('garden-tools'),'#garden-bed',use);$('garden-bed').addEventListener('click',()=>use(correct[phase],$('garden-bed')));$('seedling-again').addEventListener('click',()=>{if(phase==='done'){reset();speak('seedling-intro');}});$('new-game').querySelector('.garden-sizes').addEventListener('click',e=>{const b=e.target.closest('button[data-size]');if(!b)return;size=Number(b.dataset.size);reset();speak(size===1?'seedling-small':size===3?'seedling-medium':'seedling-large');});window.addEventListener('pagehide',()=>{clearTimeout(timer);token++;});reset();
+      function dirt(){
+        const box=$('garden-dirt');box.innerHTML=Array.from({length:7},(_,i)=>`<i style="--dx:${(i-3)*17+(i%2?5:-4)}px;--dy:${-34-(i%3)*15}px;--spin:${i*47}deg"></i>`).join('');
+        box.classList.remove('fly');void box.offsetWidth;box.classList.add('fly');
+      }
+      async function plunge(){
+        const spade=$('garden-spade').querySelector('svg');
+        if(!reduce())await spade.animate([{transform:'translateY(0) rotate(0)'},{transform:'translateY(34%) rotate(-7deg)',offset:.42},{transform:'translateY(34%) rotate(-7deg)',offset:.58},{transform:'translateY(0) rotate(0)'}],{duration:760,easing:'ease-in-out'}).finished.catch(()=>{});
+        dirt();
+      }
+      async function helper(id,className,duration){
+        const box=$('garden-helper');box.className='garden-helper '+className;box.innerHTML=grounded(toys[id]);void box.offsetWidth;box.classList.add('active');
+        await wait(duration);box.classList.remove('active');await wait(380);box.innerHTML='';box.className='garden-helper';
+      }
+      function reset(){
+        flow.cancel();token++;clearTimeout(timer);$('garden-bed').classList.remove('celebrate','beam','raining');busy=false;phase='dig';digs=0;stage=0;
+        $('garden-rain').hidden=true;$('garden-helper').innerHTML='';$('garden-helper').className='garden-helper';$('garden-cloud').classList.remove('show');$('garden-plant').dataset.stage='';render();
+        message('一颗种子，会长成什么呢？','先点一点小铲子，挖三下小坑。');setVoice('seedling-intro');
+      }
+      async function use(id,node){
+        if(busy||phase==='bloom'||phase==='done')return;
+        if(id!==correct[phase]){flash(node||$('garden-spade'));message('先等等，下一步是：'+names[phase]+'。','小园丁可以慢慢来，再试一次。');speak('seedling-wrong');return;}
+        busy=true;const own=token;render();
+        if(node&&node.dataset?.pick)await fly(node,$('garden-bed'));
+        if(own!==token)return;
+        if(phase==='dig'){
+          await plunge();if(own!==token)return;digs++;
+          if(digs===3){phase='seed';speak('seedling-seed');message(names.seed,'把种子放进小坑里。');}else{speak('seedling-dig');message(names.dig,`再点一点铲子，还要挖 ${3-digs} 下。`);}
+        }else if(phase==='seed'){
+          $('garden-bed').classList.add('seed-in');await wait(620);if(own!==token)return;phase='cover';speak('seedling-cover');message(names.cover,'给小种子盖好被子，然后请大太阳来帮忙。');
+        }else if(phase==='cover'){
+          $('garden-bed').classList.remove('seed-in');$('garden-bed').classList.add('covered');dirt();await wait(520);if(own!==token)return;phase='sun';message(names.sun,'大太阳当空晒……点一点大太阳。');
+        }else{
+          const verse=verses[phase];speak('seedling-'+phase);message(verse[0],verse[1]);
+          if(phase==='sun'){$('garden-bed').classList.add('beam');await wait(1900);$('garden-bed').classList.remove('beam');}
+          else if(phase==='worm')await helper('worm','worm',1900);
+          else if(phase==='rain'){$('garden-cloud').classList.add('show');await wait(500);$('garden-rain').hidden=false;await wait(1700);$('garden-rain').hidden=true;$('garden-cloud').classList.remove('show');}
+          else await helper('grandpa','grandpa',2200);
+          if(own!==token)return;
+          stage=({sun:1,worm:2,rain:3,grandpa:4})[phase];render();await hearLine();if(own!==token)return;
+          phase=sequence[sequence.indexOf(phase)+1]||'bloom';
+          if(phase==='bloom'){
+            busy=true;render();message('最后开出花朵……','');await wait(900);if(own!==token)return;
+            stage=5;phase='done';busy=false;render();celebrate($('garden-bed'));message('开花啦！你种出了一朵漂亮的郁金香。','谢谢你细心照顾。真实的小花要等很多天，慢慢长大。');speak('seedling-done');flow.after(()=>{reset();speak('seedling-intro');});
+            return;
+          }
+          message(names[phase],'按顺序请朋友来帮忙，看看小花的变化。');
+        }
+        busy=false;render();
+      }
+      bindPick($('garden-tools'),'#garden-bed',use);
+      $('garden-action').addEventListener('click',()=>use(correct[phase],null));
+      $('garden-spade').addEventListener('click',()=>use('spade',null));
+      $('seedling-again').addEventListener('click',()=>{if(phase==='done'){reset();speak('seedling-intro');}});
+      window.addEventListener('pagehide',()=>{clearTimeout(timer);token++;});
+      reset();
     }
   }};
 })();

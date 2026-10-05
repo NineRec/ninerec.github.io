@@ -26,13 +26,13 @@
       ['The wings are open and dry. A new adventure is waiting.', 'Zoey lifts a hand. Are you ready to help our friend take flight?'],
       ['Up, up, and away! Zoey waves as the butterfly takes flight.', 'Tap a flower to invite it for nectar. A butterfly can lay eggs, and the story begins again.']]}
   ];
-  const WORLD_WIDTH = CreatureCatalog.width, WORLD_HEIGHT = CreatureCatalog.height;
-  const AUDIO_VERSION = 'animal-character-20261004';
+  const worldSize = kind => CreatureCatalog.worlds[kind];
+  const AUDIO_VERSION = 'zoo-tulip-20261005';
   const zoo = CreatureCatalog.zoo, sea = CreatureCatalog.sea;
   let customNarration = null;
   let world = 'garden', stage = 0, counts = [0,0,0,0], busy = false, epoch = 0;
   let gameStep = 0, muted = false, selected = {zoo:null, sea:null};
-  const discovered = {zoo:new Set(),sea:new Set()}, scrolls = {zoo:{x:0,y:0},sea:{x:0,y:0}};
+  const discovered = {zoo:new Set(),sea:new Set()}, scrolls = {zoo:null,sea:null};
   const animations = new Set(), animalTimers = new Set();
   const audio = new Audio(); audio.preload = 'auto';
   const audioFiles = {lion:'lion.m4a',elephant:'elephant.m4a',giraffe:'giraffe.m4a',zebra:'zebra.m4a',monkey:'monkey.m4a',owl:'owl.m4a'};
@@ -153,33 +153,24 @@
     }catch(error){if(run===epoch){console.error('Story animation failed',error);}}
     finally{if(run===epoch){busy=false;$('book').setAttribute('aria-busy','false');if(world==='garden')renderGarden();}}
   }
-  function sceneBackground(kind){
-    const seaScene=kind==='sea';
-    let art=`<svg viewBox="0 0 ${WORLD_WIDTH} ${WORLD_HEIGHT}" preserveAspectRatio="none" aria-hidden="true"><defs><linearGradient id="world-color" x2="0" y2="1"><stop stop-color="${seaScene?'#d8ece6':'#e6edcf'}"/><stop offset="1" stop-color="${seaScene?'#7cb1b0':'#cbd7ac'}"/></linearGradient></defs><rect width="${WORLD_WIDTH}" height="${WORLD_HEIGHT}" fill="url(#world-color)"/>`;
-    if(seaScene){
-      art+=`<g fill="#eff6e4" opacity=".17">${Array.from({length:9},(_,i)=>`<path d="M${i*330} 0l-130 1400h190L${i*330+190} 0Z"/>`).join('')}</g><path d="M0 1280q300-75 600-5t600 0t600 0t900 0v130H0Z" fill="#ded2ae"/>`;
-      art+=Array.from({length:17},(_,i)=>`<g transform="translate(${60+i*165} ${1290+i%3*15})"><path d="M0 0q-30-120 8-185M30 0q35-96 3-142" stroke="#719f91" stroke-width="13" fill="none" stroke-linecap="round"/><path d="M80 0v-58m0 20l-27-27m27 38l27-24" stroke="#bd9187" stroke-width="11" fill="none" stroke-linecap="round"/></g>`).join('');
-      art+=`<g fill="none" stroke="#e5f5e9" opacity=".5" stroke-width="2">${Array.from({length:85},(_,i)=>`<circle cx="${30+i*97%2700}" cy="${60+i*137%1150}" r="${3+i%5}"/>`).join('')}</g>`;
-    }else{
-      art+=`<circle cx="510" cy="74" r="45" fill="#f1d59a"/><path d="M0 270q350-110 700-10t700 0t700 0t600-5v1145H0Z" fill="#d6dfb6"/><path d="M0 500q350-75 700 0t700 0t700 0t600 5v895H0Z" fill="#cad8ab"/><g fill="none" stroke="#e9dbb5" stroke-width="80"><path d="M0 450q600-60 1250 0t1450 0M0 1000q600-50 1250 0t1450 0"/><path d="M1360 430q-100 300 0 570"/></g><ellipse cx="1060" cy="1240" rx="320" ry="100" fill="#a3c2b0"/><ellipse cx="1060" cy="1240" rx="265" ry="67" fill="#bed7c5"/>`;
-      art+=Array.from({length:10},(_,i)=>{const x=55+i*280,y=i%2?830:50;return `<g transform="translate(${x} ${y})"><path d="M0 175V44" stroke="#a78c64" stroke-width="15"/><ellipse cx="0" cy="32" rx="84" ry="49" fill="#aac18a"/><ellipse cx="38" cy="41" rx="49" ry="35" fill="#95b07c"/></g>`;}).join('');
-      art+=`<g fill="none" stroke="#9ab27f" stroke-width="3">${Array.from({length:90},(_,i)=>`<path d="M${70+i*191%2600} ${390+i*121%990}l-8-20m8 20l10-18"/>`).join('')}</g>`;
-    }
-    return art+'</svg>';
-  }
+  function sceneBackground(kind){return WorldMaps.render(kind,CreatureCatalog,worldSize(kind));}
+  // The zoo opens at its gate, the ocean at the sunny surface.
+  function startScroll(kind,size){const vp=$('viewport');return kind==='zoo'?{x:Math.max(0,size.width/2-vp.clientWidth/2),y:Math.max(0,size.height-vp.clientHeight)}:{x:Math.max(0,size.width/2-vp.clientWidth/2),y:0};}
   function renderExplore(){
     const animals=world==='zoo'?zoo:sea, isSea=world==='sea';
     selected[world]=null; // The restored panorama opens with its introduction.
     $('chapter-number').textContent=isSea?`UNDER THE SEA · ${animals.length} OCEAN FRIENDS`:`A DAY AT THE ZOO · ${animals.length} ANIMAL FRIENDS`;
     $('chapter-title').textContent=isSea?'A hello beneath the waves':'So many friends to meet';
     $('explore-scene').classList.toggle('sea',isSea);$('explore-note').textContent=isSea?'THE WONDERFUL OCEAN':'THE SUNNY ZOO';
-    $('panorama').innerHTML=sceneBackground(world)+animals.map(a=>`<button class="animal${discovered[world].has(a.id)?' discovered':''}" data-animal="${a.id}" style="left:calc(${a.x/WORLD_WIDTH*100}% - ${a.width/2}px);top:${a.y/WORLD_HEIGHT*100}%;width:${a.width}px" aria-label="Meet the ${a.name.toLowerCase()}" aria-pressed="false"><span class="animal-art">${art.animals[a.id]}</span><span class="animal-name">${a.name}</span></button>`).join('');
+    const size=worldSize(world);$('panorama').style.width=size.width+'px';$('panorama').style.height=size.height+'px';
+    $('panorama').dataset.world=world;
+    $('panorama').innerHTML=sceneBackground(world)+animals.map(a=>`<button class="animal${discovered[world].has(a.id)?' discovered':''}" data-animal="${a.id}" data-zone="${a.zone}" style="left:calc(${a.x/size.width*100}% - ${a.width/2}px);top:${a.y/size.height*100}%;width:${a.width}px;--art-h:${a.h}px" aria-label="Meet the ${a.name.toLowerCase()}" aria-pressed="false"><span class="animal-art">${art.animals[a.id]}</span><span class="animal-name">${a.name}</span></button>`).join('');
     $('animal-index').innerHTML=animals.map(a=>`<button data-find="${a.id}" class="${discovered[world].has(a.id)?'found':''}" aria-label="Meet ${a.name}" aria-pressed="false">${art.animals[a.id]}<span class="sr-only">${a.name}</span><span aria-hidden="true">${discovered[world].has(a.id)?' ✓':''}</span></button>`).join('');
     $('animal-bubble').textContent=isSea?'Dive in with me!':'Hello, new friends!';
-    $('story-main').textContent=isSea?'Zoey takes a peek beneath the waves. Who is swimming here?':'Zoey follows the winding path. Can you find all twenty-four animal friends?';
+    $('story-main').textContent=isSea?'Zoey takes a peek beneath the waves. Who is swimming here?':'Zoey follows the winding park path, from the gate to every zone. Can you find all thirty-four animal friends?';
     $('story-detail').textContent=isSea?'Swipe in any direction to explore. Tap a sea animal to hear its name and watch it swim away and return.':'Swipe in any direction to explore. Tap an animal to hear its name and call, and see it move.';
     $('action-label').innerHTML=art.icons.right;$('action').setAttribute('aria-label','Find a new friend');$('back').disabled=false;$('action').disabled=false;
-    $('viewport').scrollLeft=scrolls[world].x;$('viewport').scrollTop=scrolls[world].y;updatePan();updateDiscovery();
+    const start=scrolls[world]||startScroll(world,size);$('viewport').scrollLeft=start.x;$('viewport').scrollTop=start.y;updatePan();updateDiscovery();
   }
   function updateDiscovery(){
     $('discovery-count').textContent=`${discovered[world].size} / ${(world==='zoo'?zoo:sea).length}`;
@@ -289,7 +280,7 @@
     if(gameStep===4){playAudio('game-complete.m4a');PlayFlow.after(()=>{counts=[0,0,0,0];stage=0;changeWorld('garden');playAudio(narration());});window.LittleCelebration?.burst();gestureGuide('cheer');$('game-reset').focus({preventScroll:true});}else $('game-choices').querySelector('button:not(:disabled)').focus({preventScroll:true});
   });
   $('game-reset').addEventListener('click',resetGame);
-  $('restart').addEventListener('click',()=>{counts=[0,0,0,0];stage=0;discovered.zoo.clear();discovered.sea.clear();selected={zoo:null,sea:null};scrolls.zoo={x:0,y:0};scrolls.sea={x:0,y:0};changeWorld('garden');gestureGuide('wave');});
+  $('restart').addEventListener('click',()=>{counts=[0,0,0,0];stage=0;discovered.zoo.clear();discovered.sea.clear();selected={zoo:null,sea:null};scrolls.zoo=null;scrolls.sea=null;changeWorld('garden');gestureGuide('wave');});
   $('listen').addEventListener('click',()=>{if(!audio.paused){stopAudio();return;}if(muted){muted=false;renderSound();}playAudio(narration());});
   function renderSound(){ $('sound-toggle').setAttribute('aria-pressed',!muted);$('sound-toggle').setAttribute('aria-label',muted?'Unmute sound':'Mute sound');$('sound-label').textContent=muted?'Sound off':'Sound on'; }
   $('sound-toggle').addEventListener('click',()=>{muted=!muted;renderSound();if(muted){stopAudio();document.getElementById('sound-start')?.remove();}else playAudio(narration());});

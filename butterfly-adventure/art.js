@@ -24,12 +24,54 @@
     ['pupa','0 0 160 220',line('M18 24Q75 28 144 10',colors.brown,9)+line('M82 20V47','#efe6c5',3)+path('M81 46C109 58 119 83 114 109C110 144 96 164 88 192Q81 214 74 192C66 162 46 139 45 110C42 82 55 57 81 46Z','#a6c587',`stroke="#739558" stroke-width="2"`)+line('M79 58Q59 104 79 177M46 101Q81 117 115 100M53 132Q79 145 108 132','#809f64',2.5)+line('M62 72Q53 88 54 105','#d6e3b1',5)],
     ['butterfly','0 0 240 180',butterfly],['flower','0 0 60 100',flower]
   ].map(([id,view,body])=>`<symbol id="${id}" viewBox="${view}">${body}</symbol>`).join('');
-  function kid(grownup=false){
-    return svg(`<g class="kid-body">${path('M95 260Q91 292 89 332L86 367Q97 374 109 367L122 278L133 367Q148 374 159 367L149 265Z',grownup?'#667f75':'#6c8e87')}${ellipse(96,369,18,6,'#ad7b50')}${ellipse(147,369,18,6,'#ad7b50')}
-      ${path('M105 125H135V161H105Z',colors.peach)}${joint('kid-arm left',88,165,line('M88 165Q63 199 65 229',grownup?'#a6b995':'#d98967',20)+line('M65 229l-5 11',colors.peach,15))}${joint('kid-arm right',154,165,line('M154 165Q176 187 180 227',grownup?'#a6b995':'#d98967',20)+line('M180 227l5 12',colors.peach,15))}
-      ${path('M95 147Q120 138 148 148C163 180 161 220 158 266Q123 281 85 266C82 222 79 184 95 147Z',grownup?'#a6b995':'#d98967')}${path('M105 147l15 19l15-19','#efc49a')}${path('M98 218h44v29q-20 9-44 0Z','#c47758')}
-      <g class="kid-head">${path('M72 123C59 91 61 38 111 30C163 21 191 55 176 123L162 142L80 139Z','#936348')}${ellipse(120,90,48,55,colors.peach)}${path('M73 75Q76 26 118 33Q165 23 170 76Q137 67 127 47Q109 72 73 75Z','#936348')}${path('M159 119q8 12 5 25l-16 1l1-23','#936348')}${path('M80 116q-8 16-2 29l16-2l-2-23','#936348')}
-      <g class="kid-eyes">${eyes(102,89,34)}</g>${cheek(88,108)}${cheek(151,108)}${smile(106,111,28)}${path('M72 44Q116 6 167 43L166 56Q116 36 72 57Z','#afbd85')}${line('M78 45Q115 29 162 45','#6d8b64',4)}</g></g>`,'0 0 240 400');
+  // Zoey follows the supplied portrait: black hair in two pigtails with pink ties, a round rosy face,
+  // an open smile and little ears. She wears a red short-sleeved T-shirt, blue shorts and white shoes.
+  const skin='#f6cba6',skinShade='#e6ad86',hair='#2c2628',tieColor='#e4488f',red='#d8473f',redShade='#b53630';
+  const hairTie=(x,y)=>ellipse(x,y,11,12,tieColor)+line(`M${x-9} ${y-4}q9 4 18 0M${x-9} ${y+3}q9 4 18 0`,'#b32f70',2)+ellipse(x-3,y-5,3.2,2.2,'#f8a5ca');
+  const pigtails=path('M58 62C44 58 28 66 18 80L6 92L24 88L14 112L34 100L30 128L50 100C56 92 60 80 58 62Z',hair)+path('M182 62C196 58 212 66 222 80L234 92L216 88L226 112L206 100L210 128L190 100C184 92 180 80 182 62Z',hair)+line('M44 78C30 92 24 104 20 112M196 78C210 92 216 104 220 112','#5a4e52',2.2,'opacity=".55"');
+  function child(){
+    return `<g class="kid-body">
+      ${line('M100 298L98 350',skin,22)}${line('M142 298L144 350',skin,22)}
+      ${path('M88 338h22v18H88ZM130 338h22v18h-22Z','#fdf8ee')}${line('M88 346h22M130 346h22','#eca7bf',3)}
+      ${path('M80 356Q80 346 100 346L112 352Q118 366 108 372L84 372Q78 366 80 356Z','#fbf6ea')}${path('M80 369H112Q114 375 108 377H84Q78 375 80 369Z','#e4a4b8')}
+      ${path('M160 356Q160 346 140 346L128 352Q122 366 132 372L156 372Q162 366 160 356Z','#fbf6ea')}${path('M160 369H128Q126 375 132 377H156Q162 375 160 369Z','#e4a4b8')}
+      ${path('M84 262Q121 276 158 262L163 306Q143 316 125 306L121 292L117 306Q99 316 79 306Z','#6e90b4')}${line('M121 292V305','#557596',2.5)}${line('M92 276Q105 281 117 280','#8fb0cf',2.5,'opacity=".7"')}
+      ${path('M108 150H134V174H108Z',skinShade)}
+      ${joint('kid-arm left',88,165,path('M94 164Q72 162 64 184Q70 197 86 199Q98 187 101 172Z',red)+path('M70 190Q82 196 90 196L88 190Z',redShade,'opacity=".55"')+line('M77 192Q71 213 69 234',skin,18)+circle(68,242,10.5,skin))}
+      ${joint('kid-arm right',154,165,path('M146 164Q168 162 176 184Q170 197 154 199Q142 187 139 172Z',red)+path('M170 190Q158 196 150 196L152 190Z',redShade,'opacity=".55"')+line('M163 192Q169 213 171 234',skin,18)+circle(172,242,10.5,skin))}
+      ${path('M92 168Q121 158 150 168C156 198 160 236 160 266Q121 280 82 266C82 236 86 198 92 168Z',red)}${line('M83 262Q121 275 159 262',redShade,3.5)}${line('M104 190Q108 214 105 240',redShade,3,'opacity=".22"')}
+      ${path('M103 164Q121 188 139 164Q121 174 103 164Z',skinShade)}${line('M102 163Q121 190 140 163',redShade,5)}
+      <g class="kid-head">${pigtails}
+        ${path('M62 102C56 50 84 22 120 22C156 22 184 50 178 102C176 120 170 130 160 136L80 136C70 130 64 120 62 102Z',hair)}
+        ${ellipse(66,110,8,12,skin)}${ellipse(174,110,8,12,skin)}${ellipse(67,111,4,7,skinShade)}${ellipse(173,111,4,7,skinShade)}
+        ${path('M68 98C68 62 92 50 120 50C148 50 172 62 172 98C172 132 150 156 120 156C90 156 68 132 68 98Z',skin)}
+        ${ellipse(88,124,12,8,'#ef8f86','opacity=".5"')}${ellipse(152,124,12,8,'#ef8f86','opacity=".5"')}
+        <g class="kid-eyes">${ellipse(101,108,5.4,6.8,'#2b1e1c')+ellipse(139,108,5.4,6.8,'#2b1e1c')+circle(103,105.5,1.9,'#fff')+circle(141,105.5,1.9,'#fff')}</g>
+        ${line('M92 97q9-5 18 0M130 97q9-5 18 0',hair,2.4,'opacity=".8"')}${line('M117 121q3 4 7 0',skinShade,2.4)}
+        ${path('M102 131Q120 153 138 131Q120 139 102 131Z','#b4443f')}${path('M107 133.5Q120 142 133 133.5L131 138Q120 146 109 138Z','#fffaf0')}
+        ${path('M64 108C56 56 84 24 122 24C162 24 186 54 176 108C174 94 170 86 166 78C160 86 152 84 146 76C140 88 130 84 124 72C116 86 104 84 96 76C92 86 82 90 78 82C72 92 68 100 64 108Z',hair)}
+        ${line('M100 78q-3 12-7 20M141 80q5 9 3 21M121 74q-1 8-4 14',hair,2.4,'opacity=".9"')}${line('M80 52Q100 34 126 32',hairHi,3,'opacity=".5"')}
+        ${pigtailTies()}</g></g>`;
   }
+  const hairHi='#52474b',pigtailTies=()=>hairTie(52,72)+hairTie(188,72);
+  // The grown-up is a separate character: gentle bun, sage cardigan and long trousers.
+  function adult(){
+    const h='#7a5238',top='#9fba92',topShade='#7f9d76',pants='#5f7f78';
+    return `<g class="kid-body">${line('M104 270L100 346',pants,25)}${line('M138 270L142 346',pants,25)}
+      ${path('M78 350Q78 340 100 340L112 348Q118 364 108 370L82 370Q76 362 78 350Z','#a66f4c')}${path('M162 350Q162 340 140 340L128 348Q122 364 132 370L158 370Q164 362 162 350Z','#a66f4c')}
+      ${path('M108 150H134V174H108Z',skinShade)}
+      ${joint('kid-arm left',88,165,line('M88 170Q66 202 66 236',top,21)+line('M66 228L65 238',topShade,21)+circle(66,246,10,skin))}
+      ${joint('kid-arm right',154,165,line('M154 170Q176 202 176 236',top,21)+line('M176 228L177 238',topShade,21)+circle(176,246,10,skin))}
+      ${path('M90 166Q121 156 152 166C159 200 161 236 159 276Q121 288 83 276C81 236 83 200 90 166Z',top)}${path('M104 164Q121 186 138 164Q121 172 104 164Z',skinShade)}${line('M121 178V282',topShade,2.5,'opacity=".6"')}${path('M92 244h24v28q-12 5-24 0ZM126 244h24v28q-12 5-24 0Z',topShade,'opacity=".5"')}
+      <g class="kid-head"><g transform="translate(120 150) scale(.9) translate(-120 -150)">
+        ${circle(120,20,19,h)}${path('M64 104C56 50 84 24 120 24C156 24 184 50 176 104C177 118 174 130 166 138L74 138C66 130 63 118 64 104Z',h)}
+        ${ellipse(68,112,7,11,skin)}${ellipse(172,112,7,11,skin)}
+        ${path('M70 98C70 64 92 52 120 52C148 52 170 64 170 98C170 132 150 156 120 156C90 156 70 132 70 98Z',skin)}
+        ${path('M66 100C60 56 88 30 122 30C158 30 184 56 174 100C170 82 160 72 148 66C136 78 112 76 94 64C80 74 70 86 66 100Z',h)}
+        <g class="kid-eyes">${ellipse(101,108,4.6,6,'#2b1e1c')+ellipse(139,108,4.6,6,'#2b1e1c')+circle(102.5,106,1.6,'#fff')+circle(140.5,106,1.6,'#fff')}</g>
+        ${line('M92 97q9-5 18 0M130 97q9-5 18 0',h,2.2)}${line('M117 121q3 4 7 0',skinShade,2.4)}${ellipse(88,124,10,6.5,'#ef8f86','opacity=".4"')}${ellipse(152,124,10,6.5,'#ef8f86','opacity=".4"')}${line('M105 134Q121 148 137 134',redShade,3.2)}
+      </g></g></g>`;
+  }
+  function kid(grownup=false){return svg(grownup?adult():child(),'0 0 240 400');}
   window.AdventureArt={symbols,kid,grownup:()=>kid(true),animals:{}};
 })();
