@@ -1,0 +1,62 @@
+/* Friends to connect, and a board to clear. Big soft tiles, thick friendly lines, no reading required. */
+.pz-content{flex-direction:column;gap:8px;margin-top:2px}
+.new-game>.pz-levels{justify-content:center;margin:0 0 8px}
+.pz-bar{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-shrink:0;margin:0 0 8px}
+.pz-themes,.pz-levels{display:flex;gap:7px;flex-shrink:0}
+.pz-themes button{width:58px;height:58px;padding:6px;border-radius:20px;border:2px solid #cbd4b6;background:#fff9e8;box-shadow:0 4px 0 #d9d8b8;cursor:pointer;touch-action:manipulation;transition:transform .15s,box-shadow .15s}
+.pz-themes button svg{width:100%;height:100%;pointer-events:none}
+.pz-themes button[aria-pressed=true]{border-color:#8ca86d;background:#e6efd2;box-shadow:0 0 0 4px #d4e3b6;transform:translateY(-2px)}
+.pz-levels button{min-width:58px;height:48px;padding:0 14px;border-radius:24px;border:2px solid #cbd4b6;background:#fffdf4;color:#7a9460;font-size:15px;letter-spacing:3px;cursor:pointer;touch-action:manipulation}
+.pz-levels button[aria-pressed=true]{background:#8ca86d;border-color:#8ca86d;color:#fffdf4}
+.pz-board{position:relative;flex:1;min-height:0;padding:14px;border-radius:24px;background:linear-gradient(180deg,#eff4e0,#e5edd2);border:2px solid #d0dabb;overflow:hidden;touch-action:none;-webkit-user-select:none;user-select:none;-webkit-touch-callout:none}
+.pz-connect{display:grid;grid-template-columns:minmax(0,1fr) minmax(48px,.9fr) minmax(0,1fr)}
+.pz-col{display:grid;grid-template-rows:repeat(var(--n,3),minmax(0,1fr));gap:12px;min-height:0;min-width:0;position:relative;z-index:2}
+.pz-lines{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:1;overflow:visible}
+.pz-line{fill:none;stroke:var(--c,#e8b95e);stroke-width:10;stroke-linecap:round;stroke-linejoin:round;filter:drop-shadow(0 3px 0 #3a52391a)}
+.pz-line.live{opacity:.8;stroke-width:11}
+.pz-line.fresh{stroke-dasharray:1;stroke-dashoffset:0;animation:pz-draw .45s ease-out}
+.pz-tile{position:relative;display:flex;align-items:center;justify-content:center;padding:10px;border:3px solid #d4dcbf;background:#fff9e8;border-radius:26px;box-shadow:0 6px 0 #d4d3b1;cursor:pointer;touch-action:none;font:inherit;transition:transform .15s,border-color .15s,box-shadow .15s;-webkit-tap-highlight-color:transparent}
+.pz-tile *{pointer-events:none}
+.pz-tile .pz-art{display:block;width:100%;height:100%}
+.pz-tile .pz-art svg{width:100%;height:100%;display:block;overflow:visible}
+.pz-col .pz-tile{height:100%;min-width:0;min-height:0;max-width:100%;aspect-ratio:1.18/1;align-self:center}
+.pz-tile[data-side=a]{justify-self:start}
+.pz-tile[data-side=b]{justify-self:end}
+.pz-peg{position:absolute;top:50%;width:22px;height:22px;margin-top:-11px;border-radius:50%;background:#fffdf4;border:5px solid #b9c79b;z-index:3;transition:background .2s,border-color .2s}
+.pz-tile[data-side=a] .pz-peg{right:-13px}.pz-tile[data-side=b] .pz-peg{left:-13px}
+.pz-badge{position:absolute;top:-9px;left:-9px;width:30px;height:30px;padding:5px;border-radius:50%;background:var(--c,#a3bb81);border:3px solid #fffdf4;display:none}
+.pz-tile[data-side=b] .pz-badge{left:auto;right:-9px}
+.pz-badge svg{width:100%;height:100%;display:block}
+.pz-tile[data-done]{border-color:var(--c);box-shadow:0 0 0 4px #fffdf4,0 0 0 8px color-mix(in srgb,var(--c) 45%,transparent);cursor:default;animation:pz-happy .6s ease-out}
+.pz-tile[data-done] .pz-peg{background:var(--c);border-color:#fffdf4}
+.pz-tile[data-done] .pz-badge{display:block}
+.pz-tile.is-selected{border-color:#e0a63f;transform:translateY(-3px) scale(1.04);box-shadow:0 0 0 5px #f6e2a0,0 8px 0 #d8b865}
+.pz-tile.is-selected .pz-peg,.pz-tile.is-dragging .pz-peg{background:#e0a63f;border-color:#fffdf4}
+.pz-tile.is-dragging{transform:scale(1.03);border-color:#e0a63f}
+.pz-tile.target{border-color:#8ca86d;transform:scale(1.07);box-shadow:0 0 0 5px #d4e3b6,0 8px 0 #bfc99e}
+.pz-tile.wrong{animation:pz-shake .5s ease-in-out;border-color:#d78e85}
+.pz-tile.hint{animation:pz-hint 1.1s ease-in-out infinite}
+.pz-grid{display:grid;justify-content:center;align-content:center;gap:var(--gap,10px)}
+.pz-grid .pz-tile{width:var(--tile,120px);height:var(--tile,120px);aspect-ratio:auto;padding:max(6px,calc(var(--tile,120px)*.07));border-radius:calc(var(--tile,120px)*.18)}
+.pz-tile.match[data-gone]{visibility:hidden;pointer-events:none}
+.pz-tile.matched{animation:pz-pop .48s ease-in forwards;border-color:#a3bb81;z-index:5}
+.pz-spark{position:absolute;z-index:6;font-size:22px;line-height:1;pointer-events:none;animation:pz-spark .75s ease-out forwards}
+.pz-footer{justify-content:center}
+@keyframes pz-draw{from{stroke-dashoffset:1}to{stroke-dashoffset:0}}
+@keyframes pz-shake{0%,100%{transform:translateX(0)}20%{transform:translateX(-9px) rotate(-2deg)}40%{transform:translateX(8px) rotate(2deg)}60%{transform:translateX(-6px)}80%{transform:translateX(4px)}}
+@keyframes pz-pop{0%{transform:scale(1);opacity:1}35%{transform:scale(1.2) rotate(-4deg);opacity:1}100%{transform:scale(.1) rotate(8deg);opacity:0}}
+@keyframes pz-hint{0%,100%{transform:scale(1)}50%{transform:scale(1.07);box-shadow:0 0 0 6px #f6e2a0,0 6px 0 #d4d3b1}}
+@keyframes pz-happy{0%{transform:scale(1)}40%{transform:scale(1.1) rotate(-3deg)}70%{transform:scale(.98) rotate(2deg)}100%{transform:scale(1)}}
+@keyframes pz-spark{from{transform:translate(-50%,-50%) scale(.2);opacity:1}to{transform:translate(calc(-50% + var(--dx)),calc(-50% + var(--dy))) scale(1.3);opacity:0}}
+@media(max-width:650px){
+ .pz-bar{gap:6px;margin-bottom:5px}.pz-themes,.pz-levels{gap:4px}
+ .pz-themes button{width:41px;height:41px;padding:4px;border-radius:14px;border-width:2px}
+ .pz-levels button{min-width:38px;height:36px;padding:0 6px;font-size:11px;letter-spacing:1px}
+ .new-game>.pz-levels{margin-bottom:5px}
+ .pz-board{padding:9px;border-radius:19px}.pz-col{gap:8px}
+ .pz-tile{padding:6px;border-radius:19px;border-width:2px}
+ .pz-peg{width:18px;height:18px;margin-top:-9px;border-width:4px}.pz-tile[data-side=a] .pz-peg{right:-10px}.pz-tile[data-side=b] .pz-peg{left:-10px}
+ .pz-connect{grid-template-columns:minmax(0,1fr) minmax(34px,.5fr) minmax(0,1fr)}
+ .pz-line{stroke-width:7}.pz-badge{width:24px;height:24px;padding:4px;top:-8px;left:-8px}.pz-tile[data-side=b] .pz-badge{right:-8px}
+}
+@media(prefers-reduced-motion:reduce){.pz-tile,.pz-tile.matched,.pz-tile.hint,.pz-tile[data-done],.pz-tile.wrong,.pz-line.fresh,.pz-spark{animation:none!important;transition:none!important}.pz-tile.matched{opacity:.2}}

@@ -27,7 +27,7 @@
       ['Up, up, and away! Zoey waves as the butterfly takes flight.', 'Tap a flower to invite it for nectar. A butterfly can lay eggs, and the story begins again.']]}
   ];
   const worldSize = kind => CreatureCatalog.worlds[kind];
-  const AUDIO_VERSION = 'zoo-tulip-20261005';
+  const AUDIO_VERSION = 'puzzle-party-20261006';
   const zoo = CreatureCatalog.zoo, sea = CreatureCatalog.sea;
   let customNarration = null;
   let world = 'garden', stage = 0, counts = [0,0,0,0], busy = false, epoch = 0;
@@ -304,6 +304,6 @@
   document.querySelector('.life-stops').innerHTML=stages.map((d,i)=>`<button class="life-stop" data-stage="${i}" aria-pressed="${i===0}">${use(d.symbol,d.view)}<span>${d.name}</span><span class="stop-check" aria-hidden="true"></span></button>`).join('');
   document.querySelector('.life-stops').addEventListener('click',e=>{const b=e.target.closest('[data-stage]');if(b&&!busy)changeStage(Number(b.dataset.stage));});
   document.addEventListener('visibilitychange',()=>{if(document.hidden)stopAudio();});window.addEventListener('pagehide',()=>{stopAudio();cancelAnimations();});window.addEventListener('pageshow',e=>{if(e.persisted){if(world==='garden')renderGarden();else renderExplore();}});
-  window.AdventureBook={changeWorld,playAudio,stopAudio,startAudio,audioRemaining,queueAudio,gestureGuide,cancelAnimations,get audioPlaying(){return !audio.paused;},setNarrator(fn){customNarration=fn;},restart(){ $('restart').click(); }};
+  window.AdventureBook={changeWorld,playAudio,stopAudio,startAudio,audioRemaining,queueAudio,gestureGuide,cancelAnimations,get audioPlaying(){return !audio.paused;},get muted(){return muted;},setNarrator(fn){customNarration=fn;},restart(){ $('restart').click(); }};
   renderGarden();
 })();

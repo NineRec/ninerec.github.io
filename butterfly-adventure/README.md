@@ -1,6 +1,6 @@
 # Zoey's Little Wonders
 
-Ten English/Chinese games built as dependency-free static pages inside this Hugo blog. The butterfly lifecycle is adapted from the supplied reference; the other worlds, learning games, characters, and ingredients use original vector artwork.
+Twelve English/Chinese games built as dependency-free static pages inside this Hugo blog. The butterfly lifecycle is adapted from the supplied reference; the other worlds, learning games, characters, and ingredients use original vector artwork.
 
 ## Open
 
@@ -8,7 +8,7 @@ Ten English/Chinese games built as dependency-free static pages inside this Hugo
 python3 -m http.server 8080 --directory static
 ```
 
-Open `/butterfly-adventure/` for the separate game selection page. Each door opens `play.html?game=garden|zoo|sea|clock|market|kitchen|traffic|counting|letters|seedling`. The old `/butterfly-adventure.html` alias still points to the club. Each game fills the available viewport with a fixed body, safe-area padding, and responsive controls. Browser Fullscreen API is an optional explicit button on supported devices; CSS full-viewport layout is always the default. Only Zoo/Sea worlds and their friend index pan. There is no scrollable page behind the game.
+Open `/butterfly-adventure/` for the separate game selection page. Each door opens `play.html?game=garden|zoo|sea|clock|market|kitchen|traffic|counting|letters|seedling|connect|match`. The old `/butterfly-adventure.html` alias still points to the club. Each game fills the available viewport with a fixed body, safe-area padding, and responsive controls. Browser Fullscreen API is an optional explicit button on supported devices; CSS full-viewport layout is always the default. Only Zoo/Sea worlds and their friend index pan. There is no scrollable page behind the game.
 
 The whole folder can be downloaded and served without internet. A hosted copy needs a connection to load its assets; it is not a service-worker offline cache.
 
@@ -26,13 +26,20 @@ The whole folder can be downloaded and served without internet. A hosted copy ne
 - **Letter Post:** all 26 letters have picture cards and recorded letter names. Match capitals, or pair capitals and lowercase. Tap a postbox or drag the envelope. The deck visits all 26 before shuffling again; each delivery is a small success.
 - **挖呀种花园 (fourth door):** an original Mandarin planting story for one 🌷 tulip. The small spade hangs high above the garden and can be tapped directly (or picked from the tray) to dig three times; then place the seed, cover it with soil and follow the four-line rhyme the child hears: the big sun brings one leaf, the little worm turns the soil for two, the soft rain makes three, and grandpa with his hoe brings all the leaves. Finally the tulip blooms. No song recording or melody is reproduced. Tool taps, drags and tapping the garden all work. Real plants are described as needing days and different growth times.
 
+- **好朋友连连线 (fifth door):** random sets of 3, 4 or 5 friendships appear on two sides (monkey–banana, firetruck–flame, police–policecar, owl–moon, seal–ball and 11 more from a pool of 16, never repeating the previous set). Drag a line from one picture to its friend, drag backwards from the other side, or tap one and then the other; keyboard Enter works too. A rubber line follows the finger, a right match ties a coloured line with a check badge, a wrong one shakes with a soft *boing*. Each friendship has its own Mandarin sentence and its own synthesized sound (chomp, siren, splash, flutter, bounce, moo…). After a quiet moment the two halves of one friendship wiggle as a hint.
+- **找朋友消消乐 (sixth door):** a board of pictures from five themes — animals, fruit, vegetables, vehicles and sea friends (56 different pictures, including 10 newly drawn fruit and vegetables and 7 new vehicles). Tap two of a kind and they sparkle, pop and disappear, with the pop rising in pitch for combos. Levels have 8, 12 or 16 tiles; clearing a board celebrates and the next board switches to another random theme. The theme chips and level dots can be changed at any time.
+
 Every game starts with its pictures ready for interaction. The browser tries to play bundled narration immediately; if autoplay requires a gesture, one large ▶ unlocks sound. Words remain available to screen readers but children follow pictures, numerals, highlighted objects and voices. Success gives a short confetti pause followed by the next round automatically. A small star ring shows the pause; its timer stops while the tab is hidden, and changing a recipe or mode cancels it.
 
-Completed learning-game rounds, finding every friend in Zoo/Sea, and the butterfly ordering game get quiet paper confetti. It never blocks touches, cleans itself up, and becomes one static star when reduced motion is requested.
+Completed rounds in every learning game, finding every friend in Zoo/Sea, and the butterfly ordering game get a full-screen party: five waves over about seven seconds (two corner cannons, a shower from the top, a big burst from the middle with a golden star, cannons from both sides, and a last streamer shower with twinkles). It is one canvas (`celebration.js`), never blocks touches, cleans itself up, and becomes one still scatter with a star when reduced motion is requested.
+
+## Sound effects
+
+`sfx.js` synthesizes every effect with Web Audio, so nothing extra is downloaded: tap/pick/drop/deal, a three-note chime for a link, a bubble pop plus sparkle for a match, a soft boing for a mistake, themed link sounds (chomp, siren, sizzle, splash, twinkle, flutter, bounce, moo), confetti cannon pops and a fanfare. A compressor keeps overlaps from clipping, effects obey the same mute button as Zoey's voice, they use the iOS "playback" audio session so the silent switch does not hide them, and the first touch wakes the audio. `SoundFX.render(name)` renders any effect offline, which `tools/test-puzzle-games.cjs` uses to prove each one is audible, unclipped and short.
 
 ## Materials first
 
-`materials.html` is an independent gallery of the exact assets used in games. It lets each animal's three motions run without scenery, then return to its neutral state. All 126 materials are redrawn in the same soft palette. Food, coins, containers, dishes, 19 playthings (including the worm, rain cloud, grandpa and tulip growth stages), lifecycle stages, Zoey, the grown-up, cashier/register, buildings, vehicles and icon controls also have independent movement previews. `mini-art.js` shares their SVGs and baseline motions. `art.js` provides the lifecycle and character SVGs; `materials.js` adds articulated animals and ingredients; `creatures.js` shares catalogs and movement profiles between the gallery and games.
+`materials.html` is an independent gallery of the exact assets used in games. It lets each animal's three motions run without scenery, then return to its neutral state. All 152 materials are redrawn in the same soft palette. Food, coins, containers, dishes, 45 playthings (including the worm, rain cloud, grandpa and tulip growth stages, plus the new fruit, vegetables, vehicles and friends from `puzzle-art.js`), lifecycle stages, Zoey, the grown-up, cashier/register, buildings, vehicles and icon controls also have independent movement previews. `mini-art.js` shares their SVGs and baseline motions. `art.js` provides the lifecycle and character SVGs; `materials.js` adds articulated animals and ingredients; `creatures.js` shares catalogs and movement profiles between the gallery and games.
 
 The browser checks first exercise all 180 animal action variants in the gallery, then assemble and test the actual game interactions. Motion cancellation, replay, reduced motion, and interrupted recipes are covered.
 
@@ -48,7 +55,7 @@ These remain original SVG drawings in the club's palette. The [FreeSVG giraffe s
 
 ## One production voice
 
-All 197 English and Mandarin recordings use the selected `.voice-lab` **Zoey / 03-curious** fictional reference. The exact reference, prompt, transcript, checksum and pinned model revisions are versioned in `tools/voice/`. Existing and future lines use that same reference through the Base model. The build process runs locally; deployed games only load bundled AAC. There is no device TTS, runtime model, CDN, remote font, or audio service.
+All 227 English and Mandarin recordings use the selected `.voice-lab` **Zoey / 03-curious** fictional reference. The exact reference, prompt, transcript, checksum and pinned model revisions are versioned in `tools/voice/`. Existing and future lines use that same reference through the Base model. The build process runs locally; deployed games only load bundled AAC. There is no device TTS, runtime model, CDN, remote font, or audio service.
 
 ```sh
 .voice-lab/.venv/bin/python tools/build-adventure-audio.py
@@ -71,9 +78,11 @@ NODE_PATH=/tmp/zoey-check/node_modules BROWSER=webkit node tools/test-picture-pl
 NODE_PATH=/tmp/zoey-check/node_modules node tools/test-creature-joints.cjs
 NODE_PATH=/tmp/zoey-check/node_modules BROWSER=webkit node tools/test-creature-joints.cjs
 NODE_PATH=/tmp/zoey-check/node_modules node tools/test-picture-audio.cjs
+NODE_PATH=/tmp/zoey-check/node_modules node tools/test-puzzle-games.cjs
+NODE_PATH=/tmp/zoey-check/node_modules BROWSER=webkit node tools/test-puzzle-games.cjs
 ```
 
-Chromium exercises real dispatched touch gestures, including diagonal two-axis pan, food/coin dragging, circular stirring and envelope delivery. WebKit exercises native taps and pointer drags. Both cover 126 material previews, the continuous lifecycle, all 60 animal interactions, eight hours, three cashier lists, all recipes, left/right routes to three destinations, the full 1–10 number deck, all 26 letters, the one-tulip rhyme garden, automatic progression, interrupted actions, visibility pause/resume, five viewport sizes, reduced motion and decoding all 197 recordings. `test-creature-joints.cjs` additionally validates 900 rasterized animal poses; `test-picture-audio.cjs` checks actual AAC playback, queued encouragement and the next recipe after narration. The previous two browser-test entry points forward to the new picture-interaction suite. Set `BASE_URL` to test a deployed club. Screenshots and reports are written to a printed temporary directory.
+Chromium exercises real dispatched touch gestures, including diagonal two-axis pan, food/coin dragging, circular stirring and envelope delivery. WebKit exercises native taps and pointer drags. Both cover 152 material previews, the continuous lifecycle, all 60 animal interactions, eight hours, three cashier lists, all recipes, left/right routes to three destinations, the full 1–10 number deck, all 26 letters, the one-tulip rhyme garden, automatic progression (`test-puzzle-games.cjs` covers the two puzzles: random friend sets, drag/tap/reverse-drag/keyboard linking, refusals, all five matching themes and three levels, clearing boards, all 19 sound effects rendered offline, mute, and the five-wave full-screen confetti with its reduced-motion version), interrupted actions, visibility pause/resume, five viewport sizes, reduced motion and decoding all 227 recordings. `test-creature-joints.cjs` additionally validates 900 rasterized animal poses; `test-picture-audio.cjs` checks actual AAC playback, queued encouragement and the next recipe after narration. The previous two browser-test entry points forward to the new picture-interaction suite. Set `BASE_URL` to test a deployed club. Screenshots and reports are written to a printed temporary directory.
 
 `tools/check-picture-deployment.py` compares live versioned assets and new voice recordings against the checkout, so a cached page cannot masquerade as a verified deployment.
 

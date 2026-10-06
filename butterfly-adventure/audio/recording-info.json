@@ -11,7 +11,7 @@
   "model": "mlx-community/Qwen3-TTS-12Hz-1.7B-Base-8bit",
   "model_revision": "e7dd0585652209fa0d7783659aad4e8a324de11c",
   "reference_sha256": "4408318aac13b69082a9e2724955ec9304e1ad5f5b05f44fa7f3b3d7ca9364bd",
-  "clips": 197,
+  "clips": 227,
   "recordings": {
     "garden-0-0": {
       "fingerprint": "9d456d0d82b51ab51131edb38f3459e1c997a9d9fe25c69821867b54af01e2e3",
@@ -1526,6 +1526,246 @@
       "speech_seconds": 2.48,
       "duration_seconds": 2.48,
       "sha256": "0c0837f211dbe90f6f69c96fdbd0cfe5db362c6894308de21f271916b3d07375"
+    },
+    "connect-intro": {
+      "fingerprint": "93d2f8fdc1cb33ebe7286f4204e384a3073a687cb6c62ff539eab909f77604ea",
+      "seed": 16122819,
+      "language": "Chinese",
+      "speech_seconds": 5.76,
+      "duration_seconds": 5.76,
+      "sha256": "1f8a0100e86be8935cd953bb7c6b69ca1216a6dad855f7e15a328864ffd4daf5"
+    },
+    "connect-wrong": {
+      "fingerprint": "bac5349544581b5e45a469ffc77a95d657d3b6d09d09ec1e64417a8566e17003",
+      "seed": 16223922,
+      "language": "Chinese",
+      "speech_seconds": 2.32,
+      "duration_seconds": 2.32,
+      "sha256": "76d98be610c5152226da24e58629cfdcff6114681e86b5ce6756fc62abe25adb"
+    },
+    "connect-done": {
+      "fingerprint": "936e49ae58b3612b9bc89534270aface2d05220ce6c3b6fe6128c49acce32429",
+      "seed": 4921944,
+      "language": "Chinese",
+      "speech_seconds": 2.24,
+      "duration_seconds": 2.24,
+      "sha256": "86d67209999fe699c59f6b7c424326a2e2a24546dda084100181d5fcf277fb80"
+    },
+    "connect-monkey-banana": {
+      "fingerprint": "398f1d5c02d6feb1bfcf7c3a32a3f06bb29f681695f5b33ba83c31dc0585c45e",
+      "seed": 15944634,
+      "language": "Chinese",
+      "speech_seconds": 1.6,
+      "duration_seconds": 1.6,
+      "sha256": "9983ceeb71fde5c93af4cc505943344c48c5af23f8a96446024c95e310f715b7"
+    },
+    "connect-rabbit-carrot": {
+      "fingerprint": "22a333dec6a9f14a54adbed1310eb1aa15f9406815df95ffa910cd29137d5b59",
+      "seed": 8959113,
+      "language": "Chinese",
+      "speech_seconds": 1.6,
+      "duration_seconds": 1.6,
+      "sha256": "c5b3651317ed327374d478ff0d8c338ffb740c19eec4242f61c6459d8e17c01a"
+    },
+    "connect-cow-milk": {
+      "fingerprint": "bbf54d21d9d3d61bece049738d7af5af9afc8342e432467a2138072ef489859e",
+      "seed": 4652571,
+      "language": "Chinese",
+      "speech_seconds": 1.68,
+      "duration_seconds": 1.68,
+      "sha256": "892ab3a339e26b5be7adf5fab8db2df62a5177ea3de35131ab656d0044cd6225"
+    },
+    "connect-panda-bamboo": {
+      "fingerprint": "b88069b16ecef8d73d3ba98a66182767458ce6b11ee48973a11b2015ba4a4307",
+      "seed": 8873251,
+      "language": "Chinese",
+      "speech_seconds": 1.68,
+      "duration_seconds": 1.68,
+      "sha256": "27c490f3316fd395f2d613be26a04886faf1b0d4c041f89da32c31f1bbe9afe5"
+    },
+    "connect-bear-honey": {
+      "fingerprint": "6771ecca04eef4214ac86613133559f3b7b9f62f738037e95b6df7bd9b880787",
+      "seed": 7304341,
+      "language": "Chinese",
+      "speech_seconds": 2.0,
+      "duration_seconds": 2.0,
+      "sha256": "cef3f9fd11691bf94fdb39e92400a76dd6c50d1a7f163985859c4473bd82a4e2"
+    },
+    "connect-giraffe-leaf": {
+      "fingerprint": "eb45d5fc56f927b8719b59fdde49736199114912f050fb251d26115b0b7591a8",
+      "seed": 16616409,
+      "language": "Chinese",
+      "speech_seconds": 2.56,
+      "duration_seconds": 2.56,
+      "sha256": "4e8b29f0a60139247cce5fbc594bd8662c1273a7c712e2e457af51c6504fb0e3"
+    },
+    "connect-elephant-peanut": {
+      "fingerprint": "c31aa18194bd2af93cc1d3d9f7fff322584a494319546b044f27af3e6eb6ab8e",
+      "seed": 5404551,
+      "language": "Chinese",
+      "speech_seconds": 1.36,
+      "duration_seconds": 1.36,
+      "sha256": "19887f5892daa3f4f758efd552265231767ca08667773538e536a24dd5e65ea8"
+    },
+    "connect-firetruck-flame": {
+      "fingerprint": "0bcae88198c10237010aa19c225336b9aaa95f623950cc6eec172a7b50a8abc9",
+      "seed": 13046825,
+      "language": "Chinese",
+      "speech_seconds": 2.32,
+      "duration_seconds": 2.32,
+      "sha256": "4113b4199fce766521b0346aa99c7cbca7155565271aea45ca702cd14e475166"
+    },
+    "connect-police-policecar": {
+      "fingerprint": "908bdbd13b69d4a08f334cb54a78e33617f56bc3aca0d5c3f5538982f8d12d0c",
+      "seed": 7633130,
+      "language": "Chinese",
+      "speech_seconds": 1.92,
+      "duration_seconds": 1.92,
+      "sha256": "da0a72253ba155697e375eb1fa211ef1e9b01e9a0296d02832632cd2b58ec105"
+    },
+    "connect-butterfly-flower": {
+      "fingerprint": "d24fa9b771b34b392fbfd41b80f1b92637f9decdd72c9ea6a4349ad9508b6799",
+      "seed": 16086323,
+      "language": "Chinese",
+      "speech_seconds": 1.6,
+      "duration_seconds": 1.6,
+      "sha256": "36d7777671874adb9d2788e8d8db6edeac0000fc632affeda5a1ac2ccd7bf1f6"
+    },
+    "connect-rain-umbrella": {
+      "fingerprint": "580a27fde69e92277f103f2176f6b24f35d95a27017c10fa5128f5423c3e6788",
+      "seed": 12247690,
+      "language": "Chinese",
+      "speech_seconds": 2.16,
+      "duration_seconds": 2.16,
+      "sha256": "a5d7671ac8e502fa6f088574a7bcc798d785f90b08142e595c18927fd9f40274"
+    },
+    "connect-spade-soil": {
+      "fingerprint": "e7d4b94a9b387cd1b0d12ad0289da469962d5f626febfd8e6ce14ecca606ea89",
+      "seed": 8488598,
+      "language": "Chinese",
+      "speech_seconds": 1.52,
+      "duration_seconds": 1.52,
+      "sha256": "2e6f925913c06caf61c0223ed9c02da2192ad387180bfd9f3bf372d3ac3fdeca"
+    },
+    "connect-owl-moon": {
+      "fingerprint": "a0f426319dedd3af6162041cb43c07190181c72194dc87a8101697d16d10051d",
+      "seed": 4692564,
+      "language": "Chinese",
+      "speech_seconds": 2.16,
+      "duration_seconds": 2.16,
+      "sha256": "e0b840fd7501a0c48be6657cbf87a803cef74d55bd1b746a6173e7b47b45cfcd"
+    },
+    "connect-seal-ball": {
+      "fingerprint": "cf08a6b31e215ae1ffe34b9969854d5d0c32047b0b523794270c0c7bd92cf589",
+      "seed": 12268063,
+      "language": "Chinese",
+      "speech_seconds": 2.0,
+      "duration_seconds": 2.0,
+      "sha256": "7c26cb48c80fcfee6fbb6fc4c10b717957fc61a1c390645273b13532b8a20ab6"
+    },
+    "connect-penguin-clownfish": {
+      "fingerprint": "0c62b659960ddce552ab24dd7f944e69b1f2c848cf2c8442481dabd7fcfab900",
+      "seed": 5452902,
+      "language": "Chinese",
+      "speech_seconds": 1.6,
+      "duration_seconds": 1.6,
+      "sha256": "ad983b4679d3299db7c8535979c42f4e2cee8174bb53145795251dc8c438bc0b"
+    },
+    "connect-sun-tulip": {
+      "fingerprint": "4ac155d036ff4a33ea20dbaec1fba0ad2cf6460d53b46bc0fb61ff5c3c819508",
+      "seed": 10998757,
+      "language": "Chinese",
+      "speech_seconds": 1.84,
+      "duration_seconds": 1.84,
+      "sha256": "d0594995512a3ab7f7cc10886a4ae177a102ec95a71b5fc0888b48aabc3b1c3d"
+    },
+    "match-intro": {
+      "fingerprint": "c9abc6cf8c2d13dc0007b79294b3b6f6b1197a0ae9bbc9e0a3b5a5b4c2d415e5",
+      "seed": 4132521,
+      "language": "Chinese",
+      "speech_seconds": 3.84,
+      "duration_seconds": 3.84,
+      "sha256": "f3279b9f8e69697a692854ee79c690d4a5fd1a231fe2c9f55dfbba1a7a7bca2c"
+    },
+    "match-theme-animals": {
+      "fingerprint": "5189700237376af7daaa04d2867fe233663dba0aa0065439e0c6145acc950fee",
+      "seed": 13811766,
+      "language": "Chinese",
+      "speech_seconds": 2.0,
+      "duration_seconds": 2.0,
+      "sha256": "984a5348d44ede26753f6867d6254cc881a14e0cda2e97008bc99523778a7b40"
+    },
+    "match-theme-fruit": {
+      "fingerprint": "f888089e53b7625e67555fc3f5613302b17f41c4b53c984c38ec10bf1e0689ea",
+      "seed": 11119141,
+      "language": "Chinese",
+      "speech_seconds": 1.84,
+      "duration_seconds": 1.84,
+      "sha256": "e173beb014558fedd4ecd6df158e1d95cb6be42b13ea09457af4c7d659c298d5"
+    },
+    "match-theme-veg": {
+      "fingerprint": "35ab47cb772ca1c694a899fdc5565b2eb9b8b0eb77a5e4c7a260290217f634fe",
+      "seed": 7005987,
+      "language": "Chinese",
+      "speech_seconds": 1.92,
+      "duration_seconds": 1.92,
+      "sha256": "c385820c46276c4fc67633d7225cbdef611f7c4045e3f7c9a0aada281622924d"
+    },
+    "match-theme-vehicle": {
+      "fingerprint": "d088fd1b8f0600022447d458cc474b8a752e913d5fffd9a73b56e577d539a8a6",
+      "seed": 13839760,
+      "language": "Chinese",
+      "speech_seconds": 2.24,
+      "duration_seconds": 2.24,
+      "sha256": "064d497a83eba51b3fd0453d5e613a6e3145bb203b97477f1119f6d749355d2a"
+    },
+    "match-theme-sea": {
+      "fingerprint": "54598bb4edbc025452bad70acc2df76e9a660756620c299e1e6741b5863b2025",
+      "seed": 1446083,
+      "language": "Chinese",
+      "speech_seconds": 2.24,
+      "duration_seconds": 2.24,
+      "sha256": "36d60bf93f15bf5ce9a47009344646641d79a5b9487ee40dabe5a28331a813d9"
+    },
+    "match-praise-1": {
+      "fingerprint": "abd0d8a777faedc1b49b731033d3a9c452efde703f23f0b3ab5b922b8493f238",
+      "seed": 9046450,
+      "language": "Chinese",
+      "speech_seconds": 0.96,
+      "duration_seconds": 0.96,
+      "sha256": "b2eb32897b9b3c4176d8402fd2dfa44c60003cad1a9cd1a3ef1b4efa96227444"
+    },
+    "match-praise-2": {
+      "fingerprint": "9f2ca961d0cce9f0302d1fc570a02ee6c489d81b77b3ee85c4c1d2cbbdcaa100",
+      "seed": 13582203,
+      "language": "Chinese",
+      "speech_seconds": 1.04,
+      "duration_seconds": 1.04,
+      "sha256": "1eeb6b0f57d291f31035c24212bfa30c6e2fd903ee809314cab5fa6bc409efd2"
+    },
+    "match-praise-3": {
+      "fingerprint": "3e29af206dbb38d763db7b06ae968087b5d17da25d801079eafaffc4f0db4ba2",
+      "seed": 5896596,
+      "language": "Chinese",
+      "speech_seconds": 1.12,
+      "duration_seconds": 1.12,
+      "sha256": "6a7624d1b3cfa4d91cc7a15c6c7c02b0bf9386ef6ce9972609f8262c8eb0fb1d"
+    },
+    "match-wrong": {
+      "fingerprint": "f5d90576f852851eeffc6ce5a9aa0684cca1c11dd2aa6e199e83e5ce02fb48e9",
+      "seed": 12539067,
+      "language": "Chinese",
+      "speech_seconds": 2.0,
+      "duration_seconds": 2.0,
+      "sha256": "a9f22ea6fba4d76c6196cbb8e1ab2cf11efde6c7da19a47751f27cf85d6eead5"
+    },
+    "match-done": {
+      "fingerprint": "7a82899ea35cf793fa89340a0182903427ef045ab83352a251b8ca7b12a96bd1",
+      "seed": 8182018,
+      "language": "Chinese",
+      "speech_seconds": 1.84,
+      "duration_seconds": 1.84,
+      "sha256": "48937949d283803f8ef00566d30bba11bbfe73f9d378ca245fff9b7368bc7fcd"
     }
   }
 }

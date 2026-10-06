@@ -3,9 +3,9 @@
   'use strict';
   const $=id=>document.getElementById(id),art=AdventureArt,book=AdventureBook;
   const requested=new URLSearchParams(location.search).get('game');
-  const game=['garden','zoo','sea','clock','market','kitchen','traffic','counting','letters','seedling'].includes(requested)?requested:'garden';
+  const game=['garden','zoo','sea','clock','market','kitchen','traffic','counting','letters','seedling','connect','match'].includes(requested)?requested:'garden';
   document.body.dataset.game=game;document.querySelector('.brand').innerHTML=art.icons.home;$('fullscreen').textContent='⛶';
-  document.title=({garden:'Butterfly Garden',zoo:'A Day at the Zoo',sea:'Under the Sea',clock:'Clock Cottage',market:'The Little Market',kitchen:"Zoey's Kitchen",traffic:'A Little Walk',counting:'A Counting Picnic',letters:'The Letter Post',seedling:'挖呀种花园'})[game]+" · Zoey's Little Wonders";
+  document.title=({garden:'Butterfly Garden',zoo:'A Day at the Zoo',sea:'Under the Sea',clock:'Clock Cottage',market:'The Little Market',kitchen:"Zoey's Kitchen",traffic:'A Little Walk',counting:'A Counting Picnic',letters:'The Letter Post',seedling:'挖呀种花园',connect:'好朋友连连线',match:'找朋友消消乐'})[game]+" · Zoey's Little Wonders";
   const flow=window.PlayFlow;
   const reduce=()=>matchMedia('(prefers-reduced-motion: reduce)').matches;
   let currentVoice=`${game}-intro`;
@@ -169,7 +169,8 @@
     window.addEventListener('pagehide',()=>{clearInterval(state.timer);state.token++;});
     reset(0);
   }
-  if(['traffic','counting','letters','seedling'].includes(game))MiniGames.start(game,{$,art,shell,speak,setVoice:id=>currentVoice=id,message,guide,bindPick,returnTile,fly,celebrate,foodNames,flow});
+  if(['connect','match'].includes(game))PuzzleGames.start(game,{$,art,shell,speak,setVoice:id=>currentVoice=id,message,celebrate,flow});
+  else if(['traffic','counting','letters','seedling'].includes(game))MiniGames.start(game,{$,art,shell,speak,setVoice:id=>currentVoice=id,message,guide,bindPick,returnTile,fly,celebrate,foodNames,flow});
   else if(game==='clock')clockGame();else if(game==='market')marketGame();else kitchenGame();
   book.startAudio(()=>currentVoice);
 })();

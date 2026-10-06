@@ -1,5 +1,9 @@
 (() => {
  document.getElementById('hub-guide').innerHTML=AdventureArt.kid();
  const artworks={garden:'<svg viewBox="0 0 240 180">'+AdventureArt.symbols.match(/<symbol id="butterfly"[^>]*>([\s\S]*?)<\/symbol>/)[1]+'</svg>',zoo:AdventureArt.animals.hippo,sea:AdventureArt.animals.mermaid,clock:AdventureArt.clock,market:AdventureArt.basket,kitchen:AdventureArt.dishes.boat,traffic:AdventureArt.playthings.signal,counting:AdventureArt.playthings.numbers,letters:AdventureArt.playthings.envelope,seedling:AdventureArt.playthings.tulip};
+ const nest=(svg,x,y,w,h)=>svg.replace('<svg ',`<svg x="${x}" y="${y}" width="${w}" height="${h}" `);
+ const A=AdventureArt,tile=(x,y,body,gold)=>`<rect x="${x}" y="${y}" width="102" height="86" rx="20" fill="#fff9e8" stroke="${gold?'#e0a63f':'#d4dcbf'}" stroke-width="${gold?5:3}"/>${body}`;
+ artworks.connect=`<svg viewBox="0 0 260 220"><path d="M104 96C140 96 120 132 156 132" fill="none" stroke="#e8b95e" stroke-width="9" stroke-linecap="round"/><path d="M104 150C140 150 120 70 156 70" fill="none" stroke="#79a7b4" stroke-width="9" stroke-linecap="round" opacity=".85"/>${tile(8,52,nest(A.animals.monkey,18,56,80,78))}${tile(150,92,nest(A.food.banana,162,98,78,74))}<circle cx="110" cy="96" r="9" fill="#e8b95e" stroke="#fffdf4" stroke-width="4"/><circle cx="150" cy="132" r="9" fill="#e8b95e" stroke="#fffdf4" stroke-width="4"/></svg>`;
+ artworks.match=`<svg viewBox="0 0 260 220">${tile(14,10,nest(A.food.apple,26,14,78,78),true)}${tile(144,10,nest(A.food.banana,156,14,78,78))}${tile(14,112,nest(A.food.banana,26,116,78,78))}${tile(144,112,nest(A.food.apple,156,116,78,78),true)}<path d="M130 16l5 11 11 5-11 5-5 11-5-11-11-5 11-5Z" fill="#f5d36e"/><path d="M130 160l4 9 9 4-9 4-4 9-4-9-9-4 9-4Z" fill="#f5d36e"/></svg>`;
  document.querySelectorAll('[data-art]').forEach(node=>node.innerHTML=artworks[node.dataset.art]);
 })();
