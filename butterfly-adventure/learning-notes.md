@@ -6,14 +6,14 @@ The designs take inspiration from Singapore's [ECDA Early Years Development Fram
 | --- | --- | --- |
 | A Little Walk | Waiting, observing and walking with a grown-up | Implemented |
 | Counting Picnic | One-to-one counting and quantities 1–5 / 1–10 | Implemented |
-| Letter Post | Capitals and lowercase paired with familiar pictures | Implemented |
+| Letter Balloons | Hearing the first sound of a familiar picture and choosing the letter (capitals, lowercase, mixed) | Implemented |
+| Ice Cream Shop | Following an ordered picture request: first this scoop, then that one, then a topping | Implemented |
 | Mandarin Planting Garden | Ordered actions (dig, seed, cover) and a four-line rhyme: sun, worm, rain and grandpa each help one tulip grow more leaves | Implemented (fourth door) |
 | A Rainy-Day Outing | Choosing clothes and equipment for weather | Candidate |
 | Shape Block Town | Building with circles, squares and triangles | Candidate |
 | Washing Hands Story | Putting everyday care actions in order | Candidate |
 | Little Recycling Corner | Sorting household materials | Candidate |
 | Feelings Theatre | Recognising feelings and choosing kind responses | Candidate |
-| Kitchen's Next Step | Ingredient groups and predicting the next action | Candidate |
 
 Four different activities were selected so children can choose between life practice, numbers, English letters and a Mandarin nature story. Each has small, repeatable successes rather than scores, lives or a time limit. The difficulty controls let an adult choose simpler matching or a further challenge; they do not label children by achievement.
 
@@ -21,10 +21,10 @@ Walking follows the [Singapore Police Force's pedestrian guidance](https://www.p
 
 The Chinese garden uses original spoken text about digging and growing. It shows a condensed life sequence and explicitly explains that real plants need time and grow at different speeds. There is no reproduction of the referenced song's recording or melody.
 
-Before integration, the 15 new vector playthings were tested independently in `materials.html` with the same motion helper later used in the stories. Game tests then exercise incorrect choices, touch drags, interrupted actions, all 26 letters, all garden sizes, reduced motion and small/large screens. Completion confetti is silent, has no flashing, cannot intercept touches and removes itself.
+Before integration, the 15 new vector playthings were tested independently in `materials.html` with the same motion helper later used in the stories. Game tests then exercise incorrect choices, touch drags, interrupted actions, all 24 starting letters, every ice cream order, all garden sizes, reduced motion and small/large screens. Completion confetti is silent, has no flashing, cannot intercept touches and removes itself.
 
 Plant-growth facts are also checked against NParks’ [Every Child a Seed plant journal](https://www.nparks.gov.sg/docs/default-source/learn-docs/programme/every-child-seed/ecas-2025/every-child-a-seed_my-plant-journal.pdf?sfvrsn=9c522073_1). The game describes the needs of growing flowers rather than treating every seed’s germination requirements as identical.
 
 ## Matching and connecting
 
-Two quiet puzzles sit after the tulip garden. **好朋友连连线** practises pairing ideas that belong together (who eats what, who works with what, what we need when it rains) by dragging a line, which also builds the pencil-control gesture used in early writing; each round is a fresh random set of three, four or five friendships. **找朋友消消乐** practises visual discrimination and categorisation: two identical pictures within a theme (animals, fruit, vegetables, vehicles or sea friends) pop away until the board is clear. Both forgive mistakes with a soft sound and no penalty, give an idle hint after a few seconds, accept a tap, a drag or the keyboard, and offer three levels so the same game can grow with the child. Success now gets a full-screen, five-wave paper party so the moment of finishing feels as big as it is.
+Two quiet puzzles sit after the tulip garden. **Connect the Pairs** practises four ways of noticing that two pictures belong together: a shape and its shadow, a thing and its colour, a group and its number, and two halves of one whole. The child drags a line, which also builds the pencil-control gesture used in early writing; each round is a fresh random board of three, four or five pairs and the harder levels mix the kinds. **找朋友消消乐** practises visual discrimination and categorisation: two identical pictures within a theme (animals, fruit, vegetables, vehicles or sea friends) pop away until the board is clear. Both games forgive mistakes with a soft sound and no penalty, give an idle hint after a few seconds, accept a tap, a drag or the keyboard, and offer three levels so the same game can grow with the child. Success now gets a full-screen, five-wave paper party so the moment of finishing feels as big as it is.

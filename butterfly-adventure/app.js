@@ -27,7 +27,7 @@
       ['Up, up, and away! Zoey waves as the butterfly takes flight.', 'Tap a flower to invite it for nectar. A butterfly can lay eggs, and the story begins again.']]}
   ];
   const worldSize = kind => CreatureCatalog.worlds[kind];
-  const AUDIO_VERSION = 'puzzle-party-20261006';
+  const AUDIO_VERSION = 'little-shop-20261011';
   const zoo = CreatureCatalog.zoo, sea = CreatureCatalog.sea;
   let customNarration = null;
   let world = 'garden', stage = 0, counts = [0,0,0,0], busy = false, epoch = 0;

@@ -1,5 +1,6 @@
 /* Two picture puzzles for little hands.
- *  connect: random sets of friends appear on two sides; drag (or tap, then tap) a line from each one to its partner.
+ *  connect: pictures on the left, their partners on the right. Partners are shadows, colours, numbers or missing halves.
+ *           Drag (or tap, then tap) a line from each one to its match. Higher levels mix several kinds of match.
  *  match:   a board of pictures from a theme; tap two of a kind and they pop away. Clear the board to win.
  * Everything works with a finger, a mouse or a keyboard, and every action has its own sound. */
 (() => {
@@ -8,17 +9,22 @@
  const sfx=(name,o)=>window.SoundFX?.play(name,o);
  const LINE_COLORS=['#e8b95e','#d78e85','#79a7b4','#a3bb81','#c79bd6'];
 
- // Friends that belong together. `a` sits on the left, `b` on the right; `fx` is the sound their friendship makes.
- const PAIRS=[
-  {id:'monkey-banana',a:'monkey',b:'banana',fx:'chomp'},{id:'rabbit-carrot',a:'rabbit',b:'carrot',fx:'chomp'},
-  {id:'cow-milk',a:'cow',b:'milk',fx:'moo'},{id:'panda-bamboo',a:'panda',b:'bamboo',fx:'chomp'},
-  {id:'bear-honey',a:'bear',b:'honey',fx:'chomp'},{id:'giraffe-leaf',a:'giraffe',b:'leaf',fx:'chomp'},
-  {id:'elephant-peanut',a:'elephant',b:'peanut',fx:'chomp'},{id:'firetruck-flame',a:'firetruck',b:'flame',fx:'siren',fx2:'sizzle'},
-  {id:'police-policecar',a:'police',b:'policecar',fx:'siren'},{id:'butterfly-flower',a:'butterfly',b:'flower',fx:'flutter'},
-  {id:'rain-umbrella',a:'rain',b:'umbrella',fx:'splash'},{id:'spade-soil',a:'spade',b:'soil',fx:'drop'},
-  {id:'owl-moon',a:'owl',b:'moon',fx:'twinkle'},{id:'seal-ball',a:'seal',b:'ball',fx:'bounce'},
-  {id:'penguin-clownfish',a:'penguin',b:'clownfish',fx:'chomp'},{id:'sun-tulip',a:'sun',b:'tulip',fx:'twinkle'}
- ];
+ // Things to match. Each kind of match makes a pair {a: left tile, b: right tile, say: clips to speak}.
+ const COLOURS={red:'#e0524d',yellow:'#f2c53d',orange:'#f08a2c',green:'#5fae5a',purple:'#8e5bb5',blue:'#4a8fd9',pink:'#f48fb1',brown:'#8b5e3c'};
+ const COLOUR_ITEMS={red:['cherries','firetruck'],yellow:['banana','lemon','corn'],orange:['orange','carrot','pumpkin'],green:['frog','broccoli','cucumber','peas'],purple:['grapes','eggplant'],blue:['bluetang','whale'],pink:['pig','flamingo'],brown:['bear','monkey']};
+ // Shadows are easiest to tell apart when they come from different families, harder inside one family.
+ const SHADOWS={
+  animals:['elephant','giraffe','rabbit','penguin','flamingo','kangaroo','owl','frog','camel','peacock','pig','duck','crocodile','snake','tiger'],
+  sea:['whale','seahorse','crab','turtle','octopus','starfish','shark','jellyfish','lobster','dolphin','pufferfish','seal'],
+  fruit:['banana','pear','carrot','pumpkin','cherries','corn','eggplant','grapes','strawberry','broccoli','mushroom','radish','watermelon'],
+  vehicle:['bus','firetruck','airplane','train','boat','bicycle','car']
+ };
+ const COUNT_ITEMS=['apple','strawberry','banana','orange','duck','clownfish','flower','ball','butterfly','lemon','pear','starfish','tulip','cherries'];
+ const HALVES=['zebra','giraffe','tiger','panda','flamingo','frog','pig','elephant','bear','whale','penguin','fox','cow','lion'];
+ const COLUMNS=[1,2,3,4,5,3,4,4,5];
+ const pick=list=>list[Math.floor(Math.random()*list.length)];
+ const swatch=hex=>`<svg viewBox="0 0 100 100" aria-hidden="true"><path d="M50 8C72 8 92 24 92 48C94 74 74 92 50 92C26 92 6 74 8 48C10 24 30 8 50 8Z" fill="${hex}"/><path d="M50 92C74 92 94 74 92 48C90 72 70 86 50 86Z" fill="#000" opacity=".1"/><ellipse cx="31" cy="30" rx="13" ry="7" transform="rotate(-30 31 30)" fill="#fff" opacity=".42"/></svg>`;
+ const numeral=n=>`<svg viewBox="0 0 100 90" aria-hidden="true"><text x="50" y="72" text-anchor="middle" font-size="84" font-weight="800" fill="#8b5e3c" font-family="'Avenir Next Rounded','Nunito','Arial Rounded MT Bold',ui-rounded,system-ui,sans-serif">${n}</text></svg>`;
  // Themes for the matching board. Each has plenty of pictures so every round is different.
  const THEMES={
   animals:{icon:'tiger',pool:['tiger','elephant','giraffe','panda','monkey','rabbit','bear','lion','cow','fox','frog','penguin','zebra','koala']},
@@ -30,13 +36,14 @@
  const THEME_NAMES={animals:'动物',fruit:'水果',veg:'蔬菜',vehicle:'交通工具',sea:'海洋朋友'};
  const check='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5" fill="none" stroke="#fffdf4" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"/></svg>';
 
- window.PuzzleGames={pairs:PAIRS,themes:THEMES,start(game,kit){
+ window.PuzzleGames={colours:COLOURS,colourItems:COLOUR_ITEMS,shadows:SHADOWS,halves:HALVES,countItems:COUNT_ITEMS,themes:THEMES,start(game,kit){
   const {$,art,shell,speak,setVoice,message,celebrate,flow}=kit,book=window.AdventureBook;
   const reduce=()=>matchMedia('(prefers-reduced-motion: reduce)').matches;
   const names=art.puzzleNames||{};
   const piece=id=>art.animals[id]||art.playthings[id]||art.food[id]||art.vehicles?.[id]||'';
   const wait=ms=>new Promise(r=>setTimeout(r,reduce()?1:ms));
   const hintDelay=Number(new URLSearchParams(location.search).get('hint'))||9000;
+  const pace=Number(new URLSearchParams(location.search).get('pace'))||0; // ?pace=300 shortens the pause between rounds for tests
   const status=phase=>{$('new-game').dataset.phase=phase;};
   const levels=count=>`<nav class="pz-levels" aria-label="选择难度">${[1,2,3].map(n=>`<button data-level="${n}" aria-label="${count(n)}" aria-pressed="${n===1}">${'●'.repeat(n)}</button>`).join('')}</nav>`;
   const artOf=id=>`<span class="pz-art">${piece(id)}</span>`;
@@ -48,35 +55,79 @@
   window.addEventListener('pagehide',stopAll);
 
   if(game==='connect'){
-   let level=1,round=0,phase='play',token=0,selected=null,drag=null,wrongs=0,lastIds=[],current=[],colors={};
+   const WB=window.WordBank,Say=window.Say;
+   let level=1,round=0,phase='play',token=0,selected=null,drag=null,wrongs=0,lastIds=[],current=[],colors={},intro='cn-intro-shadow';
    const connected=new Map();
-   shell('好朋友连连线','连一连 · 找到好朋友',`${levels(n=>`${n+2} 对好朋友`)}<div class="toy-content pz-content"><div id="pz-board" class="pz-board pz-connect" role="group" aria-label="把好朋友连起来"><svg id="pz-lines" class="pz-lines" aria-hidden="true"></svg><div id="pz-left" class="pz-col"></div><div class="pz-gap"></div><div id="pz-right" class="pz-col"></div></div></div><footer class="toy-footer pz-footer"><div class="round-dots" id="pz-dots"></div><p id="toy-message" class="toy-message" role="status"></p></footer>`);
+   shell('Connect the Pairs','',`${levels(n=>`${n+2} pairs`)}<div class="toy-content pz-content"><div id="pz-board" class="pz-board pz-connect" role="group" aria-label="Draw a line to match each pair"><svg id="pz-lines" class="pz-lines" aria-hidden="true"></svg><div id="pz-left" class="pz-col"></div><div class="pz-gap"></div><div id="pz-right" class="pz-col"></div></div></div><footer class="toy-footer pz-footer"><div class="round-dots" id="pz-dots"></div><p id="toy-message" class="toy-message" role="status"></p></footer>`);
    const board=$('pz-board'),lines=$('pz-lines');
-   const pairById=id=>PAIRS.find(p=>p.id===id);
+   Say.listen(()=>{sfx('tap');Say.play([intro]);});
+   const pairById=id=>current.find(p=>p.id===id);
+   // ---- the kinds of match -------------------------------------------------------------
+   const word=WB.word,clip=WB.clip;
+   const used=new Set();
+   const items=(list,n)=>{const out=shuffle(list.filter(x=>!used.has(x)&&piece(x))).slice(0,n);out.forEach(x=>used.add(x));return out;};
+   const sketch=(cls,html)=>`<span class="pz-art ${cls}">${html}</span>`;
+   const KINDS={
+    shadow(n){
+     let ids;
+     if(level===1){ids=[];for(const family of shuffle(Object.keys(SHADOWS))){if(ids.length>=n)break;ids.push(...items(SHADOWS[family],1));}}
+     else ids=items(SHADOWS[pick(Object.keys(SHADOWS))],n);
+     return ids.map(id=>({id:`shadow-${id}`,kind:'shadow',item:id,fx:'pop',say:[clip(id)],
+      a:{html:sketch('',piece(id)),label:word(id),piece:id},b:{html:sketch('pz-shadow',piece(id)),label:`Shadow of ${word(id).toLowerCase()}`,piece:id}}));
+    },
+    colour(n){
+     return shuffle(Object.keys(COLOURS)).slice(0,n).map(name=>{
+      const id=items(COLOUR_ITEMS[name],1)[0]||COLOUR_ITEMS[name][0];used.add(id);
+      return {id:`colour-${name}`,kind:'colour',item:id,fx:'splash',say:[clip(id),`col-${name}`],
+       a:{html:sketch('',piece(id)),label:word(id),piece:id},b:{html:sketch('pz-swatch',swatch(COLOURS[name])),label:name,piece:name}};
+     });
+    },
+    count(n){
+     const pool=level===2?[1,2,3,4,5]:[2,3,4,5,6,7,8,9],numbers=shuffle(pool).slice(0,n),ids=items(COUNT_ITEMS,n);
+     return numbers.map((num,i)=>({id:`count-${num}`,kind:'count',item:ids[i],number:num,fx:'tap',say:[`cn-${num}`],
+      a:{html:`<span class="pz-art pz-count" style="--c:${COLUMNS[num-1]}">${Array.from({length:num},()=>`<i>${piece(ids[i])}</i>`).join('')}</span>`,label:`${num} ${word(ids[i]).toLowerCase()}`,piece:ids[i]},
+      b:{html:sketch('pz-num',numeral(num)),label:`${num}`,piece:`${num}`}}));
+    },
+    half(n){
+     return items(HALVES,n).map(id=>({id:`half-${id}`,kind:'half',item:id,fx:'match',say:[clip(id)],
+      a:{html:sketch('pz-half pz-half-a',piece(id)),label:`Left half of ${word(id).toLowerCase()}`,piece:id},b:{html:sketch('pz-half pz-half-b',piece(id)),label:`Right half of ${word(id).toLowerCase()}`,piece:id}}));
+    }
+   };
+   // Level 1: three of one easy kind. Level 2: two kinds. Level 3: three kinds, five pairs, and the halves.
+   function plan(){
+    if(level===1)return [[pick(['shadow','colour']),3]];
+    if(level===2){const k=shuffle(['shadow','colour','count']);return [[k[0],2],[k[1],2]];}
+    const k=shuffle(['shadow','colour','count','half']);return [[k[0],2],[k[1],2],[k[2],1]];
+   }
+   function build(){
+    for(let tries=0;tries<20;tries++){
+     used.clear();const kinds=plan(),made=kinds.flatMap(([kind,n])=>KINDS[kind](n));
+     if(made.length===kinds.reduce((t,[,n])=>t+n,0)&&(tries>14||!made.some(p=>lastIds.includes(p.id))))return {made,kinds:kinds.map(k=>k[0])};
+    }
+    used.clear();const kinds=plan();return {made:kinds.flatMap(([kind,n])=>KINDS[kind](n)),kinds:kinds.map(k=>k[0])};
+   }
+   // ---- lines ---------------------------------------------------------------------------
    function anchor(tile){const b=board.getBoundingClientRect(),r=tile.getBoundingClientRect();return [(tile.dataset.side==='a'?r.right-2:r.left+2)-b.left,r.top+r.height/2-b.top];}
    function curve(p,q){const mx=(p[0]+q[0])/2;return `M${p[0].toFixed(1)} ${p[1].toFixed(1)}C${mx.toFixed(1)} ${p[1].toFixed(1)} ${mx.toFixed(1)} ${q[1].toFixed(1)} ${q[0].toFixed(1)} ${q[1].toFixed(1)}`;}
    function draw(fresh){
     lines.innerHTML=[...connected.entries()].map(([id,c])=>`<path class="pz-line${id===fresh?' fresh':''}" pathLength="1" d="${curve(anchor(c.a),anchor(c.b))}" style="--c:${c.color}"/>`).join('');
    }
    function render(){
-    status(phase);const d=$('new-game').dataset;d.level=level;d.round=round;d.total=current.length;d.connected=connected.size;d.pairs=current.map(p=>p.id).join(',');
-    $('pz-dots').innerHTML=current.map((p,i)=>`<i class="${connected.has(p.id)?'current':''}"></i>`).join('');
+    status(phase);const d=$('new-game').dataset;d.level=level;d.round=round;d.total=current.length;d.connected=connected.size;d.pairs=current.map(p=>p.id).join(',');d.kinds=[...new Set(current.map(p=>p.kind))].join(',');
+    $('pz-dots').innerHTML=current.map(p=>`<i class="${connected.has(p.id)?'current':''}"></i>`).join('');
    }
    function newRound(say){
     flow.cancel();token++;clearHint();selected=null;drag=null;connected.clear();wrongs=0;phase='play';
-    const count=level+2,fresh=shuffle(PAIRS.filter(p=>!lastIds.includes(p.id)));
-    current=fresh.slice(0,count);
-    // Short on fresh friends? Borrow from the last round rather than repeat the same set.
-    if(current.length<count)current=current.concat(shuffle(PAIRS.filter(p=>!current.includes(p))).slice(0,count-current.length));
-    lastIds=current.map(p=>p.id);
+    const made=build();current=made.made;lastIds=current.map(p=>p.id);
+    intro=made.kinds.length===1?`cn-intro-${made.kinds[0]}`:'cn-intro-mixed';
     colors={};shuffle(LINE_COLORS).forEach((c,i)=>{if(current[i])colors[current[i].id]=c;});
     const left=shuffle(current),rightOrder=(()=>{let r;for(let i=0;i<12;i++){r=shuffle(current);if(r.every((p,k)=>p!==left[k]))break;}return r;})();
-    const tile=(p,side)=>`<button class="pz-tile" data-pair="${p.id}" data-side="${side}" data-piece="${p[side]}" aria-label="${names[p[side]]||p[side]}" style="--c:${colors[p.id]}">${artOf(p[side])}<i class="pz-peg" aria-hidden="true"></i><i class="pz-badge" aria-hidden="true">${check}</i></button>`;
-    board.style.setProperty('--n',count);
+    const tile=(p,side)=>`<button class="pz-tile" data-pair="${p.id}" data-side="${side}" data-kind="${p.kind}" data-piece="${p[side].piece}" aria-label="${p[side].label}" style="--c:${colors[p.id]}">${p[side].html}<i class="pz-peg" aria-hidden="true"></i><i class="pz-badge" aria-hidden="true">${check}</i></button>`;
+    board.style.setProperty('--n',current.length);
     $('pz-left').innerHTML=left.map(p=>tile(p,'a')).join('');$('pz-right').innerHTML=rightOrder.map(p=>tile(p,'b')).join('');
-    draw();render();message('给好朋友连一连线吧。','拖一拖，或者先点一个再点它的好朋友。');
-    setVoice('connect-intro');armHint(findHint);
-    if(say===true){sfx('shuffle');speak('connect-intro');}
+    draw();render();message('Draw a line to match each pair.','Drag, or tap one and then tap its match.');
+    setVoice(intro);armHint(findHint);
+    if(say===true){sfx('shuffle');Say.play([intro]);}
    }
    function findHint(){const p=current.find(x=>!connected.has(x.id));if(!p)return null;return [...board.querySelectorAll(`.pz-tile[data-pair="${p.id}"]`)];}
    const deselect=()=>{selected?.classList.remove('is-selected');selected?.setAttribute('aria-pressed','false');selected=null;};
@@ -86,26 +137,26 @@
     if(phase!=='play'||a.dataset.side===b.dataset.side)return;
     clearHint();
     if(a.dataset.pair===b.dataset.pair)return join(a.dataset.side==='a'?a:b,a.dataset.side==='a'?b:a);
-    wrongs++;shake(a,b);sfx('boing');message('再找找看，谁是好朋友呢？','');
-    if(wrongs===1||wrongs%3===0)speak('connect-wrong');
+    wrongs++;shake(a,b);sfx('boing');message('Not quite. Try another one!','');
+    if(wrongs===1||wrongs%3===0)Say.play(['cn-wrong']);
     armHint(findHint);
    }
    function join(a,b){
-    const pair=pairById(a.dataset.pair);
+    const pair=pairById(a.dataset.pair),last=connected.size+1===current.length;
     connected.set(pair.id,{a,b,color:colors[pair.id]});
     [a,b].forEach(t=>{t.dataset.done='true';t.classList.remove('is-selected','hint');t.setAttribute('aria-pressed','false');});
-    draw(pair.id);render();sfx('link');setTimeout(()=>sfx(pair.fx),170);if(pair.fx2)setTimeout(()=>sfx(pair.fx2),650);
-    try{if(art.animals[pair.a]&&window.CreatureMotion)window.CreatureMotion.play(a.querySelector('.pz-art'),pair.a);else window.PlaythingMotion?.play(a.querySelector('.pz-art'),pair.a);}catch{}
-    try{if(art.animals[pair.b]&&window.CreatureMotion)window.CreatureMotion.play(b.querySelector('.pz-art'),pair.b);else window.PlaythingMotion?.play(b.querySelector('.pz-art'),pair.b);}catch{}
-    message(`${names[pair.a]||pair.a}和${names[pair.b]||pair.b}是好朋友！`,'');
-    speak(`connect-${pair.id}`);
-    if(connected.size===current.length)return finish();
+    draw(pair.id);render();sfx('link');setTimeout(()=>sfx(pair.fx),170);
+    if(pair.kind==='count'){a.querySelectorAll('.pz-count i').forEach((n,i)=>{setTimeout(()=>{n.classList.add('tick');sfx('pick',{pitch:.9+i*.07});},260+i*150);});}
+    else if(pair.kind==='colour'||pair.kind==='shadow'){WB.motion(a.querySelector('.pz-art'),pair.item);}
+    message(`${word(pair.item)}! A match.`,'');
+    Say.play(last?[...pair.say,'cn-done']:pair.say);
+    if(last)return finish();
     armHint(findHint);
    }
    function finish(){
     phase='done';render();celebrate(board);
-    setVoice('connect-done');book.queueAudio('connect-done.m4a');
-    flow.after(()=>newRound(true));
+    setVoice('cn-done');
+    flow.after(()=>newRound(true),pace||5200);
    }
    function tap(tile){
     if(phase!=='play'||tile.dataset.done)return;
@@ -114,7 +165,7 @@
     if(selected&&selected.dataset.side!==tile.dataset.side){const first=selected;deselect();attempt(first,tile);return;}
     deselect();select(tile);sfx('pick',{pitch:tile.dataset.side==='a'?1:1.12});
    }
-   // Dragging draws a rubber line from the touched picture. Letting go over its friend ties the knot.
+   // Dragging draws a rubber line from the touched picture. Letting go over its partner ties the knot.
    board.addEventListener('pointerdown',e=>{
     const tile=e.target.closest('.pz-tile');
     if(!tile||phase!=='play'||tile.dataset.done||!e.isPrimary||e.button!==0)return;

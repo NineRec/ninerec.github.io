@@ -52,6 +52,11 @@
   flutter:(c,o,t,p)=>{for(let i=0;i<7;i++)tone(c,o,t,{f:(i%2?NOTE.G6:NOTE.E6)*p,dur:.1,type:'triangle',gain:.15,delay:i*.06});bell(c,o,t,NOTE.C7*p,{delay:.45,dur:.4,gain:.08});},
   bounce:(c,o,t,p)=>{tone(c,o,t,{f:180*p,to:520*p,dur:.14,gain:.26});tone(c,o,t,{f:520*p,to:200*p,dur:.12,gain:.18,delay:.14});tone(c,o,t,{f:150*p,to:130*p,dur:.1,gain:.2,delay:.3});bell(c,o,t,NOTE.A5*p,{delay:.34,dur:.35,gain:.1});},
   moo:(c,o,t,p)=>{tone(c,o,t,{f:150*p,to:105*p,dur:.7,type:'sawtooth',gain:.1});tone(c,o,t,{f:300*p,to:210*p,dur:.7,type:'sine',gain:.08});bell(c,o,t,NOTE.C6*p,{delay:.72,dur:.4,gain:.1});},
+  // ice cream shop
+  scoop:(c,o,t,p)=>{puff(c,o,t,{dur:.1,gain:.2,type:'lowpass',freq:1500,to:500});tone(c,o,t,{f:330*p,to:160*p,dur:.17,gain:.28});tone(c,o,t,{f:540*p,to:300*p,dur:.1,type:'triangle',gain:.08,delay:.05});},
+  bell:(c,o,t,p)=>{bell(c,o,t,NOTE.E6*p,{dur:.95,gain:.3});bell(c,o,t,NOTE.A6*p,{delay:.14,dur:.85,gain:.2});},
+  sprinkle:(c,o,t,p)=>{for(let i=0;i<8;i++)tone(c,o,t,{f:(1800+((i*397)%900))*p,to:(1500+((i*211)%700))*p,dur:.05,type:'triangle',gain:.1,delay:i*.045});puff(c,o,t,{dur:.32,gain:.1,type:'highpass',freq:5000});},
+  crunch:(c,o,t,p)=>{[0,.07,.15].forEach(d=>puff(c,o,t,{dur:.06,gain:.26,type:'highpass',freq:2500,delay:d}));tone(c,o,t,{f:200*p,to:120*p,dur:.08,gain:.12});},
   // celebration pieces
   party:(c,o,t,p)=>{puff(c,o,t,{dur:.1,gain:.36,freq:1900*p,to:700,q:.7});tone(c,o,t,{f:150*p,to:60,dur:.16,gain:.32});sparkle(c,o,t,{count:4,gain:.09,pitch:p,gap:.05});},
   fanfare:(c,o,t,p)=>{[NOTE.C5,NOTE.E5,NOTE.G5,NOTE.C6].forEach((f,i)=>{tone(c,o,t,{f:f*p,dur:.34,type:'triangle',gain:.2,delay:i*.1});bell(c,o,t,f*p,{delay:i*.1,dur:.5,gain:.1});});[NOTE.C5,NOTE.E5,NOTE.G5,NOTE.C6].forEach(f=>tone(c,o,t,{f:f*p,dur:1.1,type:'triangle',gain:.1,delay:.46}));sparkle(c,o,t,{count:8,gain:.1,pitch:p,gap:.08});}
