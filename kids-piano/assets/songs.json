@@ -1,0 +1,46 @@
+[
+ {
+  "id": "itsy-bitsy-spider",
+  "text": "title: Itsy Bitsy Spider\nsubtitle: 小蜘蛛\nemoji: 🕷️\nbpm: 190\nmeter: 6\n// 6/8: one beat here is an eighth note.\n\n5, | 1 - 1 1 - 2 | 3 - - 3 - 3 | 2 - 1 2 - 3 | 1 - - 0 - - |\nw: The it- sy bit- sy spi- der went up the wa- ter spout.\n3 - - 3 - 4 | 5 - - 5 - - | 4 - 3 4 - 5 | 3 - - 0 - - |\nw: Down came the rain and washed the spi- der out.\n1 - - 1 - 2 | 3 - - 3 - - | 2 - 1 2 - 3 | 1 - - 5, - 5, |\nw: Out came the sun and dried up all the rain, and the\n1 - 1 1 - 2 | 3 - - 3 - 3 | 2 - 1 2 - 3 | 1 - - - - - |\nw: it- sy bit- sy spi- der went up the spout a- gain.\n"
+ },
+ {
+  "id": "twinkle",
+  "text": "title: Twinkle Twinkle Little Star\nsubtitle: 小星星\nemoji: ⭐️\nbpm: 96\nmeter: 4\n\n1 1 5 5 | 6 6 5 - | 4 4 3 3 | 2 2 1 - |\nw: Twin- kle twin- kle lit- tle star, how I won- der what you are.\n5 5 4 4 | 3 3 2 - | 5 5 4 4 | 3 3 2 - |\nw: Up a- bove the world so high, like a dia- mond in the sky.\n1 1 5 5 | 6 6 5 - | 4 4 3 3 | 2 2 1 - |\nw: Twin- kle twin- kle lit- tle star, how I won- der what you are.\n"
+ },
+ {
+  "id": "doll-and-bear",
+  "text": "title: 洋娃娃和小熊跳舞\nsubtitle: Doll and Teddy Bear Dance\nemoji: 🧸\nbpm: 92\nmeter: 2\n// Polish children's tune. Add a \"w:\" line under each score line to show lyrics.\n\n1_ 2_ 3_ 4_ | 5_ 5_ 5__ 4__ 3_ | 4_ 4_ 4__ 3__ 2_ | 1_ 3_ 5 |\n1_ 2_ 3_ 4_ | 5_ 5_ 5__ 4__ 3_ | 4_ 4_ 4__ 3__ 2_ | 1_ 3_ 1 |\n6_ 6_ 6__ 5__ 4_ | 5_ 5_ 5__ 4__ 3_ | 4_ 4_ 4__ 3__ 2_ | 1_ 3_ 5 |\n6_ 6_ 6__ 5__ 4_ | 5_ 5_ 5__ 4__ 3_ | 4_ 4_ 4__ 3__ 2_ | 1_ 3_ 1 |\n"
+ },
+ {
+  "id": "baa-baa",
+  "text": "title: Baa Baa Black Sheep\nsubtitle: 黑绵羊咩咩叫\nemoji: 🐑\nbpm: 96\nmeter: 4\n\n1 1 5 5 | 6_ 6_ 6_ 6_ 5 - | 4 4 3 3 | 2 2 1 - |\nw: Baa, baa, black sheep, have you a- ny wool? Yes sir, yes sir, three bags full.\n5 5_ 5_ 4 4 | 3 3_ 3_ 2 - | 5 5_ 5_ 4_ 4_ 4_ 4_ | 3 3_ 3_ 2 - |\nw: One for the mas- ter, one for the dame, one for the lit- tle boy who lives down the lane.\n1 1 5 5 | 6_ 6_ 6_ 6_ 5 - | 4 4 3 3 | 2 2 1 - |\nw: Baa, baa, black sheep, have you a- ny wool? Yes sir, yes sir, three bags full.\n"
+ },
+ {
+  "id": "mary",
+  "text": "title: Mary Had a Little Lamb\nsubtitle: 玛丽有只小羊羔\nemoji: 🐏\nbpm: 104\nmeter: 4\n\n3 2 1 2 | 3 3 3 - | 2 2 2 - | 3 5 5 - |\nw: Ma- ry had a lit- tle lamb, lit- tle lamb, lit- tle lamb.\n3 2 1 2 | 3 3 3 3 | 2 2 3 2 | 1 - - - |\nw: Ma- ry had a lit- tle lamb, its fleece was white as snow.\n"
+ },
+ {
+  "id": "two-tigers",
+  "text": "title: 两只老虎\nsubtitle: Frère Jacques\nemoji: 🐯\nbpm: 104\nmeter: 4\n\n1 2 3 1 | 1 2 3 1 | 3 4 5 - | 3 4 5 - |\nw: 两 只 老 虎， 两 只 老 虎， 跑 得 快， 跑 得 快。\n5_ 6_ 5_ 4_ 3 1 | 5_ 6_ 5_ 4_ 3 1 | 1 5, 1 - | 1 5, 1 - |\nw: 一 只 没 有 眼 睛， 一 只 没 有 尾 巴， 真 奇 怪， 真 奇 怪。\n"
+ },
+ {
+  "id": "row",
+  "text": "title: Row, Row, Row Your Boat\nsubtitle: 划小船\nemoji: 🚣\nbpm: 180\nmeter: 6\n// 6/8: one beat here is an eighth note.\n\n1 - - 1 - - | 1 - 2 3 - - | 3 - 2 3 - 4 | 5 - - - - - |\nw: Row, row, row your boat, gent- ly down the stream.\n1' 1' 1' 5 5 5 | 3 3 3 1 1 1 | 5 - 4 3 - 2 | 1 - - - - - |\nw: Mer- ri- ly, mer- ri- ly, mer- ri- ly, mer- ri- ly, life is but a dream.\n"
+ },
+ {
+  "id": "london-bridge",
+  "text": "title: London Bridge\nsubtitle: 伦敦桥\nemoji: 🌉\nbpm: 104\nmeter: 4\n\n5. 6_ 5 4 | 3 4 5 - | 2 3 4 - | 3 4 5 - |\nw: Lon- don Bridge is fall- ing down, fall- ing down, fall- ing down.\n5. 6_ 5 4 | 3 4 5 - | 2 - 5 - | 3 1 - - |\nw: Lon- don Bridge is fall- ing down, my fair la- dy.\n"
+ },
+ {
+  "id": "old-macdonald",
+  "text": "title: Old MacDonald Had a Farm\nsubtitle: 老麦克唐纳有个农场\nemoji: 🐮\nbpm: 108\nmeter: 4\n\n1 1 1 5, | 6, 6, 5, - | 3 3 2 2 | 1 - - 5, |\nw: Old Mac- Don- ald had a farm, E- I- E- I- O! And\n1 1 1 5, | 6, 6, 5, - | 3 3 2 2 | 1 - - 5,_ 5,_ |\nw: on his farm he had a cow, E- I- E- I- O! With a\n1 1 1 5,_ 5,_ | 1 1 1 0 | 1_ 1_ 1 1_ 1_ 1 | 1_ 1_ 1_ 1_ 1 1 |\nw: moo moo here, and a moo moo there, here a moo, there a moo, ev- ery- where a moo moo.\n1 1 1 5, | 6, 6, 5, - | 3 3 2 2 | 1 - - - |\nw: Old Mac- Don- ald had a farm, E- I- E- I- O!\n"
+ },
+ {
+  "id": "jingle-bells",
+  "text": "title: Jingle Bells\nsubtitle: 铃儿响叮当\nemoji: 🔔\nbpm: 120\nmeter: 4\n\n3 3 3 - | 3 3 3 - | 3 5 1. 2_ | 3 - - - |\nw: Jin- gle bells, jin- gle bells, jin- gle all the way.\n4 4 4. 4_ | 4 3 3 3_ 3_ | 3 2 2 3 | 2 - 5 - |\nw: Oh what fun it is to ride in a one- horse o- pen sleigh, hey!\n3 3 3 - | 3 3 3 - | 3 5 1. 2_ | 3 - - - |\nw: Jin- gle bells, jin- gle bells, jin- gle all the way.\n4 4 4. 4_ | 4 3 3 3_ 3_ | 5 5 4 2 | 1 - - - |\nw: Oh what fun it is to ride in a one- horse o- pen sleigh.\n"
+ },
+ {
+  "id": "happy-birthday",
+  "text": "title: Happy Birthday\nsubtitle: 生日快乐\nemoji: 🎂\nbpm: 100\nmeter: 3\n\n5,_ 5,_ | 6, 5, 1 | 7, - 5,_ 5,_ | 6, 5, 2 | 1 - 5,_ 5,_ |\nw: Hap- py birth- day to you, hap- py birth- day to you, hap- py\n5 3 1 | 7, 6, 4_ 4_ | 3 1 2 | 1 - - |\nw: birth- day dear Zo- ey, hap- py birth- day to you!\n"
+ }
+]

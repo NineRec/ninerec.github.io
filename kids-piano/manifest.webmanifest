@@ -1,0 +1,17 @@
+{
+  "name": "Zoey 的小钢琴",
+  "short_name": "Kids Piano",
+  "description": "跟着 Zoey 在小电子琴上学弹儿歌",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "landscape",
+  "background_color": "#bde6ff",
+  "theme_color": "#bde6ff",
+  "lang": "zh-Hans",
+  "icons": [
+    { "src": "assets/icons/icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "assets/icons/icon-512.png", "sizes": "512x512", "type": "image/png" },
+    { "src": "assets/icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}

@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="zh-Hans">
+<head>
+  <meta charset="utf-8">
+  <title>Zoey 的小钢琴</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+  <meta name="theme-color" content="#bde6ff">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="Kids Piano">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="apple-touch-icon" href="assets/icons/icon-180.png">
+  <link rel="icon" href="assets/icons/icon-192.png">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div id="app">
+    <!-- Song picker -->
+    <section id="home" class="view">
+      <aside class="home-side">
+        <h1>Zoey 的小钢琴</h1>
+        <p class="tagline">选一首歌，跟着亮起来的键弹</p>
+        <img id="home-zoey" class="zoey" src="assets/zoey/zoey0.png" alt="Zoey" draggable="false">
+        <button id="open-settings" class="pill-button" type="button">⚙️ 设置</button>
+      </aside>
+      <main id="song-grid" class="song-grid"></main>
+    </section>
+
+    <!-- One song: Zoey and the score on top, the keyboard at the bottom -->
+    <section id="play" class="view" hidden>
+      <header class="topbar">
+        <button id="back" class="bar-button ink" type="button" aria-label="返回">‹</button>
+        <div id="play-title" class="play-title"></div>
+        <button id="demo" class="bar-button blue song-only" type="button"></button>
+        <button id="speed" class="bar-button green song-only" type="button"></button>
+        <button id="restart" class="bar-button orange song-only" type="button">↺ 重来</button>
+        <button id="mic" class="bar-button purple song-only" type="button"></button>
+      </header>
+      <div class="stage">
+        <img id="play-zoey" class="zoey" src="assets/zoey/zoey0.png" alt="Zoey" draggable="false">
+        <div class="stage-main">
+          <div id="hint" class="hint"></div>
+          <div id="strip" class="strip song-only"><div id="strip-row" class="strip-row"></div></div>
+        </div>
+      </div>
+      <div id="keyboard" class="keyboard">
+        <div class="arrow-band"><div id="arrow" class="arrow" hidden></div></div>
+        <div id="keys" class="keys"></div>
+      </div>
+
+      <div id="celebration" class="celebration" hidden>
+        <div id="confetti" class="confetti"></div>
+        <img id="cheer-zoey" class="zoey" src="assets/zoey/zoey8.png" alt="Zoey" draggable="false">
+        <div class="celebration-card">
+          <div class="celebration-title">太棒了！</div>
+          <div id="celebration-song" class="celebration-song"></div>
+          <div id="celebration-stars" class="celebration-stars"><span>★</span><span>★</span><span>★</span></div>
+          <div class="celebration-actions">
+            <button id="again" class="bar-button orange" type="button">↺ 再来一次</button>
+            <button id="another" class="bar-button blue" type="button">🎵 换一首</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Parent settings -->
+    <dialog id="settings" class="settings">
+      <h2>设置</h2>
+      <h3>键上的标记</h3>
+      <div id="label-style" class="segmented">
+        <button type="button" data-style="number">1 2 3</button>
+        <button type="button" data-style="solfege">do re mi</button>
+        <button type="button" data-style="letter">C D E</button>
+      </div>
+      <div id="label-preview" class="label-preview"></div>
+      <p class="note">每个音固定一种颜色。可以在真琴的键上贴同色的小贴纸：中央 C（带星星的键）贴红色 1。</p>
+      <label class="toggle"><span>用麦克风听真琴</span><input id="set-mic" type="checkbox"></label>
+      <label class="toggle"><span>Zoey 的声音</span><input id="set-voice" type="checkbox"></label>
+      <label class="toggle"><span>示范放慢</span><input id="set-slow" type="checkbox"></label>
+      <p class="note">打开“听真琴”后，在琴上弹对了，乐谱会自己往前走；关闭时用手指点屏幕上的键。声音只在本机处理，不会上传。</p>
+      <p id="install-tip" class="note">在 Safari 里点“分享 → 添加到主屏幕”，就能像 App 一样全屏、离线使用。</p>
+      <button id="close-settings" class="bar-button blue" type="button">完成</button>
+    </dialog>
+
+    <div id="toast" class="toast" hidden></div>
+    <div id="rotate-hint" class="rotate-hint"><img src="assets/zoey/zoey4.png" alt=""><p>把手机横过来 ↻</p></div>
+  </div>
+  <script type="module" src="js/app.js"></script>
+</body>
+</html>
