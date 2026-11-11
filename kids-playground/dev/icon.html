@@ -1,0 +1,7 @@
+<!doctype html><meta charset="utf-8"><style>.eyes-joy{display:none}html,body{margin:0}svg{display:block;width:100vw;height:100vh}</style>
+<script type="module">
+import { doll, ZOEY_LOOK } from '../js/art/girl.js';
+import { star, sparkle } from '../js/art/base.js';
+document.body.innerHTML = `<svg viewBox="0 0 512 512"><rect width="512" height="512" fill="#62d4ff"/><circle cx="256" cy="560" r="330" fill="#8be4ff"/><circle cx="256" cy="600" r="300" fill="#fff36b"/>
+<g transform="translate(86 96) scale(.85)">${doll({ ...ZOEY_LOOK, head: 'crown' })}</g>${star(84, 130, 34, '#fff')}${star(430, 170, 26, '#fff36b')}${sparkle(410, 80, 26)}${sparkle(100, 300, 20)}</svg>`;
+</script>

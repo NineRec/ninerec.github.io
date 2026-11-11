@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="zh-Hans">
+<head>
+  <meta charset="utf-8">
+  <title>Zoey 的游乐园</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+  <meta name="description" content="给小朋友的游乐园：化妆、换装、做蛋糕、给宠物洗澡、拼图、涂色……">
+  <meta name="theme-color" content="#62d4ff">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="Kids Games">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="apple-touch-icon" href="assets/icons/icon-180.png">
+  <link rel="icon" href="assets/icons/icon-192.png">
+  <link rel="stylesheet" href="css/app.css">
+</head>
+<body>
+  <div id="app">
+    <!-- Home: Zoey and all the games -->
+    <section id="hub" class="view hub">
+      <div id="hub-bg" class="hub-bg"></div>
+      <aside class="hub-side">
+        <h1>Zoey 的游乐园</h1>
+        <p class="tagline">点一点，选一个游戏吧</p>
+        <div id="hub-zoey" class="zoey" role="img" aria-label="Zoey"></div>
+        <div class="hub-buttons">
+          <button id="open-album" class="pill" type="button"></button>
+          <button id="toggle-sound" class="pill" type="button"></button>
+        </div>
+      </aside>
+      <main id="hub-grid" class="hub-grid"></main>
+    </section>
+
+    <!-- Sticker album -->
+    <section id="album" class="view album" hidden>
+      <header class="album-bar">
+        <div id="album-back"></div>
+        <h2>我的贴纸册</h2>
+        <div id="album-count" class="album-count"></div>
+      </header>
+      <main id="album-grid" class="album-grid"></main>
+    </section>
+
+    <!-- One game -->
+    <section id="play" class="view play" hidden>
+      <div id="stage" class="stage"></div>
+      <div class="play-bar">
+        <div id="play-home"></div>
+        <div id="progress" class="progress"></div>
+        <div id="play-help"></div>
+      </div>
+      <div id="win" class="win" hidden>
+        <div id="win-zoey" class="zoey"></div>
+        <div class="win-card">
+          <div class="win-title">太棒了！</div>
+          <div class="win-stars"><span>★</span><span>★</span><span>★</span></div>
+          <div id="win-sticker" class="win-sticker"></div>
+          <div id="win-actions" class="win-actions"></div>
+        </div>
+      </div>
+    </section>
+
+    <canvas id="confetti" class="confetti"></canvas>
+    <div id="rotate" class="rotate"><div id="rotate-zoey" class="zoey"></div><p>把手机横过来玩 ↻</p></div>
+  </div>
+  <script type="module" src="js/app.js"></script>
+</body>
+</html>

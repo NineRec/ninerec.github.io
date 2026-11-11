@@ -1,0 +1,12 @@
+<!doctype html><meta charset="utf-8"><title>gallery</title>
+<style>body{margin:0;background:#bfe6ff;font:14px system-ui}.g{display:grid;grid-template-columns:repeat(var(--n,7),1fr);gap:6px;padding:8px}.g div{background:#e9f6ff;border-radius:14px;text-align:center;padding:2px}.g svg{width:100%;display:block}</style>
+<div class="g" id="g"></div>
+<script type="module">
+const q=new URLSearchParams(location.search), set=q.get('set')||'animals';
+document.getElementById('g').style.setProperty('--n', q.get('n')||7);
+let items=[];
+if(set==='animals'){const m=await import('../js/art/animals.js');const only=q.get('only');items=[...m.LAND,...m.SEA].filter(k=>!only||only.split(',').includes(k)).map(k=>[k,m.animal(k)]);}
+else if(set==='food'){const m=await import('../js/art/food.js');items=m.FOODS.map(k=>[k,m.food(k,{face:q.get('face')!=='0'})]);}
+else if(set==='things'){const m=await import('../js/art/things.js');items=Object.keys(m.THINGS).map(k=>[k,m.thing(k)]);}
+document.getElementById('g').innerHTML=items.map(([k,s])=>`<div>${s}${k}</div>`).join('');
+</script>

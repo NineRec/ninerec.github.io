@@ -6,8 +6,15 @@
     <description>Recent content on CodePanic</description>
     <generator>Hugo</generator>
     <language>en</language>
-    <lastBuildDate>Mon, 08 Apr 2024 10:56:28 +0800</lastBuildDate>
+    <lastBuildDate>Wed, 11 Nov 2026 20:00:00 +0800</lastBuildDate>
     <atom:link href="https://blog.codepanic.cn/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Games</title>
+      <link>https://blog.codepanic.cn/games/</link>
+      <pubDate>Wed, 11 Nov 2026 20:00:00 +0800</pubDate>
+      <guid>https://blog.codepanic.cn/games/</guid>
+      <description>&lt;p&gt;给家里小朋友做的两个小应用。用 iPad / 手机打开后，在浏览器里选“添加到主屏幕”，就能像 App 一样全屏、离线玩。&lt;/p&gt;&#xA;&lt;a href=&#34;https://blog.codepanic.cn/kids-playground/&#34; style=&#34;display:flex;align-items:center;gap:18px;margin:18px 0;padding:16px 20px;border-radius:22px;background:#dff4ff;color:#38334d;text-decoration:none;box-shadow:0 6px 0 rgba(31,26,58,.1);&#34;&gt;&#xA;  &lt;img src=&#34;https://blog.codepanic.cn/kids-playground/assets/icons/icon-192.png&#34; alt=&#34;&#34; width=&#34;88&#34; height=&#34;88&#34; style=&#34;flex:none;width:88px;height:88px;border-radius:22px;margin:0;box-shadow:none;&#34;&gt;&#xA;  &lt;span style=&#34;display:flex;flex-direction:column;gap:4px;min-width:0;&#34;&gt;&#xA;    &lt;strong style=&#34;font-size:1.25em;&#34;&gt;Zoey 的游乐园&lt;/strong&gt;&#xA;    &lt;span style=&#34;opacity:.75;&#34;&gt;化妆、换装、做蛋糕、宠物澡堂、涂色、动脑筋、拼图、迷宫……十三个小游戏，通关集贴纸。&lt;/span&gt;&#xA;  &lt;/span&gt;&#xA;&lt;/a&gt;&#xA;&#xA;&lt;a href=&#34;https://blog.codepanic.cn/kids-piano/&#34; style=&#34;display:flex;align-items:center;gap:18px;margin:18px 0;padding:16px 20px;border-radius:22px;background:#fff3c9;color:#38334d;text-decoration:none;box-shadow:0 6px 0 rgba(31,26,58,.1);&#34;&gt;&#xA;  &lt;img src=&#34;https://blog.codepanic.cn/kids-piano/assets/icons/icon-192.png&#34; alt=&#34;&#34; width=&#34;88&#34; height=&#34;88&#34; style=&#34;flex:none;width:88px;height:88px;border-radius:22px;margin:0;box-shadow:none;&#34;&gt;&#xA;  &lt;span style=&#34;display:flex;flex-direction:column;gap:4px;min-width:0;&#34;&gt;&#xA;    &lt;strong style=&#34;font-size:1.25em;&#34;&gt;Zoey 的小钢琴&lt;/strong&gt;&#xA;    &lt;span style=&#34;opacity:.75;&#34;&gt;选一首儿歌，跟着亮起来的键弹；也可以听真琴的声音自动翻谱。&lt;/span&gt;&#xA;  &lt;/span&gt;&#xA;&lt;/a&gt;</description>
+    </item>
     <item>
       <title>Why Go Atomic Not Using Generics</title>
       <link>https://blog.codepanic.cn/post/go-atomic-not-using-generics/</link>

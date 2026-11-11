@@ -2,14 +2,21 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://blog.codepanic.cn/categories/</loc>
-    <lastmod>2024-04-08T10:56:28+08:00</lastmod>
+    <loc>https://blog.codepanic.cn/</loc>
+    <lastmod>2026-11-11T20:00:00+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://blog.codepanic.cn/</loc>
+    <loc>https://blog.codepanic.cn/games/</loc>
+    <lastmod>2026-11-11T20:00:00+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.codepanic.cn/categories/</loc>
     <lastmod>2024-04-08T10:56:28+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
