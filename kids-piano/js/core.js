@@ -3,9 +3,12 @@
 
 // ---------- Pitch ----------
 
-/** The keyboard mirrors the Yamaha PSS-F30: 37 keys, F2…F5 (MIDI 41…77). */
-export const LOWEST_KEY = 41;
-export const HIGHEST_KEY = 77;
+/**
+ * The keyboard mirrors the Yamaha PSS-F30: 37 keys from C to C (C3…C6, MIDI 48…84), so it starts
+ * with a group of two black keys, like the real one. Middle C is the second C from the left.
+ */
+export const LOWEST_KEY = 48;
+export const HIGHEST_KEY = 84;
 export const MIDDLE_C = 60;
 export const KEYS = Array.from({ length: HIGHEST_KEY - LOWEST_KEY + 1 }, (_, i) => LOWEST_KEY + i);
 
@@ -221,7 +224,15 @@ export class PitchDetector {
   }
 }
 
-/** Turns a stream of microphone samples into "a key was just pressed" events. */
+/**
+ * Turns a stream of microphone samples into "a key was just pressed" events.
+ *
+ * A pitch alone is not a key press. Recordings of the real keyboard show three things that
+ * look like notes but are not: the tail of a released key slipping an octave or a semitone,
+ * a faint blip just before the attack, and voices in the room. So a note counts only when
+ * the pitch is clear, loud enough compared with the room and with recent key presses, and
+ * — while another note is still sounding — comes with a jump in loudness.
+ */
 export class NoteTracker {
   constructor(sampleRate) {
     this.onNote = null;
@@ -233,18 +244,31 @@ export class NoteTracker {
     this.pendingLength = 0;
 
     // Tunables
-    this.gate = 0.006;             // quieter than this counts as silence
+    this.minGate = 0.006;          // quieter than this is always silence
+    this.maxGate = 0.04;
+    this.gateOverFloor = 3.5;      // sound has to stand this far above the room noise
     this.stableFrames = 2;         // frames a pitch must hold to count
+    this.confirmClarity = 0.85;     // how clean the pitch must be when it is accepted
     this.silentFramesToRelease = 3;
     this.reattackRatio = 1.7;      // loudness jump that means "same key pressed again"
+    this.onsetRatio = 1.3;         // smaller jump that is enough when the pitch changed as well
+    this.quietRatio = 0.25;        // a key press is at least this loud compared with recent ones
+    this.sustainRatio = 0.6;       // a new pitch without a jump (legato on an organ voice) must still be this strong,
+    this.sustainClarity = 0.95;    // this clean,
+    this.sustainFrames = 3;        // and hold this long
     this.minFramesBetweenOnsets = 4;
+    this.settleRatio = 1.3;        // while the level still climbs faster than this per frame, the attack is not over
 
     // State
     this.candidate = -1;
     this.candidateCount = 0;
     this.current = -1;
     this.silentCount = 0;
-    this.dipLevel = Infinity;
+    this.dipLevel = Infinity;      // quietest moment since the last key press
+    this.notePeak = 0;             // loudest moment of the current note
+    this.floor = Infinity;         // room noise
+    this.loudness = 0;             // typical level of recent key presses
+    this.lastLevel = 0;
     this.framesSinceOnset = 1000;
     this.muteFrames = 0;
   }
@@ -278,18 +302,26 @@ export class NoteTracker {
     let sum = 0;
     for (let i = 0; i < this.window; i++) sum += frame[offset + i] * frame[offset + i];
     const level = Math.sqrt(sum / this.window);
+    const climbing = level > this.lastLevel * this.settleRatio;
+    this.lastLevel = level;
     this.framesSinceOnset += 1;
     const muted = this.muteFrames > 0;
     if (muted) this.muteFrames -= 1;
 
-    if (level <= this.gate) {
+    // Room noise: follows the quiet moments down at once and creeps back up slowly.
+    this.floor = level < this.floor ? level : this.floor + (level - this.floor) * 0.002;
+    this.loudness *= 0.9995;       // forget old key presses over about half a minute
+    const gate = Math.max(this.minGate, Math.min(this.maxGate, this.floor * this.gateOverFloor, this.loudness > 0 ? this.loudness * this.quietRatio : Infinity));
+
+    if (level <= gate) {
       this.silentCount += 1;
-      if (this.silentCount >= this.silentFramesToRelease) { this.current = -1; this.candidate = -1; this.candidateCount = 0; }
+      if (this.silentCount >= this.silentFramesToRelease) { this.current = -1; this.candidate = -1; this.candidateCount = 0; this.notePeak = 0; }
       this.dipLevel = Math.min(this.dipLevel, level);
       return;
     }
     this.silentCount = 0;
     this.dipLevel = Math.min(this.dipLevel, level);
+    this.notePeak = Math.max(this.notePeak, level);
 
     let heard = -1;
     const reading = this.detector.detect(frame, offset);
@@ -304,16 +336,32 @@ export class NoteTracker {
     else { this.candidate = heard; this.candidateCount = 1; }
     if (this.candidateCount < this.stableFrames) return;
 
-    const isNewPitch = heard !== this.current;
-    const louder = level > this.dipLevel * this.reattackRatio;
-    const isReattack = !isNewPitch && louder && this.framesSinceOnset >= this.minFramesBetweenOnsets;
-    if (isNewPitch || isReattack) {
+    const jump = level / this.dipLevel;
+    let pressed;
+    if (heard === this.current) {
+      pressed = jump > this.reattackRatio && this.framesSinceOnset >= this.minFramesBetweenOnsets;
+    } else if (this.current < 0) {
+      pressed = true;                                   // first sound after silence
+    } else if ((heard - this.current) % 12 === 0) {
+      pressed = jump > this.reattackRatio;              // a ringing note slipping an octave is not a key press
+    } else {
+      pressed = jump > this.onsetRatio ||
+        (level >= this.notePeak * this.sustainRatio && reading.clarity >= this.sustainClarity && this.candidateCount >= this.sustainFrames);
+    }
+    // Wait out the attack: the first instants of a key press can read as a neighbouring pitch.
+    pressed = pressed && !climbing && reading.clarity >= this.confirmClarity && level >= this.loudness * this.quietRatio;
+
+    if (pressed) {
       this.current = heard;
       this.dipLevel = level;
+      this.notePeak = level;
       this.framesSinceOnset = 0;
-      if (!muted && this.onNote) this.onNote(heard);
-    } else if (louder) {
-      // Still rising after the onset: follow the peak so the decay is not read as a new attack.
+      if (!muted) {
+        this.loudness = this.loudness > 0 ? this.loudness * 0.7 + level * 0.3 : level;
+        if (this.onNote) this.onNote(heard);
+      }
+    } else if (jump > this.reattackRatio && this.framesSinceOnset < this.minFramesBetweenOnsets) {
+      // Still rising just after the onset: follow the peak so the decay is not read as a new attack.
       this.dipLevel = level;
     }
   }
