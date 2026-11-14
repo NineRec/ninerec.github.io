@@ -86,7 +86,7 @@ export function anim(node, name, ms = 500, opts = {}) {
 /** Progress kept on this device. */
 const KEY = 'kids-playground-v1';
 export const store = {
-  data: { wins: {}, stickers: [], voice: true, sound: true },
+  data: { wins: {}, stickers: [], voice: true, sound: true, puzzleLevel: 1 },
   load() {
     try { Object.assign(this.data, JSON.parse(localStorage.getItem(KEY) || '{}')); } catch { /* private mode */ }
   },
@@ -110,6 +110,7 @@ const ICON = {
   book: '<path d="M4 5.5c3-1.2 5.500-1 8 .8 2.500-1.800 5-2 8-.8v13c-3-1.200-5.500-1-8 .8-2.500-1.800-5-2-8-.8z"/><path d="M12 6.300v13"/>',
   star: '<path d="m12 3.500 2.600 5.400 5.900.8-4.300 4.100 1 5.900L12 16.900l-5.200 2.800 1-5.900L3.500 9.700l5.900-.8z" fill="currentColor"/>',
   eraser: '<path d="M8.500 19.500 3.800 14.800a1.500 1.500 0 0 1 0-2.100l8.400-8.400a1.500 1.500 0 0 1 2.100 0l5.900 5.900a1.500 1.500 0 0 1 0 2.100l-7.200 7.200z"/><path d="m8 9 7 7M8.500 19.500H20"/>',
+  eye: '<path d="M2.5 12s3.5-6.5 9.5-6.5 9.5 6.5 9.5 6.5-3.5 6.5-9.5 6.5S2.5 12 2.5 12z"/><circle cx="12" cy="12" r="2.8"/>',
   help: '<path d="M9 9.200a3.100 3.100 0 1 1 4.700 2.600c-1 .7-1.700 1.300-1.700 2.700"/><circle cx="12" cy="18" r=".8" fill="currentColor"/>',
 };
 export const icon = (name) => `<svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">${ICON[name]}</svg>`;

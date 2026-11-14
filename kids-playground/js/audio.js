@@ -1,5 +1,5 @@
 // Sound: little synthesized effects and Zoey's recorded voice, both through one AudioContext
-// (unlocked by the first touch, which is what iOS needs).
+// (unlocked by a touch, which is what iOS needs, and rebuilt after the app has been in the background).
 import { store } from './core.js';
 
 let ac = null;
@@ -7,20 +7,45 @@ let master = null;
 const buffers = new Map();   // voice key -> Promise<AudioBuffer|null>
 let voiceSource = null;
 let voiceToken = 0;
+let noiseBuffer = null;
+let stale = false;           // the app was in the background: the old audio context cannot be trusted
 
+function build() {
+  const Ctx = window.AudioContext || window.webkitAudioContext;
+  if (!Ctx) return;
+  ac = new Ctx();
+  master = ac.createGain();
+  master.gain.value = 0.9;
+  master.connect(ac.destination);
+  noiseBuffer = null;
+  // iOS: play like a game, not like a web page that obeys silent mode.
+  try { if (navigator.audioSession) navigator.audioSession.type = 'playback'; } catch { /* not supported */ }
+}
+
+/**
+ * Call from every touch. Creates the audio context on the first one and wakes it when the system
+ * suspended it. After the app has been in the background (iPad: switch to another app and back),
+ * iOS can leave the context looking alive but silent for good, so the first touch back builds a new one.
+ * Decoded voice clips are kept: audio buffers do not belong to a context.
+ */
 export function unlock() {
-  if (!ac) {
-    const Ctx = window.AudioContext || window.webkitAudioContext;
-    if (!Ctx) return;
-    ac = new Ctx();
-    master = ac.createGain();
-    master.gain.value = 0.9;
-    master.connect(ac.destination);
+  if (ac && stale) {
+    stale = false;
+    hush();
+    try { ac.close().catch(() => {}); } catch { /* already closed */ }
+    ac = null;
   }
-  if (ac.state !== 'running') ac.resume().catch(() => {});
+  if (!ac) build();
+  if (ac && ac.state !== 'running') ac.resume().catch(() => {});
 }
 document.addEventListener('pointerdown', unlock, { capture: true });
-document.addEventListener('visibilitychange', () => { if (document.hidden) hush(); else if (ac) unlock(); });
+document.addEventListener('touchend', unlock, { capture: true });
+document.addEventListener('visibilitychange', () => {
+  if (!ac) return;
+  if (document.hidden) { hush(); stale = true; ac.suspend().catch(() => {}); }
+  else ac.resume().catch(() => {});
+});
+addEventListener('pagehide', () => { if (ac) stale = true; });
 
 /* ---------- effects ---------- */
 
@@ -37,7 +62,6 @@ function tone(f, at, dur, { type = 'sine', v = 0.16, to = 0, attack = 0.008 } = 
   o.start(t); o.stop(t + dur + 0.03);
 }
 
-let noiseBuffer = null;
 function noise(at, dur, { v = 0.14, f = 1200, to = 0, q = 1, type = 'bandpass' } = {}) {
   if (!noiseBuffer) {
     noiseBuffer = ac.createBuffer(1, ac.sampleRate, ac.sampleRate);
@@ -91,12 +115,12 @@ const FX = {
 };
 
 export function sfx(name) {
-  if (!ac || !store.data.sound || ac.state !== 'running') return;
+  if (!ac || !store.data.sound || ac.state === 'closed') return;
   try { FX[name]?.(); } catch { /* audio hiccup */ }
 }
 /** One note of a rising scale: counting, stacking. */
 export function note(i) {
-  if (!ac || !store.data.sound || ac.state !== 'running') return;
+  if (!ac || !store.data.sound || ac.state === 'closed') return;
   tone(SCALE[((i % SCALE.length) + SCALE.length) % SCALE.length], 0, 0.28, { type: 'triangle', v: 0.17 });
 }
 
@@ -107,7 +131,7 @@ function load(key) {
     buffers.set(key, fetch(`assets/voice/${key}.m4a`)
       .then((r) => (r.ok ? r.arrayBuffer() : Promise.reject(new Error(key))))
       .then((data) => new Promise((resolve, reject) => ac.decodeAudioData(data, resolve, reject)))
-      .catch(() => null));
+      .catch(() => { buffers.delete(key); return null; }));
   }
   return buffers.get(key);
 }
@@ -141,4 +165,6 @@ export async function say(...keys) {
     if (token !== voiceToken) return;
   }
 }
+/** For the tests: 'none', 'running', 'suspended'… */
+export const audioState = () => (ac ? ac.state : 'none');
 export const preload = (...keys) => { if (ac) keys.flat().forEach(load); };

@@ -337,6 +337,7 @@ svg.scene { position: absolute; left: 0; top: 0; overflow: visible; display: blo
 
 /* ---------- 宠物澡堂 ---------- */
 .tool.off { opacity: .35; filter: grayscale(.6); }
+.still-head .a-head { animation: none; }
 
 /* ---------- 涂色本 ---------- */
 .cl-chooser { position: absolute; left: 50%; top: 440px; transform: translate(-50%, -50%); width: min(1040px, 92%); display: grid; grid-template-columns: repeat(4, 1fr); gap: 22px; }
@@ -358,14 +359,25 @@ svg.page.done .edge { display: none; }
 .stage-button.on { box-shadow: 0 0 0 6px #fff, 0 0 0 11px var(--ink); }
 
 /* ---------- 拼图 ---------- */
-.pz-board { position: absolute; border-radius: 30px; background: #fff; box-shadow: 0 10px 0 var(--shadow); padding: 14px; }
-.pz-board svg { width: 100%; height: 100%; display: block; border-radius: 16px; background: #eef3f8; }
-.pz-board.solved svg g { opacity: 1; transition: opacity .5s; }
-.piece { pointer-events: none; filter: drop-shadow(0 6px 0 rgba(31, 26, 58, .2)); scale: .6; transition: scale .15s; }
-.piece.dragging, .piece.placed { scale: 1; }
-.piece .hit { pointer-events: auto; cursor: grab; }
-.piece.placed { filter: none; }
-.piece.placed .hit { stroke: rgba(255, 255, 255, .5); stroke-width: 2; pointer-events: none; }
+.pz-levels { position: absolute; left: 50%; top: 440px; transform: translate(-50%, -50%); display: flex; gap: 26px; }
+.pz-level {
+  width: 216px; padding: 16px 16px 8px; border-radius: 36px; background: #fff; box-shadow: 0 9px 0 var(--shadow);
+  display: flex; flex-direction: column; align-items: center; gap: 4px; animation: card-in .45s cubic-bezier(.3, 1.4, .5, 1) both;
+}
+.pz-level:active { transform: translateY(5px); }
+.pz-level svg { width: 100%; display: block; border-radius: 14px; background: #eef3f8; }
+.pz-level span { font-size: 46px; font-weight: 900; line-height: 1.2; }
+.pz-level.last { box-shadow: 0 0 0 7px var(--sun), 0 9px 0 var(--shadow); }
+.pz-board { position: absolute; border-radius: 26px; padding: 12px; background: linear-gradient(#eef3f8, #eef3f8) content-box, #fff; box-shadow: 0 10px 0 var(--shadow); }
+.pz-guide { width: 100%; height: 100%; border-radius: 12px; background-size: 100% 100%; transition: opacity .4s; }
+.pz { pointer-events: none; scale: var(--pile, .6); transition: scale .15s; }
+.pz.dragging, .pz.placed { scale: 1; }
+.pz.dragging { filter: drop-shadow(0 10px 0 rgba(31, 26, 58, .18)); }
+.pz-cut { position: absolute; inset: 0; pointer-events: auto; cursor: grab; background-repeat: no-repeat; }
+.pz-cut svg { width: 100%; height: 100%; display: block; pointer-events: none; }
+.pz.placed .pz-cut { pointer-events: none; }
+.pz.placed path { stroke: rgba(255, 255, 255, .45); stroke-width: 1.5; }
+.pz-board.solved ~ .pz path { stroke-width: 0; }
 
 /* ---------- 捉迷藏 ---------- */
 .seek-bar { gap: 8px; padding: 8px 14px; z-index: 15; }

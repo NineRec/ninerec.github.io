@@ -1,0 +1,9 @@
+<!doctype html><meta charset="utf-8"><title>pets</title>
+<style>body{margin:0;background:#bfe6ff;font:13px system-ui;display:grid;grid-template-columns:repeat(8,1fr);gap:4px;padding:6px}div{background:#e9f6ff;border-radius:10px;text-align:center}svg{width:100%;display:block}.eyes-joy{display:none}</style>
+<script type="module">
+import { dressed } from '../js/games/spa.js';
+const q = new URLSearchParams(location.search);
+const pets = (q.get('pets') || 'dog,cat,rabbit,pig,bear,panda,fox,unicorn,koala,mouse,lion,tiger,monkey,elephant,hippo,sheep').split(',');
+const looks = [['crown', 'glasses', 'scarf'], ['hat', 'glasses'], ['bow', 'scarf'], ['flower']];
+document.body.innerHTML = pets.flatMap((p) => looks.map((l) => `<div>${dressed(p, l)}${p}</div>`)).join('');
+</script>

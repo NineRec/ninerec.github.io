@@ -132,4 +132,4 @@ export const ZOEY_LOOK = { hair: 'bob', outfit: 'zoey', shoes: null, head: null,
 /** Zoey as a standalone picture. Poses come from a data-pose attribute on a parent (see the CSS). */
 export const zoeySvg = (look = ZOEY_LOOK) => `<svg class="art girl" viewBox="-70 -30 540 720" xmlns="http://www.w3.org/2000/svg">${e(200, 668, 130, 16, 'rgba(31,26,58,.12)')}<g class="girl-body">${doll(look)}</g></svg>`;
 
-export { HAIR, OUTFIT, SHOES, HEAD, HAND, BACK, SCENES, SKIN, shoeAt };
+export { HAIR, OUTFIT, SHOES, HEAD, HAND, BACK, SCENES, SKIN, shoeAt, castle, palm };
